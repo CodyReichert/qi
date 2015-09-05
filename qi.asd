@@ -18,12 +18,23 @@
   :version "0.1"
   :author "Cody Reichert"
   :license "MIT"
-  :depends-on (:cl-ppcre
+  :depends-on (:arnesi
+               :cl-fad
+               :cl-ppcre
+               :cl-yaml
                :drakma
-               :unix-opts)
+               :unix-opts
+
+               ; experimenting
+               :cl-algebraic-data-type
+               :local-package-aliases
+               :optima)
   :components ((:module "src"
                 :components
-                ((:file "qi"))))
+                ((:file "qi" :depends-on ("packages" "util" "paths"))
+                 (:file "packages" :depends-on ("paths"))
+                 (:file "paths" :depends-on ("util"))
+                 (:file "util"))))
   :description "A simple, open, project manager for Common Lisp"
   :long-description
   #.(with-open-file (stream (merge-pathnames

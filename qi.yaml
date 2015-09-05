@@ -1,0 +1,11 @@
+name: Qi
+author: Cody Reichert
+license: MIT
+description: A package manager Common Lisp
+
+packages:
+  - ./lib/cl-ses
+  - https://github.com/CodyReichert/cl-disque/archive/master.tar.gz
+  - name: clack
+    url: https://github.com/fukamachi/clack
+    version: master

@@ -1,79 +1,82 @@
 (in-package :cl-user)
 (defpackage qi
-  (:use :cl))
+  (:use :cl
+        :qi.util
+        :qi.paths)
+  (:import-from :qi.packages
+                :dependency
+                :dependency-name
+                :dependency-location
+                :dependency-version
+                :dispatch-dependency
+                :make-dependency
+                :location)
+  (:export :read-qi-file))
 (in-package :qi)
 
 ;; code:
 
-(defstruct dependency
-  name
-  location
-  version)
+(defun read-qi-file (proj)
+  "Reads a qi.yaml file and starts downloading dependencies."
+  (let* ((base-dir (qi.paths:project-dir proj))
+         (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
+    (if (probe-file qi-file)
+        (parse-deps qi-file)
+        (error "No qi.yaml!"))))
 
 
-(defun sym->str (sym)
-  (string-downcase (symbol-name sym)))
+(defun parse-deps (deps)
+  (format t "~%Reading dependencies...")
+  (let* ((config (yaml:parse deps))
+         (package-list (gethash "packages" config)))
+    (loop for p in package-list do
+       ;; figure out what type of dependency is on this line
+         (cond ((eql (type-of p) 'hash-table)
+                (dispatch-dependency
+                 (qi.packages::make-gh-dependency :name (gethash "name" p)
+                                                  :location (qi.packages::github (gethash "url" p))
+                                                  :version (gethash "version" p))))
 
-(defun project-dir (proj)
-  (asdf:system-relative-pathname proj (sym->str proj)))
+               ((is-url? p)
+                (dispatch-dependency
+                 (qi.packages::make-tar-dependency :location p)))
 
-(defun qi-dir ()
-  (fad:merge-pathnames-as-directory
-   (project-dir :qi)
-   (ensure-directories-exist #P".dependencies/")))
-
-(defun tar-dir ()
-  (fad:merge-pathnames-as-directory
-   (project-dir :qi)
-   (ensure-directories-exist #P".dependencies/tar/")))
-
-;(defun tar-path
-
-
-;; Read .qi file, download dependecies
-(defun get-deps-file (proj)
-  (let* ((base-dir (project-dir proj))
-         (qi-file (merge-pathnames #p".qi" base-dir)))
-    (unless (probe-file qi-file)
-      (error "No .qi file!"))
-    (with-open-file (s qi-file)
-      (do ((line (read-line s nil)
-                 (read-line s nil)))
-          ((null line))
-        (let ((dep (to-dependency line)))
-          (process-dep dep))))))
+               (t
+                (dispatch-dependency
+                 (qi.packages::make-local-dependency :location p)))))))
     
 
-(defun to-dependency (dep)
-  (multiple-value-bind (_ parts)
-      (ppcre:scan-to-strings "^(.*?): (git|https.*?) (.*?$)" dep)
-    (declare (ignore _)) ; we don't need the original line
-    (make-dependency
-     :name (svref parts 0)
-     :location (svref parts 1)
-     :version (svref parts 2))))
+(defun is-url? (str)
+  (ppcre:scan "^https?" str))
 
 
 ;; Save archives
 (defmethod process-dep (dep)
-  (format t "~%Downloading...")
-  (format t "~%---> ~A from ~A (~A)~%"
+  (format t "~%---> ~A from ~A (~A)"
           (dependency-name dep)
           (dependency-location dep)
-          (dependency-version dep)))
+          (dependency-version dep))
+  (if (eql (type-of dep) 'qi.packages::local-dependency) (download-dep dep)))
 
 
-(defmethod download-dep ())
-
-;QI> (with-open-file (f (ensure-directories-exist #p".dependencies/cl-disque_master.tar.gz")
-;                       :direction :output
-;                       :if-does-not-exist :create
-;                       :if-exists :supersede
-;                       :element-type '(unsigned-byte 8))
-;      (format t "Saving tarball to ~A" f)
-;      (let ((input (drakma:http-request "https://github.com/codyreichert/cl-disque/archive/master.tar.gz"
-;                                        :want-stream t)))
-;        (arnesi:awhile (read-byte input nil nil)
-;          (write-byte arnesi:it f))
-;        (close input)))
- 
+(defun download-dep (dep)
+  (let* ((out-file (concatenate 'string
+                               (dependency-name dep)
+                               "-"
+                               (dependency-version dep)
+                               ".tar.gz"))
+        (out-path (fad:merge-pathnames-as-file
+                   (tar-dir) (pathname out-file))))
+    (with-open-file (f (ensure-directories-exist out-path)
+                       :direction :output
+                       :if-does-not-exist :create
+                       :if-exists :supersede
+                       :element-type '(unsigned-byte 8))
+      (print (qi.packages:full-dep-location dep))
+      (let ((input (drakma:http-request (qi.packages:full-dep-location dep)
+                                        :want-stream t)))
+        ;; TODO: handle some response from Github that might say
+        ;; "error: not found".
+        (arnesi:awhile (read-byte input nil nil)
+          (write-byte arnesi:it f))
+        (close input)))))

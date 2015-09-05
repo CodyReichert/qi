@@ -49,34 +49,3 @@
 (defun is-url? (str)
   (ppcre:scan "^https?" str))
 
-
-;; Save archives
-(defmethod process-dep (dep)
-  (format t "~%---> ~A from ~A (~A)"
-          (dependency-name dep)
-          (dependency-location dep)
-          (dependency-version dep))
-  (if (eql (type-of dep) 'qi.packages::local-dependency) (download-dep dep)))
-
-
-(defun download-dep (dep)
-  (let* ((out-file (concatenate 'string
-                               (dependency-name dep)
-                               "-"
-                               (dependency-version dep)
-                               ".tar.gz"))
-        (out-path (fad:merge-pathnames-as-file
-                   (tar-dir) (pathname out-file))))
-    (with-open-file (f (ensure-directories-exist out-path)
-                       :direction :output
-                       :if-does-not-exist :create
-                       :if-exists :supersede
-                       :element-type '(unsigned-byte 8))
-      (print (qi.packages:full-dep-location dep))
-      (let ((input (drakma:http-request (qi.packages:full-dep-location dep)
-                                        :want-stream t)))
-        ;; TODO: handle some response from Github that might say
-        ;; "error: not found".
-        (arnesi:awhile (read-byte input nil nil)
-          (write-byte arnesi:it f))
-        (close input)))))

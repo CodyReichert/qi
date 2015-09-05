@@ -35,7 +35,7 @@
                  (:file "packages" :depends-on ("paths"))
                  (:file "paths" :depends-on ("util"))
                  (:file "util"))))
-  :description "A simple, open, project manager for Common Lisp"
+  :description "A simple, open, package manager for Common Lisp"
   :long-description
   #.(with-open-file (stream (merge-pathnames
                              #p"README.markdown"

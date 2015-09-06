@@ -34,6 +34,7 @@
                 ((:file "qi" :depends-on ("packages" "util" "paths"))
                  (:file "packages" :depends-on ("paths"))
                  (:file "paths" :depends-on ("util"))
+                 (:file "manifest")
                  (:file "util"))))
   :description "A simple, open, package manager for Common Lisp"
   :long-description

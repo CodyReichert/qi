@@ -2,7 +2,8 @@
 (defpackage qi.manifest
   (:use :cl)
   (:export :manifest-entry
-           :get-system-from-manifest))
+           :manifest-package-exists?
+           :manifest-get-by-name))
 (in-package :qi.manifest)
 
 ;; Code:
@@ -43,17 +44,17 @@ inside of a manifest-package."
                                   ((null line))
                                 (let ((words (nth-value
                                               1 (ppcre:scan-to-strings "^(.*?) (.*)" line))))
-                                  (print words)
+                                  (print (type-of name))
+                                  (print (car name))
                                   (when words
                                     (setf *qi-packages*
                                           (pushnew
                                            (make-manifest-package
-                                            :name name
+                                            :name (car name)
                                             :vc (svref words 0)
                                             :locations (ver-loc (pairlis (list "latest")
                                                                 (list (svref words 1)))))
-                                           *qi-packages*)))))))
-                          t))
+                                           *qi-packages*))))))) t))
   (with-open-file (s +manifest-file+
                      :direction :output
                      :if-exists :supersede
@@ -61,9 +62,9 @@ inside of a manifest-package."
     (format s "~S" *qi-packages*)))
 
 
-(defun import-manifest ()
+(defun manifest-load ()
   "Load qi's manifest.lisp into memory."
-  (with-open-file (s +manifest+)
+  (with-open-file (s +manifest-file+)
     (let ((out))
       (loop
          for line = (read-line s nil 'eof)
@@ -75,10 +76,19 @@ inside of a manifest-package."
 (defun manifest-package-exists? (name)
   "Check if a package by the name of `name' is available in the manifest.
 Returns the package if it exists - nil otherwise."
-  (print name))
+  (remove-if-not #'(lambda (x)
+                     (string= name (manifest-package-name x))) +manifest-packages+))
 
 
-(defun get-system-from-manifest (sys-name)
+(defun manifest-get-by-name (sys-name)
   "Return a `manifest-package' by the given name. Returns NIL if the package
 does not exist."
-      (format t "~%Getting ~A from the manifest%" sys-name))
+  (let ((matches (remove-if-not #'(lambda (x)
+                                    (string= sys-name (manifest-package-name x)))
+                                +manifest-packages+)))
+    (cond ((= 1 (length matches))
+           (return-from manifest-get-by-name (first matches)))
+          ((= 0 (length matches))
+           (return-from manifest-get-by-name nil))
+          (t
+           (return-from manifest-get-by-name matches)))))

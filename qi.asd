@@ -25,11 +25,8 @@
                :drakma
                :unix-opts
                :archive
-
-               ; experimenting
-               :cl-algebraic-data-type
-               :local-package-aliases
-               :optima)
+               :trivial-shell
+               :cl-algebraic-data-type)
   :components ((:module "src"
                 :components
                 ((:file "qi" :depends-on ("packages" "util" "paths"))

@@ -112,8 +112,8 @@ of its location."))
 
 (defmethod dispatch-dependency ((dep git-dependency))
   (format t "~%-> Preparing to clone Git dependency: ~S" (dependency-name dep))
-  (format t "~%---X Install git dependencies is not yet supported.")
-  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+  (install-dependency dep))
+  ;(setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
   (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
@@ -151,8 +151,11 @@ of the information we need to get it."))
   (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod install-dependency ((dep git-dependency))
-  (format t "~%---X Installing git dependencies is not yet supported.")
-  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+  (format t "~%---> Resolving repository location.")
+  (clone-git-repo (dependency-location dep) dep)
+  (make-dependency-available dep)
+  (install-transitive-dependencies dep))
+  ;(setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-location dep)))
@@ -160,25 +163,29 @@ of the information we need to get it."))
     (adt:match location loc
       ((http url) ; manifest holds an http url
        (download-tarball url dep)
-        (make-dependency-available dep)
-        (install-transitive-dependencies dep))
+       (make-dependency-available dep)
+       (install-transitive-dependencies dep))
       (_ (format t "~%---> Unable able to resolve location of: ~S" loc)
          (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 
 (defmethod install-dependency ((dep manifest-dependency))
   (let ((loc (dependency-location dep)))
     (adt:match location loc
+
        ((http url) ; has an http url
         (download-tarball url dep)
         (install-transitive-dependencies dep)
-        (make-dependency-available dep)
-        )
+        (make-dependency-available dep))
+
        ((local path) ; has a local path (should not happen)
         (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)
         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+
        ((git repo) ; has a git url
-        (format t "~%---X GIT PACKAGES NOT YET SUPPORTED: ~S" repo)
-        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+        (clone-git-repo repo dep)
+        (make-dependency-available dep)
+        (install-transitive-dependencies dep))
+
        (_
         (format t "~%---X Cannot resolve package type: ~S" (dependency-name dep))
         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
@@ -204,7 +211,25 @@ and sys-path."
         (close tar)
         (set-dependency-paths out-path dep)))
     (unpack-tar dep)))
-        
+
+
+(defun clone-git-repo (url dep)
+  "Downloads tarball from <url>, and updates <dep> with the local src-path
+and sys-path."
+  (let ((clone-path (fad:merge-pathnames-as-directory
+                   (qi.paths:package-dir) (concatenate 'string
+                                                       (dependency-name dep) "-"
+                                                       (dependency-version dep) "/"))))
+    (format t "~%---> Cloning repo from ~S" url)
+    (format t "~%---> Cloning repo to ~S" (namestring clone-path))
+    (git-clone url (namestring clone-path))
+    (set-dependency-paths clone-path dep)))
+
+
+(defun git-clone (from to)
+  (trivial-shell:shell-command
+   (concatenate 'string "git clone " from " " to)))
+
 
 (defun unpack-tar (dep)
   (extract-tarball (dependency-src-path dep)))
@@ -270,7 +295,8 @@ and sys-path."
          (make-transitive-dependency :name name
                                      :caller caller)
          *qi-trans-dependencies*)))
-               
+
+
 (defun set-broken-trans-dep (name caller)
   "Creates and adds an unavailable transitive dependecy to the
 *qi-broken-trans-dependencies* list."
@@ -279,12 +305,13 @@ and sys-path."
          (make-transitive-dependency :name name
                                      :caller caller)
          *qi-broken-trans-dependencies*)))
-               
+
 
 (defun system-is-available? (sys)
   (handler-case
       (asdf:find-system sys)
     (error () () nil)))
+
 
 (defun dependency-installed? (name)
   (remove-if-not #'(lambda (x)

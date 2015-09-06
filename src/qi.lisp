@@ -83,14 +83,14 @@
     
 
 (defun installed-dependency-report ()
-  (cond ((= 0 (length *qi-broken-dependencies*))
+  (cond ((= 0 (length *qi-dependencies*))
          (format t "~%~%No dependencies installed!"))
         (t
          (let ((installed (remove-if-not #'(lambda (x) (dependency-sys-path x)) *qi-dependencies*)))
            (format t "~%~%~S dependencies installed:" (length installed))
            (loop for d in *qi-dependencies*
               when (qi.packages::dependency-sys-path d) do
-                (format t "~%  * ~A" (dependency-name d))))
+                (format t "~%   * ~A" (dependency-name d))))
          (format t "~%~A transitive dependencies installed" (length *qi-trans-dependencies*)))))
 
 (defun broken-dependency-report ()

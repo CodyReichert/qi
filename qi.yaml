@@ -5,8 +5,8 @@ description: A package manager Common Lisp
 
 packages:
   - name: yason
-  # - name: cl-yaml
-  # - name: cl-ppcre
+  - name: cl-yaml
+  - name: cl-ppcre
 
   - name: drakma
     url: https://github.com/edicl/drakma/archive/master.tar.gz
@@ -18,14 +18,6 @@ packages:
     version: master
     url: https://github.com/mrkkrp/unix-opts
 
-  - name: local-package-aliases
-    version: master
-    url: https://github.com/avodonosov/local-package-aliases
-
-  - name: optima
-    version: master
-    url: https://github.com/m2ym/optima
-
   - name: cl-fad
     version: master
     url: https://github.com/edicl/cl-fad
@@ -33,10 +25,6 @@ packages:
   - name: arnesi
     version: master
     url: https://github.com/vseloved/arnesi
-
-  - name: clack
-    version: master
-    url: https://github.com/fukamachi/clack
 
   - name: chipz
     version: master

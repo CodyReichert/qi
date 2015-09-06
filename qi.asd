@@ -24,8 +24,8 @@
                :cl-yaml
                :drakma
                :unix-opts
-
                :archive
+
                ; experimenting
                :cl-algebraic-data-type
                :local-package-aliases
@@ -33,7 +33,7 @@
   :components ((:module "src"
                 :components
                 ((:file "qi" :depends-on ("packages" "util" "paths"))
-                 (:file "packages" :depends-on ("paths"))
+                 (:file "packages" :depends-on ("paths" "manifest"))
                  (:file "paths" :depends-on ("util"))
                  (:file "manifest")
                  (:file "util"))))

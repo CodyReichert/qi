@@ -2,7 +2,9 @@
 (defpackage qi.packages
   (:use :cl :qi.paths :chipz)
   (:import-from :qi.manifest
-                :manifest-lookup
+                :create-download-strategy
+                :manifest-package
+                :manifest-package-exists?
                 :manifest-get-by-name)
   (:export :*qi-dependencies*
            :dependency
@@ -18,7 +20,7 @@
            :location
            :local
            :http
-           :github))
+           :git))
 (in-package :qi.packages)
 
 ;; code:
@@ -30,7 +32,7 @@
 ;;     + Only takes a path to a directory on the local machine
 ;;   - HTTP
 ;;     + An http link to a tarball
-;;   - Github
+;;   - Git
 ;;     + Git URL's are cloned, and can take a couple of extra parameters:
 ;;       - Location (http link to repo on github)
 ;;       - Version (version of the repo to check out)
@@ -46,6 +48,7 @@
 (defstruct dependency
   "The base data structure for a dependency."
   name
+  (download-strategy nil)
   (location 'location)
   (src-path nil)
   (sys-path nil)
@@ -70,7 +73,7 @@
   (manifest t)
   (local t)
   (http t)
-  (github t))
+  (git t))
 
 
 (defstruct transitive-dependency
@@ -102,25 +105,44 @@ of its location."))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep http-dependency))
-  (format t "~%Preparing to download tarball dependency.")
-  (format t "~%---> ~A" (dependency-location dep))
+  (format t "~%Preparing to download tarball dependency: ~S" (dependency-name dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep git-dependency))
-  (format t "~%~%Preparing to clone GitHub dependency.")
-  (format t "~%---> ~A" (dependency-name dep))
-  (install-dependency dep)
-  (make-dependency-available dep)
-  (check-dependency-dependencies dep)
+  (format t "~%~%Preparing to clone Git dependency: ~S" (dependency-name dep))
+  (format t "~%---X Install git dependencies is not yet supported.")
+  ;(install-dependency dep)
+  ;(make-dependency-available dep)
+  ;(check-dependency-dependencies dep)
   ;(print *qi-dependencies*)
   )
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%~%Preparing to install manifest dependency.")
-  (format t "~%---> ~A" (dependency-name dep))
-  (install-dependency dep)
-  ;(print *qi-dependencies*)
-  )
+  (format t "~%~%Preparing to install manifest dependency: ~S" (dependency-name dep))
+  (if (not (ensure-dependency dep))
+      (format t "~%---X Can not install ~A" dep)
+      (progn
+        (let ((pack (manifest-get-by-name (dependency-name dep))))
+          (multiple-value-bind (location* strategy)
+              (create-download-strategy pack)
+            (setf (dependency-location dep) location*)
+            (setf (dependency-download-strategy dep) strategy)
+            (install-dependency dep))))))
+
+
+(defgeneric ensure-dependency (dependency)
+  (:documentation "Ensure that a dependency exists. That we have all
+of the information we need to get it."))
+
+(defmethod ensure-dependency ((dep manifest-dependency))
+  "Check the manifest to ensure a dependency exists."
+  (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
+    (cond ((eql nil manifest-package)
+           (format t "~%---X Can not install ~A~%" dep)
+           nil)
+          (t
+           (format t "~%---> Found package in manifest!")
+           dep))))
 
 
 (defgeneric install-dependency (dependency)
@@ -130,44 +152,54 @@ of its location."))
   (format t "~%---X Installing local dependencies is not yet supported."))
 
 (defmethod install-dependency ((dep git-dependency))
-  (format t "~%---X Installing tarball dependencies is not yet supported."))
+  (format t "~%---X Installing git dependencies is not yet supported."))
+
 
 (defmethod install-dependency ((dep manifest-dependency))
-  (format t "~%---X Installing manifest dependencies is not yet supported.")
-  (if (manifest-lookup (dependency-name dep))
-      (let ((pack (manifest-get-by-name (dependency-name dep))))
-        (print pack)))
-  )
+  (let ((loc (dependency-location dep)))
+    (adt:match location loc
+       ((http url) ; has an http url
+        (download-tarball url dep)
+        (make-dependency-available dep))
+       ((local path) ; has a local path (should not happen)
+        (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S" path))
+       ((git repo) ; has a git url
+        (format t "~%---> GIT PACKAGES NOT YET SUPPORTED: ~S" repo))
+       (_ nil))))
+
 
 (defmethod install-dependency ((dep http-dependency))
+  (let ((loc (dependency-location dep)))
+    (format t "~%---> Resolving tarball dependency location.")
+    (adt:match location loc
+      ((http url) ; manifest holds an http url
+       (download-tarball url dep)
+       (make-dependency-available dep))
+      (_ (format t "~%---> Unable able to resolve location of: ~S" loc)))))
+
+
+(defun download-tarball (url dep)
+  "Downloads tarball from <url>, and updates <dep> with the local src-path
+and sys-path."
   (let* ((out-file (concatenate 'string
                                 (dependency-name dep) "-"
                                 (dependency-version dep) ".tar.gz"))
          (out-path (fad:merge-pathnames-as-file (tar-dir) (pathname out-file))))
-    (adt:with-data (http loc) (dependency-location dep)
-      (format t "~%---> Installing package from ~A" loc)
-      (with-open-file (f (ensure-directories-exist out-path)
-                         :direction :output
-                         :if-does-not-exist :create
-                         :if-exists :supersede
-                         :element-type '(unsigned-byte 8))
-        (let ((input (drakma:http-request (gh-tar-url loc)
-                                        :want-stream t)))
-        ;; TODO: handle some response from Github that might say
-        ;; "error: not found".
-        (arnesi:awhile (read-byte input nil nil)
+    (format t "~%---> Downloading tarball from ~S" url)
+    (with-open-file (f (ensure-directories-exist out-path)
+                       :direction :output
+                       :if-does-not-exist :create
+                       :if-exists :supersede
+                       :element-type '(unsigned-byte 8))
+      (let ((tar (drakma:http-request url :want-stream t)))
+        (arnesi:awhile (read-byte tar nil nil)
           (write-byte arnesi:it f))
-        (close input)
-        (setf (dependency-src-path dep) out-path)
-        (setf (dependency-sys-path dep)
-              (fad:merge-pathnames-as-directory
-               (qi.paths:package-dir) (concatenate 'string (dependency-name dep) "-"
-                                                   (dependency-version dep) "/")))))))
-  (unpack-tar dep))
-
+        (close tar)
+        (set-dependency-paths out-path dep)))
+    (unpack-tar dep)))
+        
 
 (defun unpack-tar (dep)
-  (format t "~%---> Unpackaging dependency")
   (extract-tarball (dependency-src-path dep)))
 
 
@@ -183,6 +215,16 @@ of its location."))
                              :direction :input)))))
 
 
+(defun set-dependency-paths (out-path dep)
+  "Update an a dependency's src-path and sys-path."
+  (let ((sys-path (fad:merge-pathnames-as-directory
+                   (qi.paths:package-dir) (concatenate 'string
+                                                       (dependency-name dep) "-"
+                                                       (dependency-version dep) "/"))))
+    (setf (dependency-src-path dep) out-path)
+    (setf (dependency-sys-path dep) sys-path)))
+
+
 (defun find-dep-asd (dep)
   (if dep () ()))
 
@@ -191,7 +233,7 @@ of its location."))
   (setf asdf:*central-registry*
         (list* (dependency-sys-path dep) ;; add this dependencies path to the
                asdf:*central-registry*)) ;; ASDF registry.
-  (format t "~%---> Making dependency available to ASDF"))
+  (format t "~%---> Making dependency available to ASDF~%"))
 
 
 (defun check-dependency-dependencies (dep)

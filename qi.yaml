@@ -4,23 +4,19 @@ license: MIT
 description: A package manager Common Lisp
 
 packages:
-  - name: cl-ppcre
-
-  - name: cl-yaml
-    version: master
-    url: https://github.com/eudoxia0/cl-yaml
+  - name: yason
+  # - name: cl-yaml
+  # - name: cl-ppcre
 
   - name: drakma
-    version: master
-    url: https://github.com/edicl/drakma
+    url: https://github.com/edicl/drakma/archive/master.tar.gz
+
+  - name: cl-algebraic-data-type
+    url: https://github.com/CodyReichert/cl-algebraic-data-type/archive/master.tar.gz
 
   - name: unix-opts
     version: master
     url: https://github.com/mrkkrp/unix-opts
-
-  - name: cl-algebraic-data-type
-    version: master
-    url: https://github.com/CodyReichert/cl-algebraic-data-type
 
   - name: local-package-aliases
     version: master

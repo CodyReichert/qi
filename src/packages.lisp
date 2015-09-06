@@ -12,6 +12,7 @@
            :dependency-name
            :dependency-location
            :dependency-version
+           :dependency-sys-path
            :make-dependency
            :make-manifest-dependency
            :make-http-dependency
@@ -42,7 +43,7 @@
 (defvar *qi-dependencies* nil
   "A list of `dependencies' as required by the qi.yaml.")
 (defvar *qi-broken-dependencies* nil
-  "A list of `dependencies' as required by the qi.yaml.")
+  "A list of uninstalled `dependencies'.")
 (defvar *qi-trans-dependencies* nil
   "A list of `trans-dependencies' required by any *qi-dependencies.")
 

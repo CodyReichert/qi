@@ -10,6 +10,7 @@
                 :dependency-name
                 :dependency-location
                 :dependency-version
+                :dependency-sys-path
                 :dispatch-dependency
                 :make-dependency
                 :make-manifest-dependency
@@ -27,6 +28,7 @@
   "Reads a qi.yaml file and starts downloading dependencies."
   (setf *qi-dependencies* nil)
   (setf *qi-broken-dependencies* nil)
+  (qi.manifest::manifest-load)
   (let* ((base-dir (qi.paths:project-dir proj))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
     (if (probe-file qi-file)
@@ -69,17 +71,28 @@
                                         :location (or (gethash "url" p) nil))))
 
                (t (format t "~%---X Cannot resolve dependency type")))))
-  (dependency-report))
+  (installed-dependency-report)
+  (broken-dependency-report))
     
 
-(defun dependency-report ()
+(defun installed-dependency-report ()
+  (cond ((= 0 (length *qi-broken-dependencies*))
+         (format t "~%~%No dependencies installed!"))
+        (t
+         (let ((installed (remove-if-not #'(lambda (x) (dependency-sys-path x)) *qi-dependencies*)))
+           (format t "~%~%~S dependencies installed:" (length installed))
+           (loop for d in *qi-dependencies*
+              when (qi.packages::dependency-sys-path d) do
+                (format t "~%  ~A" (dependency-name d)))))))
+
+(defun broken-dependency-report ()
   (cond ((= 0 (length *qi-broken-dependencies*))
          (format t "~%All dependencies installed successully!"))
         (t
          (let ((amt-broken (length *qi-broken-dependencies*)))
            (format t "~%~S dependencies not installed:" amt-broken)
            (loop for d in *qi-broken-dependencies* do
-                (format t "~%~A" (dependency-name d)))))))
+                (format t "~%  ~A" (dependency-name d)))))))
 
 (defun is-tar-url? (str)
   (ppcre:scan "^https?.*tar.gz" str))

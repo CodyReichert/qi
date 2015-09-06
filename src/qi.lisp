@@ -6,12 +6,17 @@
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-broken-dependencies*
+                :*qi-trans-dependencies*
+                :*qi-broken-trans-dependencies*
                 :dependency
                 :dependency-name
                 :dependency-location
                 :dependency-version
                 :dependency-sys-path
                 :dispatch-dependency
+                :transitive-dependency
+                :transitive-dependency-name
+                :transitive-dependency-caller
                 :make-dependency
                 :make-manifest-dependency
                 :make-http-dependency
@@ -28,6 +33,8 @@
   "Reads a qi.yaml file and starts downloading dependencies."
   (setf *qi-dependencies* nil)
   (setf *qi-broken-dependencies* nil)
+  (setf *qi-trans-dependencies* nil)
+  (setf *qi-broken-trans-dependencies* nil)
   (qi.manifest::manifest-load)
   (let* ((base-dir (qi.paths:project-dir proj))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
@@ -83,16 +90,22 @@
            (format t "~%~%~S dependencies installed:" (length installed))
            (loop for d in *qi-dependencies*
               when (qi.packages::dependency-sys-path d) do
-                (format t "~%  ~A" (dependency-name d)))))))
+                (format t "~%  * ~A" (dependency-name d))))
+         (format t "~%~A transitive dependencies installed" (length *qi-trans-dependencies*)))))
 
 (defun broken-dependency-report ()
-  (cond ((= 0 (length *qi-broken-dependencies*))
-         (format t "~%All dependencies installed successully!"))
-        (t
+  (cond ((not (= 0 (length *qi-broken-dependencies*)))
          (let ((amt-broken (length *qi-broken-dependencies*)))
-           (format t "~%~S dependencies not installed:" amt-broken)
+           (format t "~%~%~S required dependencies not installed:" amt-broken)
            (loop for d in *qi-broken-dependencies* do
-                (format t "~%  ~A" (dependency-name d)))))))
+                (format t "~%  ~A" (dependency-name d))))))
+  (cond ((not (= 0 (length *qi-broken-trans-dependencies*)))
+         (let ((amt-broken (length *qi-broken-trans-dependencies*)))
+           (format t "~%~S transitive dependencies not installed:" amt-broken)
+           (loop for d in *qi-broken-trans-dependencies* do
+                (format t "~%  ~A (required by ~S)"
+                        (transitive-dependency-name d)
+                        (transitive-dependency-caller d)))))))
 
 (defun is-tar-url? (str)
   (ppcre:scan "^https?.*tar.gz" str))

@@ -8,6 +8,8 @@
                 :manifest-get-by-name)
   (:export :*qi-dependencies*
            :*qi-broken-dependencies*
+           :*qi-trans-dependencies*
+           :*qi-broken-trans-dependencies*
            :dependency
            :dependency-name
            :dependency-location
@@ -18,6 +20,9 @@
            :make-http-dependency
            :make-local-dependency
            :make-git-dependency
+           :transitive-dependency
+           :transitive-dependency-name
+           :transitive-dependency-caller
            :dispatch-dependency
            :location
            :local
@@ -46,6 +51,8 @@
   "A list of uninstalled `dependencies'.")
 (defvar *qi-trans-dependencies* nil
   "A list of `trans-dependencies' required by any *qi-dependencies.")
+(defvar *qi-broken-trans-dependencies* nil
+  "A list of broken transitive dependencies.")
 
 ;; `dependency' data type and methods
 
@@ -57,6 +64,13 @@
   (src-path nil)
   (sys-path nil)
   (version "latest"))
+
+(adt:defdata location
+  "The location of a dependency."
+  (manifest t)
+  (local t)
+  (http t)
+  (git t))
 
 
 (defstruct (manifest-dependency (:include dependency))
@@ -71,25 +85,9 @@
 (defstruct (git-dependency (:include dependency))
   "Github dependency data structure.")
 
-
-(adt:defdata location
-  "The location of a dependency."
-  (manifest t)
-  (local t)
-  (http t)
-  (git t))
-
-
-(defstruct transitive-dependency
-  "A transitive-dependency is another system required by a qi package."
-  (name nil)
-  (caller nil)
-  (path nil))
-
-(adt:defdata dep-status
-  "The availability status of a transitive dependency."
-  (dep-available t)
-  dep-unknown)
+(defstruct (transitive-dependency (:include manifest-dependency))
+  "Transitive dependency data structure."
+  (caller nil))
 
 
 ;;
@@ -104,26 +102,21 @@ of its location."))
   (setf *qi-dependencies* (pushnew dependency *qi-dependencies*)))
 
 (defmethod dispatch-dependency ((dep local-dependency))
-  (format t "~%Preparing to copy local dependency.")
+  (format t "~%-> Preparing to copy local dependency.")
   (format t "~%---> ~A" (dependency-location dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep http-dependency))
-  (format t "~%Preparing to download tarball dependency: ~S" (dependency-name dep))
+  (format t "~%-> Preparing to download tarball dependency: ~S" (dependency-name dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep git-dependency))
-  (format t "~%Preparing to clone Git dependency: ~S" (dependency-name dep))
+  (format t "~%-> Preparing to clone Git dependency: ~S" (dependency-name dep))
   (format t "~%---X Install git dependencies is not yet supported.")
-  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))
-  ;(install-dependency dep)
-  ;(make-dependency-available dep)
-  ;(check-dependency-dependencies dep)
-  ;(print *qi-dependencies*)
-  )
+  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%Preparing to install manifest dependency: ~S" (dependency-name dep))
+  (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
   (if (not (ensure-dependency dep))
       (format t "~%---X Can not install ~A" dep)
       (progn
@@ -161,33 +154,35 @@ of the information we need to get it."))
   (format t "~%---X Installing git dependencies is not yet supported.")
   (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
-
-(defmethod install-dependency ((dep manifest-dependency))
-  (let ((loc (dependency-location dep)))
-    (adt:match location loc
-       ((http url) ; has an http url
-        (download-tarball url dep)
-        (make-dependency-available dep))
-       ((local path) ; has a local path (should not happen)
-        (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)
-        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
-       ((git repo) ; has a git url
-        (format t "~%---> GIT PACKAGES NOT YET SUPPORTED: ~S~%" repo)
-        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
-       (_
-        (format t "~%---> Cannot resolve package type: ~S~%" (dependency-name dep))
-        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
-
-
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-location dep)))
     (format t "~%---> Resolving tarball dependency location.")
     (adt:match location loc
       ((http url) ; manifest holds an http url
        (download-tarball url dep)
-       (make-dependency-available dep))
+        (make-dependency-available dep)
+        (install-transitive-dependencies dep))
       (_ (format t "~%---> Unable able to resolve location of: ~S" loc)
          (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
+
+(defmethod install-dependency ((dep manifest-dependency))
+  (let ((loc (dependency-location dep)))
+    (adt:match location loc
+       ((http url) ; has an http url
+        (download-tarball url dep)
+        (install-transitive-dependencies dep)
+        (make-dependency-available dep)
+        )
+       ((local path) ; has a local path (should not happen)
+        (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+       ((git repo) ; has a git url
+        (format t "~%---X GIT PACKAGES NOT YET SUPPORTED: ~S" repo)
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+       (_
+        (format t "~%---X Cannot resolve package type: ~S" (dependency-name dep))
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
+
 
 
 (defun download-tarball (url dep)
@@ -237,37 +232,66 @@ and sys-path."
     (setf (dependency-sys-path dep) sys-path)))
 
 
-(defun find-dep-asd (dep)
-  (if dep () ()))
-
-
 (defun make-dependency-available (dep)
   (setf asdf:*central-registry*
-        (list* (dependency-sys-path dep) ;; add this dependencies path to the
-               asdf:*central-registry*)) ;; ASDF registry.
-  (format t "~%---> Making dependency available to ASDF~%"))
+        (list* (dependency-sys-path dep)  ;; add this dependencies path to the
+               asdf:*central-registry*))) ;; ASDF registry.
 
 
-(defun check-dependency-dependencies (dep)
-  (let ((sys-definition
-         (fad:merge-pathnames-as-file
-          (dependency-sys-path dep) (concatenate 'string (dependency-name dep) ".asd")))
-        (sub-sys-deps))
-    (if (system-is-available? (dependency-name dep))
-        (progn
-          (setf sub-sys-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep))))
-          (loop for dep in sub-sys-deps do
-               (if (system-is-available? dep)
-                   (format t "~%---> Sub-dependency is available: ~A" (asdf-system-path dep))
-                   (format t "~%---X Sub-dependency is not available: ~A" dep))))
-        (format t "~%---X System is not available: ~A" dep))))
-    ;(format t "~%---> ~A depends on ~A~%" (dependency-name dep) sys-dependencies)))
+(defun install-transitive-dependencies (dep)
+  (if (system-is-available? (dependency-name dep))
+      (let ((trans-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
+        (loop for d in trans-deps do
+             (if (or (system-is-available? d)
+                     (dependency-installed? d))
+                 (set-trans-dep d (dependency-name dep))
+                 (progn
+                   (format t "~%---X Checking manifest for transitive dependency: ~S" d)
+                   (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
+                     (cond ((eql nil manifest-package)
+                            (format t "~%---X Can not install ~A~%" dep)
+                            (set-broken-trans-dep d (dependency-name dep)))
+                           (t
+                            (format t "~%---> Found package in manifest!")
+                            (make-trans-dep-from-manifest d (dependency-name dep)))))))))))
 
+
+
+(defun make-trans-dep-from-manifest (name caller)
+  (dispatch-dependency (make-transitive-dependency :name name
+                                                   :caller caller)))
+
+
+(defun set-trans-dep (name caller)
+  "Creates and adds an available transitive dependecy to the
+*qi-trans-dependencies* list."
+  (setf *qi-trans-dependencies*
+        (pushnew
+         (make-transitive-dependency :name name
+                                     :caller caller)
+         *qi-trans-dependencies*)))
+               
+(defun set-broken-trans-dep (name caller)
+  "Creates and adds an unavailable transitive dependecy to the
+*qi-broken-trans-dependencies* list."
+  (setf *qi-broken-trans-dependencies*
+        (pushnew
+         (make-transitive-dependency :name name
+                                     :caller caller)
+         *qi-broken-trans-dependencies*)))
+               
 
 (defun system-is-available? (sys)
   (handler-case
       (asdf:find-system sys)
     (error () () nil)))
+
+(defun dependency-installed? (name)
+  (remove-if-not #'(lambda (x)
+                     (string=
+                      (dependency-name x)
+                      name))
+                 *qi-dependencies*))
 
 
 (defun asdf-system-path (sys)

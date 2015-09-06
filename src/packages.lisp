@@ -7,6 +7,7 @@
                 :manifest-package-exists?
                 :manifest-get-by-name)
   (:export :*qi-dependencies*
+           :*qi-broken-dependencies*
            :dependency
            :dependency-name
            :dependency-location
@@ -39,6 +40,8 @@
 
 
 (defvar *qi-dependencies* nil
+  "A list of `dependencies' as required by the qi.yaml.")
+(defvar *qi-broken-dependencies* nil
   "A list of `dependencies' as required by the qi.yaml.")
 (defvar *qi-trans-dependencies* nil
   "A list of `trans-dependencies' required by any *qi-dependencies.")
@@ -109,8 +112,9 @@ of its location."))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep git-dependency))
-  (format t "~%~%Preparing to clone Git dependency: ~S" (dependency-name dep))
+  (format t "~%Preparing to clone Git dependency: ~S" (dependency-name dep))
   (format t "~%---X Install git dependencies is not yet supported.")
+  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))
   ;(install-dependency dep)
   ;(make-dependency-available dep)
   ;(check-dependency-dependencies dep)
@@ -118,7 +122,7 @@ of its location."))
   )
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%~%Preparing to install manifest dependency: ~S" (dependency-name dep))
+  (format t "~%Preparing to install manifest dependency: ~S" (dependency-name dep))
   (if (not (ensure-dependency dep))
       (format t "~%---X Can not install ~A" dep)
       (progn
@@ -149,10 +153,12 @@ of the information we need to get it."))
   (:documentation "Install a dependency to ./.qi/packages"))
 
 (defmethod install-dependency ((dep local-dependency))
-  (format t "~%---X Installing local dependencies is not yet supported."))
+  (format t "~%---X Installing local dependencies is not yet supported.")
+  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod install-dependency ((dep git-dependency))
-  (format t "~%---X Installing git dependencies is not yet supported."))
+  (format t "~%---X Installing git dependencies is not yet supported.")
+  (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 
 (defmethod install-dependency ((dep manifest-dependency))
@@ -162,10 +168,14 @@ of the information we need to get it."))
         (download-tarball url dep)
         (make-dependency-available dep))
        ((local path) ; has a local path (should not happen)
-        (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S" path))
+        (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
        ((git repo) ; has a git url
-        (format t "~%---> GIT PACKAGES NOT YET SUPPORTED: ~S" repo))
-       (_ nil))))
+        (format t "~%---> GIT PACKAGES NOT YET SUPPORTED: ~S~%" repo)
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
+       (_
+        (format t "~%---> Cannot resolve package type: ~S~%" (dependency-name dep))
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 
 
 (defmethod install-dependency ((dep http-dependency))
@@ -175,7 +185,8 @@ of the information we need to get it."))
       ((http url) ; manifest holds an http url
        (download-tarball url dep)
        (make-dependency-available dep))
-      (_ (format t "~%---> Unable able to resolve location of: ~S" loc)))))
+      (_ (format t "~%---> Unable able to resolve location of: ~S" loc)
+         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 
 
 (defun download-tarball (url dep)

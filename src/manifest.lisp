@@ -58,7 +58,9 @@ wrapped in the ADT."
          (format t "~%---> Resolved verion ~S for ~S" (car v/l) (manifest-package-name pack)))
     (cond ((string= "http" vc)
            (values (qi.packages::http loc) "tarball"))
-          (t nil))))
+          ((string= "git" vc)
+           (values (qi.packages::git loc) "git"))
+          (t (values (qi.packages::git loc) "git")))))
 
 
 (defun manifest-package-exists? (name)

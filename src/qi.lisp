@@ -5,6 +5,7 @@
         :qi.paths)
   (:import-from :qi.packages
                 :*qi-dependencies*
+                :*qi-broken-dependencies*
                 :dependency
                 :dependency-name
                 :dependency-location
@@ -25,6 +26,7 @@
 (defun read-qi-file (proj)
   "Reads a qi.yaml file and starts downloading dependencies."
   (setf *qi-dependencies* nil)
+  (setf *qi-broken-dependencies* nil)
   (let* ((base-dir (qi.paths:project-dir proj))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
     (if (probe-file qi-file)
@@ -66,8 +68,18 @@
                                         :version (or (gethash "version" p) "latest")
                                         :location (or (gethash "url" p) nil))))
 
-               (t (format t "~%---X Cannot resolve dependency type"))))))
+               (t (format t "~%---X Cannot resolve dependency type")))))
+  (dependency-report))
     
+
+(defun dependency-report ()
+  (cond ((= 0 (length *qi-broken-dependencies*))
+         (format t "~%All dependencies installed successully!"))
+        (t
+         (let ((amt-broken (length *qi-broken-dependencies*)))
+           (format t "~%~S dependencies not installed:" amt-broken)
+           (loop for d in *qi-broken-dependencies* do
+                (format t "~%~A" (dependency-name d)))))))
 
 (defun is-tar-url? (str)
   (ppcre:scan "^https?.*tar.gz" str))

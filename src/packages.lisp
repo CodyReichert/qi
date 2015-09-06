@@ -223,7 +223,12 @@ and sys-path."
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
     (git-clone url (namestring clone-path))
-    (set-dependency-paths clone-path dep)))
+    (if (probe-file (fad:merge-pathnames-as-file clone-path
+                                                 (concatenate 'string (dependency-name dep) ".asd")))
+        (set-dependency-paths clone-path dep)
+        (progn
+          (format t "~%---X Failure to clone repository!")
+          (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 
 
 (defun git-clone (from to)

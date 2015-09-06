@@ -10,6 +10,10 @@
                 :dependency-version
                 :dispatch-dependency
                 :make-dependency
+                :make-manifest-dependency
+                :make-http-dependency
+                :make-local-dependency
+                :make-git-dependency
                 :location)
   (:export :read-qi-file))
 (in-package :qi)
@@ -27,25 +31,45 @@
 
 (defun parse-deps (deps)
   (format t "~%Reading dependencies...")
+  (setf asdf:*central-registry* nil)
   (let* ((config (yaml:parse deps))
          (package-list (gethash "packages" config)))
     (loop for p in package-list do
-       ;; figure out what type of dependency is on this line
-         (cond ((eql (type-of p) 'hash-table)
+         (cond ((eql nil (gethash "url" p))
                 (dispatch-dependency
-                 (qi.packages::make-gh-dependency :name (gethash "name" p)
-                                                  :location (qi.packages::github (gethash "url" p))
-                                                  :version (gethash "version" p))))
+                 (make-manifest-dependency :name (gethash "name" p)
+                                           :version (or (gethash "version" p) "latest")
+                                           :location (or (gethash "url" p) nil))))
+               ;; Dependency is a tarball url
+               ((is-tar-url? (gethash "url" p))
+                (dispatch-dependency
+                 (make-http-dependency :name (gethash "name" p)
+                                      :version (or (gethash "version" p) "latest")
+                                      :location (or (gethash "url" p) nil))))
 
-               ((is-url? p)
+               ;; Dependency is git url
+               ((or (is-git-url? (gethash "url" p))
+                    (is-gh-url? (gethash "url" p)))
                 (dispatch-dependency
-                 (qi.packages::make-tar-dependency :location p)))
+                 (make-git-dependency :name (gethash "name" p)
+                                      :version (or (gethash "version" p) "latest")
+                                      :location (or (gethash "url" p) nil))))
 
-               (t
+               ;; Dependency is local path
+               ((not (null (gethash "path" p)))
                 (dispatch-dependency
-                 (qi.packages::make-local-dependency :location p)))))))
+                 (make-local-dependency :name (gethash "name" p)
+                                        :version (or (gethash "version" p) "latest")
+                                        :location (or (gethash "url" p) nil))))
+
+               (t (format t "~%---X Cannot resolve dependency type"))))))
     
 
-(defun is-url? (str)
-  (ppcre:scan "^https?" str))
+(defun is-tar-url? (str)
+  (ppcre:scan "^https?.*tar.gz" str))
 
+(defun is-git-url? (str)
+  (ppcre:scan "^git://.*" str))
+
+(defun is-gh-url? (str)
+  (ppcre:scan "^https?//github.*" str))

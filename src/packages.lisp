@@ -1,12 +1,19 @@
 (in-package :cl-user)
 (defpackage qi.packages
-  (:use :cl :qi.paths :archive :chipz)
+  (:use :cl :qi.paths :chipz)
+  (:import-from :qi.manifest
+                :manifest-lookup
+                :manifest-get-by-name)
   (:export :*qi-dependencies*
            :dependency
            :dependency-name
            :dependency-location
            :dependency-version
            :make-dependency
+           :make-manifest-dependency
+           :make-http-dependency
+           :make-local-dependency
+           :make-git-dependency
            :dispatch-dependency
            :location
            :local
@@ -38,34 +45,36 @@
 
 (defstruct dependency
   "The base data structure for a dependency."
-  (name nil)
+  name
   (location 'location)
-  (tar-path nil)
-  (sys-path nil))
+  (src-path nil)
+  (sys-path nil)
+  (version "latest"))
 
+
+(defstruct (manifest-dependency (:include dependency))
+  "Manifest dependency data structure.")
 
 (defstruct (local-dependency (:include dependency))
   "Local dependency data structure.")
 
-
-(defstruct (tar-dependency (:include dependency))
+(defstruct (http-dependency (:include dependency))
   "Tarball dependency data structure.")
 
-
-(defstruct (gh-dependency (:include dependency))
-  "Github dependency data structure."
-  (version nil))
+(defstruct (git-dependency (:include dependency))
+  "Github dependency data structure.")
 
 
 (adt:defdata location
   "The location of a dependency."
+  (manifest t)
   (local t)
   (http t)
   (github t))
 
 
 (defstruct transitive-dependency
-  "A transitive-dependency is a system required by a qi dependency."
+  "A transitive-dependency is another system required by a qi package."
   (name nil)
   (caller nil)
   (path nil))
@@ -91,13 +100,13 @@ of its location."))
   (format t "~%Preparing to copy local dependency.")
   (format t "~%---> ~A" (dependency-location dep))
   (install-dependency dep))
-  
-(defmethod dispatch-dependency ((dep tar-dependency))
+
+(defmethod dispatch-dependency ((dep http-dependency))
   (format t "~%Preparing to download tarball dependency.")
   (format t "~%---> ~A" (dependency-location dep))
   (install-dependency dep))
-  
-(defmethod dispatch-dependency ((dep gh-dependency))
+
+(defmethod dispatch-dependency ((dep git-dependency))
   (format t "~%~%Preparing to clone GitHub dependency.")
   (format t "~%---> ~A" (dependency-name dep))
   (install-dependency dep)
@@ -105,7 +114,14 @@ of its location."))
   (check-dependency-dependencies dep)
   ;(print *qi-dependencies*)
   )
-  
+
+(defmethod dispatch-dependency ((dep manifest-dependency))
+  (format t "~%~%Preparing to install manifest dependency.")
+  (format t "~%---> ~A" (dependency-name dep))
+  (install-dependency dep)
+  ;(print *qi-dependencies*)
+  )
+
 
 (defgeneric install-dependency (dependency)
   (:documentation "Install a dependency to ./.qi/packages"))
@@ -113,15 +129,22 @@ of its location."))
 (defmethod install-dependency ((dep local-dependency))
   (format t "~%---X Installing local dependencies is not yet supported."))
 
-(defmethod install-dependency ((dep tar-dependency))
+(defmethod install-dependency ((dep git-dependency))
   (format t "~%---X Installing tarball dependencies is not yet supported."))
 
-(defmethod install-dependency ((dep gh-dependency))
+(defmethod install-dependency ((dep manifest-dependency))
+  (format t "~%---X Installing manifest dependencies is not yet supported.")
+  (if (manifest-lookup (dependency-name dep))
+      (let ((pack (manifest-get-by-name (dependency-name dep))))
+        (print pack)))
+  )
+
+(defmethod install-dependency ((dep http-dependency))
   (let* ((out-file (concatenate 'string
                                 (dependency-name dep) "-"
-                                (gh-dependency-version dep) ".tar.gz"))
+                                (dependency-version dep) ".tar.gz"))
          (out-path (fad:merge-pathnames-as-file (tar-dir) (pathname out-file))))
-    (adt:with-data (github loc) (gh-dependency-location dep)
+    (adt:with-data (http loc) (dependency-location dep)
       (format t "~%---> Installing package from ~A" loc)
       (with-open-file (f (ensure-directories-exist out-path)
                          :direction :output
@@ -135,16 +158,17 @@ of its location."))
         (arnesi:awhile (read-byte input nil nil)
           (write-byte arnesi:it f))
         (close input)
-        (setf (dependency-tar-path dep) out-path)
+        (setf (dependency-src-path dep) out-path)
         (setf (dependency-sys-path dep)
               (fad:merge-pathnames-as-directory
                (qi.paths:package-dir) (concatenate 'string (dependency-name dep) "-"
-                                                   (gh-dependency-version dep) "/")))))))
+                                                   (dependency-version dep) "/")))))))
   (unpack-tar dep))
+
 
 (defun unpack-tar (dep)
   (format t "~%---> Unpackaging dependency")
-  (extract-tarball (dependency-tar-path dep)))
+  (extract-tarball (dependency-src-path dep)))
 
 
 (defun extract-tarball (pathname)
@@ -180,7 +204,7 @@ of its location."))
           (setf sub-sys-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep))))
           (loop for dep in sub-sys-deps do
                (if (system-is-available? dep)
-                   (format t "~%---> Sub-dependency is available: ~A" dep)
+                   (format t "~%---> Sub-dependency is available: ~A" (asdf-system-path dep))
                    (format t "~%---X Sub-dependency is not available: ~A" dep))))
         (format t "~%---X System is not available: ~A" dep))))
     ;(format t "~%---> ~A depends on ~A~%" (dependency-name dep) sys-dependencies)))

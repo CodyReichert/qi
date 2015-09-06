@@ -5,49 +5,47 @@ description: A package manager Common Lisp
 
 packages:
   - name: cl-ppcre
-    url: https://github.com/edicl/cl-ppcre
-    version: master
 
   - name: cl-yaml
-    url: https://github.com/eudoxia0/cl-yaml
     version: master
+    url: https://github.com/eudoxia0/cl-yaml
 
   - name: drakma
-    url: https://github.com/edicl/drakma
     version: master
+    url: https://github.com/edicl/drakma
 
   - name: unix-opts
-    url: https://github.com/mrkkrp/unix-opts
     version: master
+    url: https://github.com/mrkkrp/unix-opts
 
   - name: cl-algebraic-data-type
-    url: https://github.com/CodyReichert/cl-algebraic-data-type
     version: master
+    url: https://github.com/CodyReichert/cl-algebraic-data-type
 
   - name: local-package-aliases
-    url: https://github.com/avodonosov/local-package-aliases
     version: master
+    url: https://github.com/avodonosov/local-package-aliases
 
   - name: optima
-    url: https://github.com/m2ym/optima
     version: master
+    url: https://github.com/m2ym/optima
 
   - name: cl-fad
-    url: https://github.com/edicl/cl-fad
     version: master
+    url: https://github.com/edicl/cl-fad
 
   - name: arnesi
-    url: https://github.com/vseloved/arnesi
     version: master
+    url: https://github.com/vseloved/arnesi
 
   - name: clack
-    url: https://github.com/fukamachi/clack
     version: master
+    url: https://github.com/fukamachi/clack
 
   - name: chipz
-    url: https://github.com/froydnj/chipz
     version: master
+    url: https://github.com/froydnj/chipz
 
   - name: archive
-    url: https://github.com/froydnj/archive
     version: master
+    url: https://github.com/froydnj/archive

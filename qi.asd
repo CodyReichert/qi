@@ -25,6 +25,7 @@
                :drakma
                :unix-opts
 
+               :archive
                ; experimenting
                :cl-algebraic-data-type
                :local-package-aliases

@@ -118,7 +118,9 @@ of its location."))
 (defmethod dispatch-dependency ((dep manifest-dependency))
   (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
   (if (not (ensure-dependency dep))
-      (format t "~%---X Can not install ~A" dep)
+      (progn
+        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))
+        (format t "~%---X ~A not found in manifest" (dependency-name dep)))
       (progn
         (let ((pack (manifest-get-by-name (dependency-name dep))))
           (multiple-value-bind (location* strategy)
@@ -135,9 +137,7 @@ of the information we need to get it."))
 (defmethod ensure-dependency ((dep manifest-dependency))
   "Check the manifest to ensure a dependency exists."
   (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
-    (cond ((eql nil manifest-package)
-           (format t "~%---X Can not install ~A~%" dep)
-           nil)
+    (cond ((eql nil manifest-package) nil)
           (t
            (format t "~%---> Found package in manifest!")
            dep))))

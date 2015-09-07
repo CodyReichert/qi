@@ -222,9 +222,9 @@ and sys-path."
   "Downloads tarball from <url>, and updates <dep> with the local src-path
 and sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
-                   (qi.paths:package-dir) (concatenate 'string
-                                                       (dependency-name dep) "-"
-                                                       (dependency-version dep) "/"))))
+                     (qi.paths:package-dir) (concatenate 'string
+                                                         (dependency-name dep) "-"
+                                                         (dependency-version dep) "/"))))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
     (git-clone url (namestring clone-path))

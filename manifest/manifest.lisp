@@ -352,8 +352,8 @@
                  . "https://github.com/guicho271828/trivialib.type-unify.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-utf-8"
-    :VC "clnet-darcs"
-    :LOCATIONS (("latest" . "trivial-utf-8")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://common-lisp.net/project/trivial-utf-8/trivial-utf-8.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-update"
     :VC "git"
@@ -3097,7 +3097,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "drakma"
     :VC "http"
-    :LOCATIONS (("latest" . "http://weitz.de/files/drakma.tar.gz")))
+    :LOCATIONS (("latest" . "https://github.com/edicl/drakma")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "drakma-async"
     :VC "git"

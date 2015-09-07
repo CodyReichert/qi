@@ -1,6 +1,8 @@
 (in-package :cl-user)
 (defpackage qi
   (:use :cl :qi.util :qi.paths)
+  (:import-from :qi.paths
+                :+project-name+)
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-broken-dependencies*
@@ -35,7 +37,8 @@
   (format t "~%Issues: https://github.com/CodyReichert/qi/issues"))
 
 
-(defun bootstrap ()
+(defun bootstrap (proj)
+  (setf +project-name+ proj)
   (setf *qi-dependencies* nil)
   (setf *qi-broken-dependencies* nil)
   (setf *qi-trans-dependencies* nil)
@@ -45,7 +48,7 @@
 
 (defun install (proj)
   "Reads a qi.yaml file and starts downloading dependencies."
-  (bootstrap)
+  (bootstrap proj)
   (let* ((base-dir (qi.paths:project-dir proj))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
     (if (probe-file qi-file)

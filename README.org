@@ -114,6 +114,13 @@ changes.
     Maniest can be updated.
 
 
+** Contributing
+   PR's and Issues are extremely welcomed and will likely all be
+   merged or addressed. See the =docs/TODO.org= for a list of tasks
+   that I'd like to see done. Make a PR or start a conversation if
+   there's anything you'd like to see.
+
+
 ** Dependencies
    Qi has a few dependencies, but they are all bundled with the
    repository to allow Qi to bootstrap itself.

@@ -6,14 +6,16 @@ easily from the Qi Manifest or from a tarball or http URL. Installing
 a specific version of package is supported, and Qi will take care of
 any transitive dependencies when installing your system's dependencies.
 
-*Qi is currently in alpha state. It works (most of the time), but is
-likely to change rapidly.*
-
 Qi is intedented to be standalone and only requires =asdf= (but it
 will install =asdf= if you don't have it).
 
-Qi is currently in development and being tested on SBCL, but will work
-on other implementations with some minor changes.
+*The State of Qi*
+Qi is a new project and likely has a lot of things to work out. It is
+currently in alpha state. It works most of the time, but the API's are
+likely to change. Qi is currently under development and being tested
+on SBCL, but will work on other implementations with some minor
+changes.
+
 
 ** Installation
    Qi is installed globally and runs when SBCL starts up. This

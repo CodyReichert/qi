@@ -1,0 +1,41 @@
+{
+  "product": [
+    {
+      "sku": "BL394D",
+      "price": 450.0,
+      "description": "Basketball",
+      "quantity": 4
+    },
+    {
+      "sku": "BL4438H",
+      "price": 2392.0,
+      "description": "Super Hoop",
+      "quantity": 1
+    }
+  ],
+  "ship-to": {
+    "given": "Chris",
+    "family": "Dumars",
+    "address": {
+      "city": "Royal Oak",
+      "state": "MI",
+      "postal": 48046,
+      "lines": "458 Walkman Dr.\nSuite #292\n"
+    }
+  },
+  "tax": 251.41999999999999,
+  "comments": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.",
+  "bill-to": {
+    "given": "Chris",
+    "family": "Dumars",
+    "address": {
+      "city": "Royal Oak",
+      "state": "MI",
+      "postal": 48046,
+      "lines": "458 Walkman Dr.\nSuite #292\n"
+    }
+  },
+  "invoice": 34843,
+  "date": "2001-01-23",
+  "total": 4443.5200000000004
+}

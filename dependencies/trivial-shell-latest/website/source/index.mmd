@@ -1,0 +1,68 @@
+{include resources/header.md}
+{set-property title "Trivial-Shell - Getting out of Lisp more..."}
+
+<div class="contents">
+<div class="system-links">
+
+  * [Getting it][4]
+  * [News][6]
+{remark 
+    * [Test results][tr]
+    * [Changelog][7]
+  }
+  
+   [4]: #downloads
+   [5]: documentation/ (documentation link)
+   [6]: #news
+   [7]: changelog.html
+   [tr]: test-report.html
+
+</div>
+<div class="system-description">
+
+### What it is
+
+Trivial shell is a simple platform independent interface to
+the underlying Operating System. It includes:
+
+ * [get-env-var][],
+ * [os-process-id][] and, of course,
+ * [shell-command][]
+ 
+{anchor downloads}
+
+### Where is it
+
+metabang.com is slowly switching from [darcs][] to [git][]
+for source control; the *trivial-shell* repository is on
+[github][github-trivial-shell] and you can clone it using:
+
+    git clone git://github.com/gwkkwg/trivial-shell
+
+Trivial-shell is also [ASDF installable][asdf-install]. Its
+CLiki home is right [where][cliki-home] you'd
+expect.
+
+There's also a handy [gzipped tar file][tarball].
+
+
+{anchor news}
+
+### What is happening
+
+25 April 2010 - (time flies); moved to git and pulled in some
+fixes from Jochen Schmidt (thanks!).
+
+10 Jun 2008 - S'S'S'Syncing up with the jones
+
+6 Nov 2007 - Pulled website to [CL-Markdown][] format,
+brought in some patches (thanks!)
+
+17 May 2006 - Created site. Trivial-shell forks and builds on
+the code in Kevin Rosenburg's handy [KMRCL tools][KMRCL].
+
+</div>
+</div>
+
+{include resources/footer.md}
+

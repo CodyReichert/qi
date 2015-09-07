@@ -14,14 +14,14 @@ packages:
   - name: trivial-garbage
     # url: https://github.com/trivial-garbage/trivial-garbage
 
-  - name: archive
-    # url: https://github.com/froydnj/archive
-
   - name: cl+ssl
     # url: https://github.com/cl-plus-ssl/cl-plus-ssl
 
+  - name: archive
+    url: https://github.com/froydnj/archive
+
   - name: usocket
-    # url: https://github.com/usocket/usocket
+    url: https://github.com/usocket/usocket
 
   - name: trivial-gray-streams
     # url: https://github.com/trivial-gray-streams/trivial-gray-streams/archive/master.tar.gz

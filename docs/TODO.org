@@ -1,4 +1,9 @@
 Random notes for stuff I'd like to do:
 
+* Tests
 * Don't redownload and install dependencies if they already exist
 * A single command to bootstrap and have Qi available
+* Cleanup and document API functions
+* A workable cli
+** qi install --global caveman
+** qi install caveman (local project installation)

@@ -1,8 +1,6 @@
 (in-package :cl-user)
 (defpackage qi
-  (:use :cl
-        :qi.util
-        :qi.paths)
+  (:use :cl :qi.util :qi.paths)
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-broken-dependencies*
@@ -98,7 +96,7 @@
          (let ((amt-broken (length *qi-broken-dependencies*)))
            (format t "~%~%~S required dependencies not installed:" amt-broken)
            (loop for d in *qi-broken-dependencies* do
-                (format t "~%  ~A" (dependency-name d))))))
+                (format t "~%   * ~A" (dependency-name d))))))
   (cond ((not (= 0 (length *qi-broken-trans-dependencies*)))
          (let ((amt-broken (length *qi-broken-trans-dependencies*)))
            (format t "~%~S transitive dependencies not installed:" amt-broken)
@@ -108,12 +106,12 @@
                         (transitive-dependency-caller d)))))))
 
 (defun is-tar-url? (str)
-  (ppcre:scan "^https?.*tar.gz" str))
+  (or (ppcre:scan "^https?.*.tgz" str)
+      (ppcre:scan "^https?.*tar.gz" str)))
 
 (defun is-git-url? (str)
-  (or
-   (ppcre:scan "^git://.*" str)
-   (ppcre:scan ".*.git" str)))
+  (or (ppcre:scan "^git://.*" str)
+      (ppcre:scan ".*.git" str)))
 
 (defun is-gh-url? (str)
   (ppcre:scan "^https?//github.*" str))

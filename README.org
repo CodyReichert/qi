@@ -1,9 +1,10 @@
 * Qi  - package manager for Common Lisp
 
-Qi is a package manager for common lisp. It allows for installed
-dependencies from the Qi Manifest (a known list of packages), from git
-url's and from tarball url's. It will install the depedencies local to
-the current project so you can easily bundle it up for production.
+Qi is a package manager for Common Lisp. It allows you to install
+targeted dependencies on a per project basis. You can install packages
+easily from the Qi Manifest or from a tarball or http URL. Installing
+a specific version of package is supported, and Qi will take care of
+any transitive dependencies when installing your system's dependencies.
 
 *Qi is currently in alpha state. It works (most of the time), but is
 likely to change rapidly.*

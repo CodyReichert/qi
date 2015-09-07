@@ -48,8 +48,8 @@
 
 (defun parse-deps (deps)
   (format t "~%Reading dependencies...")
-  (setf asdf:*central-registry* nil)
   (let* ((config (yaml:parse deps))
+         (name (gethash "name" config))
          (package-list (gethash "packages" config)))
     (loop for p in package-list do
          (cond ((eql nil (gethash "url" p))
@@ -80,7 +80,8 @@
                                         :version (or (gethash "version" p) "latest")
                                         :location (or (gethash "url" p) nil))))
 
-               (t (format t "~%---X Cannot resolve dependency type")))))
+               (t (format t "~%---X Cannot resolve dependency type"))))
+    (asdf:oos 'asdf:load-op name))
   (installed-dependency-report)
   (broken-dependency-report))
 

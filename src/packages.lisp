@@ -125,8 +125,13 @@ of its location."))
         (let ((pack (manifest-get-by-name (dependency-name dep))))
           (multiple-value-bind (location* strategy)
               (create-download-strategy pack)
-            (setf (dependency-location dep) location*)
-            (setf (dependency-download-strategy dep) strategy)
+
+            (cond ((string= "targall" strategy)
+                   (setf (dependency-location dep) (http location*))
+                   (setf (dependency-download-strategy dep) strategy))
+                  ((string= "git" vc)
+                   (setf (dependency-location dep) (http location*))
+                   (setf (dependency-download-strategy dep) strategy)))
             (install-dependency dep))))))
 
 

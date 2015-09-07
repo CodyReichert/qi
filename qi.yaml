@@ -4,8 +4,48 @@ license: MIT
 description: A package manager Common Lisp
 
 packages:
-  - name: yason
   - name: cl-yaml
+
+  - name: alexandria
+
+  - name: trivial-shell
+    # url: https://github.com/gwkkwg/trivial-shell/archive/master.tar.gz
+
+  - name: trivial-garbage
+    # url: https://github.com/trivial-garbage/trivial-garbage
+
+  - name: archive
+    # url: https://github.com/froydnj/archive
+
+  - name: cl+ssl
+    # url: https://github.com/cl-plus-ssl/cl-plus-ssl
+
+  - name: usocket
+    # url: https://github.com/usocket/usocket
+
+  - name: trivial-gray-streams
+    # url: https://github.com/trivial-gray-streams/trivial-gray-streams/archive/master.tar.gz
+
+  - name: trivial-features
+    # url: https://common-lisp.net/~loliveira/tarballs/trivial-features/trivial-features_latest.tar.gz
+
+  - name: bordeaux-threads
+    url: https://github.com/sionescu/bordeaux-threads/archive/master.tar.gz
+
+  - name: flexi-streams
+    url: https://github.com/edicl/flexi-streams/archive/master.tar.gz
+
+  - name: chunga
+    url: https://github.com/edicl/chunga/archive/master.tar.gz
+
+  - name: cl-base64
+    url: http://beta.quicklisp.org/archive/cl-base64/2010-10-06/cl-base64-20101006-git.tgz
+
+  - name: puri
+    url: http://ftp.de.debian.org/debian/pool/main/c/cl-puri/cl-puri_1.5.5.orig.tar.gz
+
+  - name: cffi
+    url: https://github.com/cffi/cffi/archive/master.tar.gz
 
   - name: cl-ppcre
     url: https://github.com/edicl/cl-ppcre/archive/master.tar.gz
@@ -16,9 +56,14 @@ packages:
   - name: cl-algebraic-data-type
     url: https://github.com/CodyReichert/cl-algebraic-data-type/archive/master.tar.gz
 
-  - name: unix-opts
-    version: master
-    url: https://github.com/mrkkrp/unix-opts
+  - name: parse-number
+    url: https://github.com/sharplispers/parse-number/archive/master.tar.gz
+
+  - name: babel
+    # url: https://github.com/cl-babel/babel/archive/master.tar.gz
+
+  - name: cl-libyaml
+    # url: https://github.com/eudoxia0/cl-libyaml/archive/master.tar.gz
 
   - name: cl-fad
     version: master
@@ -32,6 +77,6 @@ packages:
     version: master
     url: https://github.com/froydnj/chipz
 
-  - name: archive
+  - name: unix-opts
     version: master
-    url: https://github.com/froydnj/archive
+    url: https://github.com/mrkkrp/unix-opts

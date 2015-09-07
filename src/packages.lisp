@@ -126,7 +126,7 @@ of its location."))
           (multiple-value-bind (location* strategy)
               (create-download-strategy pack)
 
-            (cond ((string= "targall" strategy)
+            (cond ((string= "tarball" strategy)
                    (setf (dependency-location dep) (http location*))
                    (setf (dependency-download-strategy dep) strategy))
                   ((string= "git" strategy)

@@ -1,17 +1,17 @@
 Random notes for stuff I'd like to do:
 
-* Tests
-* Don't redownload and install dependencies if they already exist
-* Muffle output from Qi when loading asdf systems
-* Global packages
-* Add recipes/ for adding a new package to the Manifest
-* (qi:update-manifest) to upgrade the Qi Manifest
-* Project scaffold
-  (qi:init :project-name) should work.
-  Preferably using https://github.com/fukamachi/cl-project and adding
-  a qi.yaml
-* A single command to bootstrap and have Qi available
-* Cleanup and document API functions
-* A workable cli
-** qi install --global caveman
-** qi install caveman (local project installation)
++ Tests
++ Don't redownload and install dependencies if they already exist
++ Muffle output from Qi when loading asdf systems
++ Global packages
++ Add recipes/ for adding a new package to the Manifest
++ (qi:update-manifest) to upgrade the Qi Manifest
++ Project scaffold
+  - (qi:init :project-name) should work.
+  - Preferably using [[https://github.com/fukamachi/cl-project][fukamachi/cl-project]] and adding a qi.yaml
++ A single command to bootstrap and have Qi available
++ More work on specifying specific versions of a package
++ Cleanup and document API functions
++ A workable cli
+  - qi install --global caveman
+  - qi install caveman (local project installation)

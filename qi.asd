@@ -17,7 +17,7 @@
 (defsystem qi
   :version "0.1"
   :author "Cody Reichert"
-  :license "MIT"
+  :license "BSD"
   :depends-on (:arnesi
                :cl-fad
                :cl-ppcre

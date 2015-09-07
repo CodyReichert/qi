@@ -1,15 +1,132 @@
-* Qi  - A simple, open, project manager for Common Lisp
+* Qi  - package manager for Common Lisp
 
-** Usage
+Qi is a package manager for common lisp. It allows for installed
+dependencies from the Qi Manifest (a known list of packages), from git
+url's and from tarball url's. It will install the depedencies local to
+the current project so you can easily bundle it up for production.
 
-** Dependencies
+*Qi is currently in alpha state. It works (most of the time), but is
+likely to change rapidly.*
+
+Qi is intedented to be standalone and only requires =asdf= (but it
+will install =asdf= if you don't have it).
+
+Qi is currently in development and being tested on SBCL, but will work
+on other implementations with some minor changes.
 
 ** Installation
+   Qi is installed globally and runs when SBCL starts up. This
+   repository contains everything needed for Qi to bootstrap itself
+   with minor intervention.
+
+   1) Clone Qi into $HOME/.qi:
+
+      #+BEGIN_SRC sh
+        git clone git@github.com:CodyReichert/qi ~/.qi/
+      #+END_SRC
+
+   2) Make SBCL aware of Qi when it starts by adding these lines to
+      your =.sbclrc=:
+
+   #+BEGIN_SRC lisp
+     (let ((qi-init (merge-pathnames ".qi/init.lisp" (user-homedir-pathname))))
+       (when (probe-file qi-init)
+         (load qi-init)))
+   #+END_SRC
+
+   Qi will take care of the rest.
+
+   To test if Qi is installed correctly, run the following the a REPL:
+   #+BEGIN_SRC lisp
+     (qi:hello)
+   #+END_SRC
+
+   /Notes:/
+   - This might work with other lisp implementations' startup files,
+     but has not yet been tested.
+   - See docs/TODO.org and cli/ for some work that can/should be done
+     around this part.
+
+
+** Usage
+   Once Qi is installed and you can run =(qi:hello)=, you can start
+   installing dependencies.
+
+   Currently, dependencies are only installed local to a project. You
+   need to have an =.asd= file and a =qi.yaml= for your project.
+
+   The =.asd= file is normal, as with any other asdf system.
+
+   The =qi.yaml= specifies a projects dependencies. For an example of
+   what this looks like, checkout out [[https://github.com/codyreichert/qi][Qi's qi.yaml]].
+
+   There are only two required pieces to the =qi.yaml=: name and
+   packages. So a basic project would look like this:
+
+    #+BEGIN_SRC yaml
+      name: my-project packages:
+        - name: alexandria
+        - name: clack
+        - name: cl-pass
+          url: https://github.com/eudoxia0/cl-pass.git
+    #+END_SRC
+
+   Notice that some packages only specify a name. These are packages
+   that are in the Qi manifest.
+
+   =cl-pass=, though, specifies a git URL. Qi will take care of
+   cloning the repository and asdf loading it.
+
+   Once you have your =qi.yaml= and =.asdf= file in place, you're
+   ready to install the project's dependencies:
+
+   #+BEGIN_SRC lisp
+     (load "myproject.asd")
+     (qi:install :myproject)
+   #+END_SRC
+
+   Qi will take care of any transitive dependencies and will let you
+   know of any that is could /not/ install. In a case where Qi can not
+   install some dependencies, you should just add direct links to
+   those packages in your =qi.yaml=.
+
+
+** Manifest
+   The Qi Manifest is a list of known packages - which makes it easy
+   to simply install packages by their name. Qi's manifest is
+   initially seeded by [[https://github.com/quicklisp/quicklisp-projects/][Quicklisp's projects]] which means that any
+   project you can find in Quicklisp can be found in Qi.
+
+*** Adding a package to the Manifest
+    Any and all packages are welcome in the Qi Manifest. The only
+    requirement is that it is a lisp project that is asdf-loadable.
+
+    To add a package to the manifest, submit a pull-request at
+    https://github.com/CodyReichert/qi/, or send a patch file to
+    codyreichert@gmail.com.
+
+    See docs/TODO.org for some work to be done in this area. Ideally,
+    we have a =recipes/= directory that contains the information about
+    each Qi package. That way a new recipe can be added and the
+    Maniest can be updated.
+
+
+** Dependencies
+   Qi has a few dependencies, but they are all bundled with the
+   repository to allow Qi to bootstrap itself.
+
+   See qi/dependencies for a full list.
+
+   Also see docs/TODO.org for some work to be done in this area.
+
 
 ** Author
+   Cody Reichert (codyreichert@gmail.com)
 
-+ Cody Reichert (codyreichert@gmail.com)
 
 ** Copyright
+   Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
 
-Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
+
+** License
+   BSD

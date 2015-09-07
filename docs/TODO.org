@@ -1,0 +1,4 @@
+Random notes for stuff I'd like to do:
+
+* Don't redownload and install dependencies if they already exist
+* A single command to bootstrap and have Qi available

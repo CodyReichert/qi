@@ -1,7 +1,8 @@
 (in-package :cl-user)
 (defpackage qi.manifest
   (:use :cl)
-  (:export :manifest-entry
+  (:export :manifest-package
+           :make-manifest-package
            :create-download-strategy
            :manifest-package-exists?
            :manifest-get-by-name))
@@ -14,7 +15,7 @@
 (defvar +manifest-packages+ ()
   "A list of known packages from manifest.lisp.")
 (defvar +manifest-file+
-  (fad:merge-pathnames-as-file (user-homedir-pathname) ".qi/manifest.lisp")
+  (fad:merge-pathnames-as-file (user-homedir-pathname) ".qi/manifest/manifest.lisp")
   "PATHNAME to the qi manifest.lisp file.")
 
 (defstruct manifest-package

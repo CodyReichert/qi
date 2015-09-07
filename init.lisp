@@ -41,10 +41,11 @@ compiling asdf.lisp to a FASL and then loading it."
           (try (load (compile-file source :verbose nil :output-file (merge-pathnames "asdf.fasl" +qi-qache+))))
           (error "Could not load ASDF ~S or newer" "3.0"))))))
 
+(ensure-asdf-loaded)
+
 (defun push-new-to-registry (what)
   (setf asdf:*central-registry* (pushnew what asdf:*central-registry*)))
 
-(ensure-asdf-loaded)
 (let ((deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
   (push-new-to-registry +qi-directory+)
@@ -52,5 +53,5 @@ compiling asdf.lisp to a FASL and then loading it."
        (push-new-to-registry d)))
 
 (print asdf:*central-registry*)
-(asdf:oos 'asdf:load-op +qi.asd+)
+(asdf:oos 'asdf:load-op 'qi)
 (print "ASDF loaded - Qi loaded")

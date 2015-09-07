@@ -8,6 +8,9 @@
 (defvar +qi-manifest+ (merge-pathnames ".manifest.lisp" +qi-directory+))
 (defvar +qi-qache+ (merge-pathnames "cache/" +qi-directory+))
 (defvar +qi-asdf+ (merge-pathnames "asdf/asdf.lisp" +qi-directory+))
+(defvar +qi.asd+ (merge-pathnames "src/qi.asd" +qi-directory+))
+(defvar +qi.lisp+ (merge-pathnames "src/qi.lisp" +qi-directory+))
+(defvar +qi-dependencies+ (merge-pathnames "dependencies/" +qi-directory+))
 
 (defun ensure-asdf-loaded () ;; taken from quicklisp's resolver here
   "Try several methods to make sure that a sufficiently-new ASDF is
@@ -38,5 +41,16 @@ compiling asdf.lisp to a FASL and then loading it."
           (try (load (compile-file source :verbose nil :output-file (merge-pathnames "asdf.fasl" +qi-qache+))))
           (error "Could not load ASDF ~S or newer" "3.0"))))))
 
+(defun push-new-to-registry (what)
+  (setf asdf:*central-registry* (pushnew what asdf:*central-registry*)))
+
 (ensure-asdf-loaded)
+(let ((deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
+  (setf asdf:*central-registry* nil)
+  (push-new-to-registry +qi-directory+)
+  (loop for d in deps-to-load do
+       (push-new-to-registry d)))
+
+(print asdf:*central-registry*)
+(asdf:oos 'asdf:load-op +qi.asd+)
 (print "ASDF loaded - Qi loaded")

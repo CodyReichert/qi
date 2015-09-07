@@ -22,18 +22,23 @@
                 :make-git-dependency
                 :http
                 :location)
-  (:export :read-qi-file))
+  (:export :install))
 (in-package :qi)
 
 ;; code:
 
-(defun read-qi-file (proj)
-  "Reads a qi.yaml file and starts downloading dependencies."
+
+(defun bootstrap ()
   (setf *qi-dependencies* nil)
   (setf *qi-broken-dependencies* nil)
   (setf *qi-trans-dependencies* nil)
   (setf *qi-broken-trans-dependencies* nil)
-  (qi.manifest::manifest-load)
+  (qi.manifest::manifest-load))
+
+
+(defun install (proj)
+  "Reads a qi.yaml file and starts downloading dependencies."
+  (bootstrap)
   (let* ((base-dir (qi.paths:project-dir proj))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
     (if (probe-file qi-file)
@@ -78,7 +83,7 @@
                (t (format t "~%---X Cannot resolve dependency type")))))
   (installed-dependency-report)
   (broken-dependency-report))
-    
+
 
 (defun installed-dependency-report ()
   (cond ((= 0 (length *qi-dependencies*))

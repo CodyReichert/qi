@@ -4,20 +4,20 @@
     :LOCATIONS (("latest" . "git://github.com/jorgetavares/zsort.git")))
  #S(MANIFEST-PACKAGE
     :NAME "zs3"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "zs3")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/zs3.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "zpng"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "zpng")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/zpng.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "zpb-ttf"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "zpb-ttf")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/zpb-ttf.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "zpb-exif"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "zpb-exif")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/zpb-exif.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "zlib"
     :VC "git"
@@ -216,8 +216,8 @@
     :LOCATIONS (("latest" . "git://github.com/elbeno/vector.git")))
  #S(MANIFEST-PACKAGE
     :NAME "vecto"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "vecto")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/vecto.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "vas-string-metrics"
     :VC "git"
@@ -271,8 +271,8 @@
                  . "http://nklein.com/wp-content/uploads/2011/06/userial_0.8.2011.06.02.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "url-rewrite"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "url-rewrite")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/url-rewrite.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "uri-template"
     :VC "http"
@@ -510,8 +510,8 @@
                  . "https://github.com/guicho271828/trivia.balland2006.git")))
  #S(MANIFEST-PACKAGE
     :NAME "trees"
-    :VC "froydware-http"
-    :LOCATIONS (("latest" . "trees")))
+    :VC "git"
+    :LOCATIONS (("latest" . "https://github.com/froydnj/trees")))
  #S(MANIFEST-PACKAGE
     :NAME "treedb"
     :VC "git"
@@ -552,7 +552,7 @@
     :LOCATIONS (("latest" . "git://github.com/slyrus/time-interval.git")))
  #S(MANIFEST-PACKAGE
     :NAME "tiff4cl"
-    :VC "wcpware-http"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "http://wcp.sdf-eu.org/software/tiff4cl-latest.tbz")))
  #S(MANIFEST-PACKAGE
@@ -615,8 +615,8 @@
     :LOCATIONS (("latest" . "git://github.com/vii/teepeedee2.git")))
  #S(MANIFEST-PACKAGE
     :NAME "tbnl"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "tbnl")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/tbnl.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "tap-unit-test"
     :VC "git"
@@ -804,8 +804,8 @@
                  . "https://common-lisp.net/project/slime/slime_latest.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "skippy"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "skippy")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/skippy.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "sip-hash"
     :VC "git"
@@ -945,8 +945,8 @@
                  . "http://common-lisp.net/project/sapaclisp/sapaclisp-1.0a.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "salza2"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "salza2")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/salza2.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "s-xml"
     :VC "git"
@@ -1088,8 +1088,8 @@
     :LOCATIONS (("latest" . "git://github.com/michaelw/regex.git")))
  #S(MANIFEST-PACKAGE
     :NAME "regex-plugin"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "regex-plugin")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/regex-plugin.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "recursive-regex"
     :VC "git"
@@ -1601,8 +1601,8 @@
                  . "http://wcp.sdf-eu.org/software/ods4cl-latest.tbz")))
  #S(MANIFEST-PACKAGE
     :NAME "odd-streams"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "odd-streams")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/odd-streams.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "nuclblog"
     :VC "git"
@@ -1996,20 +1996,20 @@
     :LOCATIONS (("latest" . "git://github.com/galdor/m2cl.git")))
  #S(MANIFEST-PACKAGE
     :NAME "lw-win"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "lw-win")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/lw-win.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "lw-doc"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "lw-doc")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/lw-doc.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "lw-compat"
     :VC "git"
     :LOCATIONS (("latest" . "git://git.code.sf.net/p/closer/lw-compat")))
  #S(MANIFEST-PACKAGE
     :NAME "lw-add-ons"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "lw-add-ons")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/lw-add-ons.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "lucerne"
     :VC "git"
@@ -2308,8 +2308,8 @@
                  . "http://common-lisp.net/project/iterate-clsql/releases/iterate-clsql-0.2.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "ironclad"
-    :VC "froydware-http"
-    :LOCATIONS (("latest" . "ironclad")))
+    :VC "git"
+    :LOCATIONS (("latest" . "https://github.com/froydnj/ironclad")))
  #S(MANIFEST-PACKAGE
     :NAME "irc-logger"
     :VC "kmr-git"
@@ -2549,8 +2549,8 @@
     :LOCATIONS (("latest" . "https://github.com/fukamachi/http-body.git")))
  #S(MANIFEST-PACKAGE
     :NAME "html-template"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "html-template")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/html-template.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "html-sugar"
     :VC "http-bz2"
@@ -2837,8 +2837,8 @@
                  . "http://common-lisp.net/project/flexichain/download/flexichain_latest.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "flexi-streams"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "flexi-streams")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/flexi-streams.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "fiveam"
     :VC "http"
@@ -3096,8 +3096,8 @@
     :LOCATIONS (("latest" . "https://github.com/cbaggers/draw-cons-tree.git")))
  #S(MANIFEST-PACKAGE
     :NAME "drakma"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "drakma")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/drakma.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "drakma-async"
     :VC "git"
@@ -3113,8 +3113,8 @@
     :LOCATIONS (("latest" . "git://github.com/tkych/donuts.git")))
  #S(MANIFEST-PACKAGE
     :NAME "documentation-template"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "documentation-template")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/documentation-template.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "docparser"
     :VC "git"
@@ -3245,7 +3245,7 @@
     :LOCATIONS (("latest" . "git://github.com/death/dbus.git")))
  #S(MANIFEST-PACKAGE
     :NAME "date-calc"
-    :VC "naked-http"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "http://common-lisp.net/project/cl-date-calc/date-calc-0.3.tar.gz")))
  #S(MANIFEST-PACKAGE
@@ -3735,8 +3735,8 @@
     :LOCATIONS (("latest" . "git://github.com/quek/cl-win32ole.git")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-who"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-who")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-who.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-webkit"
     :VC "git"
@@ -3752,8 +3752,8 @@
                  . "http://cl-web-crawler.googlecode.com/svn/trunk/")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-wbxml"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-wbxml")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-wbxml.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-wav"
     :VC "git"
@@ -3795,8 +3795,8 @@
                  . "https://gitlab.common-lisp.net/cl-unification/cl-unification.git")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-unicode"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-unicode")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-unicode.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-uglify-js"
     :VC "git"
@@ -4195,8 +4195,8 @@
     :LOCATIONS (("latest" . "http://bitbucket.org/skypher/cl-prevalence")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-ppcre"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-ppcre")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-ppcre.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-portaudio"
     :VC "git"
@@ -4646,8 +4646,8 @@
                  . "http://common-lisp.net/project/cl-irc/releases/cl-irc_latest.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-interpol"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-interpol")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-interpol.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-intbytes"
     :VC "git"
@@ -4818,8 +4818,8 @@
     :LOCATIONS (("latest" . "https://github.com/lokedhs/cl-gdata.git")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-gd"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-gd")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-gd.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-gap-buffer"
     :VC "mercurial"
@@ -4877,8 +4877,8 @@
     :LOCATIONS (("latest" . "git://github.com/7max/cl-fam.git")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-fad"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "cl-fad")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/cl-fad.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "cl-factoring"
     :VC "git"
@@ -5260,8 +5260,8 @@
                  . "git://github.com/fukamachi/circular-streams.git")))
  #S(MANIFEST-PACKAGE
     :NAME "chunga"
-    :VC "ediware-http"
-    :LOCATIONS (("latest" . "chunga")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://weitz.de/files/chunga.tar.gz")))
  #S(MANIFEST-PACKAGE
     :NAME "chtml-matcher"
     :VC "git"
@@ -5390,8 +5390,8 @@
     :LOCATIONS (("latest" . "git://github.com/AccelerationNet/buildnode.git")))
  #S(MANIFEST-PACKAGE
     :NAME "buildapp"
-    :VC "xach-http"
-    :LOCATIONS (("latest" . "buildapp")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://www.xach.com/lisp/buildapp.tgz")))
  #S(MANIFEST-PACKAGE
     :NAME "buffalo"
     :VC "git"
@@ -5590,8 +5590,8 @@
                  . "http://common-lisp.net/project/bese/repos/arnesi_dev/")))
  #S(MANIFEST-PACKAGE
     :NAME "archive"
-    :VC "froydware-http"
-    :LOCATIONS (("latest" . "archive")))
+    :VC "git"
+    :LOCATIONS (("latest" . "https://github.com/froydnj/archive")))
  #S(MANIFEST-PACKAGE
     :NAME "architecture.service-provider"
     :VC "git"

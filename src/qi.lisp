@@ -22,10 +22,17 @@
                 :make-git-dependency
                 :http
                 :location)
-  (:export :install))
+  (:export :install :hello))
 (in-package :qi)
 
 ;; code:
+
+
+(defun hello ()
+  (format t "~%Qi - A Common Lisp Package Manager")
+  (format t "~%Version 0.1")
+  (format t "~%Source: https://github.com/CodyReichert/qi")
+  (format t "~%Issues: https://github.com/CodyReichert/qi/issues"))
 
 
 (defun bootstrap ()

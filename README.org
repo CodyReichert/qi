@@ -37,7 +37,7 @@ feedback are appreciated.
    #+END_SRC
 
    /Notes:/
-   - See =docs/TODO.org= and =cli/= for some work that can/should be done
+   - See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] and =bin/= for some work that can/should be done
      around this part.
 
 
@@ -98,7 +98,7 @@ feedback are appreciated.
     https://github.com/CodyReichert/qi/, or send a patch file to
     codyreichert@gmail.com.
 
-    See =docs/TODO.org= for some work to be done in this
+    See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this
     area. Ideally, we have =recipes/= that contains the information
     about each Qi package. That way a new recipe can be added and the
     Maniest can be updated.
@@ -143,9 +143,15 @@ feedback are appreciated.
    Publish a new package to the Qi Manifest
 
 
+** CLI
+   The Qi command-line-interface is not yet ready, but will have
+   mostly all of the same commands as the API available. Keep an eye
+   out [[https://github.com/CodyReichert/qi/blob/master/bin/][here]] for updates to this.
+
+
 ** Contributing
    PR's and Issues are extremely welcomed and will likely all be
-   merged or addressed. See the =docs/TODO.org= for a list of tasks
+   merged or addressed. See the [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for a list of tasks
    that I'd like to see done. Make a PR or start a conversation if
    there's anything you'd like to see.
 
@@ -156,7 +162,7 @@ feedback are appreciated.
 
    See qi/dependencies for a full list.
 
-   Also see =docs/TODO.org= for some work to be done in this area.
+   Also see [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this area.
 
 
 ** Author

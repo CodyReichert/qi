@@ -3097,7 +3097,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "drakma"
     :VC "http"
-    :LOCATIONS (("latest" . "https://github.com/edicl/drakma")))
+    :LOCATIONS (("latest" . "https://github.com/edicl/drakma/archive/master.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "drakma-async"
     :VC "git"

@@ -1,6 +1,6 @@
-name: Qi
+name: qi
 author: Cody Reichert
-license: MIT
+license: BSD
 description: A package manager Common Lisp
 
 packages:

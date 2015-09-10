@@ -91,7 +91,7 @@
                                         :location (or (gethash "url" p) nil))))
 
                (t (format t "~%---X Cannot resolve dependency type"))))
-    (asdf:oos 'asdf:load-op name))
+    (asdf:oos 'asdf:load-op name :verbose nil))
   (installed-dependency-report)
   (broken-dependency-report))
 

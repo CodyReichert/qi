@@ -4,15 +4,29 @@
 
 ;; Code:
 
+(defvar +qi-asd+ (merge-pathnames ".qi/" (user-homedir-pathname)))
 (defvar +qi-directory+ (merge-pathnames ".qi/" (user-homedir-pathname)))
 (defvar +qi-cache+ (merge-pathnames "cache/" +qi-directory+))
 (defvar +qi-dependencies+ (merge-pathnames "dependencies/" +qi-directory+))
+
+(defun qi-dir (path)
+  (merge-pathnames path +qi-directory+))
+
+(defun find-asdf-fasl ()
+  (let* ((og-fasl (compile-file-pathname (qi-dir "asdf/asdf.lisp")))
+         (asdf-fasl (qi-dir (make-pathname :defaults og-fasl
+                                           :directory
+                                           (list :relative "cache"
+                                                 "asdf-fasls")))))
+    (ensure-directories-exist asdf-fasl)
+    asdf-fasl))
 
 (defun ensure-asdf-loaded () ;; taken from quicklisp's resolver here
   "Try several methods to make sure that a sufficiently-new ASDF is
 loaded: first try (require 'asdf), then loading the ASDF FASL, then
 compiling asdf.lisp to a FASL and then loading it."
-  (let* ((source (merge-pathnames "asdf/asdf.lisp" +qi-directory+)))
+  (let* ((source (qi-dir "asdf/asdf.lisp"))
+         (asdf-fasl (find-asdf-fasl)))
     (labels ((asdf-symbol (name)
                (let ((asdf-package (find-package '#:asdf)))
                  (when asdf-package
@@ -34,13 +48,15 @@ compiling asdf.lisp to a FASL and then loading it."
                           (return t)))))
           (try)
           (try (require 'asdf))
-          (try (load (compile-file source :verbose nil :output-file (merge-pathnames "asdf.fasl" +qi-cache+))))
+          (try (load asdf-fasl :verbose nil))
+          (try (load (compile-file source :verbose nil :output-file asdf-fasl)))
           (error "Could not load ASDF ~S or newer" "3.0"))))))
 
 (ensure-asdf-loaded)
 
-(defun push-new-to-registry (what)
-  (setf asdf:*central-registry* (pushnew what asdf:*central-registry*)))
+(setf asdf:*asdf-verbose* nil)
+(defun push-new-to-registry (dep)
+  (setf asdf:*central-registry* (pushnew dep asdf:*central-registry*)))
 
 (let ((deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
@@ -48,4 +64,8 @@ compiling asdf.lisp to a FASL and then loading it."
   (loop for d in deps-to-load do
        (push-new-to-registry d)))
 
-(asdf:oos 'asdf:load-op 'qi)
+(let ((*compile-print* nil)
+      (*compile-verbose* nil)
+      (*load-verbose* nil)
+      (*load-print* nil))
+  (asdf:oos 'asdf:load-op 'qi :verbose nil))

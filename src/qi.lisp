@@ -65,29 +65,36 @@
          (cond ((eql nil (gethash "url" p))
                 (dispatch-dependency
                  (make-manifest-dependency :name (gethash "name" p)
-                                           :version (or (gethash "version" p) "latest")
-                                           :location (or (gethash "url" p) nil))))
+                                           :version (or (gethash "version" p)
+                                                        "latest")
+                                           :location (or (gethash "url" p)
+                                                         nil))))
                ;; Dependency is a tarball url
                ((is-tar-url? (gethash "url" p))
                 (dispatch-dependency
                  (make-http-dependency :name (gethash "name" p)
                                        :download-strategy "tarball"
-                                       :version (or (gethash "version" p) "latest")
-                                       :location (or (http (gethash "url" p)) nil))))
+                                       :version (or (gethash "version" p)
+                                                    "latest")
+                                       :location (or (http (gethash "url" p))
+                                                     nil))))
                ;; Dependency is git url
                ((or (is-git-url? (gethash "url" p))
                     (is-gh-url? (gethash "url" p)))
                 (dispatch-dependency
                  (make-git-dependency :name (gethash "name" p)
                                       :download-strategy "git"
-                                      :version (or (gethash "version" p) "latest")
-                                      :location (or (gethash "url" p) nil))))
+                                      :version (or (gethash "version" p)
+                                                   "latest")
+                                      :location (or (gethash "url" p)
+                                                    nil))))
                ;; Dependency is local path
                ((not (null (gethash "path" p)))
                 (dispatch-dependency
                  (make-local-dependency :name (gethash "name" p)
                                         :download-strategy "local"
-                                        :version (or (gethash "version" p) "latest")
+                                        :version (or (gethash "version" p)
+                                                     "latest")
                                         :location (or (gethash "url" p) nil))))
 
                (t (format t "~%---X Cannot resolve dependency type"))))
@@ -100,12 +107,15 @@
   (cond ((= 0 (length *qi-dependencies*))
          (format t "~%~%No dependencies installed!"))
         (t
-         (let ((installed (remove-if-not #'(lambda (x) (dependency-sys-path x)) *qi-dependencies*)))
+         (let ((installed (remove-if-not #'(lambda (x)
+                                             (dependency-sys-path x))
+                                         *qi-dependencies*)))
            (format t "~%~%~S dependencies installed:" (length installed))
            (loop for d in *qi-dependencies*
               when (qi.packages::dependency-sys-path d) do
                 (format t "~%   * ~A" (dependency-name d))))
-         (format t "~%~A transitive dependencies installed" (length *qi-trans-dependencies*)))))
+         (format t "~%~A transitive dependencies installed"
+                 (length *qi-trans-dependencies*)))))
 
 (defun broken-dependency-report ()
   (cond ((not (= 0 (length *qi-broken-dependencies*)))

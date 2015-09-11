@@ -107,7 +107,8 @@ of its location."))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep http-dependency))
-  (format t "~%-> Preparing to download tarball dependency: ~S" (dependency-name dep))
+  (format t "~%-> Preparing to download tarball dependency: ~S"
+          (dependency-name dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep git-dependency))
@@ -116,7 +117,8 @@ of its location."))
   ;(setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
+  (format t "~%-> Preparing to install manifest dependency: ~S"
+          (dependency-name dep))
   (if (not (ensure-dependency dep))
       (progn
         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))
@@ -222,18 +224,21 @@ and sys-path."
   "Downloads tarball from <url>, and updates <dep> with the local src-path
 and sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
-                     (qi.paths:package-dir) (concatenate 'string
-                                                         (dependency-name dep) "-"
-                                                         (dependency-version dep) "/"))))
+                     (qi.paths:package-dir)
+                     (concatenate 'string
+                                  (dependency-name dep) "-"
+                                  (dependency-version dep) "/"))))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
     (git-clone url (namestring clone-path))
-    (if (probe-file (fad:merge-pathnames-as-file clone-path
-                                                 (concatenate 'string (dependency-name dep) ".asd")))
+    (if (probe-file (fad:merge-pathnames-as-file
+                     clone-path
+                     (concatenate 'string (dependency-name dep) ".asd")))
         (set-dependency-paths clone-path dep)
         (progn
           (format t "~%---X Failure to clone repository!")
-          (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
+          (setf *qi-broken-dependencies*
+                (pushnew dep *qi-broken-dependencies*))))))
 
 
 (defun git-clone (from to)
@@ -253,16 +258,18 @@ and sys-path."
                                     :element-type '(unsigned-byte 8))
       (archive::extract-files-from-archive
        (archive:open-archive 'archive:tar-archive
-                             (chipz:make-decompressing-stream 'chipz:gzip tarball-stream)
+                             (chipz:make-decompressing-stream
+                              'chipz:gzip tarball-stream)
                              :direction :input)))))
 
 
 (defun set-dependency-paths (out-path dep)
   "Update an a dependency's src-path and sys-path."
   (let ((sys-path (fad:merge-pathnames-as-directory
-                   (qi.paths:package-dir) (concatenate 'string
-                                                       (dependency-name dep) "-"
-                                                       (dependency-version dep) "/"))))
+                   (qi.paths:package-dir)
+                   (concatenate 'string
+                                (dependency-name dep) "-"
+                                (dependency-version dep) "/"))))
     (setf (dependency-src-path dep) out-path)
     (setf (dependency-sys-path dep) sys-path)))
 
@@ -275,26 +282,29 @@ and sys-path."
 
 (defun install-transitive-dependencies (dep)
   (if (system-is-available? (dependency-name dep))
-      (let ((trans-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
+      (let ((trans-deps
+             (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
         (loop for d in trans-deps do
              (if (or (system-is-available? d)
                      (dependency-installed? d))
                  (set-trans-dep d (dependency-name dep))
                  (progn
-                   (format t "~%---X Checking manifest for transitive dependency: ~S" d)
-                   (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
+                   (format
+                    t "~%---X Checking manifest for transitive dependency: ~S" d)
+                   (let ((manifest-package
+                          (manifest-get-by-name (dependency-name dep))))
                      (cond ((eql nil manifest-package)
                             (format t "~%---X Can not install ~A~%" dep)
                             (set-broken-trans-dep d (dependency-name dep)))
                            (t
                             (format t "~%---> Found package in manifest!")
-                            (make-trans-dep-from-manifest d (dependency-name dep)))))))))))
-
+                            (make-trans-dep-from-manifest
+                             d (dependency-name dep)))))))))))
 
 
 (defun make-trans-dep-from-manifest (name caller)
-  (dispatch-dependency (make-transitive-dependency :name name
-                                                   :caller caller)))
+  (dispatch-dependency
+   (make-transitive-dependency :name name :caller caller)))
 
 
 (defun set-trans-dep (name caller)
@@ -302,8 +312,7 @@ and sys-path."
 *qi-trans-dependencies* list."
   (setf *qi-trans-dependencies*
         (pushnew
-         (make-transitive-dependency :name name
-                                     :caller caller)
+         (make-transitive-dependency :name name :caller caller)
          *qi-trans-dependencies*)))
 
 
@@ -312,8 +321,7 @@ and sys-path."
 *qi-broken-trans-dependencies* list."
   (setf *qi-broken-trans-dependencies*
         (pushnew
-         (make-transitive-dependency :name name
-                                     :caller caller)
+         (make-transitive-dependency :name name :caller caller)
          *qi-broken-trans-dependencies*)))
 
 
@@ -325,17 +333,5 @@ and sys-path."
 
 (defun dependency-installed? (name)
   (remove-if-not #'(lambda (x)
-                     (string=
-                      (dependency-name x)
-                      name))
+                     (string= (dependency-name x) name))
                  *qi-dependencies*))
-
-
-(defun asdf-system-path (sys)
-  (handler-case
-      (asdf:component-pathname (asdf:find-system sys))
-    (error () () nil)))
-
-
-(defun gh-tar-url (url)
-  (concatenate 'string url "/archive/master.tar.gz"))

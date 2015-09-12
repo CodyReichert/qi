@@ -130,14 +130,3 @@
                 (format t "~%  ~A (required by ~S)"
                         (transitive-dependency-name d)
                         (transitive-dependency-caller d)))))))
-
-(defun is-tar-url? (str)
-  (or (ppcre:scan "^https?.*.tgz" str)
-      (ppcre:scan "^https?.*tar.gz" str)))
-
-(defun is-git-url? (str)
-  (or (ppcre:scan "^git://.*" str)
-      (ppcre:scan ".*.git" str)))
-
-(defun is-gh-url? (str)
-  (ppcre:scan "^https?//github.*" str))

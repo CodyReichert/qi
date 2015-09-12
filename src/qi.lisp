@@ -2,6 +2,7 @@
 (defpackage qi
   (:use :cl)
   (:import-from :qi.util
+                :asdf-system-path
                 :is-tar-url?
                 :is-git-url?
                 :is-gh-url?)
@@ -29,7 +30,9 @@
                 :make-git-dependency
                 :http
                 :location)
-  (:export :install :hello))
+  (:export :install
+           :hello
+           :qiload))
 (in-package :qi)
 
 ;; code:
@@ -44,7 +47,9 @@
   (installed-dependency-report)
   (broken-dependency-report))
 
+
 (defun hello ()
+  "Qi status message."
   (format t "~%Qi - A Common Lisp Package Manager")
   (format t "~%Version 0.1")
   (format t "~%Source: https://github.com/CodyReichert/qi")

@@ -4,12 +4,12 @@
 
 ;; Code:
 
-(defvar +qi-asd+ (merge-pathnames ".qi/" (user-homedir-pathname)))
 (defvar +qi-directory+ (merge-pathnames ".qi/" (user-homedir-pathname)))
-(defvar +qi-cache+ (merge-pathnames "cache/" +qi-directory+))
 (defvar +qi-dependencies+ (merge-pathnames "dependencies/" +qi-directory+))
+(defvar +qi-user-packages+ (merge-pathnames ".dependencies/packages/" +qi-directory+))
 
 (defun qi-dir (path)
+  "Make a pathname rooted at $HOME/.qi."
   (merge-pathnames path +qi-directory+))
 
 (defun find-asdf-fasl ()
@@ -52,18 +52,36 @@ compiling asdf.lisp to a FASL and then loading it."
           (try (load (compile-file source :verbose nil :output-file asdf-fasl)))
           (error "Could not load ASDF ~S or newer" "3.0"))))))
 
-(ensure-asdf-loaded)
 
+(ensure-asdf-loaded)
 (setf asdf:*asdf-verbose* nil)
+
+
 (defun push-new-to-registry (dep)
+  "Add a directory to the ASDF registry."
   (setf asdf:*central-registry* (pushnew dep asdf:*central-registry*)))
 
-(let ((deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
+
+(defun load-user-packages ()
+  "Make user-global-packages available to ASDF. They're not immediately
+available like qi, but can be make so by (qi:qiload :<system>)."
+  (loop for dir in (directory (qi-dir ".dependencies/packages/**"))
+     do (push-new-to-registry dir)))
+
+
+;; Walk $HOME/.qi/dependencies/ and make all Qi dependencies
+;; available. And walk $HOME/.qi/.dependencies/packages to load in
+;; user-globally-installed-packages.
+(let ((qi-deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
   (push-new-to-registry +qi-directory+)
-  (loop for d in deps-to-load do
-       (push-new-to-registry d)))
+  (loop for d in qi-deps-to-load
+     do
+       (push-new-to-registry d))
+  (load-user-packages))
 
+
+;; Load Qi
 (let ((*compile-print* nil)
       (*compile-verbose* nil)
       (*load-verbose* nil)

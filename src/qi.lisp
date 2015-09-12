@@ -1,8 +1,13 @@
 (in-package :cl-user)
 (defpackage qi
-  (:use :cl :qi.util :qi.paths)
+  (:use :cl)
+  (:import-from :qi.util
+                :is-tar-url?
+                :is-git-url?
+                :is-gh-url?)
   (:import-from :qi.paths
-                :+project-name+)
+                :+project-name+
+                :+global-package-dir+)
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-broken-dependencies*
@@ -29,6 +34,15 @@
 
 ;; code:
 
+(defun qiload (system &optional (version "latest"))
+  (bootstrap :qi)
+  (dispatch-dependency
+   (make-manifest-dependency
+    :name (qi.util:sym->str system)
+    :version version))
+  (asdf:oos 'asdf:load-op system :verbose nil)
+  (installed-dependency-report)
+  (broken-dependency-report))
 
 (defun hello ()
   (format t "~%Qi - A Common Lisp Package Manager")
@@ -64,25 +78,22 @@
     (loop for p in package-list do
          (cond ((eql nil (gethash "url" p))
                 (dispatch-dependency
-                 (make-manifest-dependency :name (gethash "name" p)
+                 (make-manifest-dependency :name name
                                            :version (or (gethash "version" p)
-                                                        "latest")
-                                           :location (or (gethash "url" p)
-                                                         nil))))
+                                                        "latest"))))
                ;; Dependency is a tarball url
                ((is-tar-url? (gethash "url" p))
                 (dispatch-dependency
-                 (make-http-dependency :name (gethash "name" p)
+                 (make-http-dependency :name name
                                        :download-strategy "tarball"
                                        :version (or (gethash "version" p)
                                                     "latest")
-                                       :location (or (http (gethash "url" p))
-                                                     nil))))
+                                       :location (http (gethash "url" p)))))
                ;; Dependency is git url
                ((or (is-git-url? (gethash "url" p))
                     (is-gh-url? (gethash "url" p)))
                 (dispatch-dependency
-                 (make-git-dependency :name (gethash "name" p)
+                 (make-git-dependency :name name
                                       :download-strategy "git"
                                       :version (or (gethash "version" p)
                                                    "latest")
@@ -91,7 +102,7 @@
                ;; Dependency is local path
                ((not (null (gethash "path" p)))
                 (dispatch-dependency
-                 (make-local-dependency :name (gethash "name" p)
+                 (make-local-dependency :name name
                                         :download-strategy "local"
                                         :version (or (gethash "version" p)
                                                      "latest")

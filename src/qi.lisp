@@ -32,7 +32,8 @@
                 :location)
   (:export :hello
            :install
-           :install-global))
+           :install-global
+           :up))
 (in-package :qi)
 
 ;; code:
@@ -60,6 +61,10 @@ another lisp session, use (qi:up <system>)."
   (asdf:oos 'asdf:load-op system :verbose nil)
   (installed-dependency-report)
   (broken-dependency-report))
+
+(defun up (system)
+  "Load <system> with system to it's available in the current lisp session."
+  (asdf:load-system system))
 
 
 (defun install (project)

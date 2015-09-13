@@ -97,13 +97,13 @@ be in the CWD that specifies <project>'s dependencies."
     (loop for p in package-list do
          (cond ((eql nil (gethash "url" p))
                 (dispatch-dependency
-                 (make-manifest-dependency :name name
+                 (make-manifest-dependency :name (gethash "name" p)
                                            :version (or (gethash "version" p)
                                                         "latest"))))
                ;; Dependency is a tarball url
                ((is-tar-url? (gethash "url" p))
                 (dispatch-dependency
-                 (make-http-dependency :name name
+                 (make-http-dependency :name (gethash "name" p)
                                        :download-strategy "tarball"
                                        :version (or (gethash "version" p)
                                                     "latest")
@@ -112,7 +112,7 @@ be in the CWD that specifies <project>'s dependencies."
                ((or (is-git-url? (gethash "url" p))
                     (is-gh-url? (gethash "url" p)))
                 (dispatch-dependency
-                 (make-git-dependency :name name
+                 (make-git-dependency :name (gethash "name" p)
                                       :download-strategy "git"
                                       :version (or (gethash "version" p)
                                                    "latest")
@@ -121,7 +121,7 @@ be in the CWD that specifies <project>'s dependencies."
                ;; Dependency is local path
                ((not (null (gethash "path" p)))
                 (dispatch-dependency
-                 (make-local-dependency :name name
+                 (make-local-dependency :name (gethash "name" p)
                                         :download-strategy "local"
                                         :version (or (gethash "version" p)
                                                      "latest")

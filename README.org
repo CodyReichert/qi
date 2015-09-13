@@ -43,7 +43,10 @@ feedback are appreciated.
 
 ** Usage
 
-   Currently, dependencies are only installed project local.
+   This section covers using Qi for a project. To see other, more
+   general, Qi commands and installing libraries globally see the API
+   section.
+
    The only requirement to installing a systems dependencies with Qi,
    is a =qi.yaml=.
 
@@ -84,6 +87,69 @@ feedback are appreciated.
    your =qi.yaml=.
 
 
+** API
+   Qi's API is composed of a few commands, documented below:
+
+*** Hello
+   Prints some information about Qi to *standard-output*. If this
+   prints, Qi is installed correctly.
+
+   #+BEGIN_SRC lisp
+   (qi:hello)
+   #+END_SRC
+
+*** Install
+   Installs a system and it's dependencies. All dependencies are
+   installed local to the system directory in =.dependencies/=.
+
+   - For any dependencies that are not already available, Qi will try to
+     download them from the Manifest. If all else fails, it will print
+     to *standard-output* what packages could not be installed.
+
+   #+BEGIN_SRC lisp
+   (qi:install :system)
+   #+END_SRC
+
+*** Install Global
+   Installs a system to the global package directory. The system
+   should be from the Manifest. The system is made available in the
+   current session.
+
+   #+BEGIN_SRC lisp
+   (qi:install-global :system &optional version)
+   #+END_SRC
+
+   /To make a global system available at any time, you can use/
+   /(qi:up :system)/
+
+*** Up
+   ASDF load's a system to be available in the current session.
+
+   #+BEGIN_SRC lisp
+   (qi:up :system)
+   #+END_SRC
+
+   /This is the equivalient of running (asdf:load-system :system)/
+
+*** Coming Soon
+
+   *Not implemented* =(qi:new ...)=
+
+   Generate a new project scaffold.
+
+   *Not implemented* =(qi:setup ...)=
+
+   Generate a qi.yaml for an existing project.
+
+   *Not implemented* =(qi:update-manifest ...)=
+
+   Update the Qi manifest to get access to new packages and updates.
+
+   *Not implemented* =(qi:publish ...)=
+
+   Publish a new package to the Qi Manifest
+
+
 ** Manifest
    The [[https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp][Qi Manifest]] is a list of known packages - which makes it easy
    to simply install packages by their name. Qi's Manifest was
@@ -102,45 +168,6 @@ feedback are appreciated.
     area. Ideally, we have =recipes/= that contains the information
     about each Qi package. That way a new recipe can be added and the
     Maniest can be updated.
-
-
-** API
-   Qi's API is composed of a few commands, documented below:
-
-   =(qi:hello)=
-
-   Prints some information about Qi to *standard-output*. If this
-   prints, Qi is installed correctly.
-
-   =(qi:install :system-name)=
-
-   Installs a system and transitive dependencies. All dependencies are
-   installed local to the system in =.dependencies/=.
-
-   - Any dependencies that are not already available, Qi will try to
-     download them from the Manifest. If all else fails, it will print
-     to *standard-output* what packages could not be installed.
-
-
-   *Not implemented* =(qi:new ...)=
-
-   Generate a new project scaffold.
-
-   *Not implemented* =(qi:setup ...)=
-
-   Generate a qi.yaml for an existing project.
-
-   *Not implemented* =(qi:install-global ...)=
-
-   Install a system globally.
-
-   *Not implemented* =(qi:update-manifest ...)=
-
-   Update the Qi manifest to get access to new packages and updates.
-
-   *Not implemented* =(qi:publish ...)=
-
-   Publish a new package to the Qi Manifest
 
 
 ** CLI

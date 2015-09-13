@@ -68,7 +68,7 @@
     :LOCATIONS (("latest" . "xmlutils")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xmls"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "http://common-lisp.net/project/xmls/xmls-1.7.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -256,7 +256,7 @@
                  . "https://github.com/scymtym/utilities.binary-dump.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "usocket"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "http://common-lisp.net/project/usocket/releases/usocket-latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -313,7 +313,7 @@
     :LOCATIONS (("latest" . "umlisp-orf")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "uiop"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "http://common-lisp.net/project/asdf/archives/uiop.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -710,7 +710,7 @@
                  . "http://common-lisp.net/project/stefil/darcs/stefil")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "static-vectors"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://github.com/sionescu/static-vectors/archive/v1.6.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -731,7 +731,7 @@
     :LOCATIONS (("latest" . "git://github.com/tlh/sqnc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "split-sequence"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://github.com/sharplispers/split-sequence/archive/v1.2.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -799,7 +799,7 @@
     :LOCATIONS (("latest" . "https://github.com/aarvid/SmackJack")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "slime"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://common-lisp.net/project/slime/slime_latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -1119,7 +1119,7 @@
     :LOCATIONS (("latest" . "git://github.com/WarrenWilkinson/read-csv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rcl"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest" . "https://common-lisp.net/project/rcl/rcl.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ratify"
@@ -1481,7 +1481,7 @@
     :LOCATIONS (("latest" . "git://github.com/VincentToups/parseltongue.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parse-number"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://github.com/sharplispers/parse-number/archive/v1.4.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -2316,7 +2316,7 @@
     :LOCATIONS (("latest" . "irc-logger")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ip-interfaces"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://common-lisp.net/project/ip-interfaces/releases/ip-interfaces-latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -3232,7 +3232,7 @@
     :LOCATIONS (("latest" . "https://github.com/EuAndreh/defclass-std.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "declt"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://www.lrde.epita.fr/~didier/software/lisp/declt/latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -4121,7 +4121,7 @@
     :LOCATIONS (("latest" . "git://github.com/tayloj/cl-rdfxml.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rcfiles"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://www.lrde.epita.fr/~didier/software/lisp/cl-rcfiles.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -4568,12 +4568,12 @@
     :LOCATIONS (("latest" . "https://github.com/jwiegley/cl-ledger.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-launch"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://common-lisp.net/project/xcvb/cl-launch/cl-launch.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-lastfm"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://github.com/nlamirault/cl-lastfm/archive/0.2.1.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -5061,7 +5061,7 @@
                  . "git://github.com/archimag/cl-closure-template.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-clon"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://www.lrde.epita.fr/~didier/software/lisp/clon/latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -5315,7 +5315,7 @@
                  . "git://github.com/WarrenWilkinson/changed-stream.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cffi"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://common-lisp.net/project/cffi/releases/cffi_latest.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -5416,7 +5416,7 @@
                  . "http://juhaarpi.users.paivola.fi/bourbaki/bourbaki.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bordeaux-threads"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://common-lisp.net/project/bordeaux-threads/releases/bordeaux-threads.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
@@ -5553,7 +5553,7 @@
     :LOCATIONS (("latest" . "https://github.com/eudoxia0/asdf-linguist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "asdf-flv"
-    :VC "https"
+    :VC "http"
     :LOCATIONS (("latest"
                  . "https://www.lrde.epita.fr/~didier/software/lisp/asdf-flv/attic/asdf-flv-1.0.tar.gz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE

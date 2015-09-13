@@ -30,22 +30,12 @@
                 :make-git-dependency
                 :http
                 :location)
-  (:export :install
-           :hello
-           :qiload))
+  (:export :hello
+           :install
+           :install-global))
 (in-package :qi)
 
 ;; code:
-
-(defun qiload (system &optional (version "latest"))
-  (bootstrap :qi)
-  (dispatch-dependency
-   (make-manifest-dependency
-    :name (qi.util:sym->str system)
-    :version version))
-  (asdf:oos 'asdf:load-op system :verbose nil)
-  (installed-dependency-report)
-  (broken-dependency-report))
 
 
 (defun hello ()
@@ -56,7 +46,36 @@
   (format t "~%Issues: https://github.com/CodyReichert/qi/issues"))
 
 
+(defun install-global (system &optional (version "latest"))
+  "Install <system> into the user global packages directory. system should be
+from the Qi Manifest. Optionally specify <version> to specifically install
+a specific version of <system>. <version> defaults to latest. The system will
+be made available in the current lisp session. To make the system available from
+another lisp session, use (qi:up <system>)."
+  (bootstrap :qi)
+  (dispatch-dependency
+   (make-manifest-dependency
+    :name (qi.util:sym->str system)
+    :version version))
+  (asdf:oos 'asdf:load-op system :verbose nil)
+  (installed-dependency-report)
+  (broken-dependency-report))
+
+
+(defun install (project)
+  "Install <project> and all of its dependencies, and make the
+system available in the current lisp session. A qi.yaml file should
+be in the CWD that specifies <project>'s dependencies."
+  (bootstrap project)
+  (let* ((base-dir (qi.paths:project-dir project))
+         (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
+    (if (probe-file qi-file)
+        (install-from-qi-file qi-file)
+        (error "No qi.yaml!"))))
+
+
 (defun bootstrap (proj)
+  "Sets up Qi variables and loads the manifest."
   (setf +project-name+ proj)
   (setf *qi-dependencies* nil)
   (setf *qi-broken-dependencies* nil)
@@ -65,19 +84,9 @@
   (qi.manifest::manifest-load))
 
 
-(defun install (proj)
-  "Reads a qi.yaml file and starts downloading dependencies."
-  (bootstrap proj)
-  (let* ((base-dir (qi.paths:project-dir proj))
-         (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
-    (if (probe-file qi-file)
-        (parse-deps qi-file)
-        (error "No qi.yaml!"))))
-
-
-(defun parse-deps (deps)
+(defun install-from-qi-file (qi-file)
   (format t "~%Reading dependencies...")
-  (let* ((config (yaml:parse deps))
+  (let* ((config (yaml:parse qi-file))
          (name (gethash "name" config))
          (package-list (gethash "packages" config)))
     (loop for p in package-list do
@@ -122,16 +131,15 @@
 (defun installed-dependency-report ()
   (cond ((= 0 (length *qi-dependencies*))
          (format t "~%~%No dependencies installed!"))
-        (t
-         (let ((installed (remove-if-not #'(lambda (x)
-                                             (dependency-sys-path x))
-                                         *qi-dependencies*)))
-           (format t "~%~%~S dependencies installed:" (length installed))
-           (loop for d in *qi-dependencies*
-              when (qi.packages::dependency-sys-path d) do
-                (format t "~%   * ~A" (dependency-name d))))
-         (format t "~%~A transitive dependencies installed"
-                 (length *qi-trans-dependencies*)))))
+        (t (let ((installed (remove-if-not #'(lambda (x)
+                                               (dependency-sys-path x))
+                                           *qi-dependencies*)))
+             (format t "~%~%~S dependencies installed:" (length installed))
+             (loop for d in *qi-dependencies*
+                when (qi.packages::dependency-sys-path d) do
+                  (format t "~%   * ~A" (dependency-name d))))
+           (format t "~%~A transitive dependencies installed"
+                   (length *qi-trans-dependencies*)))))
 
 (defun broken-dependency-report ()
   (cond ((not (= 0 (length *qi-broken-dependencies*)))

@@ -58,7 +58,7 @@ another lisp session, use (qi:up <system>)."
    (make-manifest-dependency
     :name (qi.util:sym->str system)
     :version version))
-  (asdf:oos 'asdf:load-op system :verbose nil)
+  (asdf:load-system system)
   (installed-dependency-report)
   (broken-dependency-report))
 

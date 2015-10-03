@@ -64,7 +64,7 @@ another lisp session, use (qi:up <system>)."
   (broken-dependency-report))
 
 (defun up (system)
-  "Load <system> with system to it's available in the current lisp session."
+  "Load <system> and make it available in the current lisp session."
   (load-asdf-system system))
 
 
@@ -130,33 +130,44 @@ be in the CWD that specifies <project>'s dependencies."
 
                (t (format t "~%---X Cannot resolve dependency type"))))
     (load-asdf-system name))
+  (dependency-report))
+
+
+(defun dependency-report ()
   (installed-dependency-report)
-  (broken-dependency-report))
+  (broken-dependency-report)
+  (broken-trans-dependency-report))
 
 
 (defun installed-dependency-report ()
+  "Print information about the *qi-dependencies* list."
   (cond ((= 0 (length *qi-dependencies*))
          (format t "~%~%No dependencies installed!"))
-        (t (let ((installed (remove-if-not #'(lambda (x)
-                                               (dependency-sys-path x))
-                                           *qi-dependencies*)))
+        (t (let ((installed (remove-if-not #'dependency-sys-path *qi-dependencies*))
+                 (trans-amt (length *qi-trans-dependencies*)))
              (format t "~%~%~S dependencies installed:" (length installed))
              (loop for d in *qi-dependencies*
                 when (qi.packages::dependency-sys-path d) do
-                  (format t "~%   * ~A" (dependency-name d))))
-           (format t "~%~A transitive dependencies installed"
-                   (length *qi-trans-dependencies*)))))
+                  (format t "~%   * ~A" (dependency-name d)))
+             (unless (= 0 trans-amt)
+               (format t "~%~A transitive dependencies installed" trans-amt))))))
+
 
 (defun broken-dependency-report ()
-  (cond ((not (= 0 (length *qi-broken-dependencies*)))
-         (let ((amt-broken (length *qi-broken-dependencies*)))
-           (format t "~%~%~S required dependencies not installed:" amt-broken)
-           (loop for d in *qi-broken-dependencies* do
-                (format t "~%   * ~A" (dependency-name d))))))
-  (cond ((not (= 0 (length *qi-broken-trans-dependencies*)))
-         (let ((amt-broken (length *qi-broken-trans-dependencies*)))
-           (format t "~%~S transitive dependencies not installed:" amt-broken)
-           (loop for d in *qi-broken-trans-dependencies* do
-                (format t "~%  ~A (required by ~S)"
-                        (transitive-dependency-name d)
-                        (transitive-dependency-caller d)))))))
+  "Print information about the *qi-broken-dependencies* list."
+  (let ((broken-deps (length *qi-broken-dependencies*)))
+    (unless (= 0 broken-deps)
+      (format t "~%~%~S required dependencies not installed:" broken-deps)
+      (dolist (dep *qi-broken-dependencies*)
+        (format t "~%   * ~A" (dependency-name dep))))))
+
+
+(defun broken-trans-dependency-report ()
+  "Print information about the *qi-broken-trans-dependencies* list."
+  (let ((broken-deps (length *qi-broken-trans-dependencies*)))
+    (unless (= 0 broken-deps)
+      (format t "~%~%~S transitive dependencies not installed:" broken-deps)
+      (dolist (dep *qi-broken-trans-dependencies*)
+        (format t "~%   * ~A (required by ~A)"
+                (transitive-dependency-name dep)
+                (transitive-dependency-caller dep))))))

@@ -3,6 +3,7 @@
   (:use :cl)
   (:import-from :qi.util
                 :asdf-system-path
+                :load-asdf-system
                 :is-tar-url?
                 :is-git-url?
                 :is-gh-url?)
@@ -58,13 +59,13 @@ another lisp session, use (qi:up <system>)."
    (make-manifest-dependency
     :name (qi.util:sym->str system)
     :version version))
-  (asdf:load-system system)
+  (load-asdf-system system)
   (installed-dependency-report)
   (broken-dependency-report))
 
 (defun up (system)
   "Load <system> with system to it's available in the current lisp session."
-  (asdf:load-system system))
+  (load-asdf-system system))
 
 
 (defun install (project)
@@ -128,7 +129,7 @@ be in the CWD that specifies <project>'s dependencies."
                                         :location (or (gethash "url" p) nil))))
 
                (t (format t "~%---X Cannot resolve dependency type"))))
-    (asdf:oos 'asdf:load-op name :verbose nil))
+    (load-asdf-system name))
   (installed-dependency-report)
   (broken-dependency-report))
 

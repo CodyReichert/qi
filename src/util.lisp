@@ -1,7 +1,8 @@
 (in-package :cl-user)
 (defpackage qi.util
   (:use :cl)
-  (:export :asdf-system
+  (:export :asdf-system-path
+           :load-asdf-system
            :is-tar-url?
            :is-git-url?
            :is-gh-url?
@@ -34,3 +35,13 @@
   (handler-case
       (asdf:component-pathname (asdf:find-system sys))
     (error () () nil)))
+
+
+(defun load-asdf-system (sys)
+  (handler-bind ((warning #'muffle-warning))
+    (ignore-errors
+      (setf *load-verbose* nil)
+      (setf *load-print* nil)
+      (setf *compile-verbose* nil)
+      (setf *compile-print* nil)
+      (asdf:load-system sys :verbose nil))))

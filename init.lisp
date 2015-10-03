@@ -69,9 +69,9 @@ available like qi, but can be make so by (qi:qiload :<system>)."
      do (push-new-to-registry dir)))
 
 
-;; Walk $HOME/.qi/dependencies/ and make all Qi dependencies
-;; available. And walk $HOME/.qi/.dependencies/packages to load in
-;; user-globally-installed-packages.
+;; Walk $HOME/.qi/dependencies/ and make all of qi's dependencies
+;; available. Also walk $HOME/.qi/.dependencies/packages to load in
+;; user globally-installed packages.
 (let ((qi-deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
   (push-new-to-registry +qi-directory+)
@@ -86,4 +86,6 @@ available like qi, but can be make so by (qi:qiload :<system>)."
       (*compile-verbose* nil)
       (*load-verbose* nil)
       (*load-print* nil))
-  (asdf:oos 'asdf:load-op 'qi :verbose nil))
+  (handler-bind ((warning #'muffle-warning))
+    (ignore-errors
+      (asdf:oos 'asdf:load-op 'qi :verbose nil))))

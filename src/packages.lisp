@@ -99,7 +99,9 @@
 of its location."))
 
 (defmethod dispatch-dependency :after ((dependency dependency))
-  (setf *qi-dependencies* (pushnew dependency *qi-dependencies*)))
+  (if (dependency-sys-path dependency)
+      (setf *qi-dependencies* (pushnew dependency *qi-dependencies*))
+      (setf *qi-broken-dependencies* (pushnew dependency *qi-broken-dependencies*))))
 
 (defmethod dispatch-dependency ((dep local-dependency))
   (format t "~%-> Preparing to copy local dependency.")
@@ -114,20 +116,16 @@ of its location."))
 (defmethod dispatch-dependency ((dep git-dependency))
   (format t "~%-> Preparing to clone Git dependency: ~S" (dependency-name dep))
   (install-dependency dep))
-  ;(setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
   (format t "~%-> Preparing to install manifest dependency: ~S"
           (dependency-name dep))
   (if (not (ensure-dependency dep))
-      (progn
-        (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))
-        (format t "~%---X ~A not found in manifest" (dependency-name dep)))
+      (format t "~%---X ~A not found in manifest" (dependency-name dep))
       (progn
         (let ((pack (manifest-get-by-name (dependency-name dep))))
           (multiple-value-bind (location* strategy)
               (create-download-strategy pack)
-
             (cond ((string= "tarball" strategy)
                    (setf (dependency-location dep) (http location*))
                    (setf (dependency-download-strategy dep) strategy))
@@ -162,7 +160,6 @@ of the information we need to get it."))
   (clone-git-repo (dependency-location dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
-  ;(setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*)))
 
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-location dep)))
@@ -193,7 +190,7 @@ of the information we need to get it."))
         (make-dependency-available dep)
         (install-transitive-dependencies dep))
 
-       (_
+       (_ ; unsupported strategy
         (format t "~%---X Cannot resolve package type: ~S" (dependency-name dep))
         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 

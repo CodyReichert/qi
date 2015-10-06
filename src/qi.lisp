@@ -6,6 +6,7 @@
                 :load-asdf-system
                 :is-tar-url?
                 :is-git-url?
+                :is-hg-url?
                 :is-gh-url?)
   (:import-from :qi.paths
                 :+project-name+
@@ -29,6 +30,7 @@
                 :make-http-dependency
                 :make-local-dependency
                 :make-git-dependency
+                :make-hg-dependency
                 :http
                 :location)
   (:export :hello
@@ -90,45 +92,56 @@ be in the CWD that specifies <project>'s dependencies."
   (qi.manifest::manifest-load))
 
 
+(defun extract-dependency (p)
+  "Extract dependency from package."
+  (cond ((eql nil (gethash "url" p))
+         (make-manifest-dependency :name (gethash "name" p)
+                                   :version (or (gethash "version" p)
+                                                "latest")))
+        ;; Dependency is a tarball url
+        ((is-tar-url? (gethash "url" p))
+         (make-http-dependency :name (gethash "name" p)
+                               :download-strategy "tarball"
+                               :version (or (gethash "version" p)
+                                            "latest")
+                               :location (http (gethash "url" p))))
+        ;; Dependency is git url
+        ((or (is-git-url? (gethash "url" p))
+             (is-gh-url? (gethash "url" p)))
+         (make-git-dependency :name (gethash "name" p)
+                              :download-strategy "git"
+                              :version (or (gethash "version" p)
+                                           "latest")
+                              :location (or (gethash "url" p)
+                                            nil)))
+        ;; Dependency is mercurial url
+        ((is-hg-url? (gethash "url" p))
+         (make-hg-dependency :name (gethash "name" p)
+                             :download-strategy "hg"
+                             :version (or (gethash "version" p)
+                                          "latest")
+                             :location (or (car (cl-ppcre:split ".hg" (gethash "url" p)))
+                                           nil)))
+        ;; Dependency is local path
+        ((not (null (gethash "path" p)))
+         (make-local-dependency :name (gethash "name" p)
+                                :download-strategy "local"
+                                :version (or (gethash "version" p)
+                                             "latest")
+                                :location (or (gethash "url" p) nil)))
+        (t nil)))
+
+
 (defun install-from-qi-file (qi-file)
   (format t "~%Reading dependencies...")
   (let* ((config (yaml:parse qi-file))
          (name (gethash "name" config))
          (package-list (gethash "packages" config)))
-    (loop for p in package-list do
-         (cond ((eql nil (gethash "url" p))
-                (dispatch-dependency
-                 (make-manifest-dependency :name (gethash "name" p)
-                                           :version (or (gethash "version" p)
-                                                        "latest"))))
-               ;; Dependency is a tarball url
-               ((is-tar-url? (gethash "url" p))
-                (dispatch-dependency
-                 (make-http-dependency :name (gethash "name" p)
-                                       :download-strategy "tarball"
-                                       :version (or (gethash "version" p)
-                                                    "latest")
-                                       :location (http (gethash "url" p)))))
-               ;; Dependency is git url
-               ((or (is-git-url? (gethash "url" p))
-                    (is-gh-url? (gethash "url" p)))
-                (dispatch-dependency
-                 (make-git-dependency :name (gethash "name" p)
-                                      :download-strategy "git"
-                                      :version (or (gethash "version" p)
-                                                   "latest")
-                                      :location (or (gethash "url" p)
-                                                    nil))))
-               ;; Dependency is local path
-               ((not (null (gethash "path" p)))
-                (dispatch-dependency
-                 (make-local-dependency :name (gethash "name" p)
-                                        :download-strategy "local"
-                                        :version (or (gethash "version" p)
-                                                     "latest")
-                                        :location (or (gethash "url" p) nil))))
-
-               (t (format t "~%---X Cannot resolve dependency type"))))
+    (loop for p in package-list
+          do (let ((dep (extract-dependency p)))
+               (if dep
+                   (dispatch-dependency dep)
+                   (format t "~%---X Cannot resolve dependency type"))))
     (load-asdf-system name))
   (dependency-report))
 

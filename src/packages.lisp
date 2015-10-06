@@ -20,6 +20,7 @@
            :make-http-dependency
            :make-local-dependency
            :make-git-dependency
+           :make-hg-dependency
            :transitive-dependency
            :transitive-dependency-name
            :transitive-dependency-caller
@@ -27,7 +28,8 @@
            :location
            :local
            :http
-           :git))
+           :git
+           :hg))
 (in-package :qi.packages)
 
 ;; code:
@@ -43,14 +45,19 @@
 ;;     + Git URL's are cloned, and can take a couple of extra parameters:
 ;;       - Location (http link to repo on github)
 ;;       - Version (version of the repo to check out)
+;;   - Mercurial
+;;     + Mercurial URL's are cloned
 
 
 (defvar *qi-dependencies* nil
   "A list of `dependencies' as required by the qi.yaml.")
+
 (defvar *qi-broken-dependencies* nil
   "A list of uninstalled `dependencies'.")
+
 (defvar *qi-trans-dependencies* nil
   "A list of `trans-dependencies' required by any *qi-dependencies.")
+
 (defvar *qi-broken-trans-dependencies* nil
   "A list of broken transitive dependencies.")
 
@@ -70,7 +77,8 @@
   (manifest t)
   (local t)
   (http t)
-  (git t))
+  (git t)
+  (hg t))
 
 
 (defstruct (manifest-dependency (:include dependency))
@@ -84,6 +92,9 @@
 
 (defstruct (git-dependency (:include dependency))
   "Github dependency data structure.")
+
+(defstruct (hg-dependency (:include dependency))
+  "Mercurial dependency data structure.")
 
 (defstruct (transitive-dependency (:include manifest-dependency))
   "Transitive dependency data structure."
@@ -117,6 +128,10 @@ of its location."))
   (format t "~%-> Preparing to clone Git dependency: ~S" (dependency-name dep))
   (install-dependency dep))
 
+(defmethod dispatch-dependency ((dep hg-dependency))
+  (format t "~%-> Preparing to clone Mercurial dependency: ~S" (dependency-name dep))
+  (install-dependency dep))
+
 (defmethod dispatch-dependency ((dep manifest-dependency))
   (format t "~%-> Preparing to install manifest dependency: ~S"
           (dependency-name dep))
@@ -130,6 +145,9 @@ of its location."))
                    (setf (dependency-location dep) (http location*))
                    (setf (dependency-download-strategy dep) strategy))
                   ((string= "git" strategy)
+                   (setf (dependency-location dep) (git location*))
+                   (setf (dependency-download-strategy dep) strategy))
+                  ((string= "hg" strategy)
                    (setf (dependency-location dep) (git location*))
                    (setf (dependency-download-strategy dep) strategy)))
             (install-dependency dep))))))
@@ -158,6 +176,12 @@ of the information we need to get it."))
 (defmethod install-dependency ((dep git-dependency))
   (format t "~%---> Resolving repository location.")
   (clone-git-repo (dependency-location dep) dep)
+  (make-dependency-available dep)
+  (install-transitive-dependencies dep))
+
+(defmethod install-dependency ((dep hg-dependency))
+  (format t "~%---> Resolving repository location.")
+  (clone-hg-repo (dependency-location dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
@@ -193,8 +217,6 @@ of the information we need to get it."))
        (_ ; unsupported strategy
         (format t "~%---X Cannot resolve package type: ~S" (dependency-name dep))
         (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
-
-
 
 (defun download-tarball (url dep)
   "Downloads tarball from <url>, and updates <dep> with the local src-path
@@ -241,6 +263,31 @@ and sys-path."
 (defun git-clone (from to)
   (trivial-shell:shell-command
    (concatenate 'string "git clone " from " " to)))
+
+
+(defun clone-hg-repo (url dep)
+  "Downloads tarball from <url>, and updates <dep> with the local src-path
+and sys-path."
+  (let ((clone-path (fad:merge-pathnames-as-directory
+                     (qi.paths:package-dir)
+                     (concatenate 'string
+                                  (dependency-name dep) "-"
+                                  (dependency-version dep) "/"))))
+    (format t "~%---> Cloning repo from ~S" url)
+    (format t "~%---> Cloning repo to ~S" (namestring clone-path))
+    (hg-clone url (namestring clone-path))
+    (if (probe-file (fad:merge-pathnames-as-file
+                     clone-path
+                     (concatenate 'string (dependency-name dep) ".asd")))
+        (set-dependency-paths clone-path dep)
+        (progn
+          (format t "~%---X Failure to clone repository!")
+          (setf *qi-broken-dependencies*
+                (pushnew dep *qi-broken-dependencies*))))))
+
+(defun hg-clone (from to)
+  (trivial-shell:shell-command
+   (concatenate 'string "hg clone " from " " to)))
 
 
 (defun unpack-tar (dep)

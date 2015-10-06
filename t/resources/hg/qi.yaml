@@ -1,0 +1,4 @@
+name: qi-hg-test
+packages:
+    - name: map-set
+      url: https://bitbucket.org/tarballs_are_good/map-set.hg

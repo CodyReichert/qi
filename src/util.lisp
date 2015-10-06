@@ -6,6 +6,7 @@
            :is-tar-url?
            :is-git-url?
            :is-gh-url?
+           :is-hg-url?
            :sym->str))
 (in-package :qi.util)
 
@@ -25,9 +26,14 @@
   (or (ppcre:scan "^git://.*" str)
       (ppcre:scan ".*.git" str)))
 
+(defun is-hg-url? (str)
+  "Is <str> a hg:// or .hg url."
+  (or (ppcre:scan "^hg://.*" str)
+      (ppcre:scan ".*.hg" str)))
+
 (defun is-gh-url? (str)
   "Is <str> a github url."
-  (ppcre:scan "^https?//github.*" str))
+  (ppcre:scan "^https://github.*" str))
 
 
 (defun asdf-system-path (sys)

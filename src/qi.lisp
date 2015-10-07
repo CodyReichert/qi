@@ -163,7 +163,7 @@ be in the CWD that specifies <project>'s dependencies."
                 when (qi.packages::dependency-sys-path d) do
                   (format t "~%   * ~A" (dependency-name d)))
              (unless (= 0 trans-amt)
-               (format t "~%~A transitive dependencies installed" trans-amt))))))
+               (format t "~%~A transitive dependencies installed~%" trans-amt))))))
 
 
 (defun broken-dependency-report ()

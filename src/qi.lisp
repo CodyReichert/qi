@@ -61,13 +61,13 @@ another lisp session, use (qi:up <system>)."
    (make-manifest-dependency
     :name (qi.util:sym->str system)
     :version version))
-  (load-asdf-system system)
+  (asdf:load-system system)
   (installed-dependency-report)
   (broken-dependency-report))
 
 (defun up (system)
   "Load <system> and make it available in the current lisp session."
-  (load-asdf-system system))
+  (asdf:load-system system))
 
 
 (defun install (project)
@@ -138,11 +138,11 @@ be in the CWD that specifies <project>'s dependencies."
          (name (gethash "name" config))
          (package-list (gethash "packages" config)))
     (loop for p in package-list
-          do (let ((dep (extract-dependency p)))
-               (if dep
-                   (dispatch-dependency dep)
-                   (format t "~%---X Cannot resolve dependency type"))))
-    (load-asdf-system name))
+       do (let ((dep (extract-dependency p)))
+            (if dep
+                (dispatch-dependency dep)
+                (format t "~%---X Cannot resolve dependency type"))))
+    (asdf:oos 'asdf:load-op name :verbose nil))
   (dependency-report))
 
 

@@ -8,3 +8,4 @@
 .#*
 .dependencies
 t/resources/tar/*-master/
+t/resources/tar/*-latest/

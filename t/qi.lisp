@@ -48,16 +48,6 @@
     (is (qi.packages::dependency-location dep)
         "https://bitbucket.org/tarballs_are_good/map-set")))
 
-(let ((config
-        (yaml:parse
-         (merge-pathnames #p"qi.yaml" "t/resources/hg/"))))
-  (ok "qi-hg-test" (gethash "name" config))
-  (let* ((p (car (gethash "packages" config)))
-         (dep (qi::extract-dependency p)))
-    (is (qi.packages::dependency-download-strategy dep) "hg")
-    (is (qi.packages::dependency-location dep)
-        "https://bitbucket.org/tarballs_are_good/map-set")))
-
 
 ;; -------------------
 ;; Function tests

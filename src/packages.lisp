@@ -1,6 +1,6 @@
 (in-package :cl-user)
 (defpackage qi.packages
-  (:use :cl :qi.paths :chipz)
+  (:use :cl :qi.paths)
   (:import-from :qi.manifest
                 :create-download-strategy
                 :manifest-package
@@ -191,8 +191,8 @@ of the information we need to get it."))
     (adt:match location loc
       ((http url) ; manifest holds an http url
        (download-tarball url dep)
-       (make-dependency-available dep)
-       (install-transitive-dependencies dep))
+       (install-transitive-dependencies dep)
+       (make-dependency-available dep))
       (_ (format t "~%---> Unable able to resolve location of: ~S" loc)
          (setf *qi-broken-dependencies* (pushnew dep *qi-broken-dependencies*))))))
 
@@ -291,20 +291,22 @@ and sys-path."
 
 
 (defun unpack-tar (dep)
-  (extract-tarball (dependency-src-path dep)))
+  (let ((unzipped-actual (extract-tarball* (dependency-src-path dep)))
+        (unzipped-expected (dependency-sys-path dep)))
+    (unless (or (eql unzipped-actual unzipped-expected)
+                (probe-file unzipped-expected))
+      (rename-file unzipped-actual unzipped-expected))))
 
 
-(defun extract-tarball (pathname)
-  "Extract a tarball (.tar.gz) file to a directory (*default-pathname-defaults*)."
-  (let ((*default-pathname-defaults* (qi.paths:package-dir)))
-    (with-open-file (tarball-stream pathname
-                                    :direction :input
-                                    :element-type '(unsigned-byte 8))
-      (archive::extract-files-from-archive
-       (archive:open-archive 'archive:tar-archive
-                             (chipz:make-decompressing-stream
-                              'chipz:gzip tarball-stream)
-                             :direction :input)))))
+(defun extract-tarball* (tarball &optional (destination *default-pathname-defaults*))
+  (let ((*default-pathname-defaults* (or (qi.paths:package-dir) destination)))
+    (gzip-stream:with-open-gzip-file (gzip tarball)
+      (let ((archive (archive:open-archive 'archive:tar-archive gzip)))
+        (prog1
+            (merge-pathnames
+             (archive:name (archive:read-entry-from-archive archive))
+             *default-pathname-defaults*)
+          (archive::extract-files-from-archive archive))))))
 
 
 (defun set-dependency-paths (out-path dep)

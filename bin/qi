@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-sbcl --noinform --non-interactive --load ../qi.asd --load ../src/cli.lisp --end-toplevel-options "$@"
+sbcl --noinform --non-interactive --load $HOME/.qi/src/cli.lisp --end-toplevel-options "$@"

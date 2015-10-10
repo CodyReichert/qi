@@ -43,9 +43,8 @@ feedback are appreciated.
 
 ** Usage
 
-   This section covers using Qi for a project. To see other, more
-   general, Qi commands and installing libraries globally see the API
-   section.
+*** Using Qi for a project
+   This section covers using Qi for a single project.
 
    The only requirement to installing a systems dependencies with Qi,
    is a =qi.yaml=.
@@ -71,6 +70,7 @@ feedback are appreciated.
    - *Manifest*: "Known" packages from the [[https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp][Qi manifest]].
    - *Tarball*: An HTTP URL to tarball.
    - *Git*: A git repository. You can also specify a tag or hash.
+   - *Mercurial*: A link to a mercurial repository.
    - *Local*: TODO, but you will be able to put a local path.
 
    With the above qi.yaml in your project, you can run the following
@@ -85,6 +85,31 @@ feedback are appreciated.
    of any that it could /not/ install. In a case where Qi can not
    install some dependencies, add direct links to those packages in
    your =qi.yaml=.
+
+*** Using Qi for global packages
+    You can also manage global packages with Qi. This is useful for
+    downloading and install packages that you want to always have
+    available. There's a simple interface, and two commands are the
+    most useful:
+
+    *install-global*
+
+   #+BEGIN_SRC lisp
+     * (qi:install-global :cl-project)
+   #+END_SRC
+
+    Running =install-global= installs the package into the global
+    package directory ($HOME/.qi/.dependencies). The installed package
+    is made available in the current session.
+
+    *up*
+
+   #+BEGIN_SRC lisp
+     * (qi:up :cl-project)
+   #+END_SRC
+
+    Running =up= loads a package that's in your global package
+    directory and makes it available in the current session.
 
 
 ** API
@@ -171,9 +196,25 @@ feedback are appreciated.
 
 
 ** CLI
-   The Qi command-line-interface is not yet ready, but will have
-   mostly all of the same commands as the API available. Keep an eye
-   out [[https://github.com/CodyReichert/qi/blob/master/bin/][here]] for updates to this.
+   The Qi CLI provides a few basic commands (more coming soon!). Make
+   sure that =$HOME/.qi/bin/= is in your path, or move =qi/bin/qi=
+   into your path.
+
+   Run =$ qi --help= For info on the available commands:
+
+   #+BEGIN_SRC sh
+   λ qi -h
+   Qi - A simple, open, free package manager for Common Lisp.
+
+   Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [Free-Args]
+
+   Available options:
+     -h, --help               Print this help menu.
+     -u, --upgrade            Upgrade Qi (pull the latest from git)
+     -i, --install PACKAGE    Install a package from Qi (global by default)
+
+   Issues https://github.com/cl-qi/qi
+   #+END_SRC
 
 
 ** Contributing
@@ -181,6 +222,13 @@ feedback are appreciated.
    merged or addressed. See the [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for a list of tasks
    that I'd like to see done. Make a PR or start a conversation if
    there's anything you'd like to see.
+
+   With any PR - add your name to the =Contributors= section below.
+
+
+** Contributors
+   - Cody Reichert (codyreichert@gmail.com)
+   - Nicolas Lamirault (@nlamirault)
 
 
 ** Dependencies
@@ -190,10 +238,6 @@ feedback are appreciated.
    See qi/dependencies for a full list.
 
    Also see [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this area.
-
-
-** Author
-   Cody Reichert (codyreichert@gmail.com)
 
 
 ** Copyright

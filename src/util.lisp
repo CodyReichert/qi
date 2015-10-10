@@ -13,8 +13,11 @@
 ;; Code:
 
 (defun sym->str (sym)
-  ":<sym> -> \"sym\"."
-  (string-downcase (symbol-name sym)))
+  "Takes a symbol (:sym), and returns it as a string (\"sym\"), unless
+<sym> is already a string. In both cases in downcases the string."
+  (if (symbolp sym)
+      (string-downcase (symbol-name sym))
+      (string-downcase sym)))
 
 (defun is-tar-url? (str)
   "Does <str> have a tarball extension."

@@ -7,3 +7,4 @@
 *~
 .#*
 .dependencies
+t/resources/tar/*-master/

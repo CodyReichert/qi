@@ -1,6 +1,14 @@
 (in-package :cl-user)
 (defpackage qi.cli
-  (:use :cl))
+  (:use :cl :qi)
+  (:import-from :trivial-shell
+                :shell-command)
+  (:import-from :qi.packages
+                :make-dependency)
+  (:import-from :qi.paths
+                :+qi-directory+)
+  (:import-from :qi.util
+                :sym->str))
 (in-package :qi.cli)
 
 (asdf:load-system :unix-opts)
@@ -12,8 +20,12 @@
      :description "Print this help menu."
      :short #\h
      :long "help")
+    (:name :upgrade
+     :description "Upgrade Qi (pull the latest from git)"
+     :short #\u
+     :long "upgrade")
     (:name :install
-     :description "Install a package from Qi (local by default)"
+     :description "Install a package from Qi (global by default)"
      :short #\i
      :long "install"
      :arg-parser #'identity
@@ -31,9 +43,51 @@
      (when it
        ,@body)))
 
-(defun opt-install (opt)
-  (format t "~%---> Installing ~a~%" opt))
 
+;;; Qi Install ($ qi --install [package] / $ qi -i [package]) internals
+
+(defun opt-install (opt)
+  "Install a package to Qi global package directory. The package will be available
+in all future lisp sessions."
+  (format t "~%---> Installing ~s" opt)
+  (handler-bind ((error #'(lambda (x)
+                           (format t "~%~3t× An error occured: ~A~%" x)
+                           (return-from opt-install nil))))
+    (qi:install-global opt)
+    (format t "~%~3t✓ Successfully installed ~S" opt)))
+
+;;;
+
+
+;;; Qi Upgrade ($ qi --upgrade / $ qi -u) internals
+
+(defvar git-pull-qi
+  (concatenate 'string "git -C " (namestring +qi-directory+) " pull")
+  "The text of a git command that runs 'git pull' from the Qi
+  installation directory.")
+
+(defvar git-rev-parse-qi
+  (concatenate 'string "git -C " (namestring +qi-directory+) " rev-parse HEAD")
+  "The text of a git command that runs 'git rev-parse HEAD' from the Qi
+  installation directory to get the hash of the current revision.")
+
+(defun run-qi-upgrade ()
+  "Upgrade Qi. Running `qi --upgrade' will pull the latest version from git."
+  ;; We should allow upgrading to a specific version, which should
+  ;; just be a matter of pulling, and checking out a tag (at least
+  ;; while git is still the installation method.
+  (cond ((probe-file +qi-directory+)
+         (format t "~%---> Upgrading Qi")
+         (multiple-value-bind (o) (shell-command git-pull-qi)
+           (if (string= "Already up-to-date." (subseq o 0 19)) ;kind of a hack
+               (format t "~%~3t✓ Qi is already up to date.~%")
+               (multiple-value-bind (v) (shell-command git-rev-parse-qi)
+                 (format t "~%~3t✓ Successful upgrade: ~A~%" v)))))
+        (t
+         (format t "~%---X Qi not installed, or not in expected directory.~%")
+         (format t "~%~3tTry running 'cd /path/to/.qi && git pull' instead."))))
+
+;;;
 
 (multiple-value-bind (options); free-args)
     (handler-case
@@ -51,5 +105,7 @@
      :suffix "Issues https://github.com/cl-qi/qi"
      :usage-of "qi"
      :args "[Free-Args]"))
+  (when-option (options :upgrade)
+    (run-qi-upgrade))
   (when-option (options :install)
     (opt-install (getf options :install))))

@@ -290,8 +290,9 @@ and sys-path."
    (concatenate 'string "hg clone " from " " to)))
 
 
-(defun unpack-tar (dep)
-  (let ((unzipped-actual (extract-tarball* (dependency-src-path dep)))
+(defun unpack-tar (dep &optional package-dir)
+  (let ((unzipped-actual (extract-tarball* (dependency-src-path dep)
+                                           (if package-dir package-dir)))
         (unzipped-expected (dependency-sys-path dep)))
     (unless (or (eql unzipped-actual unzipped-expected)
                 (probe-file unzipped-expected))
@@ -299,7 +300,7 @@ and sys-path."
 
 
 (defun extract-tarball* (tarball &optional (destination *default-pathname-defaults*))
-  (let ((*default-pathname-defaults* (or (qi.paths:package-dir) destination)))
+  (let ((*default-pathname-defaults* (or destination (qi.paths:package-dir))))
     (gzip-stream:with-open-gzip-file (gzip tarball)
       (let ((archive (archive:open-archive 'archive:tar-archive gzip)))
         (prog1

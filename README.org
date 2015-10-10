@@ -15,6 +15,9 @@ multiple Lisp implementations (only SBCL). Pull-requests, issues,
 feedback are appreciated.
 
 
+View the HTML version of this documentation [[http://codyreichert.github.io/qi/][here]].
+
+
 ** Installation
 
    1) Clone Qi into =$HOME/.qi=:

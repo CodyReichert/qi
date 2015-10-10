@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>(Qi) by CodyReichert</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>(Qi)</h1>
+        <h2>A simple, open, free Package Manager for Common Lisp</h2>
+        <a href="https://github.com/CodyReichert/qi" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p></p>
+
+
+
+<p>
+</p>
+
+<div id="content">
+<div id="table-of-contents">
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li>
+<a href="#sec-1">1. Qi - Package Manager for Common Lisp</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Installation</a></li>
+<li>
+<a href="#sec-1-2">1.2. Usage</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. Using Qi for a project</a></li>
+<li><a href="#sec-1-2-2">1.2.2. Using Qi for global packages</a></li>
+</ul>
+</li>
+<li>
+<a href="#sec-1-3">1.3. API</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. Hello</a></li>
+<li><a href="#sec-1-3-2">1.3.2. Install</a></li>
+<li><a href="#sec-1-3-3">1.3.3. Install Global</a></li>
+<li><a href="#sec-1-3-4">1.3.4. Up</a></li>
+<li><a href="#sec-1-3-5">1.3.5. Coming Soon</a></li>
+</ul>
+</li>
+<li>
+<a href="#sec-1-4">1.4. Manifest</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. Adding a package to the Qi Manifest</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5. CLI</a></li>
+<li><a href="#sec-1-6">1.6. Contributing</a></li>
+<li><a href="#sec-1-7">1.7. Contributors</a></li>
+<li><a href="#sec-1-8">1.8. Dependencies</a></li>
+<li><a href="#sec-1-9">1.9. Copyright</a></li>
+<li><a href="#sec-1-10">1.10. License</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<p></p>
+</div>
+
+<div id="outline-container-sec-1">
+<h2 id="sec-1">
+<a id="1-qi---package-manager-for-common-lisp" class="anchor" href="#1-qi---package-manager-for-common-lisp" aria-hidden="true"><span class="octicon octicon-link"></span></a>1 Qi - Package Manager for Common Lisp</h2>
+<div id="text-1">
+<p>
+Qi is a package manager for Common Lisp. There are several goals, at
+the top of which are: pinned dependency versions, project local
+dependencies, a place where anyone can upload their library for others
+to use. A CLI, project scaffolding, and bringing the wonderful world
+of Common Lisp libraries to anyone with one command are the more
+long-term goals.
+</p>
+
+<p>
+<b>The State of Qi</b>
+</p>
+
+<p>
+Qi is a new project. There are still bugs. There are still missing
+features. It might not work sometimes. It has not been tested on
+multiple Lisp implementations (only SBCL). Pull-requests, issues,
+feedback are appreciated.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1">
+<h3 id="sec-1-1">
+<a id="11-installation" class="anchor" href="#11-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Installation</h3>
+<div id="text-1-1">
+<ol>
+<li>Clone Qi into <code>$HOME/.qi</code>:
+</li>
+</ol>
+
+<div>
+
+<pre>git clone git@github.com:CodyReichert/qi ~/.qi/
+</pre>
+</div>
+
+<ol>
+<li>Load Qi when SBCL starts by adding these lines to your <code>.sbclrc</code>:
+</li>
+</ol>
+
+<div>
+
+<pre>(let ((qi-init (merge-pathnames ".qi/init.lisp" (user-homedir-pathname))))
+  (when (probe-file qi-init)
+    (load qi-init)))
+</pre>
+</div>
+
+<p>
+To test if Qi is installed correctly, run the following the a REPL:
+</p>
+
+<div>
+
+<pre>CL-USER&gt; (qi:hello)
+</pre>
+</div>
+
+<p>
+<i>Notes:</i>
+</p>
+
+<ul>
+<li>See <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> and <code>bin/</code> for some work that can/should be done
+around this part.
+</li>
+</ul>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2">
+<h3 id="sec-1-2">
+<a id="12-usage" class="anchor" href="#12-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 Usage</h3>
+<div id="text-1-2">
+</div>
+<div id="outline-container-sec-1-2-1">
+<h4 id="sec-1-2-1">
+<a id="121-using-qi-for-a-project" class="anchor" href="#121-using-qi-for-a-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1 Using Qi for a project</h4>
+<div id="text-1-2-1">
+<p>
+This section covers using Qi for a single project.
+</p>
+
+<p>
+The only requirement to installing a systems dependencies with Qi,
+is a <code>qi.yaml</code>.
+</p>
+
+<p>
+The <code>qi.yaml</code> specifies a projects dependencies. For an example of
+what this looks like, checkout out <a href="https://github.com/codyreichert/qi">Qi's qi.yaml</a>.
+</p>
+
+<p>
+Two required pieces to the <code>qi.yaml</code> are <i>name</i> and <i>packages</i>. So
+a basic project would look like this:
+</p>
+
+<div>
+
+<pre>name: my-project
+packages:
+  - name: alexandria
+  - name: clack
+    url: https://github.com/fukamachi/clack/archive/master.tar.gz
+  - name: cl-pass
+    url: https://github.com/eudoxia0/cl-pass.git
+</pre>
+</div>
+
+<p>
+Above there are three types of packages: Manifest, tarball, and git.
+</p>
+
+<ul>
+<li>
+<b>Manifest</b>: "Known" packages from the <a href="https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp">Qi manifest</a>.
+</li>
+<li>
+<b>Tarball</b>: An HTTP URL to tarball.
+</li>
+<li>
+<b>Git</b>: A git repository. You can also specify a tag or hash.
+</li>
+<li>
+<b>Mercurial</b>: A link to a mercurial repository.
+</li>
+<li>
+<b>Local</b>: TODO, but you will be able to put a local path.
+</li>
+</ul>
+
+<p>
+With the above qi.yaml in your project, you can run the following
+to install and load the systems:
+</p>
+
+<div>
+
+<pre>* (load "myproject.asd")
+* (qi:install :myproject)
+</pre>
+</div>
+
+<p>
+Qi take's care of any transitive dependencies and will let you know
+of any that it could <i>not</i> install. In a case where Qi can not
+install some dependencies, add direct links to those packages in
+your <code>qi.yaml</code>.
+</p>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2">
+<h4 id="sec-1-2-2">
+<a id="122-using-qi-for-global-packages" class="anchor" href="#122-using-qi-for-global-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.2 Using Qi for global packages</h4>
+<div id="text-1-2-2">
+<p>
+You can also manage global packages with Qi. This is useful for
+downloading and install packages that you want to always have
+available. There's a simple interface, and two commands are the
+most useful:
+</p>
+
+<p>
+<b>install-global</b>
+</p>
+
+<div>
+
+<pre>* (qi:install-global :cl-project)
+</pre>
+</div>
+
+<p>
+Running <code>install-global</code> installs the package into the global
+package directory ($HOME/.qi/.dependencies). The installed package
+is made available in the current session.
+</p>
+
+<p>
+<b>up</b>
+</p>
+
+<div>
+
+<pre>* (qi:up :cl-project)
+</pre>
+</div>
+
+<p>
+Running <code>up</code> loads a package that's in your global package
+directory and makes it available in the current session.
+</p>
+
+<p></p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3">
+<h3 id="sec-1-3">
+<a id="13-api" class="anchor" href="#13-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3 API</h3>
+<div id="text-1-3">
+<p>
+Qi's API is composed of a few commands, documented below:
+</p>
+</div>
+
+<div id="outline-container-sec-1-3-1">
+<h4 id="sec-1-3-1">
+<a id="131-hello" class="anchor" href="#131-hello" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.1 Hello</h4>
+<div id="text-1-3-1">
+<p>
+Prints some information about Qi to <b>standard-output</b>. If this
+prints, Qi is installed correctly.
+</p>
+
+<div>
+
+<pre>(qi:hello)
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-2">
+<h4 id="sec-1-3-2">
+<a id="132-install" class="anchor" href="#132-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.2 Install</h4>
+<div id="text-1-3-2">
+<p>
+Installs a system and it's dependencies. All dependencies are
+installed local to the system directory in <code>.dependencies/</code>.
+</p>
+
+<ul>
+<li>For any dependencies that are not already available, Qi will try to
+download them from the Manifest. If all else fails, it will print
+to <b>standard-output</b> what packages could not be installed.
+</li>
+</ul>
+
+<div>
+
+<pre>(qi:install :system)
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-3">
+<h4 id="sec-1-3-3">
+<a id="133-install-global" class="anchor" href="#133-install-global" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.3 Install Global</h4>
+<div id="text-1-3-3">
+<p>
+Installs a system to the global package directory. The system
+should be from the Manifest. The system is made available in the
+current session.
+</p>
+
+<div>
+
+<pre>(qi:install-global :system &amp;optional version)
+</pre>
+</div>
+
+<p>
+<i>To make a global system available at any time, you can use</i>
+<i>(qi:up :system)</i>
+</p>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-4">
+<h4 id="sec-1-3-4">
+<a id="134-up" class="anchor" href="#134-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.4 Up</h4>
+<div id="text-1-3-4">
+<p>
+ASDF load's a system to be available in the current session.
+</p>
+
+<div>
+
+<pre>(qi:up :system)
+</pre>
+</div>
+
+<p>
+<i>This is the equivalient of running (asdf:load-system :system)</i>
+</p>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-5">
+<h4 id="sec-1-3-5">
+<a id="135-coming-soon" class="anchor" href="#135-coming-soon" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.5 Coming Soon</h4>
+<div id="text-1-3-5">
+<p>
+<b>Not implemented</b> <code>(qi:new ...)</code>
+</p>
+
+<p>
+Generate a new project scaffold.
+</p>
+
+<p>
+<b>Not implemented</b> <code>(qi:setup ...)</code>
+</p>
+
+<p>
+Generate a qi.yaml for an existing project.
+</p>
+
+<p>
+<b>Not implemented</b> <code>(qi:update-manifest ...)</code>
+</p>
+
+<p>
+Update the Qi manifest to get access to new packages and updates.
+</p>
+
+<p>
+<b>Not implemented</b> <code>(qi:publish ...)</code>
+</p>
+
+<p>
+Publish a new package to the Qi Manifest
+</p>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4">
+<h3 id="sec-1-4">
+<a id="14-manifest" class="anchor" href="#14-manifest" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.4 Manifest</h3>
+<div id="text-1-4">
+<p>
+The <a href="https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp">Qi Manifest</a> is a list of known packages - which makes it easy
+to simply install packages by their name. Qi's Manifest was
+initially seeded by <a href="https://github.com/quicklisp/quicklisp-projects/">Quicklisp's projects</a> which means that any
+project you can find in Quicklisp can be found in Qi.
+</p>
+</div>
+
+<div id="outline-container-sec-1-4-1">
+<h4 id="sec-1-4-1">
+<a id="141-adding-a-package-to-the-qi-manifest" class="anchor" href="#141-adding-a-package-to-the-qi-manifest" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.4.1 Adding a package to the Qi Manifest</h4>
+<div id="text-1-4-1">
+<p>
+Any and all packages are welcome in the Qi Manifest. The only
+requirement is that it is a lisp project that is asdf-loadable.
+</p>
+
+<p>
+To add a package to the manifest, submit a pull-request at
+<a href="https://github.com/CodyReichert/qi/">https://github.com/CodyReichert/qi/</a>, or send a patch file to
+codyreichert@gmail.com.
+</p>
+
+<p>
+See <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for some work to be done in this
+area. Ideally, we have <code>recipes/</code> that contains the information
+about each Qi package. That way a new recipe can be added and the
+Maniest can be updated.
+</p>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5">
+<h3 id="sec-1-5">
+<a id="15-cli" class="anchor" href="#15-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.5 CLI</h3>
+<div id="text-1-5">
+<p>
+The Qi CLI provides a few basic commands (more coming soon!). Make
+sure that <code>$HOME/.qi/bin/</code> is in your path, or move <code>qi/bin/qi</code>
+into your path.
+</p>
+
+<p>
+Run <code>$ qi --help</code> For info on the available commands:
+</p>
+
+<div>
+
+<pre>λ qi -h
+Qi - A simple, open, free package manager for Common Lisp.
+
+Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [Free-Args]
+
+Available options:
+  -h, --help               Print this help menu.
+  -u, --upgrade            Upgrade Qi (pull the latest from git)
+  -i, --install PACKAGE    Install a package from Qi (global by default)
+
+Issues https://github.com/cl-qi/qi
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6">
+<h3 id="sec-1-6">
+<a id="16-contributing" class="anchor" href="#16-contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.6 Contributing</h3>
+<div id="text-1-6">
+<p>
+PR's and Issues are extremely welcomed and will likely all be
+merged or addressed. See the <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for a list of tasks
+that I'd like to see done. Make a PR or start a conversation if
+there's anything you'd like to see.
+</p>
+
+<p>
+With any PR - add your name to the <code>Contributors</code> section below.
+</p>
+</div>
+
+<p></p>
+</div>
+
+<div id="outline-container-sec-1-7">
+<h3 id="sec-1-7">
+<a id="17-contributors" class="anchor" href="#17-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.7 Contributors</h3>
+<div id="text-1-7">
+<ul>
+<li>Cody Reichert (codyreichert@gmail.com)
+</li>
+<li>Nicolas Lamirault (<a href="https://github.com/nlamirault" class="user-mention">@nlamirault</a>)
+</li>
+</ul>
+</div>
+
+<p></p>
+</div>
+
+<div id="outline-container-sec-1-8">
+<h3 id="sec-1-8">
+<a id="18-dependencies" class="anchor" href="#18-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.8 Dependencies</h3>
+<div id="text-1-8">
+<p>
+Qi has a few dependencies, but they are all bundled with the
+repository to allow Qi to bootstrap itself.
+</p>
+
+<p>
+See qi/dependencies for a full list.
+</p>
+
+<p>
+Also see <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for some work to be done in this area.
+</p>
+</div>
+
+<p></p>
+</div>
+
+<div id="outline-container-sec-1-9">
+<h3 id="sec-1-9">
+<a id="19-copyright" class="anchor" href="#19-copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.9 Copyright</h3>
+<div id="text-1-9">
+<p>
+Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
+</p>
+</div>
+
+<p></p>
+</div>
+
+<div id="outline-container-sec-1-10">
+<h3 id="sec-1-10">
+<a id="110-license" class="anchor" href="#110-license" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.10 License</h3>
+<div id="text-1-10">
+<p>
+BSD
+</p>
+</div>
+
+<p></p>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p>Updated: 2015-10-10 Sat 16:05</p>
+</div>
+
+<p>
+</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/CodyReichert/qi/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/CodyReichert/qi/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/CodyReichert/qi"></a> is maintained by <a href="https://github.com/CodyReichert">CodyReichert</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-68611557-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

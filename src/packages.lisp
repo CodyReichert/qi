@@ -332,21 +332,24 @@ and sys-path."
       (let ((trans-deps
              (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
         (loop for d in trans-deps do
-             (if (or (system-is-available? d)
-                     (dependency-installed? d))
-                 (set-trans-dep d (dependency-name dep))
-                 (progn
-                   (format
-                    t "~%---X Checking manifest for transitive dependency: ~S" d)
-                   (let ((manifest-package
-                          (manifest-get-by-name (dependency-name dep))))
-                     (cond ((eql nil manifest-package)
-                            (format t "~%---X Can not install ~A~%" dep)
-                            (set-broken-trans-dep d (dependency-name dep)))
-                           (t
-                            (format t "~%---> Found package in manifest!")
-                            (make-trans-dep-from-manifest
-                             d (dependency-name dep)))))))))))
+             (cond ((or (system-is-available? d)
+                        (dependency-installed? d))
+                    (let ((tdep (make-transitive-dependency
+                                 :name d
+                                 :caller (dependency-name dep))))
+                      (install-transitive-dependencies tdep)
+                      (set-trans-dep d (dependency-name dep))))
+                   (t
+                    (format
+                     t "~%.... Checking manifest for transitive dependency: ~S" d)
+                    (let ((manifest-package (manifest-get-by-name d)))
+                      (cond ((not manifest-package)
+                             (format t "~%---X Can not install ~A~%" dep)
+                             (set-broken-trans-dep d (dependency-name dep)))
+                            (t
+                             (format t "~%---> Found package in manifest!")
+                             (make-trans-dep-from-manifest
+                              d (dependency-name dep)))))))))))
 
 
 (defun make-trans-dep-from-manifest (name caller)

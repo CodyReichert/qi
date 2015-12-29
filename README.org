@@ -216,7 +216,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
      -u, --upgrade            Upgrade Qi (pull the latest from git)
      -i, --install PACKAGE    Install a package from Qi (global by default)
 
-   Issues https://github.com/cl-qi/qi
+   Issues https://github.com/CodyReichert/qi
    #+END_SRC
 
 

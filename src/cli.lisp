@@ -102,7 +102,7 @@ in all future lisp sessions."
   (when-option (options :help)
     (opts:describe
      :prefix "Qi - A simple, open, free package manager for Common Lisp."
-     :suffix "Issues https://github.com/cl-qi/qi"
+     :suffix "Issues https://github.com/CodyReichert/qi"
      :usage-of "qi"
      :args "[Free-Args]"))
   (when-option (options :upgrade)

@@ -15,11 +15,11 @@
 
 ;; Global paths
 
-(defvar +qi-directory+ (merge-pathnames ".qi/" (user-homedir-pathname))
-  "Pathname for the global ~/.qi directory.")
+(defvar +qi-directory+ (asdf:system-source-directory "qi")
+  "Pathname for the global Qi directory.")
 
 (defvar +qi-dep-dir+ (merge-pathnames "dependencies/" +qi-directory+)
-  "Pathname for the global ~/.qi/dependencies directory.")
+  "Pathname for the global dependencies/ directory.")
 
 (defvar +global-package-dir+
   (merge-pathnames "packages/" +qi-directory+)

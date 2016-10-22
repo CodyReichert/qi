@@ -20,18 +20,16 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 
 ** Installation
 
-   1) Clone Qi into =$HOME/.qi=:
+   1) Clone Qi anywhere:
 
    #+BEGIN_SRC sh
-     git clone git@github.com:CodyReichert/qi ~/.qi/
+     git clone https://github.com/CodyReichert/qi.git
    #+END_SRC
 
    2) Load Qi when SBCL starts by adding these lines to your =.sbclrc=:
 
    #+BEGIN_SRC lisp
-     (let ((qi-init (merge-pathnames ".qi/init.lisp" (user-homedir-pathname))))
-       (when (probe-file qi-init)
-         (load qi-init)))
+     (load "path/to/qi")
    #+END_SRC
 
    To test if Qi is installed correctly, run the following the a REPL:
@@ -42,7 +40,6 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
    /Notes:/
    - See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] and =bin/= for some work that can/should be done
      around this part.
-
 
 ** Usage
 
@@ -102,8 +99,8 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
    #+END_SRC
 
     Running =install-global= installs the package into the global
-    package directory ($HOME/.qi/.dependencies). The installed package
-    is made available in the current session.
+    package directory (qi/dependencies). The installed package is made
+    available in the current session.
 
     *up*
 
@@ -200,8 +197,8 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 
 ** CLI
    The Qi CLI provides a few basic commands (more coming soon!). Make
-   sure that =$HOME/.qi/bin/= is in your path, or move =qi/bin/qi=
-   into your path.
+   sure that =qi/bin/= is in your path, or move =qi/bin/qi= into your
+   path.
 
    Run =$ qi --help= For info on the available commands:
 
@@ -232,7 +229,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 ** Contributors
    - Cody Reichert (codyreichert@gmail.com)
    - Nicolas Lamirault (@nlamirault)
-
+   - Alex Dunn (@dunn)
 
 ** Dependencies
    Qi has a few dependencies, but they are all bundled with the

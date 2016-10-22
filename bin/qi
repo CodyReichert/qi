@@ -1,3 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-sbcl --noinform --non-interactive --load $HOME/.qi/src/cli.lisp --end-toplevel-options "$@"
+set -e
+
+cd "$(dirname ${BASH_SOURCE[0]})/../"
+
+sbcl --noinform --non-interactive \
+     --load init.lisp \
+     --load src/cli.lisp \
+     --end-toplevel-options "$@"

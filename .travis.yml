@@ -1,0 +1,26 @@
+language: common-lisp
+sudo: false
+
+env:
+  global:
+    - PATH=$HOME/.roswell/bin:$PATH
+    - ROSWELL_INSTALL_DIR=$HOME/.roswell
+  matrix:
+    - LISP=sbcl-bin
+
+cache:
+  directories:
+    - $HOME/.roswell
+    - $HOME/.config/common-lisp
+
+install:
+  - curl -L https://raw.githubusercontent.com/roswell/roswell/release/scripts/install-for-ci.sh | sh
+  - ros install prove
+
+before_script:
+  - ros config
+  - mkdir -p $HOME/.qi/t
+  - cp -r $TRAVIS_BUILD_DIR/t/* $HOME/.qi/t/
+
+script:
+  - run-prove qi-test.asd

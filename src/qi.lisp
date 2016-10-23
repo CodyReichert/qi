@@ -9,8 +9,7 @@
                 :is-hg-url?
                 :is-gh-url?)
   (:import-from :qi.paths
-                :+project-name+
-                :+global-package-dir+)
+                :+project-name+)
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-broken-dependencies*

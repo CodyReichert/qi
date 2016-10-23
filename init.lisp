@@ -6,7 +6,6 @@
 
 (defvar +qi-directory+ (make-pathname :defaults *load-truename* :name nil :type nil))
 (defvar +qi-dependencies+ (merge-pathnames "dependencies/" +qi-directory+))
-(defvar +qi-user-packages+ (merge-pathnames ".dependencies/packages/" +qi-directory+))
 
 (defun qi-dir (path)
   "Make a pathname rooted at +qi-directory+."

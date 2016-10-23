@@ -40,8 +40,8 @@
     :LOCATIONS (("latest" . "https://github.com/xach/zaws.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "yason"
-    :VC "http"
-    :LOCATIONS (("latest" . "http://netzhansa.com/yason.tar.gz")))
+    :VC "git"
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/yason.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "yaclml"
     :VC "git"

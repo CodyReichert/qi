@@ -221,10 +221,7 @@ of the information we need to get it."))
 (defun download-tarball (url dep)
   "Downloads tarball from <url>, and updates <dep> with the local src-path
 and sys-path."
-  (let* ((out-file (concatenate 'string
-                                (dependency-name dep) "-"
-                                (dependency-version dep) ".tar.gz"))
-         (out-path (fad:merge-pathnames-as-file (tar-dir) (pathname out-file))))
+  (let ((out-path (tarball-path dep)))
     (format t "~%---> Downloading tarball from ~S" url)
     (with-open-file (f (ensure-directories-exist out-path)
                        :direction :output
@@ -290,14 +287,19 @@ and sys-path."
    (concatenate 'string "hg clone " from " " to)))
 
 
-(defun unpack-tar (dep &optional package-dir)
-  (let ((unzipped-actual (extract-tarball* (dependency-src-path dep)
-                                           (if package-dir package-dir)))
-        (unzipped-expected (dependency-sys-path dep)))
+(defun tarball-path (dep)
+  (let ((out-file (concatenate 'string
+                                (dependency-name dep) "-"
+                                (dependency-version dep) ".tar.gz")))
+    (fad:merge-pathnames-as-file (+dep-cache+) (pathname out-file))))
+
+(defun unpack-tar (dep)
+  (let* ((tar-path (tarball-path dep))
+         (unzipped-actual (extract-tarball* tar-path (qi.paths:package-dir)))
+         (unzipped-expected (dependency-sys-path dep)))
     (unless (or (eql unzipped-actual unzipped-expected)
                 (probe-file unzipped-expected))
       (rename-file unzipped-actual unzipped-expected))))
-
 
 (defun extract-tarball* (tarball &optional (destination *default-pathname-defaults*))
   (let ((*default-pathname-defaults* (or destination (qi.paths:package-dir))))

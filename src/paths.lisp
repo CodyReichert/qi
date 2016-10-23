@@ -20,7 +20,7 @@
 (defun +dep-cache+ ()
   (fad:merge-pathnames-as-directory
    (or (uiop:getenv "TMPDIR")
-       "/tmp")
+       "/tmp/")
    #P"qi/archives/"))
 
 ;; Project local paths

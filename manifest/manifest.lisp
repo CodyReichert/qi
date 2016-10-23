@@ -990,10 +990,6 @@
     :LOCATIONS (("latest" . "https://github.com/AeroNotix/ryeboy.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rutils"
-    :VC "tagged-git"
-    :LOCATIONS (("latest" . "https://github.com/vseloved/rutils.git 1.0.0")))
- #S(QI.MANIFEST::MANIFEST-PACKAGE
-    :NAME "rutils"
     :VC "git"
     :LOCATIONS (("latest" . "https://github.com/vseloved/rutils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE

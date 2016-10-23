@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>README</title>
-<!-- 2016-10-22 Sat 20:30 -->
+<!-- 2016-10-24 Mon 17:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <meta  name="generator" content="Org-mode" />
@@ -315,6 +315,16 @@ to install and load the systems:
 </div>
 
 <p>
+You can also install project dependencies from the command-line:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">qi --install-deps path/to/myproject.asd
+</pre>
+</div>
+
+<p>
 Qi take's care of any transitive dependencies and will let you know
 of any that it could <i>not</i> install. In a case where Qi can not
 install some dependencies, add direct links to those packages in
@@ -548,12 +558,13 @@ Run <code>$ qi --help</code> For info on the available commands:
 <pre class="src src-sh">&#955; qi -h
 Qi - A simple, open, free package manager for Common Lisp.
 
-Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [Free-Args]
+Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
 
 Available options:
-  -h, --help               Print this help menu.
-  -u, --upgrade            Upgrade Qi (pull the latest from git)
-  -i, --install PACKAGE    Install a package from Qi (global by default)
+  -h, --help                   Print this help menu.
+  -u, --upgrade                Upgrade Qi (pull the latest from git)
+  -i, --install PACKAGE        Install a package from Qi (global by default)
+  -d, --install-deps ASD-FILE  Install dependencies locally for the specified system
 
 Issues https://github.com/CodyReichert/qi
 </pre>
@@ -630,7 +641,7 @@ BSD
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-10-22 Sat 20:30</p>
+<p class="date">Created: 2016-10-24 Mon 17:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

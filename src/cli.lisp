@@ -29,8 +29,13 @@
      :short #\i
      :long "install"
      :arg-parser #'identity
-     :command "install"
-     :meta-var "PACKAGE"))
+     :meta-var "PACKAGE")
+    (:name :install-deps
+     :description "Install local dependencies for the specified system"
+     :short #\d
+     :long "install-deps"
+     :arg-parser #'identity
+     :meta-var "ASD-FILE"))
 
 
 (defun unknown-option (cond)
@@ -44,8 +49,13 @@
        ,@body)))
 
 
-;;; Qi Install ($ qi --install [package] / $ qi -i [package]) internals
+;;; Qi install-deps ($ qi --install-deps project.asd)
+(defun opt-install-deps (input)
+  "Install the dependencies locally for the system definition file provided as INPUT."
+  (load input)
+  (qi:install (pathname-name input)))
 
+;;; Qi Install ($ qi --install [package] / $ qi -i [package]) internals
 (defun opt-install (opt)
   "Install a package to Qi global package directory. The package will be available
 in all future lisp sessions."
@@ -106,6 +116,8 @@ in all future lisp sessions."
      :usage-of "qi"
      :args "[Free-Args]"))
   (when-option (options :upgrade)
-    (run-qi-upgrade))
+               (run-qi-upgrade))
   (when-option (options :install)
-    (opt-install (getf options :install))))
+               (opt-install (getf options :install)))
+  (when-option (options :install-deps)
+               (opt-install-deps (getf options :install-deps))))

@@ -240,8 +240,8 @@ and sys-path."
 
 
 (defun clone-git-repo (url dep)
-  "Downloads tarball from <url>, and updates <dep> with the local src-path
-and sys-path."
+  "Clones Git repository from <url>, and updates <dep> with the local
+src-path and sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
                      (qi.paths:package-dir)
                      (concatenate 'string
@@ -266,8 +266,8 @@ and sys-path."
 
 
 (defun clone-hg-repo (url dep)
-  "Downloads tarball from <url>, and updates <dep> with the local src-path
-and sys-path."
+  "Clones Mercurial repository from <url>, and updates <dep> with the
+local src-path and sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
                      (qi.paths:package-dir)
                      (concatenate 'string

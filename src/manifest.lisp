@@ -55,7 +55,7 @@ wrapped in the ADT."
        when (string= version (car v/l))
        do
          (setf loc (cdr v/l))
-         (format t "~%---> Resolved verion ~S for ~S" (car v/l) (manifest-package-name pack)))
+         (format t "~%---> Resolved version ~S for ~S" (car v/l) (manifest-package-name pack)))
     (cond ((string= "http" vc)
            (values loc "tarball"))
           ((string= "git" vc)

@@ -1,7 +1,7 @@
 (#S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "zsort"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jorgetavares/zsort.git")))
+    :LOCATIONS (("latest" . "https://github.com/jorgetavares/zsort.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "zs3"
     :VC "http"
@@ -37,7 +37,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "zaws"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/xach/zaws.git")))
+    :LOCATIONS (("latest" . "https://github.com/xach/zaws.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "yason"
     :VC "http"
@@ -49,11 +49,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "yaclanapht"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/anaphora.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/anaphora.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xuriella"
     :VC "git"
-    :LOCATIONS (("latest" . "git://repo.or.cz/xuriella.git")))
+    :LOCATIONS (("latest" . "https://repo.or.cz/xuriella.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xsubseq"
     :VC "git"
@@ -79,11 +79,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xml.location"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/scymtym/xml.location.git")))
+    :LOCATIONS (("latest" . "https://github.com/scymtym/xml.location.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xml-mop"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/xml-mop")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/xml-mop.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xml-emitter"
     :VC "http"
@@ -96,7 +96,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xhtmlgen"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/xhtmlgen")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/xhtmlgen.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xhtmlambda"
     :VC "git"
@@ -105,23 +105,23 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xecto"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pkhuong/Xecto.git")))
+    :LOCATIONS (("latest" . "https://github.com/pkhuong/Xecto.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "xarray"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/blindglobe/xarray.git")))
+    :LOCATIONS (("latest" . "https://github.com/blindglobe/xarray.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "x.let-star"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ks/X.LET-STAR.git")))
+    :LOCATIONS (("latest" . "https://github.com/ks/X.LET-STAR.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "x.fdatatypes"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ks/X.FDATATYPES.git")))
+    :LOCATIONS (("latest" . "https://github.com/ks/X.FDATATYPES.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "wuwei"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mtravers/wuwei.git")))
+    :LOCATIONS (("latest" . "https://github.com/mtravers/wuwei.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "wu-sugar"
     :VC "git"
@@ -151,7 +151,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "whistle"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gigamonkey/whistle.git")))
+    :LOCATIONS (("latest" . "https://github.com/gigamonkey/whistle.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weft"
     :VC "git"
@@ -164,7 +164,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/skypher/weblocks.git")))
+    :LOCATIONS (("latest" . "https://github.com/skypher/weblocks.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks"
     :VC "mercurial"
@@ -172,15 +172,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks-utils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/weblocks-utils.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/weblocks-utils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks-tree-widget"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/weblocks-tree-widget.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/weblocks-tree-widget.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks-stores"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/weblocks-stores.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/weblocks-stores.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "weblocks-examples"
     :VC "git"
@@ -192,7 +192,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "vivace-graph"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kraison/vivace-graph.git")))
+    :LOCATIONS (("latest" . "https://github.com/kraison/vivace-graph.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "vgplot"
     :VC "git"
@@ -213,7 +213,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "vector"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/elbeno/vector.git")))
+    :LOCATIONS (("latest" . "https://github.com/elbeno/vector.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "vecto"
     :VC "http"
@@ -222,7 +222,7 @@
     :NAME "vas-string-metrics"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/vsedach/vas-string-metrics.git")))
+                 . "https://github.com/vsedach/vas-string-metrics.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "varjo"
     :VC "git"
@@ -230,7 +230,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "uuid"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dardoria/uuid.git")))
+    :LOCATIONS (("latest" . "https://github.com/dardoria/uuid.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "utm"
     :VC "git"
@@ -238,7 +238,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "utils-kt"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kennytilton/utils-kt.git")))
+    :LOCATIONS (("latest" . "https://github.com/kennytilton/utils-kt.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "utilities.print-tree"
     :VC "git"
@@ -248,7 +248,7 @@
     :NAME "utilities.print-items"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/scymtym/utilities.print-items.git")))
+                 . "https://github.com/scymtym/utilities.print-items.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "utilities.binary-dump"
     :VC "git"
@@ -285,7 +285,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "unix-options"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/astine/unix-options.git")))
+    :LOCATIONS (("latest" . "https://github.com/astine/unix-options.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "universal-config"
     :VC "git"
@@ -294,15 +294,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "unit-test"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/unit-test.git")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/unit-test.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "unit-formula"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ramarren/unit-formula.git")))
+    :LOCATIONS (("latest" . "https://github.com/Ramarren/unit-formula.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "unicly"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mon-key/unicly.git")))
+    :LOCATIONS (("latest" . "https://github.com/mon-key/unicly.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "umlisp"
     :VC "kmr-git"
@@ -344,7 +344,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "twfy"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jamtho/twfy.git")))
+    :LOCATIONS (("latest" . "https://github.com/jamtho/twfy.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivialib.type-unify"
     :VC "git"
@@ -361,7 +361,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-types"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/m2ym/trivial-types.git")))
+    :LOCATIONS (("latest" . "https://github.com/m2ym/trivial-types.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-timers"
     :VC "http"
@@ -389,12 +389,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-shell"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/trivial-shell.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/trivial-shell.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-raw-io"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/redline6561/trivial-raw-io.git")))
+                 . "https://github.com/redline6561/trivial-raw-io.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-open-browser"
     :VC "git"
@@ -404,7 +404,7 @@
     :NAME "trivial-octet-streams"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/froydnj/trivial-octet-streams.git")))
+                 . "https://github.com/froydnj/trivial-octet-streams.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-mimes"
     :VC "git"
@@ -417,15 +417,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-ldap"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rwiker/trivial-ldap.git")))
+    :LOCATIONS (("latest" . "https://github.com/rwiker/trivial-ldap.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-lazy"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dsorokin/trivial-lazy.git")))
+    :LOCATIONS (("latest" . "https://github.com/dsorokin/trivial-lazy.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-irc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/karvus/trivial-irc.git")))
+    :LOCATIONS (("latest" . "https://github.com/karvus/trivial-irc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-indent"
     :VC "git"
@@ -439,17 +439,17 @@
     :NAME "trivial-gray-streams"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/trivial-gray-streams/trivial-gray-streams.git")))
+                 . "https://github.com/trivial-gray-streams/trivial-gray-streams.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-garbage"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/trivial-garbage/trivial-garbage")))
+                 . "https://github.com/trivial-garbage/trivial-garbage.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-features"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/trivial-features/trivial-features")))
+                 . "https://github.com/trivial-features/trivial-features.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-extract"
     :VC "git"
@@ -483,7 +483,7 @@
     :NAME "trivial-bit-streams"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/Lovesan/trivial-bit-streams.git")))
+                 . "https://github.com/Lovesan/trivial-bit-streams.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "trivial-benchmark"
     :VC "git"
@@ -515,7 +515,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "treedb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/chfin/treedb.git")))
+    :LOCATIONS (("latest" . "https://github.com/chfin/treedb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "transparent-wrap"
     :VC "git"
@@ -529,7 +529,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "towers"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/death/towers.git")))
+    :LOCATIONS (("latest" . "https://github.com/death/towers.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "torta"
     :VC "git"
@@ -537,19 +537,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "toot"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gigamonkey/toot.git")))
+    :LOCATIONS (("latest" . "https://github.com/gigamonkey/toot.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "toadstool"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kisp/toadstool.git")))
+    :LOCATIONS (("latest" . "https://github.com/kisp/toadstool.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "tinaa"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/tinaa.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/tinaa.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "time-interval"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/time-interval.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/time-interval.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "tiff4cl"
     :VC "http"
@@ -559,11 +559,11 @@
     :NAME "thread.comm.rendezvous"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/kkazuo/thread.comm.rendezvous.git")))
+                 . "https://github.com/kkazuo/thread.comm.rendezvous.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "thread-pool"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kiuma/thread-pool.git")))
+    :LOCATIONS (("latest" . "https://github.com/kiuma/thread-pool.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "thorn"
     :VC "git"
@@ -571,7 +571,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "thnappy"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/flambard/thnappy")))
+    :LOCATIONS (("latest" . "https://github.com/flambard/thnappy.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "text-query"
     :VC "http"
@@ -584,7 +584,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "testbild"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e-user/testbild.git")))
+    :LOCATIONS (("latest" . "https://github.com/e-user/testbild.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "terminfo"
     :VC "git"
@@ -593,7 +593,7 @@
     :NAME "temporary-file"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/hanshuebner/temporary-file.git")))
+                 . "https://github.com/hanshuebner/temporary-file.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "temporal-functions"
     :VC "git"
@@ -608,11 +608,11 @@
     :NAME "telnetlib"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/brianjcj/telnetlib-for-common-lisp")))
+                 . "https://github.com/brianjcj/telnetlib-for-common-lisp.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "teepeedee2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vii/teepeedee2.git")))
+    :LOCATIONS (("latest" . "https://github.com/vii/teepeedee2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "tbnl"
     :VC "http"
@@ -620,11 +620,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "tap-unit-test"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jhanley634/tap-unit-test.git")))
+    :LOCATIONS (("latest" . "https://github.com/jhanley634/tap-unit-test.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "talcl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/talcl.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/talcl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "tagger"
     :VC "git"
@@ -643,7 +643,7 @@
     :NAME "symbol-munger"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/symbol-munger.git")))
+                 . "https://github.com/AccelerationNet/symbol-munger.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sxql"
     :VC "git"
@@ -659,11 +659,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "swank-crew"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/swank-crew.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/swank-crew.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "swank-client"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/swank-client.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/swank-client.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "submarine"
     :VC "darcs"
@@ -672,7 +672,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stumpwm"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/stumpwm/stumpwm.git")))
+    :LOCATIONS (("latest" . "https://github.com/stumpwm/stumpwm.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stump-touchy-mode-line"
     :VC "git"
@@ -681,7 +681,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stringprep"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/esessoms/stringprep.git")))
+    :LOCATIONS (("latest" . "https://github.com/esessoms/stringprep.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "string-escape"
     :VC "http"
@@ -694,15 +694,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stp-query"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/esessoms/stp-query.git")))
+    :LOCATIONS (("latest" . "https://github.com/esessoms/stp-query.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stmx"
     :VC "branched-git"
-    :LOCATIONS (("latest" . "git://github.com/cosmos72/stmx.git stable")))
+    :LOCATIONS (("latest" . "https://github.com/cosmos72/stmx.git stable")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stem"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/stem.git")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/stem.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "stefil"
     :VC "darcs"
@@ -720,7 +720,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "st-json"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/marijnh/ST-JSON.git")))
+    :LOCATIONS (("latest" . "https://github.com/marijnh/ST-JSON.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "squirl"
     :VC "git"
@@ -728,7 +728,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sqnc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tlh/sqnc.git")))
+    :LOCATIONS (("latest" . "https://github.com/tlh/sqnc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "split-sequence"
     :VC "http"
@@ -737,7 +737,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "spinneret"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ruricolist/spinneret.git")))
+    :LOCATIONS (("latest" . "https://github.com/ruricolist/spinneret.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "spellcheck"
     :VC "git"
@@ -745,7 +745,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "spatial-trees"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/spatial-trees.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/spatial-trees.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "spartns"
     :VC "http"
@@ -787,7 +787,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "smug"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/drewc/smug.git")))
+    :LOCATIONS (("latest" . "https://github.com/drewc/smug.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "smtp4cl"
     :VC "http-bz2"
@@ -809,7 +809,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sip-hash"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/sip-hash.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/sip-hash.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "single-threaded-ccl"
     :VC "git"
@@ -831,11 +831,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "simple-finalizer"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Balooga/Simple-Finalizer.git")))
+    :LOCATIONS (("latest" . "https://github.com/Balooga/Simple-Finalizer.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "simple-date-time"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/quek/simple-date-time.git")))
+    :LOCATIONS (("latest" . "https://github.com/quek/simple-date-time.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "simple-currency"
     :VC "git"
@@ -843,7 +843,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "shuffletron"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ahefner/shuffletron.git")))
+    :LOCATIONS (("latest" . "https://github.com/ahefner/shuffletron.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "should-test"
     :VC "git"
@@ -851,7 +851,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "shelly"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/shelly.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/shelly.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "shellpool"
     :VC "git"
@@ -859,19 +859,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sheeple"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/sheeple.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/sheeple.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "shadchen"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/VincentToups/shadchen.git")))
+    :LOCATIONS (("latest" . "https://github.com/VincentToups/shadchen.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sha3"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pmai/sha3.git")))
+    :LOCATIONS (("latest" . "https://github.com/pmai/sha3.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sexml"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/madnificent/SEXML.git")))
+    :LOCATIONS (("latest" . "https://github.com/madnificent/SEXML.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "session-token"
     :VC "git"
@@ -892,7 +892,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "secure-random"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/avodonosov/secure-random.git")))
+    :LOCATIONS (("latest" . "https://github.com/avodonosov/secure-random.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "secret-values"
     :VC "git"
@@ -904,7 +904,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "scriptl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/ScriptL.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/ScriptL.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "scribble"
     :VC "git"
@@ -917,7 +917,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "screamer"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/screamer")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/screamer.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sclf"
     :VC "http-bz2"
@@ -929,15 +929,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sb-vector-io"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/sb-vector-io.git")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/sb-vector-io.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sb-fastcgi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/KDr2/sb-fastcgi.git")))
+    :LOCATIONS (("latest" . "https://github.com/KDr2/sb-fastcgi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sb-cga"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/sb-cga.git")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/sb-cga.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "sapaclisp"
     :VC "http"
@@ -959,11 +959,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-utils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/s-utils.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/s-utils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-sysdeps"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/s-sysdeps.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/s-sysdeps.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-protobuf"
     :VC "git"
@@ -971,11 +971,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-http-server"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/s-http-server.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/s-http-server.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-http-client"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/s-http-client.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/s-http-client.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-dot"
     :VC "http"
@@ -983,7 +983,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "s-base64"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/s-base64.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/s-base64.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ryeboy"
     :VC "git"
@@ -991,11 +991,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rutils"
     :VC "tagged-git"
-    :LOCATIONS (("latest" . "git://github.com/vseloved/rutils.git 1.0.0")))
+    :LOCATIONS (("latest" . "https://github.com/vseloved/rutils.git 1.0.0")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rutils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vseloved/rutils.git")))
+    :LOCATIONS (("latest" . "https://github.com/vseloved/rutils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rucksack"
     :VC "git"
@@ -1018,7 +1018,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "romreader"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/redline6561/romreader.git")))
+    :LOCATIONS (("latest" . "https://github.com/redline6561/romreader.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rock"
     :VC "git"
@@ -1031,7 +1031,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rfc2388"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jdz/rfc2388.git")))
+    :LOCATIONS (("latest" . "https://github.com/jdz/rfc2388.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rfc2388-binary"
     :VC "darcs"
@@ -1049,7 +1049,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "retrospectiff"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/retrospectiff")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/retrospectiff.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "restful"
     :VC "git"
@@ -1058,34 +1058,34 @@
     :NAME "restas"
     :VC "tagged-git"
     :LOCATIONS (("latest"
-                 . "git://github.com/archimag/restas.git version-0.1.3")))
+                 . "https://github.com/archimag/restas.git version-0.1.3")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "restas"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/restas.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/restas.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "restas.file-publisher"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/kevinlynx/restas.file-publisher.git")))
+                 . "https://github.com/kevinlynx/restas.file-publisher.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "restas-directory-publisher"
     :VC "tagged-git"
     :LOCATIONS (("latest"
-                 . "git://github.com/archimag/restas-directory-publisher.git version-0.1")))
+                 . "https://github.com/archimag/restas-directory-publisher.git version-0.1")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "restas-directory-publisher"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/archimag/restas-directory-publisher.git")))
+                 . "https://github.com/archimag/restas-directory-publisher.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "repl-utilities"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/m-n/repl-utilities.git")))
+    :LOCATIONS (("latest" . "https://github.com/m-n/repl-utilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "regex"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/michaelw/regex.git")))
+    :LOCATIONS (("latest" . "https://github.com/michaelw/regex.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "regex-plugin"
     :VC "http"
@@ -1094,7 +1094,7 @@
     :NAME "recursive-regex"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/recursive-regex.git")))
+                 . "https://github.com/AccelerationNet/recursive-regex.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "recur"
     :VC "mercurial"
@@ -1103,7 +1103,7 @@
     :NAME "rectangle-packing"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/woudshoo/rectangle-packing.git")))
+                 . "https://github.com/woudshoo/rectangle-packing.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "reader-interception"
     :VC "git"
@@ -1116,7 +1116,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "read-csv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/WarrenWilkinson/read-csv.git")))
+    :LOCATIONS (("latest" . "https://github.com/WarrenWilkinson/read-csv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "rcl"
     :VC "http"
@@ -1128,12 +1128,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "random"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/random.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/random.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "random-access-lists"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/VincentToups/random-access-lists.git")))
+                 . "https://github.com/VincentToups/random-access-lists.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "racer"
     :VC "git"
@@ -1150,7 +1150,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quid-pro-quo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sellout/quid-pro-quo.git")))
+    :LOCATIONS (("latest" . "https://github.com/sellout/quid-pro-quo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quickutil"
     :VC "git"
@@ -1159,7 +1159,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quicksearch"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tkych/quicksearch.git")))
+    :LOCATIONS (("latest" . "https://github.com/tkych/quicksearch.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quickproject"
     :VC "http"
@@ -1173,7 +1173,7 @@
     :NAME "quicklisp-slime-helper"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/quicklisp/quicklisp-slime-helper.git")))
+                 . "https://github.com/quicklisp/quicklisp-slime-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quickdocs"
     :VC "git"
@@ -1181,7 +1181,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quickdist"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/orivej/quickdist.git")))
+    :LOCATIONS (("latest" . "https://github.com/orivej/quickdist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quickapp"
     :VC "git"
@@ -1189,11 +1189,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "queues"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/oconnore/queues.git")))
+    :LOCATIONS (("latest" . "https://github.com/oconnore/queues.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "query-fs"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fb08af68/query-fs.git")))
+    :LOCATIONS (("latest" . "https://github.com/fb08af68/query-fs.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quasiquote-2.0"
     :VC "git"
@@ -1213,11 +1213,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "qooxlisp"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kennytilton/qooxlisp.git")))
+    :LOCATIONS (("latest" . "https://github.com/kennytilton/qooxlisp.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "qmynd"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/qitab/qmynd.git")))
+    :LOCATIONS (("latest" . "https://github.com/qitab/qmynd.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "qlot"
     :VC "git"
@@ -1230,12 +1230,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pzmq"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/orivej/pzmq.git")))
+    :LOCATIONS (("latest" . "https://github.com/orivej/pzmq.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pythonic-string-reader"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/smithzvk/pythonic-string-reader.git")))
+                 . "https://github.com/smithzvk/pythonic-string-reader.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "py-configvalidator"
     :VC "git"
@@ -1275,12 +1275,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "protobuf"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/protobuf.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/protobuf.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "projectured"
     :VC "branched-git"
     :LOCATIONS (("latest"
-                 . "git://github.com/projectured/projectured.git quicklisp")))
+                 . "https://github.com/projectured/projectured.git quicklisp")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "proc-parse"
     :VC "git"
@@ -1288,7 +1288,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "priority-queue"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dsorokin/priority-queue.git")))
+    :LOCATIONS (("latest" . "https://github.com/dsorokin/priority-queue.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "printv"
     :VC "git"
@@ -1296,7 +1296,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pretty-function"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nallen05/pretty-function.git")))
+    :LOCATIONS (("latest" . "https://github.com/nallen05/pretty-function.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "prepl"
     :VC "git"
@@ -1316,7 +1316,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "postmodern"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/marijnh/Postmodern.git")))
+    :LOCATIONS (("latest" . "https://github.com/marijnh/Postmodern.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "positional-lambda"
     :VC "http"
@@ -1338,7 +1338,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "png-read"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ramarren/png-read.git")))
+    :LOCATIONS (("latest" . "https://github.com/Ramarren/png-read.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "plump"
     :VC "git"
@@ -1358,7 +1358,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "plokami"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/atomontage/plokami.git")))
+    :LOCATIONS (("latest" . "https://github.com/atomontage/plokami.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "plexippus-xpath"
     :VC "clnet-darcs"
@@ -1366,7 +1366,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "planks"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/drewc/planks")))
+    :LOCATIONS (("latest" . "https://github.com/drewc/planks.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "plain-odbc"
     :VC "svn"
@@ -1385,7 +1385,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pithy-xml"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/frodef/pithy-xml.git")))
+    :LOCATIONS (("latest" . "https://github.com/frodef/pithy-xml.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "piping"
     :VC "git"
@@ -1397,7 +1397,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pileup"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/pileup")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/pileup.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "philip-jose"
     :VC "git"
@@ -1415,12 +1415,12 @@
     :NAME "pettomato-indexed-priority-queue"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/austinhaas/pettomato-indexed-priority-queue.git")))
+                 . "https://github.com/austinhaas/pettomato-indexed-priority-queue.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pettomato-deque"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/austinhaas/pettomato-deque.git")))
+                 . "https://github.com/austinhaas/pettomato-deque.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "petit.string-utils"
     :VC "git"
@@ -1430,17 +1430,17 @@
     :NAME "petit.package-utils"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/ichimal/petit.package-utils.git")))
+                 . "https://github.com/ichimal/petit.package-utils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "persistent-variables"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/WarrenWilkinson/persistent-variables.git")))
+                 . "https://github.com/WarrenWilkinson/persistent-variables.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "persistent-tables"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/VincentToups/persistent-tables.git")))
+                 . "https://github.com/VincentToups/persistent-tables.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "perlre"
     :VC "git"
@@ -1453,7 +1453,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "periods"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jwiegley/periods.git")))
+    :LOCATIONS (("latest" . "https://github.com/jwiegley/periods.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "periodic-table"
     :VC "http"
@@ -1462,11 +1462,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "perfpiece"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/luismbo/perfpiece.git")))
+    :LOCATIONS (("latest" . "https://github.com/luismbo/perfpiece.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "percent-encoding"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/llibra/percent-encoding.git")))
+    :LOCATIONS (("latest" . "https://github.com/llibra/percent-encoding.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pcall"
     :VC "http"
@@ -1474,11 +1474,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "patron"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vy/patron.git")))
+    :LOCATIONS (("latest" . "https://github.com/vy/patron.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parseltongue"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/VincentToups/parseltongue.git")))
+    :LOCATIONS (("latest" . "https://github.com/VincentToups/parseltongue.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parse-number"
     :VC "http"
@@ -1492,11 +1492,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parse-js"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/marijnh/parse-js.git")))
+    :LOCATIONS (("latest" . "https://github.com/marijnh/parse-js.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parse-float"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/soemraws/parse-float.git")))
+    :LOCATIONS (("latest" . "https://github.com/soemraws/parse-float.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parse-declarations"
     :VC "darcs"
@@ -1515,23 +1515,23 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paren-util"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/paren-util")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/paren-util.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paren-test"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/paren-test")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/paren-test.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paren-psos"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/paren-psos")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/paren-psos.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paren-files"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/paren-files")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/paren-files.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paren-events"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/paren-events")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/paren-events.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "parameterized-function"
     :VC "mercurial"
@@ -1544,7 +1544,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "paiprolog"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/quek/paiprolog")))
+    :LOCATIONS (("latest" . "https://github.com/quek/paiprolog.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "packet"
     :VC "git"
@@ -1557,7 +1557,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "pack"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/soemraws/pack.git")))
+    :LOCATIONS (("latest" . "https://github.com/soemraws/pack.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "osicat"
     :VC "git"
@@ -1565,27 +1565,27 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "osc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zzkt/osc.git")))
+    :LOCATIONS (("latest" . "https://github.com/zzkt/osc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "org-davep-dictrepl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/davep/org-davep-dictrepl.git")))
+    :LOCATIONS (("latest" . "https://github.com/davep/org-davep-dictrepl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "org-davep-dict"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/davep/org-davep-dict.git")))
+    :LOCATIONS (("latest" . "https://github.com/davep/org-davep-dict.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "optima"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/m2ym/optima.git")))
+    :LOCATIONS (("latest" . "https://github.com/m2ym/optima.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "opticl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/opticl.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/opticl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "open-vrp"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mck-/Open-VRP.git")))
+    :LOCATIONS (("latest" . "https://github.com/mck-/Open-VRP.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "oneliner"
     :VC "git"
@@ -1606,7 +1606,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "nuclblog"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/nuclblog.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/nuclblog.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "nst"
     :VC "http"
@@ -1623,11 +1623,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ningle"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/ningle.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/ningle.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "nibbles"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/froydnj/nibbles.git")))
+    :LOCATIONS (("latest" . "https://github.com/froydnj/nibbles.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "new-op"
     :VC "git"
@@ -1646,7 +1646,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "napa-fft3"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pkhuong/Napa-FFT3.git")))
+    :LOCATIONS (("latest" . "https://github.com/pkhuong/Napa-FFT3.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "named-readtables"
     :VC "git"
@@ -1655,7 +1655,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "myweb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/troydm/myweb.git")))
+    :LOCATIONS (("latest" . "https://github.com/troydm/myweb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "myway"
     :VC "git"
@@ -1668,7 +1668,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "multival-plist"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/multival-plist.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/multival-plist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "multiple-value-variants"
     :VC "http"
@@ -1677,7 +1677,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mtlisp"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mtravers/mtlisp.git")))
+    :LOCATIONS (("latest" . "https://github.com/mtravers/mtlisp.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mt19937"
     :VC "http"
@@ -1690,11 +1690,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "more-conditions"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/scymtym/more-conditions.git")))
+    :LOCATIONS (("latest" . "https://github.com/scymtym/more-conditions.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "moptilities"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/moptilities.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/moptilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mop-utils"
     :VC "http"
@@ -1708,75 +1708,75 @@
     :NAME "monkeylib-utilities"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-utilities.git")))
+                 . "https://github.com/gigamonkey/monkeylib-utilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-text-output"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-text-output.git")))
+                 . "https://github.com/gigamonkey/monkeylib-text-output.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-text-languages"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-text-languages.git")))
+                 . "https://github.com/gigamonkey/monkeylib-text-languages.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-test-framework"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-test-framework.git")))
+                 . "https://github.com/gigamonkey/monkeylib-test-framework.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-prose-diff"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-prose-diff.git")))
+                 . "https://github.com/gigamonkey/monkeylib-prose-diff.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-pathnames"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-pathnames.git")))
+                 . "https://github.com/gigamonkey/monkeylib-pathnames.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-parser"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-parser.git")))
+                 . "https://github.com/gigamonkey/monkeylib-parser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-markup"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-markup.git")))
+                 . "https://github.com/gigamonkey/monkeylib-markup.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-markup-xml"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-markup-xml.git")))
+                 . "https://github.com/gigamonkey/monkeylib-markup-xml.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-markup-html"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-markup-html.git")))
+                 . "https://github.com/gigamonkey/monkeylib-markup-html.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-macro-utilities"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-macro-utilities.git")))
+                 . "https://github.com/gigamonkey/monkeylib-macro-utilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-json"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gigamonkey/monkeylib-json.git")))
+    :LOCATIONS (("latest" . "https://github.com/gigamonkey/monkeylib-json.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-html"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gigamonkey/monkeylib-html.git")))
+    :LOCATIONS (("latest" . "https://github.com/gigamonkey/monkeylib-html.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-binary-data"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-binary-data.git")))
+                 . "https://github.com/gigamonkey/monkeylib-binary-data.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "monkeylib-bcrypt"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/gigamonkey/monkeylib-bcrypt.git")))
+                 . "https://github.com/gigamonkey/monkeylib-bcrypt.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "modularize"
     :VC "git"
@@ -1794,11 +1794,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "modf"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/smithzvk/modf.git")))
+    :LOCATIONS (("latest" . "https://github.com/smithzvk/modf.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "modf-fset"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/smithzvk/modf-fset.git")))
+    :LOCATIONS (("latest" . "https://github.com/smithzvk/modf-fset.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mk-string-metrics"
     :VC "git"
@@ -1807,7 +1807,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mixalot"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ahefner/mixalot.git")))
+    :LOCATIONS (("latest" . "https://github.com/ahefner/mixalot.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "misc-extensions"
     :VC "git"
@@ -1820,7 +1820,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "minheap"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sfrank/minheap.git")))
+    :LOCATIONS (("latest" . "https://github.com/sfrank/minheap.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mime4cl"
     :VC "http-bz2"
@@ -1856,7 +1856,7 @@
     :NAME "method-combination-utilities"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/sellout/method-combination-utilities.git")))
+                 . "https://github.com/sellout/method-combination-utilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "metatilities"
     :VC "darcs"
@@ -1864,7 +1864,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "metatilities-base"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/metatilities-base.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/metatilities-base.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "metap"
     :VC "git"
@@ -1881,7 +1881,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "metabang-bind"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/metabang-bind")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/metabang-bind.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "meta"
     :VC "git"
@@ -1895,7 +1895,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "message-oo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Kalimehtar/message-oo.git")))
+    :LOCATIONS (("latest" . "https://github.com/Kalimehtar/message-oo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "memoize"
     :VC "single-file"
@@ -1916,7 +1916,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "md5"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pmai/md5.git")))
+    :LOCATIONS (("latest" . "https://github.com/pmai/md5.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mcclim"
     :VC "git"
@@ -1932,11 +1932,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "marshal"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kaiserprogrammer/marshal.git")))
+    :LOCATIONS (("latest" . "https://github.com/kaiserprogrammer/marshal.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "marching-cubes"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/takagi/marching-cubes.git")))
+    :LOCATIONS (("latest" . "https://github.com/takagi/marching-cubes.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "map-set"
     :VC "mercurial"
@@ -1950,15 +1950,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "manifest"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gigamonkey/manifest.git")))
+    :LOCATIONS (("latest" . "https://github.com/gigamonkey/manifest.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "manardb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ilitirit/manardb.git")))
+    :LOCATIONS (("latest" . "https://github.com/ilitirit/manardb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "make-hash"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/genovese/make-hash.git")))
+    :LOCATIONS (("latest" . "https://github.com/genovese/make-hash.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "mailbox"
     :VC "git"
@@ -1966,11 +1966,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "magicffi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dochang/magicffi.git")))
+    :LOCATIONS (("latest" . "https://github.com/dochang/magicffi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "madeira-port"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/madeira-port.git")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/madeira-port.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "macroexpand-dammit"
     :VC "single-file"
@@ -1993,7 +1993,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "m2cl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/galdor/m2cl.git")))
+    :LOCATIONS (("latest" . "https://github.com/galdor/m2cl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lw-win"
     :VC "http"
@@ -2021,7 +2021,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lredis"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/death/lredis")))
+    :LOCATIONS (("latest" . "https://github.com/death/lredis.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lquery"
     :VC "git"
@@ -2029,11 +2029,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lparallel"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lmj/lparallel.git")))
+    :LOCATIONS (("latest" . "https://github.com/lmj/lparallel.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lowlight"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/chfin/lowlight.git")))
+    :LOCATIONS (("latest" . "https://github.com/chfin/lowlight.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lol-re"
     :VC "git"
@@ -2041,19 +2041,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "log5"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/log5")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/log5.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "log4cl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/7max/log4cl.git")))
+    :LOCATIONS (("latest" . "https://github.com/7max/log4cl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "log4cl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sharplispers/log4cl.git")))
+    :LOCATIONS (("latest" . "https://github.com/sharplispers/log4cl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "local-time"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dlowe-net/local-time.git")))
+    :LOCATIONS (("latest" . "https://github.com/dlowe-net/local-time.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "local-time-duration"
     :VC "git"
@@ -2063,7 +2063,7 @@
     :NAME "local-package-aliases"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/avodonosov/local-package-aliases.git")))
+                 . "https://github.com/avodonosov/local-package-aliases.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lml2"
     :VC "kmr-git"
@@ -2072,11 +2072,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lla"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/lla.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/lla.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "listoflist"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/blindglobe/listoflist.git")))
+    :LOCATIONS (("latest" . "https://github.com/blindglobe/listoflist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lispbuilder"
     :VC "git"
@@ -2095,7 +2095,7 @@
     :NAME "lisp-unit"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/OdonataResearchLLC/lisp-unit.git")))
+                 . "https://github.com/OdonataResearchLLC/lisp-unit.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisp-namespace"
     :VC "git"
@@ -2104,7 +2104,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisp-matrix"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/blindglobe/lisp-matrix.git")))
+    :LOCATIONS (("latest" . "https://github.com/blindglobe/lisp-matrix.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisp-magick"
     :VC "http"
@@ -2118,19 +2118,19 @@
     :NAME "lisp-interface-library"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/fare/lisp-interface-library.git")))
+                 . "https://github.com/fare/lisp-interface-library.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisp-gflags"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/lisp-gflags.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/lisp-gflags.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisp-executable"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/markcox80/lisp-executable.git")))
+    :LOCATIONS (("latest" . "https://github.com/markcox80/lisp-executable.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisa"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/johanlindberg/lisa.git")))
+    :LOCATIONS (("latest" . "https://github.com/johanlindberg/lisa.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lisa"
     :VC "cvs"
@@ -2153,15 +2153,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lift"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/lift")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/lift")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lhstats"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mrc/lhstats.git")))
+    :LOCATIONS (("latest" . "https://github.com/mrc/lhstats.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lfarm"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lmj/lfarm.git")))
+    :LOCATIONS (("latest" . "https://github.com/lmj/lfarm.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "levenshtein"
     :VC "http"
@@ -2182,7 +2182,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "let-plus"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/let-plus.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/let-plus.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "let-over-lambda"
     :VC "git"
@@ -2195,7 +2195,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "latex-table"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/latex-table.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/latex-table.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "lassie"
     :VC "git"
@@ -2246,7 +2246,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "kl-verify"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kevinlynx/kl-verify.git")))
+    :LOCATIONS (("latest" . "https://github.com/kevinlynx/kl-verify.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "kenzo"
     :VC "git"
@@ -2262,7 +2262,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "jsown"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/madnificent/jsown.git")))
+    :LOCATIONS (("latest" . "https://github.com/madnificent/jsown.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "json-streams"
     :VC "git"
@@ -2274,11 +2274,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "js"
     :VC "tagged-git"
-    :LOCATIONS (("latest" . "git://github.com/akapav/js.git v0.12.01")))
+    :LOCATIONS (("latest" . "https://github.com/akapav/js.git v0.12.01")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "js-parser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/js-parser")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/js-parser")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "jpl-queues"
     :VC "http"
@@ -2296,7 +2296,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "jenkins"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/scymtym/jenkins.git")))
+    :LOCATIONS (("latest" . "https://github.com/scymtym/jenkins.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "iterate"
     :VC "clnet-darcs"
@@ -2336,7 +2336,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "intercom"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/madnificent/intercom.git")))
+    :LOCATIONS (("latest" . "https://github.com/madnificent/intercom.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "intel-hex"
     :VC "git"
@@ -2357,17 +2357,17 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "inotify"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/stassats/inotify.git")))
+    :LOCATIONS (("latest" . "https://github.com/stassats/inotify.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "inner-conditional"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/guicho271828/inner-conditional.git")))
+                 . "https://github.com/guicho271828/inner-conditional.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "infix-dollar-reader"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/ichimal/infix-dollar-reader.git")))
+                 . "https://github.com/ichimal/infix-dollar-reader.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "inferior-shell"
     :VC "git"
@@ -2376,7 +2376,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "incongruent-methods"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pve1/incongruent-methods.git")))
+    :LOCATIONS (("latest" . "https://github.com/pve1/incongruent-methods.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "incognito-keywords"
     :VC "http"
@@ -2385,7 +2385,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "incf-cl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jmbr/incf-cl.git")))
+    :LOCATIONS (("latest" . "https://github.com/jmbr/incf-cl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "immutable-struct"
     :VC "git"
@@ -2398,7 +2398,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "image"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kevinlynx/image.git")))
+    :LOCATIONS (("latest" . "https://github.com/kevinlynx/image.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ieee-floats"
     :VC "git"
@@ -2411,7 +2411,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "idna"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/antifuchs/idna")))
+    :LOCATIONS (("latest" . "https://github.com/antifuchs/idna")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hyperobject"
     :VC "kmr-git"
@@ -2433,11 +2433,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hunchentoot-cgi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/hunchentoot-cgi.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/hunchentoot-cgi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hunchentoot-auth"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/hunchentoot-auth.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/hunchentoot-auth.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hunchensocket"
     :VC "git"
@@ -2542,7 +2542,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "http-parse"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/orthecreedence/http-parse.git")))
+    :LOCATIONS (("latest" . "https://github.com/orthecreedence/http-parse.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "http-body"
     :VC "git"
@@ -2569,7 +2569,7 @@
     :NAME "ht-simple-ajax"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/martin-loetzsch/ht-simple-ajax.git")))
+                 . "https://github.com/martin-loetzsch/ht-simple-ajax.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ht-ajax"
     :VC "http"
@@ -2590,19 +2590,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hinge"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sshirokov/hinge.git")))
+    :LOCATIONS (("latest" . "https://github.com/sshirokov/hinge.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hh-web"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hargettp/hh-web.git")))
+    :LOCATIONS (("latest" . "https://github.com/hargettp/hh-web.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hh-redblack"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hargettp/hh-redblack.git")))
+    :LOCATIONS (("latest" . "https://github.com/hargettp/hh-redblack.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hh-aws"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hargettp/hh-aws.git")))
+    :LOCATIONS (("latest" . "https://github.com/hargettp/hh-aws.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "hermetic"
     :VC "git"
@@ -2635,7 +2635,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "gtk-cffi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Kalimehtar/gtk-cffi.git")))
+    :LOCATIONS (("latest" . "https://github.com/Kalimehtar/gtk-cffi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "gtfl"
     :VC "http"
@@ -2653,15 +2653,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "group-by"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/group-by.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/group-by.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "green-threads"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/thezerobit/green-threads.git")))
+    :LOCATIONS (("latest" . "https://github.com/thezerobit/green-threads.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "graylex"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e-user/graylex.git")))
+    :LOCATIONS (("latest" . "https://github.com/e-user/graylex.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "graph"
     :VC "git"
@@ -2670,7 +2670,7 @@
     :NAME "gordon"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "https://github.com/sgarciac/gordon.git                                          ")))
+                 . "https://github.com/sgarciac/gordon.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "glyphs"
     :VC "git"
@@ -2679,11 +2679,11 @@
     :NAME "glu-tessellate"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/orthecreedence/glu-tessellate.git")))
+                 . "https://github.com/orthecreedence/glu-tessellate.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "glop"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/patzy/glop.git")))
+    :LOCATIONS (("latest" . "https://github.com/patzy/glop.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "global-vars"
     :VC "git"
@@ -2695,7 +2695,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "glaw"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/patzy/glaw.git")))
+    :LOCATIONS (("latest" . "https://github.com/patzy/glaw.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "glass"
     :VC "git"
@@ -2703,7 +2703,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "gettext"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/copyleft/gettext.git")))
+    :LOCATIONS (("latest" . "https://github.com/copyleft/gettext.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "getopt"
     :VC "kmr-git"
@@ -2724,7 +2724,7 @@
     :NAME "generic-sequences"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/dsorokin/generic-sequences.git")))
+                 . "https://github.com/dsorokin/generic-sequences.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "generic-comparability"
     :VC "git"
@@ -2734,7 +2734,7 @@
     :NAME "generators"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/generators.git")))
+                 . "https://github.com/AccelerationNet/generators.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "gendl"
     :VC "git"
@@ -2750,7 +2750,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "garbage-pools"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/garbage-pools.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/garbage-pools.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "funds"
     :VC "http"
@@ -2765,7 +2765,7 @@
     :NAME "function-cache"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/function-cache.git")))
+                 . "https://github.com/AccelerationNet/function-cache.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fucc"
     :VC "http"
@@ -2795,7 +2795,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "formlets"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Inaimathi/formlets.git")))
+    :LOCATIONS (("latest" . "https://github.com/Inaimathi/formlets.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "form-fiddle"
     :VC "git"
@@ -2808,15 +2808,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "folio2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mikelevins/folio2.git")))
+    :LOCATIONS (("latest" . "https://github.com/mikelevins/folio2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "folio"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mikelevins/folio.git")))
+    :LOCATIONS (("latest" . "https://github.com/mikelevins/folio.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fnv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/blindglobe/fnv.git")))
+    :LOCATIONS (("latest" . "https://github.com/blindglobe/fnv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fn"
     :VC "git"
@@ -2829,7 +2829,7 @@
     :NAME "floating-point"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/OdonataResearchLLC/floating-point.git")))
+                 . "https://github.com/OdonataResearchLLC/floating-point.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "flexichain"
     :VC "http"
@@ -2847,7 +2847,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "firephp"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/firephp.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/firephp.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "find-port"
     :VC "git"
@@ -2868,11 +2868,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fft"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nklein/FFT.git")))
+    :LOCATIONS (("latest" . "https://github.com/nklein/FFT.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ffa"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/ffa.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/ffa.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "femlisp"
     :VC "git"
@@ -2880,7 +2880,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fast-io"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/fast-io.git ")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/fast-io.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "fast-http"
     :VC "git"
@@ -2922,15 +2922,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "external-program"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sellout/external-program.git")))
+    :LOCATIONS (("latest" . "https://github.com/sellout/external-program.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "extended-reals"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/extended-reals.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/extended-reals.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ext-blog"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kevinlynx/ext-blog.git")))
+    :LOCATIONS (("latest" . "https://github.com/kevinlynx/ext-blog.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "exscribe"
     :VC "git"
@@ -2944,7 +2944,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "evol"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e-user/evol.git")))
+    :LOCATIONS (("latest" . "https://github.com/e-user/evol.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "event-glue"
     :VC "git"
@@ -2957,11 +2957,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "esrap"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/scymtym/esrap.git")))
+    :LOCATIONS (("latest" . "https://github.com/scymtym/esrap.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "esrap-peg"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fb08af68/esrap-peg.git")))
+    :LOCATIONS (("latest" . "https://github.com/fb08af68/esrap-peg.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "esrap-liquid"
     :VC "git"
@@ -2978,7 +2978,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ernestine"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nlamirault/ernestine.git")))
+    :LOCATIONS (("latest" . "https://github.com/nlamirault/ernestine.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "equals"
     :VC "git"
@@ -2990,7 +2990,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "eos"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/adlai/Eos.git")))
+    :LOCATIONS (("latest" . "https://github.com/adlai/Eos.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "envy"
     :VC "git"
@@ -3008,7 +3008,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "elf"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/eschulte/elf.git")))
+    :LOCATIONS (("latest" . "https://github.com/eschulte/elf.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "elephant"
     :VC "darcs"
@@ -3025,7 +3025,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ec2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nikodemus/ec2.git")))
+    :LOCATIONS (("latest" . "https://github.com/nikodemus/ec2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "eazy-project"
     :VC "git"
@@ -3063,7 +3063,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dynamic-classes"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/dynamic-classes.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/dynamic-classes.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dyna"
     :VC "git"
@@ -3079,7 +3079,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dstm-collections"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/danlentz/dstm-collections.git")))
+    :LOCATIONS (("latest" . "https://github.com/danlentz/dstm-collections.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dso-util"
     :VC "http"
@@ -3110,7 +3110,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "donuts"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tkych/donuts.git")))
+    :LOCATIONS (("latest" . "https://github.com/tkych/donuts.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "documentation-template"
     :VC "http"
@@ -3122,19 +3122,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "docbrowser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lokedhs/docbrowser.git")))
+    :LOCATIONS (("latest" . "https://github.com/lokedhs/docbrowser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "do-urlencode"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/drdo/do-urlencode.git")))
+    :LOCATIONS (("latest" . "https://github.com/drdo/do-urlencode.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dlist"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/krzysz00/dlist.git")))
+    :LOCATIONS (("latest" . "https://github.com/krzysz00/dlist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "djula"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mmontone/djula.git")))
+    :LOCATIONS (("latest" . "https://github.com/mmontone/djula.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dissect"
     :VC "git"
@@ -3142,11 +3142,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "diff"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/froydnj/diff.git")))
+    :LOCATIONS (("latest" . "https://github.com/froydnj/diff.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dexador"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/dexador.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/dexador.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "descriptions"
     :VC "git"
@@ -3155,23 +3155,23 @@
     :NAME "deoxybyte-utilities"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/keithj/deoxybyte-utilities.git")))
+                 . "https://github.com/keithj/deoxybyte-utilities.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "deoxybyte-unix"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/deoxybyte-unix.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/deoxybyte-unix.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "deoxybyte-systems"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/deoxybyte-systems.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/deoxybyte-systems.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "deoxybyte-io"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/deoxybyte-io.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/deoxybyte-io.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "deoxybyte-gzip"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/deoxybyte-gzip.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/deoxybyte-gzip.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "delta-debug"
     :VC "git"
@@ -3179,7 +3179,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "delorean"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/cddr/delorean.git")))
+    :LOCATIONS (("latest" . "https://github.com/cddr/delorean.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "defvariant"
     :VC "git"
@@ -3204,15 +3204,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "defmemo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/orivej/defmemo.git")))
+    :LOCATIONS (("latest" . "https://github.com/orivej/defmemo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "defmacro-enhance"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/defmacro-enhance.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/defmacro-enhance.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "deflate"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pmai/Deflate.git")))
+    :LOCATIONS (("latest" . "https://github.com/pmai/Deflate.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "define-json-expander"
     :VC "git"
@@ -3238,11 +3238,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "de.setf.wilbur"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lisp/de.setf.wilbur.git")))
+    :LOCATIONS (("latest" . "https://github.com/lisp/de.setf.wilbur.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dbus"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/death/dbus.git")))
+    :LOCATIONS (("latest" . "https://github.com/death/dbus.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "date-calc"
     :VC "http"
@@ -3256,16 +3256,16 @@
     :NAME "data-table"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/data-table.git")))
+                 . "https://github.com/AccelerationNet/data-table.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "data-sift"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/data-sift.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/data-sift.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dartsclsequencemetrics"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/deterministic-arts/DartsCLSequenceMetrics.git")))
+                 . "https://github.com/deterministic-arts/DartsCLSequenceMetrics.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "dartsclmessagepack"
     :VC "git"
@@ -3275,11 +3275,11 @@
     :NAME "dartsclhashtree"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/deterministic-arts/DartsCLHashTree.git")))
+                 . "https://github.com/deterministic-arts/DartsCLHashTree.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "daemon"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/snmsts/daemon.git")))
+    :LOCATIONS (("latest" . "https://github.com/snmsts/daemon.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cxml"
     :VC "git"
@@ -3291,7 +3291,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cxml-rpc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/antifuchs/cxml-rpc.git")))
+    :LOCATIONS (("latest" . "https://github.com/antifuchs/cxml-rpc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cxml-rng"
     :VC "http"
@@ -3300,7 +3300,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "curve"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/elbeno/curve.git")))
+    :LOCATIONS (("latest" . "https://github.com/elbeno/curve.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "curry-compose-reader-macros"
     :VC "git"
@@ -3309,20 +3309,20 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "curly"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mpasternacki/curly.git")))
+    :LOCATIONS (("latest" . "https://github.com/mpasternacki/curly.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "csv-parser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sharplispers/csv-parser")))
+    :LOCATIONS (("latest" . "https://github.com/sharplispers/csv-parser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "css-selectors"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/css-selectors.git")))
+                 . "https://github.com/AccelerationNet/css-selectors.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "css-lite"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/paddymul/css-lite.git")))
+    :LOCATIONS (("latest" . "https://github.com/paddymul/css-lite.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "crypto-shortcuts"
     :VC "git"
@@ -3351,7 +3351,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "consix"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/death/consix.git")))
+    :LOCATIONS (("latest" . "https://github.com/death/consix.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "conium"
     :VC "git"
@@ -3379,12 +3379,12 @@
     :NAME "common-lisp-stat"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/blindglobe/common-lisp-stat.git")))
+                 . "https://github.com/blindglobe/common-lisp-stat.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "common-lisp-actors"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/naveensundarg/Common-Lisp-Actors.git")))
+                 . "https://github.com/naveensundarg/Common-Lisp-Actors.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "common-html"
     :VC "git"
@@ -3411,31 +3411,31 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "com.google.base"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/base.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/base.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "com.clearly-useful.protocols"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/jaeschliman/com.clearly-useful.protocols.git")))
+                 . "https://github.com/jaeschliman/com.clearly-useful.protocols.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "com.clearly-useful.iterator-protocol"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/jaeschliman/com.clearly-useful.iterator-protocol.git")))
+                 . "https://github.com/jaeschliman/com.clearly-useful.iterator-protocol.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "com.clearly-useful.iterate-plus"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/jaeschliman/com.clearly-useful.iterate-plus.git")))
+                 . "https://github.com/jaeschliman/com.clearly-useful.iterate-plus.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "com.clearly-useful.generic-collection-interface"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/jaeschliman/com.clearly-useful.generic-collection-interface.git")))
+                 . "https://github.com/jaeschliman/com.clearly-useful.generic-collection-interface.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "colorize"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/redline6561/colorize.git")))
+    :LOCATIONS (("latest" . "https://github.com/redline6561/colorize.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "colleen"
     :VC "git"
@@ -3444,16 +3444,16 @@
     :NAME "collectors"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/collectors.git")))
+                 . "https://github.com/AccelerationNet/collectors.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "coleslaw"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/redline6561/coleslaw.git")))
+    :LOCATIONS (("latest" . "https://github.com/redline6561/coleslaw.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "codata-recommended-values"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/ralph-schleicher/codata-recommended-values.git")))
+                 . "https://github.com/ralph-schleicher/codata-recommended-values.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cobstor"
     :VC "http-bz2"
@@ -3462,38 +3462,38 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clx"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sharplispers/clx.git")))
+    :LOCATIONS (("latest" . "https://github.com/sharplispers/clx.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clx-xkeyboard"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/filonenko-mikhail/clx-xkeyboard.git")))
+                 . "https://github.com/filonenko-mikhail/clx-xkeyboard.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clx-xembed"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/laynor/clx-xembed.git")))
+    :LOCATIONS (("latest" . "https://github.com/laynor/clx-xembed.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clx-truetype"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/filonenko-mikhail/clx-truetype.git")))
+                 . "https://github.com/filonenko-mikhail/clx-truetype.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clx-cursor"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/filonenko-mikhail/clx-cursor.git")))
+                 . "https://github.com/filonenko-mikhail/clx-cursor.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clws"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/3b/clws.git")))
+    :LOCATIONS (("latest" . "https://github.com/3b/clws.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clweb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/plotnick/clweb.git")))
+    :LOCATIONS (("latest" . "https://github.com/plotnick/clweb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clunit"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tgutu/clunit.git")))
+    :LOCATIONS (("latest" . "https://github.com/tgutu/clunit.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clss"
     :VC "git"
@@ -3505,12 +3505,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clsql-orm"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/clsql-orm.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/clsql-orm.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clsql-helper"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/clsql-helper.git")))
+                 . "https://github.com/AccelerationNet/clsql-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clsql-fluid"
     :VC "git"
@@ -3549,7 +3549,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clos-diff"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/krzysz00/clos-diff.git")))
+    :LOCATIONS (("latest" . "https://github.com/krzysz00/clos-diff.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clonsigna"
     :VC "git"
@@ -3570,7 +3570,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clobber"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/robert-strandh/Clobber.git")))
+    :LOCATIONS (("latest" . "https://github.com/robert-strandh/Clobber.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clnuplot"
     :VC "darcs"
@@ -3582,7 +3582,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clite"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lispy-stuff/clite.git")))
+    :LOCATIONS (("latest" . "https://github.com/lispy-stuff/clite.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clipper"
     :VC "git"
@@ -3594,15 +3594,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clinch"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/BradWBeer/CLinch.git")))
+    :LOCATIONS (("latest" . "https://github.com/BradWBeer/CLinch.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "climon"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nlamirault/climon.git")))
+    :LOCATIONS (("latest" . "https://github.com/nlamirault/climon.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "climc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nlamirault/climc.git")))
+    :LOCATIONS (("latest" . "https://github.com/nlamirault/climc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "climacs"
     :VC "git"
@@ -3619,7 +3619,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clickr"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/schani/clickr.git")))
+    :LOCATIONS (("latest" . "https://github.com/schani/clickr.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clhs"
     :VC "http"
@@ -3633,19 +3633,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cletris"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nlamirault/cletris.git")))
+    :LOCATIONS (("latest" . "https://github.com/nlamirault/cletris.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clesh"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Neronus/clesh.git")))
+    :LOCATIONS (("latest" . "https://github.com/Neronus/clesh.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cleric"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/flambard/CLERIC.git")))
+    :LOCATIONS (("latest" . "https://github.com/flambard/CLERIC.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clem"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/slyrus/clem.git")))
+    :LOCATIONS (("latest" . "https://github.com/slyrus/clem.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clazy"
     :VC "git"
@@ -3653,7 +3653,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clawk"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sharplispers/clawk.git")))
+    :LOCATIONS (("latest" . "https://github.com/sharplispers/clawk.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clavier"
     :VC "git"
@@ -3661,15 +3661,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clavatar"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pinterface/clavatar.git")))
+    :LOCATIONS (("latest" . "https://github.com/pinterface/clavatar.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "classimp"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/3b/classimp.git")))
+    :LOCATIONS (("latest" . "https://github.com/3b/classimp.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clack"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/clack.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/clack.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clack-errors"
     :VC "git"
@@ -3677,7 +3677,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "clache"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/clache.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/clache.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl4store"
     :VC "git"
@@ -3693,7 +3693,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-yahoo-finance"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pnathan/cl-yahoo-finance.git")))
+    :LOCATIONS (("latest" . "https://github.com/pnathan/cl-yahoo-finance.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-yaclyaml"
     :VC "git"
@@ -3701,7 +3701,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-yacc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jech/cl-yacc.git")))
+    :LOCATIONS (("latest" . "https://github.com/jech/cl-yacc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-xul"
     :VC "git"
@@ -3732,7 +3732,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-win32ole"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/quek/cl-win32ole.git")))
+    :LOCATIONS (("latest" . "https://github.com/quek/cl-win32ole.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-who"
     :VC "http"
@@ -3740,7 +3740,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-webkit"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/joachifm/cl-webkit.git")))
+    :LOCATIONS (("latest" . "https://github.com/joachifm/cl-webkit.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-webdav"
     :VC "http"
@@ -3774,7 +3774,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-vectors"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fjolliton/cl-vectors.git")))
+    :LOCATIONS (("latest" . "https://github.com/fjolliton/cl-vectors.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-variates"
     :VC "darcs"
@@ -3800,23 +3800,23 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-uglify-js"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mishoo/cl-uglify-js.git")))
+    :LOCATIONS (("latest" . "https://github.com/mishoo/cl-uglify-js.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-typesetting"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mbattyani/cl-typesetting.git")))
+    :LOCATIONS (("latest" . "https://github.com/mbattyani/cl-typesetting.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-twitter"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fons/cl-twitter.git")))
+    :LOCATIONS (("latest" . "https://github.com/fons/cl-twitter.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tuples"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/johnfredcee/cl-tuples.git")))
+    :LOCATIONS (("latest" . "https://github.com/johnfredcee/cl-tuples.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tulip-graph"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/varjagg/cl-tulip-graph.git")))
+    :LOCATIONS (("latest" . "https://github.com/varjagg/cl-tulip-graph.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-toolbox"
     :VC "http"
@@ -3825,7 +3825,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tokyo-cabinet"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/cl-tokyo-cabinet.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/cl-tokyo-cabinet.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tld"
     :VC "git"
@@ -3833,11 +3833,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tk"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/marijnh/cl-tk.git")))
+    :LOCATIONS (("latest" . "https://github.com/marijnh/cl-tk.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tidy"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/cl-tidy")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/cl-tidy")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tga"
     :VC "git"
@@ -3845,7 +3845,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-template"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/alpha123/cl-template.git")))
+    :LOCATIONS (("latest" . "https://github.com/alpha123/cl-template.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-tcod"
     :VC "mercurial"
@@ -3857,7 +3857,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-table"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Kalimehtar/cl-table.git")))
+    :LOCATIONS (("latest" . "https://github.com/Kalimehtar/cl-table.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-syslog"
     :VC "git"
@@ -3865,7 +3865,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-syntax"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/m2ym/cl-syntax")))
+    :LOCATIONS (("latest" . "https://github.com/m2ym/cl-syntax")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-swap-file"
     :VC "http"
@@ -3874,7 +3874,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-svm"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/cl-svm")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/cl-svm")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-svg"
     :VC "git"
@@ -3895,7 +3895,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-store"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/skypher/cl-store.git")))
+    :LOCATIONS (("latest" . "https://github.com/skypher/cl-store.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-stopwatch"
     :VC "mercurial"
@@ -3914,11 +3914,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-stdutils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/eslick/cl-stdutils.git")))
+    :LOCATIONS (("latest" . "https://github.com/eslick/cl-stdutils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sqlite"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dmitryvk/cl-sqlite.git")))
+    :LOCATIONS (("latest" . "https://github.com/dmitryvk/cl-sqlite.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-splicing-macro"
     :VC "git"
@@ -3927,11 +3927,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sphinx"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-sphinx.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-sphinx.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-speedy-queue"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/cl-speedy-queue.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/cl-speedy-queue.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-spark"
     :VC "git"
@@ -3956,7 +3956,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-slice"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/cl-slice.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/cl-slice.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sl4a"
     :VC "git"
@@ -3964,7 +3964,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-skip-list"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kraison/cl-skip-list.git")))
+    :LOCATIONS (("latest" . "https://github.com/kraison/cl-skip-list.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-singleton-mixin"
     :VC "git"
@@ -3973,7 +3973,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-simple-table"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ebobby/cl-simple-table.git")))
+    :LOCATIONS (("latest" . "https://github.com/ebobby/cl-simple-table.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-simple-concurrent-jobs"
     :VC "git"
@@ -3991,7 +3991,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sentiment"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/RobBlackwell/cl-sentiment.git")))
+    :LOCATIONS (("latest" . "https://github.com/RobBlackwell/cl-sentiment.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sendmail"
     :VC "git"
@@ -3999,11 +3999,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-selenium"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/html/cl-selenium.git")))
+    :LOCATIONS (("latest" . "https://github.com/html/cl-selenium.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-secure-read"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/cl-secure-read.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/cl-secure-read.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sdl2"
     :VC "git"
@@ -4011,7 +4011,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-scrobbler"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/redline6561/cl-scrobbler.git")))
+    :LOCATIONS (("latest" . "https://github.com/redline6561/cl-scrobbler.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-scripting"
     :VC "git"
@@ -4019,7 +4019,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-scribd"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jsmpereira/cl-scribd.git")))
+    :LOCATIONS (("latest" . "https://github.com/jsmpereira/cl-scribd.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sasl"
     :VC "http"
@@ -4028,27 +4028,27 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sanitize"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-sanitize.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-sanitize.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sane"
     :VC "git"
-    :LOCATIONS (("latest" . "git://repo.or.cz/cl-sane.git")))
+    :LOCATIONS (("latest" . "https://repo.or.cz/cl-sane.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sam"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/cl-sam.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/cl-sam.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-sails"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/cl-sails")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/cl-sails")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-s3"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/svenvc/cl-s3.git")))
+    :LOCATIONS (("latest" . "https://github.com/svenvc/cl-s3.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rsvg2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/roerd/cl-rsvg2.git")))
+    :LOCATIONS (("latest" . "https://github.com/roerd/cl-rsvg2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rss"
     :VC "kmr-git"
@@ -4056,19 +4056,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rrt"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/guicho271828/cl-rrt.git")))
+    :LOCATIONS (("latest" . "https://github.com/guicho271828/cl-rrt.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rrd"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hbock/cl-rrd.git")))
+    :LOCATIONS (("latest" . "https://github.com/hbock/cl-rrd.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-routes"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-routes.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-routes.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rmath"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/cl-rmath.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/cl-rmath.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rlimit"
     :VC "git"
@@ -4089,7 +4089,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-registry"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/eslick/cl-registry.git")))
+    :LOCATIONS (("latest" . "https://github.com/eslick/cl-registry.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-reexport"
     :VC "git"
@@ -4097,7 +4097,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-redis"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vseloved/cl-redis.git")))
+    :LOCATIONS (("latest" . "https://github.com/vseloved/cl-redis.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-reddit"
     :VC "git"
@@ -4118,7 +4118,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rdfxml"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tayloj/cl-rdfxml.git")))
+    :LOCATIONS (("latest" . "https://github.com/tayloj/cl-rdfxml.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rcfiles"
     :VC "http"
@@ -4127,11 +4127,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-random"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/cl-random.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/cl-random.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-randist"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lvaruzza/cl-randist.git")))
+    :LOCATIONS (("latest" . "https://github.com/lvaruzza/cl-randist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-rabbit"
     :VC "git"
@@ -4139,11 +4139,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-quickcheck"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mcandre/cl-quickcheck")))
+    :LOCATIONS (("latest" . "https://github.com/mcandre/cl-quickcheck")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-quakeinfo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e40/cl-quakeinfo.git")))
+    :LOCATIONS (("latest" . "https://github.com/e40/cl-quakeinfo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-qrencode"
     :VC "git"
@@ -4172,11 +4172,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-prolog"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/keithj/cl-prolog.git")))
+    :LOCATIONS (("latest" . "https://github.com/keithj/cl-prolog.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-project"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/cl-project.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/cl-project.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-proj"
     :VC "mercurial"
@@ -4184,11 +4184,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-prime-maker"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nakrakiiya/cl-prime-maker.git")))
+    :LOCATIONS (("latest" . "https://github.com/nakrakiiya/cl-prime-maker.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-primality"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/smithzvk/cl-primality.git")))
+    :LOCATIONS (("latest" . "https://github.com/smithzvk/cl-primality.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-prevalence"
     :VC "mercurial"
@@ -4201,11 +4201,11 @@
     :NAME "cl-portaudio"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/filonenko-mikhail/cl-portaudio.git")))
+                 . "https://github.com/filonenko-mikhail/cl-portaudio.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-popen"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-popen")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-popen")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-pop"
     :VC "http"
@@ -4227,7 +4227,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-plumbing"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/smithzvk/cl-plumbing.git")))
+    :LOCATIONS (("latest" . "https://github.com/smithzvk/cl-plumbing.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-plplot"
     :VC "git"
@@ -4245,15 +4245,15 @@
     :NAME "cl-performance-tuning-helper"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/ichimal/cl-performance-tuning-helper.git")))
+                 . "https://github.com/ichimal/cl-performance-tuning-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-pdf"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mbattyani/cl-pdf.git")))
+    :LOCATIONS (("latest" . "https://github.com/mbattyani/cl-pdf.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-paypal"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/standin000/cl-paypal.git")))
+    :LOCATIONS (("latest" . "https://github.com/standin000/cl-paypal.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-paymill"
     :VC "git"
@@ -4266,7 +4266,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-pattern"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/arielnetworks/cl-pattern.git")))
+    :LOCATIONS (("latest" . "https://github.com/arielnetworks/cl-pattern.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-pass"
     :VC "git"
@@ -4275,16 +4275,16 @@
     :NAME "cl-parser-combinators"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/Ramarren/cl-parser-combinators.git")))
+                 . "https://github.com/Ramarren/cl-parser-combinators.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-parallel"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nahiluhmot/cl-parallel.git")))
+    :LOCATIONS (("latest" . "https://github.com/nahiluhmot/cl-parallel.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-package-locks"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/elliottjohnson/cl-package-locks.git")))
+                 . "https://github.com/elliottjohnson/cl-package-locks.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-org-mode"
     :VC "git"
@@ -4303,15 +4303,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-openid"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/cl-openid/cl-openid.git")))
+    :LOCATIONS (("latest" . "https://github.com/cl-openid/cl-openid.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-opengl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/3b/cl-opengl.git")))
+    :LOCATIONS (("latest" . "https://github.com/3b/cl-opengl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-openal"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/cl-openal.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/cl-openal.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-op"
     :VC "svn"
@@ -4320,7 +4320,7 @@
     :NAME "cl-one-time-passwords"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/bhyde/cl-one-time-passwords.git")))
+                 . "https://github.com/bhyde/cl-one-time-passwords.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-olefs"
     :VC "git"
@@ -4328,19 +4328,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-odesk"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dym/cl-odesk.git")))
+    :LOCATIONS (("latest" . "https://github.com/dym/cl-odesk.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-oauth"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/skypher/cl-oauth.git")))
+    :LOCATIONS (("latest" . "https://github.com/skypher/cl-oauth.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-nxt"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/woudshoo/cl-nxt.git")))
+    :LOCATIONS (("latest" . "https://github.com/woudshoo/cl-nxt.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-num-utils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/cl-num-utils.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/cl-num-utils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ntriples"
     :VC "http"
@@ -4349,7 +4349,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-netstrings"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/RyanHope/cl-netstrings.git")))
+    :LOCATIONS (("latest" . "https://github.com/RyanHope/cl-netstrings.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-netstring-plus"
     :VC "git"
@@ -4358,7 +4358,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-neo4j"
     :VC "branched-git"
-    :LOCATIONS (("latest" . "git://github.com/kraison/cl-neo4j.git release")))
+    :LOCATIONS (("latest" . "https://github.com/kraison/cl-neo4j.git release")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ncurses"
     :VC "http"
@@ -4367,7 +4367,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mysql"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hackinghat/cl-mysql.git")))
+    :LOCATIONS (("latest" . "https://github.com/hackinghat/cl-mysql.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mw"
     :VC "git"
@@ -4375,11 +4375,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mustache"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kanru/cl-mustache.git")))
+    :LOCATIONS (("latest" . "https://github.com/kanru/cl-mustache.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-murmurhash"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ruricolist/cl-murmurhash.git")))
+    :LOCATIONS (("latest" . "https://github.com/ruricolist/cl-murmurhash.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-muproc"
     :VC "http"
@@ -4392,11 +4392,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mssql"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-mssql.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-mssql.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mpi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/angavrilov/cl-mpi.git")))
+    :LOCATIONS (("latest" . "https://github.com/angavrilov/cl-mpi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mop"
     :VC "git"
@@ -4404,16 +4404,16 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mongo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fons/cl-mongo.git")))
+    :LOCATIONS (("latest" . "https://github.com/fons/cl-mongo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mongo-id"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/orthecreedence/cl-mongo-id.git")))
+                 . "https://github.com/orthecreedence/cl-mongo-id.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-moneris"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vsedach/cl-moneris.git")))
+    :LOCATIONS (("latest" . "https://github.com/vsedach/cl-moneris.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-monad-macros"
     :VC "svn"
@@ -4434,7 +4434,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mime"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/cl-mime.git")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/cl-mime.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-migrations"
     :VC "http"
@@ -4443,7 +4443,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-messagepack"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mbrezu/cl-messagepack.git")))
+    :LOCATIONS (("latest" . "https://github.com/mbrezu/cl-messagepack.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-memcached"
     :VC "git"
@@ -4456,7 +4456,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mechanize"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/joachifm/cl-mechanize.git")))
+    :LOCATIONS (("latest" . "https://github.com/joachifm/cl-mechanize.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-mathstats"
     :VC "git"
@@ -4464,15 +4464,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-match"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tonyg/cl-match.git")))
+    :LOCATIONS (("latest" . "https://github.com/tonyg/cl-match.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-marshal"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/wlbr/cl-marshal.git")))
+    :LOCATIONS (("latest" . "https://github.com/wlbr/cl-marshal.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-markup"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/arielnetworks/cl-markup.git")))
+    :LOCATIONS (("latest" . "https://github.com/arielnetworks/cl-markup.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-marklogic"
     :VC "git"
@@ -4485,11 +4485,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-m4"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e-user/cl-m4.git")))
+    :LOCATIONS (("latest" . "https://github.com/e-user/cl-m4.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ltsv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/taksatou/cl-ltsv.git")))
+    :LOCATIONS (("latest" . "https://github.com/taksatou/cl-ltsv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-logic"
     :VC "git"
@@ -4507,15 +4507,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-locale"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/arielnetworks/cl-locale.git")))
+    :LOCATIONS (("latest" . "https://github.com/arielnetworks/cl-locale.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-llvm"
     :VC "branched-git"
-    :LOCATIONS (("latest" . "git://github.com/sellout/CL-LLVM.git llvm-2.9")))
+    :LOCATIONS (("latest" . "https://github.com/sellout/CL-LLVM.git llvm-2.9")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-llvm"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sellout/CL-LLVM.git")))
+    :LOCATIONS (("latest" . "https://github.com/sellout/CL-LLVM.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libyaml"
     :VC "git"
@@ -4523,7 +4523,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libxml2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/archimag/cl-libxml2.git")))
+    :LOCATIONS (("latest" . "https://github.com/archimag/cl-libxml2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libuv"
     :VC "git"
@@ -4531,7 +4531,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libusb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/soemraws/cl-libusb.git")))
+    :LOCATIONS (("latest" . "https://github.com/soemraws/cl-libusb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libsvm"
     :VC "git"
@@ -4543,12 +4543,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libpuzzle"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pocket7878/cl-libpuzzle.git")))
+    :LOCATIONS (("latest" . "https://github.com/pocket7878/cl-libpuzzle.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-libevent2"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/orthecreedence/cl-libevent2.git")))
+                 . "https://github.com/orthecreedence/cl-libevent2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-liballegro"
     :VC "git"
@@ -4556,7 +4556,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-lexer"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/starseeker/cl-lexer.git")))
+    :LOCATIONS (("latest" . "https://github.com/starseeker/cl-lexer.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-lex"
     :VC "http"
@@ -4583,7 +4583,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-langutils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/eslick/cl-langutils.git")))
+    :LOCATIONS (("latest" . "https://github.com/eslick/cl-langutils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-l10n"
     :VC "darcs"
@@ -4597,7 +4597,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-kyoto-cabinet"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kraison/cl-kyoto-cabinet.git")))
+    :LOCATIONS (("latest" . "https://github.com/kraison/cl-kyoto-cabinet.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-kanren-trs"
     :VC "svn"
@@ -4611,7 +4611,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-json"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hankhero/cl-json.git")))
+    :LOCATIONS (("latest" . "https://github.com/hankhero/cl-json.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-json-template"
     :VC "mercurial"
@@ -4625,7 +4625,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-jpeg"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sharplispers/cl-jpeg.git")))
+    :LOCATIONS (("latest" . "https://github.com/sharplispers/cl-jpeg.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ixf"
     :VC "git"
@@ -4655,7 +4655,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-inotify"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ferada/cl-inotify.git")))
+    :LOCATIONS (("latest" . "https://github.com/Ferada/cl-inotify.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-influxdb"
     :VC "git"
@@ -4664,19 +4664,19 @@
     :NAME "cl-inflector"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/cl-inflector.git")))
+                 . "https://github.com/AccelerationNet/cl-inflector.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-indeterminism"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/cl-indeterminism.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/cl-indeterminism.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-iconv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/quek/cl-iconv.git")))
+    :LOCATIONS (("latest" . "https://github.com/quek/cl-iconv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-i18n"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/cage2/cl-i18n.git")))
+    :LOCATIONS (("latest" . "https://github.com/cage2/cl-i18n.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-hue"
     :VC "git"
@@ -4684,19 +4684,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-html5-parser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/copyleft/cl-html5-parser.git")))
+    :LOCATIONS (("latest" . "https://github.com/copyleft/cl-html5-parser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-html-parse"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/cl-html-parse.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/cl-html-parse.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-html-diff"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/wiseman/cl-html-diff.git")))
+    :LOCATIONS (("latest" . "https://github.com/wiseman/cl-html-diff.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-heredoc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e-user/cl-heredoc.git")))
+    :LOCATIONS (("latest" . "https://github.com/e-user/cl-heredoc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-heap"
     :VC "http"
@@ -4714,19 +4714,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-haml"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Unspeakable/cl-haml.git")))
+    :LOCATIONS (("latest" . "https://github.com/Unspeakable/cl-haml.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gtk2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dmitryvk/cl-gtk2.git")))
+    :LOCATIONS (("latest" . "https://github.com/dmitryvk/cl-gtk2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gss"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lokedhs/cl-gss.git")))
+    :LOCATIONS (("latest" . "https://github.com/lokedhs/cl-gss.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-growl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nklein/cl-growl.git")))
+    :LOCATIONS (("latest" . "https://github.com/nklein/cl-growl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-groupby"
     :VC "git"
@@ -4734,11 +4734,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gravatar"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sellout/cl-gravatar.git")))
+    :LOCATIONS (("latest" . "https://github.com/sellout/cl-gravatar.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-graph"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/cl-graph")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/cl-graph")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-grace"
     :VC "mercurial"
@@ -4746,7 +4746,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gpu"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/angavrilov/cl-gpu.git")))
+    :LOCATIONS (("latest" . "https://github.com/angavrilov/cl-gpu.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gobject-introspection"
     :VC "git"
@@ -4759,11 +4759,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-glfw"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jimrthy/cl-glfw.git")))
+    :LOCATIONS (("latest" . "https://github.com/jimrthy/cl-glfw.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-github-v3"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/cl-github-v3.git")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/cl-github-v3.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-git"
     :VC "git"
@@ -4775,15 +4775,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-geometry"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ramarren/cl-geometry.git")))
+    :LOCATIONS (("latest" . "https://github.com/Ramarren/cl-geometry.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-geoip"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dasuxullebt/cl-geoip.git")))
+    :LOCATIONS (("latest" . "https://github.com/dasuxullebt/cl-geoip.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-geocode"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/e40/cl-geocode.git")))
+    :LOCATIONS (("latest" . "https://github.com/e40/cl-geocode.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-geo"
     :VC "http"
@@ -4798,20 +4798,20 @@
     :NAME "cl-general-accumulator"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/tlikonen/cl-general-accumulator.git")))
+                 . "https://github.com/tlikonen/cl-general-accumulator.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gene-searcher"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/TheDarkTrumpet/cl-gene-searcher.git")))
+                 . "https://github.com/TheDarkTrumpet/cl-gene-searcher.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gendoc"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/cl-gendoc.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/cl-gendoc.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gearman"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/taksatou/cl-gearman.git")))
+    :LOCATIONS (("latest" . "https://github.com/taksatou/cl-gearman.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-gdata"
     :VC "git"
@@ -4832,11 +4832,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fuse"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fb08af68/cl-fuse.git")))
+    :LOCATIONS (("latest" . "https://github.com/fb08af68/cl-fuse.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fuse-meta-fs"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fb08af68/cl-fuse-meta-fs.git")))
+    :LOCATIONS (("latest" . "https://github.com/fb08af68/cl-fuse-meta-fs.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ftp"
     :VC "http"
@@ -4845,15 +4845,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fsnotify"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/howeyc/cl-fsnotify.git")))
+    :LOCATIONS (("latest" . "https://github.com/howeyc/cl-fsnotify.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-freetype2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/cl-freetype2.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/cl-freetype2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fluidinfo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hdurer/cl-fluiddb.git")))
+    :LOCATIONS (("latest" . "https://github.com/hdurer/cl-fluiddb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-flowd"
     :VC "git"
@@ -4866,15 +4866,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fbclient"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/klimenko-serj/cl-fbclient.git")))
+    :LOCATIONS (("latest" . "https://github.com/klimenko-serj/cl-fbclient.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fastcgi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/KDr2/cl-fastcgi.git")))
+    :LOCATIONS (("latest" . "https://github.com/KDr2/cl-fastcgi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fam"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/7max/cl-fam.git")))
+    :LOCATIONS (("latest" . "https://github.com/7max/cl-fam.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-fad"
     :VC "http"
@@ -4882,23 +4882,23 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-factoring"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/smithzvk/cl-factoring.git")))
+    :LOCATIONS (("latest" . "https://github.com/smithzvk/cl-factoring.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ewkb"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/filonenko-mikhail/cl-ewkb.git")))
+    :LOCATIONS (("latest" . "https://github.com/filonenko-mikhail/cl-ewkb.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ev"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/sbryant/cl-ev.git")))
+    :LOCATIONS (("latest" . "https://github.com/sbryant/cl-ev.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-erlang-term"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/flambard/cl-erlang-term.git")))
+    :LOCATIONS (("latest" . "https://github.com/flambard/cl-erlang-term.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-epoch"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mcandre/cl-epoch.git")))
+    :LOCATIONS (("latest" . "https://github.com/mcandre/cl-epoch.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-epmd"
     :VC "git"
@@ -4911,7 +4911,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-enchant"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tlikonen/cl-enchant.git")))
+    :LOCATIONS (("latest" . "https://github.com/tlikonen/cl-enchant.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-emb"
     :VC "git"
@@ -4919,7 +4919,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-emacs-if"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/7max/cl-emacs-if.git")))
+    :LOCATIONS (("latest" . "https://github.com/7max/cl-emacs-if.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-durian"
     :VC "git"
@@ -4927,19 +4927,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-dsl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/cl-dsl.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/cl-dsl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-dropbox"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jsmpereira/cl-dropbox.git")))
+    :LOCATIONS (("latest" . "https://github.com/jsmpereira/cl-dropbox.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-dot"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/michaelw/cl-dot.git")))
+    :LOCATIONS (("latest" . "https://github.com/michaelw/cl-dot.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-docutils"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/willijar/cl-docutils.git")))
+    :LOCATIONS (("latest" . "https://github.com/willijar/cl-docutils.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-disque"
     :VC "git"
@@ -4947,7 +4947,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-difflib"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/wiseman/cl-difflib.git")))
+    :LOCATIONS (("latest" . "https://github.com/wiseman/cl-difflib.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-diceware"
     :VC "git"
@@ -4955,15 +4955,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-devil"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/cl-devil.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/cl-devil.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-decimals"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tlikonen/cl-decimals")))
+    :LOCATIONS (("latest" . "https://github.com/tlikonen/cl-decimals")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-dbi"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/cl-dbi.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/cl-dbi.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-db3"
     :VC "git"
@@ -4971,7 +4971,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-date-time-parser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tkych/cl-date-time-parser.git")))
+    :LOCATIONS (("latest" . "https://github.com/tkych/cl-date-time-parser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-data-frame"
     :VC "git"
@@ -4980,16 +4980,16 @@
     :NAME "cl-data-format-validation"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/willijar/cl-data-format-validation.git")))
+                 . "https://github.com/willijar/cl-data-format-validation.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-custom-hash-table"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/metawilm/cl-custom-hash-table.git")))
+                 . "https://github.com/metawilm/cl-custom-hash-table.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-curlex"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mabragor/cl-curlex.git")))
+    :LOCATIONS (("latest" . "https://github.com/mabragor/cl-curlex.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ctrnn"
     :VC "http"
@@ -4998,15 +4998,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-csv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/cl-csv.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/cl-csv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-css"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Inaimathi/cl-css.git")))
+    :LOCATIONS (("latest" . "https://github.com/Inaimathi/cl-css.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-crypt"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/renard/cl-crypt.git")))
+    :LOCATIONS (("latest" . "https://github.com/renard/cl-crypt.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-cron"
     :VC "mercurial"
@@ -5020,7 +5020,7 @@
     :NAME "cl-creditcard"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/AccelerationNet/cl-creditcard.git")))
+                 . "https://github.com/AccelerationNet/cl-creditcard.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-crc64"
     :VC "git"
@@ -5040,7 +5040,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-containers"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gwkkwg/cl-containers.git")))
+    :LOCATIONS (("latest" . "https://github.com/gwkkwg/cl-containers.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-cont"
     :VC "darcs"
@@ -5053,12 +5053,12 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-colors"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/cl-colors.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/cl-colors.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-closure-template"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/archimag/cl-closure-template.git")))
+                 . "https://github.com/archimag/cl-closure-template.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-clon"
     :VC "http"
@@ -5076,7 +5076,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-cheshire-cat"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mentel/cl-cheshire-cat.git")))
+    :LOCATIONS (("latest" . "https://github.com/mentel/cl-cheshire-cat.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-charms"
     :VC "git"
@@ -5088,11 +5088,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-case-control"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ichimal/cl-case-control.git")))
+    :LOCATIONS (("latest" . "https://github.com/ichimal/cl-case-control.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-cairo2"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/cl-cairo2.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/cl-cairo2.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ca"
     :VC "git"
@@ -5100,7 +5100,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-buchberger"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/jmbr/cl-buchberger.git")))
+    :LOCATIONS (("latest" . "https://github.com/jmbr/cl-buchberger.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-btree"
     :VC "http"
@@ -5113,15 +5113,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bplustree"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ebobby/cl-bplustree.git")))
+    :LOCATIONS (("latest" . "https://github.com/ebobby/cl-bplustree.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bloom"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/ruricolist/cl-bloom.git")))
+    :LOCATIONS (("latest" . "https://github.com/ruricolist/cl-bloom.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-blapack"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/blindglobe/cl-blapack.git")))
+    :LOCATIONS (("latest" . "https://github.com/blindglobe/cl-blapack.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-binary-file"
     :VC "http"
@@ -5134,19 +5134,19 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bert"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/flambard/cl-bert.git")))
+    :LOCATIONS (("latest" . "https://github.com/flambard/cl-bert.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bencode"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nja/cl-bencode.git")))
+    :LOCATIONS (("latest" . "https://github.com/nja/cl-bencode.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-beanstalk"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/antifuchs/cl-beanstalk.git")))
+    :LOCATIONS (("latest" . "https://github.com/antifuchs/cl-beanstalk.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bayesnet"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/lhope/cl-bayesnet.git")))
+    :LOCATIONS (("latest" . "https://github.com/lhope/cl-bayesnet.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base64"
     :VC "kmr-git"
@@ -5158,7 +5158,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base32"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hargettp/cl-base32.git")))
+    :LOCATIONS (("latest" . "https://github.com/hargettp/cl-base32.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-bacteria"
     :VC "mercurial"
@@ -5166,7 +5166,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-azure"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/RobBlackwell/cl-azure.git")))
+    :LOCATIONS (("latest" . "https://github.com/RobBlackwell/cl-azure.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-autowrap"
     :VC "git"
@@ -5174,33 +5174,33 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-autorepo"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/billstclair/cl-autorepo.git")))
+    :LOCATIONS (("latest" . "https://github.com/billstclair/cl-autorepo.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-async"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/orthecreedence/cl-async.git")))
+    :LOCATIONS (("latest" . "https://github.com/orthecreedence/cl-async.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-async-future"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/orthecreedence/cl-async-future.git")))
+                 . "https://github.com/orthecreedence/cl-async-future.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-arrows"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/nightfly19/cl-arrows.git")))
+    :LOCATIONS (("latest" . "https://github.com/nightfly19/cl-arrows.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-arff-parser"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pieterw/cl-arff-parser.git")))
+    :LOCATIONS (("latest" . "https://github.com/pieterw/cl-arff-parser.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-apple-plist"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/RobBlackwell/cl-apple-plist.git")))
+                 . "https://github.com/RobBlackwell/cl-apple-plist.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ansi-text"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pnathan/cl-ansi-text.git")))
+    :LOCATIONS (("latest" . "https://github.com/pnathan/cl-ansi-text.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-ansi-term"
     :VC "git"
@@ -5208,11 +5208,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-anonfun"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/arielnetworks/cl-anonfun.git")))
+    :LOCATIONS (("latest" . "https://github.com/arielnetworks/cl-anonfun.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-annot"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/m2ym/cl-annot.git")))
+    :LOCATIONS (("latest" . "https://github.com/m2ym/cl-annot.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-annot-prove"
     :VC "git"
@@ -5244,20 +5244,20 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-6502"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/redline6561/cl-6502.git")))
+    :LOCATIONS (("latest" . "https://github.com/redline6561/cl-6502.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl+ssl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/cl-plus-ssl/cl-plus-ssl.git")))
+    :LOCATIONS (("latest" . "https://github.com/cl-plus-ssl/cl-plus-ssl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "city-hash"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/brown/city-hash.git")))
+    :LOCATIONS (("latest" . "https://github.com/brown/city-hash.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "circular-streams"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/fukamachi/circular-streams.git")))
+                 . "https://github.com/fukamachi/circular-streams.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chunga"
     :VC "http"
@@ -5265,11 +5265,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chtml-matcher"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/eslick/chtml-matcher.git")))
+    :LOCATIONS (("latest" . "https://github.com/eslick/chtml-matcher.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chronicity"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/chaitanyagupta/chronicity.git")))
+    :LOCATIONS (("latest" . "https://github.com/chaitanyagupta/chronicity.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chrome-native-messaging"
     :VC "git"
@@ -5282,11 +5282,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chipz"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/froydnj/chipz.git")))
+    :LOCATIONS (("latest" . "https://github.com/froydnj/chipz.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chillax"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/chillax.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/chillax.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chemical-compounds"
     :VC "http"
@@ -5295,7 +5295,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "checkl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/rpav/CheckL.git")))
+    :LOCATIONS (("latest" . "https://github.com/rpav/CheckL.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "check-it"
     :VC "git"
@@ -5303,16 +5303,16 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cheat-js"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/mbrezu/Cheat-JS.git")))
+    :LOCATIONS (("latest" . "https://github.com/mbrezu/Cheat-JS.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "chanl"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/zkat/chanl.git")))
+    :LOCATIONS (("latest" . "https://github.com/zkat/chanl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "changed-stream"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/WarrenWilkinson/changed-stream.git")))
+                 . "https://github.com/WarrenWilkinson/changed-stream.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cffi"
     :VC "http"
@@ -5333,15 +5333,15 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cells"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/kennytilton/cells.git")))
+    :LOCATIONS (("latest" . "https://github.com/kennytilton/cells.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cells-gtk3"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ramarren/cells-gtk3.git")))
+    :LOCATIONS (("latest" . "https://github.com/Ramarren/cells-gtk3.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "caveman"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/fukamachi/caveman.git")))
+    :LOCATIONS (("latest" . "https://github.com/fukamachi/caveman.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cartesian-product-switch"
     :VC "http"
@@ -5354,7 +5354,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "caramel"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pocket7878/Caramel.git")))
+    :LOCATIONS (("latest" . "https://github.com/pocket7878/Caramel.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cambl"
     :VC "git"
@@ -5387,7 +5387,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "buildnode"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/buildnode.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/buildnode.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "buildapp"
     :VC "http"
@@ -5404,7 +5404,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "btrie"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/peterhil/btrie.git")))
+    :LOCATIONS (("latest" . "https://github.com/peterhil/btrie.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bt-semaphore"
     :VC "git"
@@ -5437,20 +5437,20 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "black-tie"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/aerique/black-tie.git")))
+    :LOCATIONS (("latest" . "https://github.com/aerique/black-tie.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bknr-web"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/hanshuebner/bknr-web.git")))
+    :LOCATIONS (("latest" . "https://github.com/hanshuebner/bknr-web.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bknr-datastore"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/hanshuebner/bknr-datastore.git")))
+                 . "https://github.com/hanshuebner/bknr-datastore.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bk-tree"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vy/bk-tree.git")))
+    :LOCATIONS (("latest" . "https://github.com/vy/bk-tree.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "bitfield-schema"
     :VC "git"
@@ -5467,7 +5467,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "binomial-heap"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/vy/binomial-heap.git")))
+    :LOCATIONS (("latest" . "https://github.com/vy/binomial-heap.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "binge"
     :VC "http-bz2"
@@ -5480,11 +5480,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "binascii"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/froydnj/binascii.git")))
+    :LOCATIONS (("latest" . "https://github.com/froydnj/binascii.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "binary-types"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/Ferada/binary-types")))
+    :LOCATIONS (("latest" . "https://github.com/Ferada/binary-types")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "big-string"
     :VC "mercurial"
@@ -5502,11 +5502,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "backports"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/esessoms/backports.git")))
+    :LOCATIONS (("latest" . "https://github.com/esessoms/backports.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "babel"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/cl-babel/babel.git")))
+    :LOCATIONS (("latest" . "https://github.com/cl-babel/babel.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ayah-captcha"
     :VC "git"
@@ -5541,7 +5541,7 @@
     :NAME "asdf-project-helper"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/ichimal/asdf-project-helper.git")))
+                 . "https://github.com/ichimal/asdf-project-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "asdf-package-system"
     :VC "git"
@@ -5582,7 +5582,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "array-operations"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/tpapp/array-operations.git")))
+    :LOCATIONS (("latest" . "https://github.com/tpapp/array-operations.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "arnesi"
     :VC "darcs"
@@ -5609,7 +5609,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "apply-argv"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/pve1/apply-argv.git")))
+    :LOCATIONS (("latest" . "https://github.com/pve1/apply-argv.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "antik"
     :VC "branched-git"
@@ -5628,7 +5628,7 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "amazon-ecs"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/gonzojive/amazon-ecs")))
+    :LOCATIONS (("latest" . "https://github.com/gonzojive/amazon-ecs.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "algebraic-data-library"
     :VC "mercurial"
@@ -5648,15 +5648,15 @@
     :NAME "advanced-readtable"
     :VC "git"
     :LOCATIONS (("latest"
-                 . "git://github.com/Kalimehtar/advanced-readtable.git")))
+                 . "https://github.com/Kalimehtar/advanced-readtable.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "access"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/AccelerationNet/access.git")))
+    :LOCATIONS (("latest" . "https://github.com/AccelerationNet/access.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "able"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/dherring/able.git")))
+    :LOCATIONS (("latest" . "https://github.com/dherring/able.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "3d-vectors"
     :VC "git"
@@ -5664,11 +5664,11 @@
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "3bmd"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/3b/3bmd.git")))
+    :LOCATIONS (("latest" . "https://github.com/3b/3bmd.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "3b-swf"
     :VC "git"
-    :LOCATIONS (("latest" . "git://github.com/3b/3b-swf.git")))
+    :LOCATIONS (("latest" . "https://github.com/3b/3b-swf.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "1am"
     :VC "git"

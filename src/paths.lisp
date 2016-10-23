@@ -1,14 +1,14 @@
 (in-package :cl-user)
 (defpackage qi.paths
   (:use :cl :qi.util)
-  (:export :project-dir
+  (:export :+dep-cache+
+           :+global-package-dir+
            :+project-name+
-           :qi-dir
-           :tar-dir
-           :package-dir
-           :+qi-directory+
            :+qi-dep-dir+
-           :+global-package-dir+))
+           :+qi-directory+
+           :package-dir
+           :project-dir
+           :qi-dir))
 (in-package :qi.paths)
 
 ;; Code:
@@ -25,6 +25,12 @@
   (merge-pathnames "packages/" +qi-directory+)
   "Where globally installed user-packages live.")
 
+(defun +dep-cache+ ()
+  (fad:merge-pathnames-as-directory
+   (or (uiop:getenv "TMPDIR")
+       "/tmp")
+   #P"qi/archives/"))
+
 ;; Project local paths
 
 (defvar +project-name+ nil
@@ -39,11 +45,6 @@ Qi is not running in the context of a project.")
   (fad:merge-pathnames-as-directory
    (project-dir +project-name+)
    (ensure-directories-exist #P".dependencies/")))
-
-(defun tar-dir ()
-  (fad:merge-pathnames-as-directory
-   (project-dir +project-name+)
-   (ensure-directories-exist #P".dependencies/archives/")))
 
 (defun package-dir ()
   (fad:merge-pathnames-as-directory

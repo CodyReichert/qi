@@ -4,12 +4,11 @@
 
 ;; Code:
 
-(defvar +qi-directory+ (merge-pathnames ".qi/" (user-homedir-pathname)))
+(defvar +qi-directory+ (make-pathname :defaults *load-truename* :name nil :type nil))
 (defvar +qi-dependencies+ (merge-pathnames "dependencies/" +qi-directory+))
-(defvar +qi-user-packages+ (merge-pathnames ".dependencies/packages/" +qi-directory+))
 
 (defun qi-dir (path)
-  "Make a pathname rooted at $HOME/.qi."
+  "Make a pathname rooted at +qi-directory+."
   (merge-pathnames path +qi-directory+))
 
 (defun find-asdf-fasl ()
@@ -69,9 +68,9 @@ available like qi, but can be make so by (qi:qiload :<system>)."
      do (push-new-to-registry dir)))
 
 
-;; Walk $HOME/.qi/dependencies/ and make all of qi's dependencies
-;; available. Also walk $HOME/.qi/.dependencies/packages to load in
-;; user globally-installed packages.
+;; Walk ./dependencies and make all of qi's dependencies
+;; available. Also walk ./.dependencies/packages to load in user
+;; globally-installed packages.
 (let ((qi-deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
   (push-new-to-registry +qi-directory+)

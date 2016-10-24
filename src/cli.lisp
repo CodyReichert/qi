@@ -85,7 +85,7 @@ in all future lisp sessions."
                  (format t "~%~3t✓ Successful upgrade: ~A~%" v)))))
         (t
          (format t "~%---X Qi not installed, or not in expected directory.~%")
-         (format t "~%~3tTry running 'cd /path/to/.qi && git pull' instead."))))
+         (format t "~%~3tTry running 'cd /path/to/qi && git pull' instead."))))
 
 ;;;
 

@@ -2,9 +2,7 @@
 (defpackage qi.paths
   (:use :cl :qi.util)
   (:export :+dep-cache+
-           :+global-package-dir+
            :+project-name+
-           :+qi-dep-dir+
            :+qi-directory+
            :package-dir
            :project-dir
@@ -15,15 +13,9 @@
 
 ;; Global paths
 
-(defvar +qi-directory+ (merge-pathnames ".qi/" (user-homedir-pathname))
-  "Pathname for the global ~/.qi directory.")
+(defvar +qi-directory+ (asdf:system-source-directory "qi")
+  "Pathname for the global Qi directory.")
 
-(defvar +qi-dep-dir+ (merge-pathnames "dependencies/" +qi-directory+)
-  "Pathname for the global ~/.qi/dependencies directory.")
-
-(defvar +global-package-dir+
-  (merge-pathnames "packages/" +qi-directory+)
-  "Where globally installed user-packages live.")
 
 (defun +dep-cache+ ()
   (fad:merge-pathnames-as-directory

@@ -291,7 +291,7 @@ local src-path and sys-path."
   (let ((out-file (concatenate 'string
                                 (dependency-name dep) "-"
                                 (dependency-version dep) ".tar.gz")))
-    (fad:merge-pathnames-as-file (+dep-cache+) (pathname out-file))))
+    (fad:merge-pathnames-as-file (qi.paths:+dep-cache+) (pathname out-file))))
 
 (defun unpack-tar (dep)
   (let* ((tar-path (tarball-path dep))

@@ -1,10 +1,8 @@
 #!/bin/bash
 
-set -e
-
-cd "$(dirname ${BASH_SOURCE[0]})/../"
+QI_PREFIX=${QI_PREFIX:-"$(dirname ${BASH_SOURCE[0]})/.."}
 
 sbcl --noinform --non-interactive \
-     --load init.lisp \
-     --load src/cli.lisp \
+     --load "$QI_PREFIX"/init.lisp \
+     --load "$QI_PREFIX"/src/cli.lisp \
      --end-toplevel-options "$@"

@@ -14,11 +14,22 @@
   :depends-on (:qi
                :prove)
   :components ((:module "t"
-                :components
-                ((:test-file "qi"))))
+                        :components (
+                                     (:test-file "integrations_test")
+                                     (:test-file "util_test")
+                                     (:test-file "packages_test")
+                                     )))
   :description "Test system for qi"
 
   :defsystem-depends-on (:prove-asdf)
   :perform (test-op :after (op c)
                     (funcall (intern #.(string :run-test-system) :prove-asdf) c)
                     (asdf:clear-system c)))
+
+(in-package :cl-user)
+(defpackage qi-test
+  (:use :cl
+        :qi
+        :qi.packages
+        :qi.paths
+        :prove))

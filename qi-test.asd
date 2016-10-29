@@ -12,6 +12,7 @@
   :author "Cody Reichert"
   :license ""
   :depends-on (:qi
+               :uiop
                :prove)
   :components ((:module "t"
                         :components (
@@ -25,11 +26,3 @@
   :perform (test-op :after (op c)
                     (funcall (intern #.(string :run-test-system) :prove-asdf) c)
                     (asdf:clear-system c)))
-
-(in-package :cl-user)
-(defpackage qi-test
-  (:use :cl
-        :qi
-        :qi.packages
-        :qi.paths
-        :prove))

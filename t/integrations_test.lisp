@@ -1,4 +1,9 @@
-(in-package :qi-test)
+(in-package :cl-user)
+(defpackage qi-test-integrations
+  (:use :cl
+        :qi
+        :prove))
+(in-package :qi-test-integrations)
 
 (plan 2)
 

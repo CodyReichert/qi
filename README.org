@@ -160,7 +160,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
    (qi:up :system)
    #+END_SRC
 
-   /This is the equivalient of running (asdf:load-system :system)/
+   /This is the equivalent of running (asdf:load-system :system)/
 
 *** Coming Soon
 
@@ -198,7 +198,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
     See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this
     area. Ideally, we have =recipes/= that contains the information
     about each Qi package. That way a new recipe can be added and the
-    Maniest can be updated.
+    Manifest can be updated.
 
 
 ** CLI
@@ -225,7 +225,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 
 
 ** Contributing
-   PR's and Issues are extremely welcomed and will likely all be
+   PRs and Issues are extremely welcomed and will likely all be
    merged or addressed. See the [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for a list of tasks
    that I'd like to see done. Make a PR or start a conversation if
    there's anything you'd like to see.

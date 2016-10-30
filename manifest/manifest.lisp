@@ -256,9 +256,9 @@
                  . "https://github.com/scymtym/utilities.binary-dump.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "usocket"
-    :VC "http"
+    :VC "git"
     :LOCATIONS (("latest"
-                 . "http://common-lisp.net/project/usocket/releases/usocket-latest.tar.gz")))
+                 . "https://github.com/usocket/usocket.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "usocket-udp"
     :VC "http"

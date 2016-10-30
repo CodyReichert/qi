@@ -73,11 +73,11 @@ available like qi, but can be make so by (qi:qiload :<system>)."
 ;; globally-installed packages.
 (let ((qi-deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)
+  (load-user-packages)
   (push-new-to-registry +qi-directory+)
   (loop for d in qi-deps-to-load
      do
-       (push-new-to-registry d))
-  (load-user-packages))
+       (push-new-to-registry d)))
 
 
 ;; Load Qi

@@ -36,4 +36,7 @@ Qi is not running in the context of a project.")
   (ensure-directories-exist
    (fad:merge-pathnames-as-directory
     (project-dir +project-name+)
-    #P".dependencies/packages/")))
+    (if (equal "qi"
+               (qi.util:sym->str +project-name+))
+        #P"share/qi/packages/"
+      #P".dependencies/packages/"))))

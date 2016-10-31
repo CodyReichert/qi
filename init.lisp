@@ -64,12 +64,12 @@ compiling asdf.lisp to a FASL and then loading it."
 (defun load-user-packages ()
   "Make user-global-packages available to ASDF. They're not immediately
 available like qi, but can be make so by (qi:qiload :<system>)."
-  (loop for dir in (directory (qi-dir ".dependencies/packages/**"))
+  (loop for dir in (directory (qi-dir "share/qi/packages/**"))
      do (push-new-to-registry dir)))
 
 
-;; Walk ./dependencies and make all of qi's dependencies
-;; available. Also walk ./.dependencies/packages to load in user
+;; Walk dependencies and make all of qi's dependencies
+;; available. Also walk share/qi/packages to load in user
 ;; globally-installed packages.
 (let ((qi-deps-to-load (directory (concatenate 'string (namestring +qi-dependencies+) "**"))))
   (setf asdf:*central-registry* nil)

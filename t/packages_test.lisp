@@ -19,8 +19,8 @@
   (ok "qi-git-test" (gethash "name" config))
   (let* ((p (car (gethash "packages" config)))
          (dep (qi::extract-dependency p)))
-    (is (qi.packages::dependency-download-strategy dep) "git")
-    (is (qi.packages::dependency-location dep)
+    (is (qi.packages::dependency-download-strategy dep) :git)
+    (is (qi.packages::dependency-url dep)
         "https://github.com/sharplispers/split-sequence.git")))
 
 (let ((config
@@ -29,8 +29,8 @@
   (ok "qi-hg-test" (gethash "name" config))
   (let* ((p (car (gethash "packages" config)))
          (dep (qi::extract-dependency p)))
-    (is (qi.packages::dependency-download-strategy dep) "hg")
-    (is (qi.packages::dependency-location dep)
+    (is (qi.packages::dependency-download-strategy dep) :hg)
+    (is (qi.packages::dependency-url dep)
         "https://bitbucket.org/tarballs_are_good/map-set")))
 
 (finalize)

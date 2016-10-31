@@ -3,6 +3,7 @@
   (:use :cl)
   (:import-from :qi.util
                 :asdf-system-path
+                :download-strategy
                 :load-asdf-system
                 :is-tar-url?
                 :is-git-url?
@@ -15,7 +16,7 @@
                 :*qi-trans-dependencies*
                 :dependency
                 :dependency-name
-                :dependency-location
+                :dependency-url
                 :dependency-version
                 :dependency-sys-path
                 :dispatch-dependency
@@ -30,6 +31,10 @@
                 :make-hg-dependency
                 :http
                 :location)
+  (:import-from :qi.manifest
+                :manifest-get-by-name
+                :manifest-package
+                :manifest-package-url)
   (:export :hello
            :install
            :install-global
@@ -88,42 +93,47 @@ be in the CWD that specifies <project>'s dependencies."
 
 
 (defun extract-dependency (p)
-  "Extract dependency from package."
+  "Generate a dependency from package P."
   (cond ((eql nil (gethash "url" p))
-         (make-manifest-dependency :name (gethash "name" p)
-                                   :version (or (gethash "version" p)
-                                                "latest")))
+         (let ((man (manifest-get-by-name (gethash "name" p))))
+           (unless man
+             (error "---X Package \"~S\" is not in the manifest; please provide a URL"
+                    (gethash "name" p)))
+           (make-manifest-dependency :name (gethash "name" p)
+                                     :url (manifest-package-url man)
+                                     :download-strategy (download-strategy (manifest-package-url man))
+                                     :version (or (gethash "version" p)
+                                                  "latest"))))
         ;; Dependency is a tarball url
         ((is-tar-url? (gethash "url" p))
          (make-http-dependency :name (gethash "name" p)
-                               :download-strategy "tarball"
+                               :download-strategy :tarball
                                :version (or (gethash "version" p)
                                             "latest")
-                               :location (http (gethash "url" p))))
+                               :url (gethash "url" p)))
         ;; Dependency is git url
         ((or (is-git-url? (gethash "url" p))
              (is-gh-url? (gethash "url" p)))
          (make-git-dependency :name (gethash "name" p)
-                              :download-strategy "git"
+                              :download-strategy :git
                               :version (or (gethash "version" p)
                                            "latest")
-                              :location (or (gethash "url" p)
-                                            nil)))
+                              :url (gethash "url" p)))
         ;; Dependency is mercurial url
         ((is-hg-url? (gethash "url" p))
          (make-hg-dependency :name (gethash "name" p)
-                             :download-strategy "hg"
+                             :download-strategy :hg
                              :version (or (gethash "version" p)
                                           "latest")
-                             :location (or (car (cl-ppcre:split ".hg" (gethash "url" p)))
-                                           nil)))
+                             :url (car (cl-ppcre:split ".hg" (gethash "url" p)))))
+
         ;; Dependency is local path
         ((not (null (gethash "path" p)))
          (make-local-dependency :name (gethash "name" p)
-                                :download-strategy "local"
+                                :download-strategy :local
                                 :version (or (gethash "version" p)
                                              "latest")
-                                :location (or (gethash "url" p) nil)))
+                                :url (or (gethash "url" p) nil)))
         (t nil)))
 
 
@@ -136,7 +146,7 @@ be in the CWD that specifies <project>'s dependencies."
        do (let ((dep (extract-dependency p)))
             (if dep
                 (dispatch-dependency dep)
-                (format t "~%---X Cannot resolve dependency type"))))
+                (error (format t "~%---X Cannot resolve dependency type")))))
     (asdf:oos 'asdf:load-op name :verbose nil))
   (dependency-report))
 

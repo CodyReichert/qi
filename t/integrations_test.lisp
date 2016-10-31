@@ -12,10 +12,9 @@
 ;; Tests that even if the tarball doesn't have the same name as what we expect, we still
 ;; sucessfully unpack it and load it.
 (let ((dep (qi::make-dependency :name "anaphora"
-                                :location (qi.packages::http "https://github.com/tokenrove/anaphora/tarball/master")
+                                :url "https://github.com/tokenrove/anaphora/tarball/master"
                                 :src-path (merge-pathnames tar-dir "anaphora-master.tar.gz")
-                                :sys-path (merge-pathnames tar-dir "anaphora-latest")
-                                :version "latest"))
+                                :sys-path (merge-pathnames tar-dir "anaphora-latest")))
       (tmpfile (merge-pathnames "anaphora-latest.tar.gz" (qi.paths:+dep-cache+))))
   (qi::bootstrap (qi.packages::dependency-name dep))
   (ensure-directories-exist (qi.paths:+dep-cache+))

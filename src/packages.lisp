@@ -2,14 +2,17 @@
 (defpackage qi.packages
   (:use :cl :qi.paths)
   (:import-from :qi.manifest
-                :create-download-strategy
+                :manifest-get-by-name
                 :manifest-package
-                :manifest-get-by-name)
+                :manifest-package-name
+                :manifest-package-url)
+  (:import-from :qi.util
+                :download-strategy)
   (:export :*qi-dependencies*
            :*qi-trans-dependencies*
            :dependency
            :dependency-name
-           :dependency-location
+           :dependency-url
            :dependency-version
            :dependency-sys-path
            :make-dependency
@@ -58,18 +61,10 @@
   "The base data structure for a dependency."
   name
   (download-strategy nil)
-  (location 'location)
   (src-path nil)
   (sys-path nil)
+  (url nil)
   (version "latest"))
-
-(adt:defdata location
-  "The location of a dependency."
-  (manifest t)
-  (local t)
-  (http t)
-  (git t)
-  (hg t))
 
 
 (defstruct (manifest-dependency (:include dependency))
@@ -106,7 +101,7 @@ of its location."))
 
 (defmethod dispatch-dependency ((dep local-dependency))
   (format t "~%-> Preparing to copy local dependency.")
-  (format t "~%---> ~A" (dependency-location dep))
+  (format t "~%---> ~A" (dependency-url dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep http-dependency))
@@ -127,20 +122,7 @@ of its location."))
           (dependency-name dep))
   (if (not (ensure-dependency dep))
       (format t "~%---X ~A not found in manifest" (dependency-name dep))
-      (progn
-        (let ((pack (manifest-get-by-name (dependency-name dep))))
-          (multiple-value-bind (location* strategy)
-              (create-download-strategy pack)
-            (cond ((string= "tarball" strategy)
-                   (setf (dependency-location dep) (http location*))
-                   (setf (dependency-download-strategy dep) strategy))
-                  ((string= "git" strategy)
-                   (setf (dependency-location dep) (git location*))
-                   (setf (dependency-download-strategy dep) strategy))
-                  ((string= "hg" strategy)
-                   (setf (dependency-location dep) (git location*))
-                   (setf (dependency-download-strategy dep) strategy)))
-            (install-dependency dep))))))
+    (install-dependency dep)))
 
 
 (defgeneric ensure-dependency (dependency)
@@ -161,45 +143,41 @@ of the information we need to get it."))
 
 (defmethod install-dependency ((dep git-dependency))
   (format t "~%---> Resolving repository location.")
-  (clone-git-repo (dependency-location dep) dep)
+  (clone-git-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep hg-dependency))
   (format t "~%---> Resolving repository location.")
-  (clone-hg-repo (dependency-location dep) dep)
+  (clone-hg-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep http-dependency))
-  (let ((loc (dependency-location dep)))
+  (let ((loc (dependency-url dep)))
     (format t "~%---> Resolving tarball dependency location.")
-    (adt:match location loc
-      ((http url) ; manifest holds an http url
-       (download-tarball url dep)
-       (make-dependency-available dep)
-       (install-transitive-dependencies dep))
-      (_ (error (format t "~%---> Unable able to resolve location of: ~S" loc))))))
+    (download-tarball loc dep)
+    (make-dependency-available dep)
+    (install-transitive-dependencies dep)))
 
 (defmethod install-dependency ((dep manifest-dependency))
-  (let ((loc (dependency-location dep)))
-    (adt:match location loc
+  (let ((strat (dependency-download-strategy dep))
+        (url (dependency-url dep)))
+    (cond ((eq :tarball strat)
+           (download-tarball url dep)
+           ;; The dependency must be made available before it is
+           ;; installed so ASDF can determine its dependencies in turn
+           (make-dependency-available dep)
+           (install-transitive-dependencies dep))
 
-       ((http url) ; has an http url
-        (download-tarball url dep)
-        (make-dependency-available dep)
-        (install-transitive-dependencies dep))
+          ((eq :git strat)
+           (clone-git-repo url dep)
+           (make-dependency-available dep)
+           (install-transitive-dependencies dep))
 
-       ((local path) ; has a local path (should not happen)
-        (error (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)))
+          (t ; unsupported strategy
+           (error (format t "~%---X Download strategy \"~S\" is not yet supported" strat))))))
 
-       ((git repo) ; has a git url
-        (clone-git-repo repo dep)
-        (make-dependency-available dep)
-        (install-transitive-dependencies dep))
-
-       (_ ; unsupported strategy
-        (error (format t "~%---X Cannot resolve package type: ~S" (dependency-name dep)))))))
 
 (defun download-tarball (url dep)
   "Downloads tarball from <url>, and updates <dep> with the local src-path
@@ -328,12 +306,16 @@ local src-path and sys-path."
                                              (dependency-name dep)))
                             (set-trans-dep d (dependency-name dep))))
                          (t
-                          (make-trans-dep-from-manifest d (dependency-name dep)))))))))))
+                          (make-trans-dep-from-manifest manifest-package (dependency-name dep)))))))))))
 
 
-(defun make-trans-dep-from-manifest (name caller)
+(defun make-trans-dep-from-manifest (package caller)
   (dispatch-dependency
-   (make-transitive-dependency :name name :caller caller)))
+   (make-transitive-dependency
+    :name (manifest-package-name package)
+    :url (manifest-package-url package)
+    :download-strategy (download-strategy (manifest-package-url package))
+    :caller caller)))
 
 
 (defun set-trans-dep (name caller)

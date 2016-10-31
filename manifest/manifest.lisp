@@ -1162,9 +1162,9 @@
     :LOCATIONS (("latest" . "http://www.xach.com/lisp/quickproject.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quicklisp-slime-helper"
-    :VC "((\"quicklisp-slime-helper\""
+    :VC "git"
     :LOCATIONS (("latest"
-                 . "\"quicklisp-slime-helper\" \"alexandria\" \"swank\"))")))
+                 . "https://github.com/quicklisp/quicklisp-slime-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quicklisp-slime-helper"
     :VC "git"

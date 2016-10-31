@@ -5145,8 +5145,9 @@
     :LOCATIONS (("latest" . "https://github.com/lhope/cl-bayesnet.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base64"
-    :VC "kmr-git"
-    :LOCATIONS (("latest" . "cl-base64")))
+    :VC "http"
+    :LOCATIONS (("latest"
+                 . "http://beta.quicklisp.org/archive/cl-base64/2015-09-23/cl-base64-20150923-git.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base58"
     :VC "git"

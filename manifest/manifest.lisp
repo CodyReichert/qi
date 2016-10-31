@@ -1253,8 +1253,8 @@
     :LOCATIONS (("latest" . "https://github.com/eugeneia/purl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "puri"
-    :VC "kmr-git"
-    :LOCATIONS (("latest" . "puri")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://beta.quicklisp.org/archive/puri/2015-09-23/puri-20150923-git.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ptester"
     :VC "kmr-git"

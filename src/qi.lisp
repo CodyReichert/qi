@@ -12,9 +12,7 @@
                 :+project-name+)
   (:import-from :qi.packages
                 :*qi-dependencies*
-                :*qi-broken-dependencies*
                 :*qi-trans-dependencies*
-                :*qi-broken-trans-dependencies*
                 :dependency
                 :dependency-name
                 :dependency-location
@@ -61,8 +59,7 @@ another lisp session, use (qi:up <system>)."
     :name (qi.util:sym->str system)
     :version version))
   (asdf:load-system system)
-  (installed-dependency-report)
-  (broken-dependency-report))
+  (installed-dependency-report))
 
 (defun up (system)
   "Load <system> and make it available in the current lisp session."
@@ -85,9 +82,7 @@ be in the CWD that specifies <project>'s dependencies."
   "Sets up Qi variables and loads the manifest."
   (setf +project-name+ proj)
   (setf *qi-dependencies* nil)
-  (setf *qi-broken-dependencies* nil)
   (setf *qi-trans-dependencies* nil)
-  (setf *qi-broken-trans-dependencies* nil)
   (qi.manifest::manifest-load))
 
 
@@ -146,9 +141,7 @@ be in the CWD that specifies <project>'s dependencies."
 
 
 (defun dependency-report ()
-  (installed-dependency-report)
-  (broken-dependency-report)
-  (broken-trans-dependency-report))
+  (installed-dependency-report))
 
 
 (defun installed-dependency-report ()
@@ -163,23 +156,3 @@ be in the CWD that specifies <project>'s dependencies."
                   (format t "~%   * ~A" (dependency-name d)))
              (unless (= 0 trans-amt)
                (format t "~%~A transitive dependencies installed~%" trans-amt))))))
-
-
-(defun broken-dependency-report ()
-  "Print information about the *qi-broken-dependencies* list."
-  (let ((broken-deps (length *qi-broken-dependencies*)))
-    (unless (= 0 broken-deps)
-      (format t "~%~%~S required dependencies not installed:" broken-deps)
-      (dolist (dep *qi-broken-dependencies*)
-        (format t "~%   * ~A" (dependency-name dep))))))
-
-
-(defun broken-trans-dependency-report ()
-  "Print information about the *qi-broken-trans-dependencies* list."
-  (let ((broken-deps (length *qi-broken-trans-dependencies*)))
-    (unless (= 0 broken-deps)
-      (format t "~%~%~S transitive dependencies not installed:" broken-deps)
-      (dolist (dep *qi-broken-trans-dependencies*)
-        (format t "~%   * ~A (required by ~A)"
-                (transitive-dependency-name dep)
-                (transitive-dependency-caller dep))))))

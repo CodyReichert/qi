@@ -5,8 +5,7 @@
            :+project-name+
            :+qi-directory+
            :package-dir
-           :project-dir
-           :qi-dir))
+           :project-dir))
 (in-package :qi.paths)
 
 ;; Code:
@@ -33,12 +32,11 @@ Qi is not running in the context of a project.")
   "Pathname/directory for <proj>."
   (asdf:system-relative-pathname proj (qi.util:sym->str proj)))
 
-(defun qi-dir ()
-  (fad:merge-pathnames-as-directory
-   (project-dir +project-name+)
-   (ensure-directories-exist #P".dependencies/")))
-
 (defun package-dir ()
-  (fad:merge-pathnames-as-directory
-   (project-dir +project-name+)
-   (ensure-directories-exist #P".dependencies/packages/")))
+  (ensure-directories-exist
+   (fad:merge-pathnames-as-directory
+    (project-dir +project-name+)
+    (if (equal "qi"
+               (qi.util:sym->str +project-name+))
+        #P"share/qi/packages/"
+      #P".dependencies/packages/"))))

@@ -12,10 +12,14 @@
   :author "Cody Reichert"
   :license ""
   :depends-on (:qi
+               :uiop
                :prove)
   :components ((:module "t"
-                :components
-                ((:test-file "qi"))))
+                        :components (
+                                     (:test-file "integrations_test")
+                                     (:test-file "util_test")
+                                     (:test-file "packages_test")
+                                     )))
   :description "Test system for qi"
 
   :defsystem-depends-on (:prove-asdf)

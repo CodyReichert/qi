@@ -27,7 +27,7 @@
 (defun is-git-url? (str)
   "Is <str> a git:// or .git url."
   (or (ppcre:scan "^git://.*" str)
-      (ppcre:scan ".*.git" str)))
+      (ppcre:scan ".*\.git$" str)))
 
 (defun is-hg-url? (str)
   "Is <str> a hg:// or .hg url."

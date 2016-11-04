@@ -1162,9 +1162,9 @@
     :LOCATIONS (("latest" . "http://www.xach.com/lisp/quickproject.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quicklisp-slime-helper"
-    :VC "((\"quicklisp-slime-helper\""
+    :VC "git"
     :LOCATIONS (("latest"
-                 . "\"quicklisp-slime-helper\" \"alexandria\" \"swank\"))")))
+                 . "https://github.com/quicklisp/quicklisp-slime-helper.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "quicklisp-slime-helper"
     :VC "git"
@@ -1253,8 +1253,8 @@
     :LOCATIONS (("latest" . "https://github.com/eugeneia/purl.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "puri"
-    :VC "kmr-git"
-    :LOCATIONS (("latest" . "puri")))
+    :VC "http"
+    :LOCATIONS (("latest" . "http://beta.quicklisp.org/archive/puri/2015-09-23/puri-20150923-git.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "ptester"
     :VC "kmr-git"
@@ -5145,8 +5145,9 @@
     :LOCATIONS (("latest" . "https://github.com/lhope/cl-bayesnet.git")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base64"
-    :VC "kmr-git"
-    :LOCATIONS (("latest" . "cl-base64")))
+    :VC "http"
+    :LOCATIONS (("latest"
+                 . "http://beta.quicklisp.org/archive/cl-base64/2015-09-23/cl-base64-20150923-git.tgz")))
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "cl-base58"
     :VC "git"

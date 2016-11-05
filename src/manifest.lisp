@@ -4,7 +4,6 @@
   (:export :manifest-package
            :make-manifest-package
            :create-download-strategy
-           :manifest-package-exists?
            :manifest-get-by-name))
 (in-package :qi.manifest)
 
@@ -61,14 +60,6 @@ wrapped in the ADT."
           ((string= "git" vc)
            (values loc "git"))
           (t (values loc "git")))))
-
-
-(defun manifest-package-exists? (name)
-  "Check if a package by the name of `name' is available in the manifest.
-Returns the package if it exists - nil otherwise."
-  (remove-if-not #'(lambda (x)
-                     (string= name (manifest-package-name x)))
-                 +manifest-packages+))
 
 
 (defun manifest-get-by-name (sys-name)

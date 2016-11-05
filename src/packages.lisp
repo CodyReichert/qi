@@ -4,7 +4,6 @@
   (:import-from :qi.manifest
                 :create-download-strategy
                 :manifest-package
-                :manifest-package-exists?
                 :manifest-get-by-name)
   (:export :*qi-dependencies*
            :*qi-broken-dependencies*

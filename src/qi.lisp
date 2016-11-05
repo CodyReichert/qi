@@ -74,8 +74,9 @@ be in the CWD that specifies <project>'s dependencies."
   (let* ((base-dir (qi.paths:project-dir project))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
     (if (probe-file qi-file)
-        (install-from-qi-file qi-file)
-        (error "No qi.yaml!"))))
+        #+sbcl (sb-ext:without-package-locks (install-from-qi-file qi-file))
+        #-sbcl (install-from-qi-file qi-file)
+      (error "No qi.yaml!"))))
 
 
 (defun bootstrap (proj)

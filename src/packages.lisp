@@ -180,8 +180,8 @@ of the information we need to get it."))
     (adt:match location loc
       ((http url) ; manifest holds an http url
        (download-tarball url dep)
-       (install-transitive-dependencies dep)
-       (make-dependency-available dep))
+       (make-dependency-available dep)
+       (install-transitive-dependencies dep))
       (_ (error (format t "~%---> Unable able to resolve location of: ~S" loc))))))
 
 (defmethod install-dependency ((dep manifest-dependency))
@@ -190,8 +190,8 @@ of the information we need to get it."))
 
        ((http url) ; has an http url
         (download-tarball url dep)
-        (install-transitive-dependencies dep)
-        (make-dependency-available dep))
+        (make-dependency-available dep)
+        (install-transitive-dependencies dep))
 
        ((local path) ; has a local path (should not happen)
         (error (format t "~%---X LOCAL PACKAGES NOT YET SUPPORTED: ~S~%" path)))

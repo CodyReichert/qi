@@ -67,7 +67,8 @@ wrapped in the ADT."
   "Check if a package by the name of `name' is available in the manifest.
 Returns the package if it exists - nil otherwise."
   (remove-if-not #'(lambda (x)
-                     (string= name (manifest-package-name x))) +manifest-packages+))
+                     (string= name (manifest-package-name x)))
+                 +manifest-packages+))
 
 
 (defun manifest-get-by-name (sys-name)

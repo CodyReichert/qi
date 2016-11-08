@@ -17,8 +17,9 @@
   :components ((:module "t"
                         :components (
                                      (:test-file "integrations_test")
-                                     (:test-file "util_test")
+                                     (:test-file "manifest_test")
                                      (:test-file "packages_test")
+                                     (:test-file "util_test")
                                      )))
   :description "Test system for qi"
 

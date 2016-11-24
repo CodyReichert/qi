@@ -150,10 +150,7 @@ of the information we need to get it."))
 (defmethod ensure-dependency ((dep manifest-dependency))
   "Check the manifest to ensure a dependency exists."
   (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
-    (cond ((eql nil manifest-package) nil)
-          (t
-           (format t "~%---> Found package in manifest!")
-           dep))))
+    (when manifest-package dep)))
 
 
 (defgeneric install-dependency (dependency)
@@ -331,7 +328,6 @@ local src-path and sys-path."
                                              (dependency-name dep)))
                             (set-trans-dep d (dependency-name dep))))
                          (t
-                          (format t "~%---> Found package in manifest!")
                           (make-trans-dep-from-manifest d (dependency-name dep)))))))))))
 
 

@@ -18,7 +18,6 @@ Random notes for stuff I'd like to do:
    + Tests - thanks to @nlamirault!
    + Cleanup and document API functions
    + A workable cli
-     - [TODO] Project locally install packages: qi --install-local caveman
 
 ** Done
    + Global packages

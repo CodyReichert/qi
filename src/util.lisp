@@ -2,6 +2,7 @@
 (defpackage qi.util
   (:use :cl)
   (:export :asdf-system-path
+           :download-strategy
            :load-asdf-system
            :is-tar-url?
            :is-git-url?
@@ -38,6 +39,16 @@
   "Is <str> a github url."
   (ppcre:scan "^https://github.*" str))
 
+(defun download-strategy (url)
+  (cond ((is-tar-url? url)
+         :tarball)
+        ((or (is-git-url? url)
+             (is-gh-url? url))
+         :git)
+        ((is-hg-url? url)
+         :hg)
+        (t
+         (error "Could not determine download strategy for ~S" url))))
 
 (defun asdf-system-path (sys)
   "Find the pathname for a system, return NIL if it's not available."

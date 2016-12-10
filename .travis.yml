@@ -19,10 +19,6 @@ install:
 
 before_script:
   - ros config
-  - mkdir -p $HOME/.qi/t
-  - cp -r $TRAVIS_BUILD_DIR/t/* $HOME/.qi/t/
-  - mkdir $HOME/.qi/manifest
-  - cp $TRAVIS_BUILD_DIR/manifest/manifest.lisp $HOME/.qi/manifest/manifest.lisp
 
 script:
   - run-prove qi-test.asd

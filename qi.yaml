@@ -8,9 +8,6 @@ packages:
 
   - name: alexandria
 
-  - name: trivial-shell
-    # url: https://github.com/gwkkwg/trivial-shell/archive/master.tar.gz
-
   - name: trivial-garbage
     # url: https://github.com/trivial-garbage/trivial-garbage
 

@@ -3,12 +3,15 @@
   (:use :cl)
   (:export :asdf-system-path
            :download-strategy
-           :load-asdf-system
-           :is-tar-url?
-           :is-git-url?
            :is-gh-url?
+           :is-git-url?
            :is-hg-url?
-           :sym->str))
+           :is-tar-url?
+           :load-asdf-system
+           :run-git-command
+           :run-hg-command
+           :sym->str
+           :update-repository))
 (in-package :qi.util)
 
 ;; Code:
@@ -65,3 +68,48 @@
       (setf *compile-verbose* nil)
       (setf *compile-print* nil)
       (asdf:load-system sys :verbose nil))))
+
+(defun run-git-command (command &optional directory)
+  "Run the git COMMAND in the specified DIRECTORY."
+  (uiop:run-program (concatenate 'string "git " command)
+                    :directory (if directory (namestring directory))
+                    :wait t
+                    :output :lines))
+
+(defun run-hg-command (command)
+  "Run the Mercurial COMMAND."
+  (uiop:run-program (concatenate 'string "hg " command) :wait t :output :lines))
+
+(defun update-repository (&key name directory upstream)
+  "Update the NAMEd repository, located in DIRECTORY, to its latest version from UPSTREAM.  If DIRECTORY exists but isn't a repository, make it one."
+  (ensure-directories-exist directory)
+  (if (probe-file (fad:merge-pathnames-as-directory directory ".git/"))
+      (let (stash
+            (pre-revision (first (run-git-command "rev-parse HEAD" directory))))
+        (format t "~%---> Upgrading ~A" name)
+        (run-git-command "fetch origin" directory)
+
+        (setq stash (first (run-git-command "status --untracked-files=all --porcelain" directory)))
+        (if stash (run-git-command "stash" directory))
+
+        (run-git-command "rebase origin/master" directory)
+
+        (if stash (run-git-command "stash pop" directory))
+
+        (let ((post-revision (first (run-git-command "rev-parse HEAD" directory))))
+          (if (string= pre-revision post-revision)
+              (format t "~%~3t✓ ~A is already up to date.~%" name)
+            (format t "~%~3t✓ Updated ~A to ~A~%" name post-revision))))
+    ;; If it wasn't installed using `git clone`
+    (progn
+      ;; Adapted from
+      ;; https://github.com/Homebrew/brew/blob/bff8e84/Library/Homebrew/cmd/update.sh#L37-L50;
+      ;; copyright Homebrew contributors, released under the BSD 2-Clause License
+      (run-git-command "init" directory)
+      (run-git-command
+       (concatenate 'string "config remote.origin.url " upstream) directory)
+      (run-git-command "config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\"" directory)
+      (run-git-command "fetch origin" directory)
+      (run-git-command "reset --hard origin/master" directory)
+      (let ((post-revision (first (run-git-command "rev-parse HEAD" directory))))
+        (format t "~%~3t✓ Updated ~A to ~A~%" name post-revision)))))

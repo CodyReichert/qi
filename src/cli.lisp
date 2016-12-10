@@ -1,14 +1,16 @@
 (in-package :cl-user)
 (defpackage qi.cli
   (:use :cl :qi)
-  (:import-from :trivial-shell
-                :shell-command)
+  (:import-from :qi.manifest
+                :+manifest-directory+
+                :+manifest-upstream+)
   (:import-from :qi.packages
                 :make-dependency)
   (:import-from :qi.paths
                 :+qi-directory+)
   (:import-from :qi.util
-                :sym->str))
+                :sym->str
+                :update-repository))
 (in-package :qi.cli)
 
 (asdf:load-system :unix-opts)
@@ -24,6 +26,10 @@
      :description "Upgrade Qi (pull the latest from git)"
      :short #\u
      :long "upgrade")
+    (:name :update-manifest
+     :description "Update the Qi manifest"
+     :short #\m
+     :long "update-manifest")
     (:name :install
      :description "Install a package from Qi (global by default)"
      :short #\i
@@ -67,37 +73,7 @@ in all future lisp sessions."
     (format t "~%~3t✓ Successfully installed ~S" opt)))
 
 ;;;
-
-
-;;; Qi Upgrade ($ qi --upgrade / $ qi -u) internals
-
-(defvar git-pull-qi
-  (concatenate 'string "git -C " (namestring +qi-directory+) " pull")
-  "The text of a git command that runs 'git pull' from the Qi
-  installation directory.")
-
-(defvar git-rev-parse-qi
-  (concatenate 'string "git -C " (namestring +qi-directory+) " rev-parse HEAD")
-  "The text of a git command that runs 'git rev-parse HEAD' from the Qi
-  installation directory to get the hash of the current revision.")
-
-(defun run-qi-upgrade ()
-  "Upgrade Qi. Running `qi --upgrade' will pull the latest version from git."
-  ;; We should allow upgrading to a specific version, which should
-  ;; just be a matter of pulling, and checking out a tag (at least
-  ;; while git is still the installation method.
-  (cond ((probe-file +qi-directory+)
-         (format t "~%---> Upgrading Qi")
-         (multiple-value-bind (o) (shell-command git-pull-qi)
-           (if (string= "Already up-to-date." (subseq o 0 19)) ;kind of a hack
-               (format t "~%~3t✓ Qi is already up to date.~%")
-               (multiple-value-bind (v) (shell-command git-rev-parse-qi)
-                 (format t "~%~3t✓ Successful upgrade: ~A~%" v)))))
-        (t
-         (format t "~%---X Qi not installed, or not in expected directory.~%")
-         (format t "~%~3tTry running 'cd /path/to/qi && git pull' instead."))))
-
-;;;
+;; Options parsing
 
 (multiple-value-bind (options); free-args)
     (handler-case
@@ -116,7 +92,13 @@ in all future lisp sessions."
      :usage-of "qi"
      :args "[Free-Args]"))
   (when-option (options :upgrade)
-               (run-qi-upgrade))
+               (update-repository :name "Qi"
+                                  :directory +qi-directory+
+                                  :upstream "https://github.com/CodyReichert/qi.git"))
+  (when-option (options :update-manifest)
+               (update-repository :name "Qi manifest"
+                                  :directory +manifest-directory+
+                                  :upstream +manifest-upstream+))
   (when-option (options :install)
                (opt-install (getf options :install)))
   (when-option (options :install-deps)

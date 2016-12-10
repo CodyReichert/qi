@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>README</title>
-<!-- 2016-12-10 Sat 14:30 -->
+<!-- 2016-12-12 Mon 21:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Org mode" />
@@ -232,42 +232,43 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc8e092b">1. Qi - Package Manager for Common Lisp</a>
+<li><a href="#org0f690f8">1. Qi - Package Manager for Common Lisp</a>
 <ul>
-<li><a href="#orgfb3c88e">1.1. Dependencies</a></li>
-<li><a href="#org35a189b">1.2. Installation</a></li>
-<li><a href="#org1000872">1.3. Usage</a>
+<li><a href="#org9f8deb3">1.1. The State of Qi</a></li>
+<li><a href="#org30e2beb">1.2. Dependencies</a></li>
+<li><a href="#org9503b33">1.3. Installation</a></li>
+<li><a href="#orgc99600d">1.4. Usage</a>
 <ul>
-<li><a href="#org3f6919f">1.3.1. Using Qi for a project</a></li>
-<li><a href="#org9442682">1.3.2. Using Qi for global packages</a></li>
+<li><a href="#org83a7939">1.4.1. Using Qi for a project</a></li>
+<li><a href="#org359fc96">1.4.2. Using Qi for global packages</a></li>
 </ul>
 </li>
-<li><a href="#orgfff6f08">1.4. API</a>
+<li><a href="#orgfc1093a">1.5. API</a>
 <ul>
-<li><a href="#org69fba2f">1.4.1. Hello</a></li>
-<li><a href="#org0218649">1.4.2. Install</a></li>
-<li><a href="#orgb47c17f">1.4.3. Install Global</a></li>
-<li><a href="#orgf7083fc">1.4.4. Up</a></li>
-<li><a href="#org6b044a9">1.4.5. Coming Soon</a></li>
+<li><a href="#orga963117">1.5.1. Hello</a></li>
+<li><a href="#org828eb31">1.5.2. Install</a></li>
+<li><a href="#orgc6328b7">1.5.3. Install Global</a></li>
+<li><a href="#org2779da3">1.5.4. Up</a></li>
+<li><a href="#org626aab7">1.5.5. Coming Soon</a></li>
 </ul>
 </li>
-<li><a href="#org448aecf">1.5. Manifest</a>
+<li><a href="#orgc2dab8f">1.6. Manifest</a>
 <ul>
-<li><a href="#orge4c1d2e">1.5.1. Adding a package to the Qi Manifest</a></li>
+<li><a href="#orgbc10ab2">1.6.1. Adding a package to the Qi Manifest</a></li>
 </ul>
 </li>
-<li><a href="#org044ce2a">1.6. CLI</a></li>
-<li><a href="#org0b70769">1.7. Contributing</a></li>
-<li><a href="#org7f76ef1">1.8. Contributors</a></li>
-<li><a href="#orgb6d4971">1.9. Copyright</a></li>
-<li><a href="#orge2aec5f">1.10. License</a></li>
+<li><a href="#orgc47b7d2">1.7. CLI</a></li>
+<li><a href="#org152d163">1.8. Contributing</a></li>
+<li><a href="#org5be0304">1.9. Contributors</a></li>
+<li><a href="#org1054ab4">1.10. Copyright</a></li>
+<li><a href="#org2698ebe">1.11. License</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc8e092b" class="outline-2">
-<h2 id="orgc8e092b"><span class="section-number-2">1</span> Qi - Package Manager for Common Lisp</h2>
+<div id="outline-container-org0f690f8" class="outline-2">
+<h2 id="org0f690f8"><span class="section-number-2">1</span> Qi - Package Manager for Common Lisp</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Qi is a package manager for Common Lisp. There are several goals, at
@@ -277,11 +278,11 @@ to use. A CLI, project scaffolding, and bringing the wonderful world
 of Common Lisp libraries to anyone with one command are the more
 long-term goals.
 </p>
+</div>
 
-<p>
-<b>The State of Qi</b>
-</p>
-
+<div id="outline-container-org9f8deb3" class="outline-3">
+<h3 id="org9f8deb3"><span class="section-number-3">1.1</span> The State of Qi</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 Qi is a new project. There are still bugs. There are still missing
 features. It might not work sometimes. It has not been tested on
@@ -294,11 +295,12 @@ feedback are appreciated.
 View the HTML version of this documentation <a href="http://codyreichert.github.io/qi/">here</a>.
 </p>
 </div>
+</div>
 
 
-<div id="outline-container-orgfb3c88e" class="outline-3">
-<h3 id="orgfb3c88e"><span class="section-number-3">1.1</span> Dependencies</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org30e2beb" class="outline-3">
+<h3 id="org30e2beb"><span class="section-number-3">1.2</span> Dependencies</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><a href="http://pyyaml.org/wiki/LibYAML">libyaml</a></li>
 <li><a href="https://www.openssl.org">OpenSSL</a></li>
@@ -313,51 +315,51 @@ for a full list).
 </div>
 
 
-<div id="outline-container-org35a189b" class="outline-3">
-<h3 id="org35a189b"><span class="section-number-3">1.2</span> Installation</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org9503b33" class="outline-3">
+<h3 id="org9503b33"><span class="section-number-3">1.3</span> Installation</h3>
+<div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
-<li>Clone Qi anywhere:</li>
-</ol>
+<li><p>
+Clone Qi anywhere:
+</p>
 
 <div class="org-src-container">
 <pre class="src src-sh">git clone https://github.com/CodyReichert/qi.git
 </pre>
-</div>
+</div></li>
 
-<ol class="org-ol">
-<li>Load Qi when SBCL starts by adding these lines to your <code>.sbclrc</code>:</li>
-</ol>
+<li><p>
+Load Qi when SBCL starts by adding these lines to your <code>.sbclrc</code>:
+</p>
 
 <div class="org-src-container">
 <pre class="src src-lisp">(load <span style="color: #00ffff;">"path/to/qi"</span>)
 </pre>
-</div>
+</div></li>
+</ol>
 
 <p>
 To test if Qi is installed correctly, run the following the a REPL:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-lisp">CL-USER&gt; (qi:hello)
 </pre>
 </div>
 
 <p>
-<i>Notes:</i>
+See <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> and <code>bin/</code> for some work that can/should be done
+around this part.
 </p>
-<ul class="org-ul">
-<li>See <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> and <code>bin/</code> for some work that can/should be done
-around this part.</li>
-</ul>
 </div>
 </div>
 
-<div id="outline-container-org1000872" class="outline-3">
-<h3 id="org1000872"><span class="section-number-3">1.3</span> Usage</h3>
-<div class="outline-text-3" id="text-1-3">
-</div><div id="outline-container-org3f6919f" class="outline-4">
-<h4 id="org3f6919f"><span class="section-number-4">1.3.1</span> Using Qi for a project</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-orgc99600d" class="outline-3">
+<h3 id="orgc99600d"><span class="section-number-3">1.4</span> Usage</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-org83a7939" class="outline-4">
+<h4 id="org83a7939"><span class="section-number-4">1.4.1</span> Using Qi for a project</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <p>
 This section covers using Qi for a single project.
 </p>
@@ -393,7 +395,7 @@ Above there are three types of packages: Manifest, tarball, and git.
 </p>
 
 <ul class="org-ul">
-<li><b>Manifest</b>: "Known" packages from the <a href="https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp">Qi manifest</a>.</li>
+<li><b>Manifest</b>: "Known" packages from the <a href="https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp">Qi manifest</a>.</li>
 <li><b>Tarball</b>: An HTTP URL to tarball.</li>
 <li><b>Git</b>: A git repository. You can also specify a tag or hash.</li>
 <li><b>Mercurial</b>: A link to a mercurial repository.</li>
@@ -421,7 +423,7 @@ You can also install project dependencies from the command-line:
 </div>
 
 <p>
-Qi take's care of any transitive dependencies and will let you know
+Qi takes care of any transitive dependencies and will let you know
 of any that it could <i>not</i> install. In a case where Qi can not
 install some dependencies, add direct links to those packages in
 your <code>qi.yaml</code>.
@@ -429,20 +431,18 @@ your <code>qi.yaml</code>.
 </div>
 </div>
 
-<div id="outline-container-org9442682" class="outline-4">
-<h4 id="org9442682"><span class="section-number-4">1.3.2</span> Using Qi for global packages</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-org359fc96" class="outline-4">
+<h4 id="org359fc96"><span class="section-number-4">1.4.2</span> Using Qi for global packages</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
 You can also manage global packages with Qi. This is useful for
 downloading and install packages that you want to always have
 available. There's a simple interface, and two commands are the
 most useful:
 </p>
+</div>
 
-<p>
-<b>install-global</b>
-</p>
-
+<ol class="org-ol"><li><a id="orge80b750"></a>install-global<br  /><div class="outline-text-5" id="text-1-4-2-1">
 <div class="org-src-container">
 <pre class="src src-lisp">* (qi:install-global <span style="color: #00ff00;">:cl-project</span>)
 </pre>
@@ -450,14 +450,12 @@ most useful:
 
 <p>
 Running <code>install-global</code> installs the package into the global
-package directory (qi/dependencies). The installed package is made
-available in the current session.
+package directory (<code>share/qi/packages</code>). The installed package is
+made available in the current session.
 </p>
+</div></li>
 
-<p>
-<b>up</b>
-</p>
-
+<li><a id="orgdbbda82"></a>up<br  /><div class="outline-text-5" id="text-1-4-2-2">
 <div class="org-src-container">
 <pre class="src src-lisp">* (qi:up <span style="color: #00ff00;">:cl-project</span>)
 </pre>
@@ -467,22 +465,22 @@ available in the current session.
 Running <code>up</code> loads a package that's in your global package
 directory and makes it available in the current session.
 </p>
-</div>
+</div></li></ol>
 </div>
 </div>
 
 
-<div id="outline-container-orgfff6f08" class="outline-3">
-<h3 id="orgfff6f08"><span class="section-number-3">1.4</span> API</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgfc1093a" class="outline-3">
+<h3 id="orgfc1093a"><span class="section-number-3">1.5</span> API</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 Qi's API is composed of a few commands, documented below:
 </p>
 </div>
 
-<div id="outline-container-org69fba2f" class="outline-4">
-<h4 id="org69fba2f"><span class="section-number-4">1.4.1</span> Hello</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-orga963117" class="outline-4">
+<h4 id="orga963117"><span class="section-number-4">1.5.1</span> Hello</h4>
+<div class="outline-text-4" id="text-1-5-1">
 <p>
 Prints some information about Qi to <b>standard-output</b>. If this
 prints, Qi is installed correctly.
@@ -495,12 +493,12 @@ prints, Qi is installed correctly.
 </div>
 </div>
 
-<div id="outline-container-org0218649" class="outline-4">
-<h4 id="org0218649"><span class="section-number-4">1.4.2</span> Install</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-org828eb31" class="outline-4">
+<h4 id="org828eb31"><span class="section-number-4">1.5.2</span> Install</h4>
+<div class="outline-text-4" id="text-1-5-2">
 <p>
 Installs a system and it's dependencies. All dependencies are
-installed local to the system directory in <code>.dependencies/</code>.
+installed local to the project's <code>.dependencies/</code> directory.
 </p>
 
 <ul class="org-ul">
@@ -516,13 +514,13 @@ to <b>standard-output</b> what packages could not be installed.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb47c17f" class="outline-4">
-<h4 id="orgb47c17f"><span class="section-number-4">1.4.3</span> Install Global</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-orgc6328b7" class="outline-4">
+<h4 id="orgc6328b7"><span class="section-number-4">1.5.3</span> Install Global</h4>
+<div class="outline-text-4" id="text-1-5-3">
 <p>
-Installs a system to the global package directory. The system
-should be from the Manifest. The system is made available in the
-current session.
+Installs a system to the global package directory
+<code>share/qi/packages</code>. The system should be from the Manifest. The
+system is made available in the current session.
 </p>
 
 <div class="org-src-container">
@@ -531,17 +529,16 @@ current session.
 </div>
 
 <p>
-<i>To make a global system available at any time, you can use</i>
-<i>(qi:up :system)</i>
+<i>To make a global system available at any time, you can use <code>(qi:up :system)</code></i>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf7083fc" class="outline-4">
-<h4 id="orgf7083fc"><span class="section-number-4">1.4.4</span> Up</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-org2779da3" class="outline-4">
+<h4 id="org2779da3"><span class="section-number-4">1.5.4</span> Up</h4>
+<div class="outline-text-4" id="text-1-5-4">
 <p>
-ASDF load's a system to be available in the current session.
+Have ASDF load a system to be available in the current session.
 </p>
 
 <div class="org-src-container">
@@ -550,14 +547,14 @@ ASDF load's a system to be available in the current session.
 </div>
 
 <p>
-<i>This is the equivalent of running (asdf:load-system :system)</i>
+<i>This is the equivalent of running <code>(asdf:load-system :system)</code></i>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6b044a9" class="outline-4">
-<h4 id="org6b044a9"><span class="section-number-4">1.4.5</span> Coming Soon</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-org626aab7" class="outline-4">
+<h4 id="org626aab7"><span class="section-number-4">1.5.5</span> Coming Soon</h4>
+<div class="outline-text-4" id="text-1-5-5">
 <p>
 <b>Not implemented</b> <code>(qi:new ...)</code>
 </p>
@@ -575,14 +572,6 @@ Generate a qi.yaml for an existing project.
 </p>
 
 <p>
-<b>Not implemented</b> <code>(qi:update-manifest ...)</code>
-</p>
-
-<p>
-Update the Qi manifest to get access to new packages and updates.
-</p>
-
-<p>
 <b>Not implemented</b> <code>(qi:publish ...)</code>
 </p>
 
@@ -594,20 +583,20 @@ Publish a new package to the Qi Manifest
 </div>
 
 
-<div id="outline-container-org448aecf" class="outline-3">
-<h3 id="org448aecf"><span class="section-number-3">1.5</span> Manifest</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgc2dab8f" class="outline-3">
+<h3 id="orgc2dab8f"><span class="section-number-3">1.6</span> Manifest</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
-The <a href="https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp">Qi Manifest</a> is a list of known packages - which makes it easy
+The <a href="https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp">Qi Manifest</a> is a list of known packages - which makes it easy
 to simply install packages by their name. Qi's Manifest was
 initially seeded by <a href="https://github.com/quicklisp/quicklisp-projects/">Quicklisp's projects</a> which means that any
 project you can find in Quicklisp can be found in Qi.
 </p>
 </div>
 
-<div id="outline-container-orge4c1d2e" class="outline-4">
-<h4 id="orge4c1d2e"><span class="section-number-4">1.5.1</span> Adding a package to the Qi Manifest</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-orgbc10ab2" class="outline-4">
+<h4 id="orgbc10ab2"><span class="section-number-4">1.6.1</span> Adding a package to the Qi Manifest</h4>
+<div class="outline-text-4" id="text-1-6-1">
 <p>
 Any and all packages are welcome in the Qi Manifest. The only
 requirement is that it is a lisp project that is asdf-loadable.
@@ -615,7 +604,7 @@ requirement is that it is a lisp project that is asdf-loadable.
 
 <p>
 To add a package to the manifest, submit a pull-request at
-<a href="https://github.com/CodyReichert/qi/">https://github.com/CodyReichert/qi/</a>, or send a patch file to
+<a href="https://github.com/CodyReichert/qi-manifest">https://github.com/CodyReichert/qi-manifest</a>, or send a patch file to
 codyreichert@gmail.com.
 </p>
 
@@ -630,13 +619,13 @@ Manifest can be updated.
 </div>
 
 
-<div id="outline-container-org044ce2a" class="outline-3">
-<h3 id="org044ce2a"><span class="section-number-3">1.6</span> CLI</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-orgc47b7d2" class="outline-3">
+<h3 id="orgc47b7d2"><span class="section-number-3">1.7</span> CLI</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 The Qi CLI provides a few basic commands (more coming soon!). Make
-sure that <code>qi/bin/</code> is in your path, or move <code>qi/bin/qi</code> into your
-path.
+sure that <code>bin</code> is in your <code>$PATH</code>, or move <code>bin/qi</code> into your
+<code>$PATH</code>.
 </p>
 
 <p>
@@ -647,11 +636,13 @@ Run <code>$ qi --help</code> For info on the available commands:
 <pre class="src src-sh">&#955; qi -h
 Qi - A simple, open, free package manager for Common Lisp.
 
-Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
+Usage: qi [-h|--help] [-u|--upgrade] [-m|--update-manifest]
+          [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
 
 Available options:
   -h, --help                   Print this help menu.
   -u, --upgrade                Upgrade Qi (pull the latest from git)
+  -m, --update-manifest        Update the Qi manifest
   -i, --install PACKAGE        Install a package from Qi (global by default)
   -d, --install-deps ASD-FILE  Install dependencies locally for the specified system
 
@@ -662,9 +653,9 @@ Issues https://github.com/CodyReichert/qi
 </div>
 
 
-<div id="outline-container-org0b70769" class="outline-3">
-<h3 id="org0b70769"><span class="section-number-3">1.7</span> Contributing</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-org152d163" class="outline-3">
+<h3 id="org152d163"><span class="section-number-3">1.8</span> Contributing</h3>
+<div class="outline-text-3" id="text-1-8">
 <p>
 PRs and Issues are extremely welcomed and will likely all be
 merged or addressed. See the <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for a list of tasks
@@ -690,9 +681,9 @@ With any PR, add your name to the <code>Contributors</code> section below.
 </div>
 
 
-<div id="outline-container-org7f76ef1" class="outline-3">
-<h3 id="org7f76ef1"><span class="section-number-3">1.8</span> Contributors</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-org5be0304" class="outline-3">
+<h3 id="org5be0304"><span class="section-number-3">1.9</span> Contributors</h3>
+<div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
 <li>Cody Reichert (codyreichert@gmail.com)</li>
 <li>Nicolas Lamirault (@nlamirault)</li>
@@ -702,9 +693,9 @@ With any PR, add your name to the <code>Contributors</code> section below.
 </div>
 
 
-<div id="outline-container-orgb6d4971" class="outline-3">
-<h3 id="orgb6d4971"><span class="section-number-3">1.9</span> Copyright</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-org1054ab4" class="outline-3">
+<h3 id="org1054ab4"><span class="section-number-3">1.10</span> Copyright</h3>
+<div class="outline-text-3" id="text-1-10">
 <p>
 Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
 </p>
@@ -712,9 +703,9 @@ Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
 </div>
 
 
-<div id="outline-container-orge2aec5f" class="outline-3">
-<h3 id="orge2aec5f"><span class="section-number-3">1.10</span> License</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-org2698ebe" class="outline-3">
+<h3 id="org2698ebe"><span class="section-number-3">1.11</span> License</h3>
+<div class="outline-text-3" id="text-1-11">
 <p>
 BSD
 </p>
@@ -723,7 +714,7 @@ BSD
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-10 Sat 14:30</p>
+<p class="date">Created: 2016-12-12 Mon 21:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -2,10 +2,11 @@
 (defpackage qi-test-util
   (:use :cl
         :qi
+        :qi.util
         :prove))
 (in-package :qi-test-util)
 
-(plan 11)
+(plan 13)
 
 (is (qi.util::sym->str :sym)
     "sym"
@@ -26,5 +27,11 @@
 
 (ok (qi.util::is-hg-url? "https://bitbucket.org/tarballs_are_good/map-set.hg") "Is a mercurial url.")
 (ok (not (qi.util::is-hg-url? "https://bitbucket.org/tarballs_are_good/map-set")) "Is not a mercurial url.")
+
+(let ((dir (fad:merge-pathnames-as-directory (uiop:getcwd) "t/test/")))
+  (ensure-directories-exist dir)
+  (ok (run-git-command "init" dir))
+  (ok (probe-file (fad:merge-pathnames-as-directory dir ".git/")))
+  (uiop:run-program (concatenate 'string "rm -rf " (namestring dir))))
 
 (finalize)

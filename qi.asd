@@ -25,7 +25,6 @@
                :drakma
                :unix-opts
                :archive
-               :trivial-shell
                :cl-algebraic-data-type
                :gzip-stream)
   :components ((:module "src"

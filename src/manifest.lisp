@@ -1,9 +1,14 @@
 (in-package :cl-user)
 (defpackage qi.manifest
   (:use :cl)
+  (:import-from :qi.util
+                :run-git-command
+                :update-repository)
   (:export :manifest-package
            :make-manifest-package
-           :manifest-get-by-name))
+           :manifest-get-by-name
+           :+manifest-directory+
+           :+manifest-upstream+))
 (in-package :qi.manifest)
 
 ;; Code:
@@ -12,8 +17,17 @@
   "A stub list of importing the quicklisp dist.")
 (defvar +manifest-packages+ ()
   "A list of known packages from manifest.lisp.")
+
+(defvar +manifest-upstream+
+  "https://github.com/CodyReichert/qi-manifest.git")
+
+(defvar +manifest-directory+
+  (fad:merge-pathnames-as-directory
+   (asdf:system-source-directory "qi")
+   "share/qi/manifest/"))
+
 (defvar +manifest-file+
-  (fad:merge-pathnames-as-file (asdf:system-source-directory "qi") "manifest/manifest.lisp")
+  (fad:merge-pathnames-as-file +manifest-directory+ "manifest.lisp")
   "PATHNAME to the qi manifest.lisp file.")
 
 (defstruct manifest-package
@@ -26,6 +40,9 @@ a specific version of a package."
 
 (defun manifest-load ()
   "Load qi's manifest.lisp into memory."
+  (update-repository :name "Qi manifest"
+                     :directory +manifest-directory+
+                     :upstream +manifest-upstream+)
   (with-open-file (s +manifest-file+)
     (let ((out))
       (loop

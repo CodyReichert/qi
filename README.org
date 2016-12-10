@@ -7,7 +7,7 @@ to use. A CLI, project scaffolding, and bringing the wonderful world
 of Common Lisp libraries to anyone with one command are the more
 long-term goals.
 
-*The State of Qi*
+** The State of Qi
 
 Qi is a new project. There are still bugs. There are still missing
 features. It might not work sometimes. It has not been tested on
@@ -30,26 +30,26 @@ for a full list).
 
 ** Installation
 
-   1) Clone Qi anywhere:
+1. Clone Qi anywhere:
 
    #+BEGIN_SRC sh
      git clone https://github.com/CodyReichert/qi.git
    #+END_SRC
 
-   2) Load Qi when SBCL starts by adding these lines to your =.sbclrc=:
+2. Load Qi when SBCL starts by adding these lines to your =.sbclrc=:
 
    #+BEGIN_SRC lisp
      (load "path/to/qi")
    #+END_SRC
 
-   To test if Qi is installed correctly, run the following the a REPL:
-   #+BEGIN_SRC lisp
-     CL-USER> (qi:hello)
-   #+END_SRC
+To test if Qi is installed correctly, run the following the a REPL:
 
-   /Notes:/
-   - See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] and =bin/= for some work that can/should be done
-     around this part.
+#+BEGIN_SRC lisp
+  CL-USER> (qi:hello)
+#+END_SRC
+
+See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] and =bin/= for some work that can/should be done
+around this part.
 
 ** Usage
 
@@ -77,7 +77,7 @@ for a full list).
 
    Above there are three types of packages: Manifest, tarball, and git.
 
-   - *Manifest*: "Known" packages from the [[https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp][Qi manifest]].
+   - *Manifest*: "Known" packages from the [[https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp][Qi manifest]].
    - *Tarball*: An HTTP URL to tarball.
    - *Git*: A git repository. You can also specify a tag or hash.
    - *Mercurial*: A link to a mercurial repository.
@@ -97,7 +97,7 @@ for a full list).
      qi --install-deps path/to/myproject.asd
    #+END_SRC
 
-   Qi take's care of any transitive dependencies and will let you know
+   Qi takes care of any transitive dependencies and will let you know
    of any that it could /not/ install. In a case where Qi can not
    install some dependencies, add direct links to those packages in
    your =qi.yaml=.
@@ -108,17 +108,17 @@ for a full list).
     available. There's a simple interface, and two commands are the
     most useful:
 
-    *install-global*
+**** install-global
 
    #+BEGIN_SRC lisp
      * (qi:install-global :cl-project)
    #+END_SRC
 
     Running =install-global= installs the package into the global
-    package directory (qi/dependencies). The installed package is made
-    available in the current session.
+    package directory (=share/qi/packages=). The installed package is
+    made available in the current session.
 
-    *up*
+**** up
 
    #+BEGIN_SRC lisp
      * (qi:up :cl-project)
@@ -141,7 +141,7 @@ for a full list).
 
 *** Install
    Installs a system and it's dependencies. All dependencies are
-   installed local to the system directory in =.dependencies/=.
+   installed local to the project's =.dependencies/= directory.
 
    - For any dependencies that are not already available, Qi will try to
      download them from the Manifest. If all else fails, it will print
@@ -152,25 +152,24 @@ for a full list).
    #+END_SRC
 
 *** Install Global
-   Installs a system to the global package directory. The system
-   should be from the Manifest. The system is made available in the
-   current session.
+   Installs a system to the global package directory
+   =share/qi/packages=. The system should be from the Manifest. The
+   system is made available in the current session.
 
    #+BEGIN_SRC lisp
    (qi:install-global :system &optional version)
    #+END_SRC
 
-   /To make a global system available at any time, you can use/
-   /(qi:up :system)/
+   /To make a global system available at any time, you can use =(qi:up :system)=/
 
 *** Up
-   ASDF load's a system to be available in the current session.
+   Have ASDF load a system to be available in the current session.
 
    #+BEGIN_SRC lisp
    (qi:up :system)
    #+END_SRC
 
-   /This is the equivalent of running (asdf:load-system :system)/
+   /This is the equivalent of running =(asdf:load-system :system)=/
 
 *** Coming Soon
 
@@ -182,17 +181,13 @@ for a full list).
 
    Generate a qi.yaml for an existing project.
 
-   *Not implemented* =(qi:update-manifest ...)=
-
-   Update the Qi manifest to get access to new packages and updates.
-
    *Not implemented* =(qi:publish ...)=
 
    Publish a new package to the Qi Manifest
 
 
 ** Manifest
-   The [[https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp][Qi Manifest]] is a list of known packages - which makes it easy
+   The [[https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp][Qi Manifest]] is a list of known packages - which makes it easy
    to simply install packages by their name. Qi's Manifest was
    initially seeded by [[https://github.com/quicklisp/quicklisp-projects/][Quicklisp's projects]] which means that any
    project you can find in Quicklisp can be found in Qi.
@@ -202,7 +197,7 @@ for a full list).
     requirement is that it is a lisp project that is asdf-loadable.
 
     To add a package to the manifest, submit a pull-request at
-    https://github.com/CodyReichert/qi/, or send a patch file to
+    https://github.com/CodyReichert/qi-manifest, or send a patch file to
     codyreichert@gmail.com.
 
     See [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this
@@ -213,8 +208,8 @@ for a full list).
 
 ** CLI
    The Qi CLI provides a few basic commands (more coming soon!). Make
-   sure that =qi/bin/= is in your path, or move =qi/bin/qi= into your
-   path.
+   sure that =bin= is in your =$PATH=, or move =bin/qi= into your
+   =$PATH=.
 
    Run =$ qi --help= For info on the available commands:
 
@@ -222,11 +217,13 @@ for a full list).
    λ qi -h
    Qi - A simple, open, free package manager for Common Lisp.
 
-   Usage: qi [-h|--help] [-u|--upgrade] [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
+   Usage: qi [-h|--help] [-u|--upgrade] [-m|--update-manifest]
+             [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
 
    Available options:
      -h, --help                   Print this help menu.
      -u, --upgrade                Upgrade Qi (pull the latest from git)
+     -m, --update-manifest        Update the Qi manifest
      -i, --install PACKAGE        Install a package from Qi (global by default)
      -d, --install-deps ASD-FILE  Install dependencies locally for the specified system
 

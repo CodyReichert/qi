@@ -7,7 +7,8 @@
                 :manifest-package-name
                 :manifest-package-url)
   (:import-from :qi.util
-                :download-strategy)
+                :download-strategy
+                :run-git-command)
   (:export :*qi-dependencies*
            :*qi-trans-dependencies*
            :dependency
@@ -207,17 +208,13 @@ src-path and sys-path."
                                   (dependency-version dep) "/"))))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
-    (git-clone url (namestring clone-path))
-    (if (probe-file (fad:merge-pathnames-as-file
-                     clone-path
-                     (concatenate 'string (dependency-name dep) ".asd")))
-        (set-dependency-paths clone-path dep)
-      (error (format t "~%~%---X Failed to clone ~A~%" url)))))
 
+    (if (probe-file clone-path)
+        (run-git-command "pull" clone-path)
+      (run-git-command
+       (concatenate 'string "clone " url " " (namestring clone-path))))
 
-(defun git-clone (from to)
-  (trivial-shell:shell-command
-   (concatenate 'string "git clone " from " " to)))
+    (set-dependency-paths clone-path dep)))
 
 
 (defun clone-hg-repo (url dep)
@@ -230,17 +227,13 @@ local src-path and sys-path."
                                   (dependency-version dep) "/"))))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
-    (hg-clone url (namestring clone-path))
+    (run-hg-command
+     (concatenate 'string "clone " url " " (namestring clone-path)))
     (if (probe-file (fad:merge-pathnames-as-file
                      clone-path
                      (concatenate 'string (dependency-name dep) ".asd")))
         (set-dependency-paths clone-path dep)
       (error (format t "~%~%---X Failed to clone repository for ~A~%" url)))))
-
-
-(defun hg-clone (from to)
-  (trivial-shell:shell-command
-   (concatenate 'string "hg clone " from " " to)))
 
 
 (defun tarball-path (dep)

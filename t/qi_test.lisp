@@ -5,9 +5,12 @@
         :prove))
 (in-package :qi-test-packages)
 
-(plan 2)
+(plan 3)
 
 (ok (qi:hello))
+
+(load "t/resources/project/test-project.asd")
+(ok (qi:install :test-project))
 
 (ok (qi:install-global :yason))
 

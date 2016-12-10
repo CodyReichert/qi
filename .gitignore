@@ -6,6 +6,7 @@
 *.x86f
 *~
 .#*
+.dependencies
 /share
 t/resources/tar/*-latest/
 t/resources/tar/*-master/

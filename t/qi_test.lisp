@@ -5,7 +5,9 @@
         :prove))
 (in-package :qi-test-packages)
 
-(plan 1)
+(plan 2)
+
+(ok (qi:hello))
 
 (ok (qi:install-global :yason))
 

@@ -49,7 +49,8 @@
   (format t "~%Qi - A Common Lisp Package Manager")
   (format t "~%Version 0.1")
   (format t "~%Source: https://github.com/CodyReichert/qi")
-  (format t "~%Issues: https://github.com/CodyReichert/qi/issues"))
+  (format t "~%Issues: https://github.com/CodyReichert/qi/issues")
+  t)
 
 
 (defun install-global (system &optional (version "latest"))

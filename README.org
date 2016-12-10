@@ -18,6 +18,15 @@ feedback are appreciated.
 View the HTML version of this documentation [[http://codyreichert.github.io/qi/][here]].
 
 
+** Dependencies
+
+- [[http://pyyaml.org/wiki/LibYAML][libyaml]]
+
+Qi has a few Common Lisp dependencies, but they are all bundled with
+the repository to allow Qi to bootstrap itself (see =qi/dependencies=
+for a full list).
+
+
 ** Installation
 
    1) Clone Qi anywhere:
@@ -237,14 +246,6 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
    - Cody Reichert (codyreichert@gmail.com)
    - Nicolas Lamirault (@nlamirault)
    - Alex Dunn (@dunn)
-
-** Dependencies
-   Qi has a few dependencies, but they are all bundled with the
-   repository to allow Qi to bootstrap itself.
-
-   See qi/dependencies for a full list.
-
-   Also see [[https://github.com/CodyReichert/qi/blob/master/docs/TODO.org][docs/TODO.org]] for some work to be done in this area.
 
 
 ** Copyright

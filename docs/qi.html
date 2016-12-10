@@ -52,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -91,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <script type="text/javascript">
@@ -147,42 +232,42 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline19">1. Qi - Package Manager for Common Lisp</a>
+<li><a href="#org2faab31">1. Qi - Package Manager for Common Lisp</a>
 <ul>
-<li><a href="#orgheadline1">1.1. Installation</a></li>
-<li><a href="#orgheadline4">1.2. Usage</a>
+<li><a href="#orgcd1fa8a">1.1. Dependencies</a></li>
+<li><a href="#org3ed2c7b">1.2. Installation</a></li>
+<li><a href="#orgf98e1df">1.3. Usage</a>
 <ul>
-<li><a href="#orgheadline2">1.2.1. Using Qi for a project</a></li>
-<li><a href="#orgheadline3">1.2.2. Using Qi for global packages</a></li>
+<li><a href="#org54b3743">1.3.1. Using Qi for a project</a></li>
+<li><a href="#org07bfa30">1.3.2. Using Qi for global packages</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline10">1.3. API</a>
+<li><a href="#org202c0a5">1.4. API</a>
 <ul>
-<li><a href="#orgheadline5">1.3.1. Hello</a></li>
-<li><a href="#orgheadline6">1.3.2. Install</a></li>
-<li><a href="#orgheadline7">1.3.3. Install Global</a></li>
-<li><a href="#orgheadline8">1.3.4. Up</a></li>
-<li><a href="#orgheadline9">1.3.5. Coming Soon</a></li>
+<li><a href="#org9f3ca41">1.4.1. Hello</a></li>
+<li><a href="#org8c78ecb">1.4.2. Install</a></li>
+<li><a href="#org3e70ca8">1.4.3. Install Global</a></li>
+<li><a href="#orgbbc76c0">1.4.4. Up</a></li>
+<li><a href="#orgd8ec7ae">1.4.5. Coming Soon</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">1.4. Manifest</a>
+<li><a href="#orgc6918eb">1.5. Manifest</a>
 <ul>
-<li><a href="#orgheadline11">1.4.1. Adding a package to the Qi Manifest</a></li>
+<li><a href="#org846d723">1.5.1. Adding a package to the Qi Manifest</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline13">1.5. CLI</a></li>
-<li><a href="#orgheadline14">1.6. Contributing</a></li>
-<li><a href="#orgheadline15">1.7. Contributors</a></li>
-<li><a href="#orgheadline16">1.8. Dependencies</a></li>
-<li><a href="#orgheadline17">1.9. Copyright</a></li>
-<li><a href="#orgheadline18">1.10. License</a></li>
+<li><a href="#orgd29715f">1.6. CLI</a></li>
+<li><a href="#org0ea495a">1.7. Contributing</a></li>
+<li><a href="#org4edbf2f">1.8. Contributors</a></li>
+<li><a href="#org5a61497">1.9. Copyright</a></li>
+<li><a href="#org21704bb">1.10. License</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19"><span class="section-number-2">1</span> Qi - Package Manager for Common Lisp</h2>
+<div id="outline-container-org2faab31" class="outline-2">
+<h2 id="org2faab31"><span class="section-number-2">1</span> Qi - Package Manager for Common Lisp</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Qi is a package manager for Common Lisp. There are several goals, at
@@ -211,15 +296,30 @@ View the HTML version of this documentation <a href="http://codyreichert.github.
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Installation</h3>
+<div id="outline-container-orgcd1fa8a" class="outline-3">
+<h3 id="orgcd1fa8a"><span class="section-number-3">1.1</span> Dependencies</h3>
 <div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="http://pyyaml.org/wiki/LibYAML">libyaml</a></li>
+</ul>
+
+<p>
+Qi has a few Common Lisp dependencies, but they are all bundled with
+the repository to allow Qi to bootstrap itself (see <code>qi/dependencies</code>
+for a full list).
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3ed2c7b" class="outline-3">
+<h3 id="org3ed2c7b"><span class="section-number-3">1.2</span> Installation</h3>
+<div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>Clone Qi anywhere:</li>
 </ol>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">git clone https://github.com/CodyReichert/qi.git
 </pre>
 </div>
@@ -229,7 +329,6 @@ View the HTML version of this documentation <a href="http://codyreichert.github.
 </ol>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">(load <span style="color: #00ffff;">"path/to/qi"</span>)
 </pre>
 </div>
@@ -238,7 +337,6 @@ View the HTML version of this documentation <a href="http://codyreichert.github.
 To test if Qi is installed correctly, run the following the a REPL:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-lisp">CL-USER&gt; (qi:hello)
 </pre>
 </div>
@@ -253,12 +351,12 @@ around this part.</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">1.2</span> Usage</h3>
-<div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2"><span class="section-number-4">1.2.1</span> Using Qi for a project</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgf98e1df" class="outline-3">
+<h3 id="orgf98e1df"><span class="section-number-3">1.3</span> Usage</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-org54b3743" class="outline-4">
+<h4 id="org54b3743"><span class="section-number-4">1.3.1</span> Using Qi for a project</h4>
+<div class="outline-text-4" id="text-1-3-1">
 <p>
 This section covers using Qi for a single project.
 </p>
@@ -279,7 +377,6 @@ a basic project would look like this:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-yaml"><span style="color: #0000ff;">name</span>: my-project
 <span style="color: #0000ff;">packages</span>:
   - <span style="color: #0000ff;">name</span>: alexandria
@@ -308,7 +405,6 @@ to install and load the systems:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">* (load <span style="color: #00ffff;">"myproject.asd"</span>)
 * (qi:install <span style="color: #00ff00;">:myproject</span>)
 </pre>
@@ -319,7 +415,6 @@ You can also install project dependencies from the command-line:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">qi --install-deps path/to/myproject.asd
 </pre>
 </div>
@@ -333,9 +428,9 @@ your <code>qi.yaml</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">1.2.2</span> Using Qi for global packages</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-org07bfa30" class="outline-4">
+<h4 id="org07bfa30"><span class="section-number-4">1.3.2</span> Using Qi for global packages</h4>
+<div class="outline-text-4" id="text-1-3-2">
 <p>
 You can also manage global packages with Qi. This is useful for
 downloading and install packages that you want to always have
@@ -348,7 +443,6 @@ most useful:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">* (qi:install-global <span style="color: #00ff00;">:cl-project</span>)
 </pre>
 </div>
@@ -364,7 +458,6 @@ available in the current session.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">* (qi:up <span style="color: #00ff00;">:cl-project</span>)
 </pre>
 </div>
@@ -378,33 +471,32 @@ directory and makes it available in the current session.
 </div>
 
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">1.3</span> API</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org202c0a5" class="outline-3">
+<h3 id="org202c0a5"><span class="section-number-3">1.4</span> API</h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
 Qi's API is composed of a few commands, documented below:
 </p>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">1.3.1</span> Hello</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org9f3ca41" class="outline-4">
+<h4 id="org9f3ca41"><span class="section-number-4">1.4.1</span> Hello</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <p>
 Prints some information about Qi to <b>standard-output</b>. If this
 prints, Qi is installed correctly.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">(qi:hello)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">1.3.2</span> Install</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-org8c78ecb" class="outline-4">
+<h4 id="org8c78ecb"><span class="section-number-4">1.4.2</span> Install</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
 Installs a system and it's dependencies. All dependencies are
 installed local to the system directory in <code>.dependencies/</code>.
@@ -417,16 +509,15 @@ to <b>standard-output</b> what packages could not be installed.</li>
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">(qi:install <span style="color: #00ff00;">:system</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7"><span class="section-number-4">1.3.3</span> Install Global</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-org3e70ca8" class="outline-4">
+<h4 id="org3e70ca8"><span class="section-number-4">1.4.3</span> Install Global</h4>
+<div class="outline-text-4" id="text-1-4-3">
 <p>
 Installs a system to the global package directory. The system
 should be from the Manifest. The system is made available in the
@@ -434,7 +525,6 @@ current session.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">(qi:install-global <span style="color: #00ff00;">:system</span> <span style="color: #ffff00;">&amp;optional</span> version)
 </pre>
 </div>
@@ -446,28 +536,27 @@ current session.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">1.3.4</span> Up</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-orgbbc76c0" class="outline-4">
+<h4 id="orgbbc76c0"><span class="section-number-4">1.4.4</span> Up</h4>
+<div class="outline-text-4" id="text-1-4-4">
 <p>
 ASDF load's a system to be available in the current session.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-lisp">(qi:up <span style="color: #00ff00;">:system</span>)
 </pre>
 </div>
 
 <p>
-<i>This is the equivalient of running (asdf:load-system :system)</i>
+<i>This is the equivalent of running (asdf:load-system :system)</i>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><span class="section-number-4">1.3.5</span> Coming Soon</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-orgd8ec7ae" class="outline-4">
+<h4 id="orgd8ec7ae"><span class="section-number-4">1.4.5</span> Coming Soon</h4>
+<div class="outline-text-4" id="text-1-4-5">
 <p>
 <b>Not implemented</b> <code>(qi:new ...)</code>
 </p>
@@ -504,9 +593,9 @@ Publish a new package to the Qi Manifest
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">1.4</span> Manifest</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgc6918eb" class="outline-3">
+<h3 id="orgc6918eb"><span class="section-number-3">1.5</span> Manifest</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 The <a href="https://github.com/CodyReichert/qi/blob/master/manifest/manifest.lisp">Qi Manifest</a> is a list of known packages - which makes it easy
 to simply install packages by their name. Qi's Manifest was
@@ -515,9 +604,9 @@ project you can find in Quicklisp can be found in Qi.
 </p>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">1.4.1</span> Adding a package to the Qi Manifest</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org846d723" class="outline-4">
+<h4 id="org846d723"><span class="section-number-4">1.5.1</span> Adding a package to the Qi Manifest</h4>
+<div class="outline-text-4" id="text-1-5-1">
 <p>
 Any and all packages are welcome in the Qi Manifest. The only
 requirement is that it is a lisp project that is asdf-loadable.
@@ -533,16 +622,16 @@ codyreichert@gmail.com.
 See <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for some work to be done in this
 area. Ideally, we have <code>recipes/</code> that contains the information
 about each Qi package. That way a new recipe can be added and the
-Maniest can be updated.
+Manifest can be updated.
 </p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">1.5</span> CLI</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgd29715f" class="outline-3">
+<h3 id="orgd29715f"><span class="section-number-3">1.6</span> CLI</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
 The Qi CLI provides a few basic commands (more coming soon!). Make
 sure that <code>qi/bin/</code> is in your path, or move <code>qi/bin/qi</code> into your
@@ -554,7 +643,6 @@ Run <code>$ qi --help</code> For info on the available commands:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">&#955; qi -h
 Qi - A simple, open, free package manager for Common Lisp.
 
@@ -573,11 +661,11 @@ Issues https://github.com/CodyReichert/qi
 </div>
 
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">1.6</span> Contributing</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org0ea495a" class="outline-3">
+<h3 id="org0ea495a"><span class="section-number-3">1.7</span> Contributing</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
-PR's and Issues are extremely welcomed and will likely all be
+PRs and Issues are extremely welcomed and will likely all be
 merged or addressed. See the <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for a list of tasks
 that I'd like to see done. Make a PR or start a conversation if
 there's anything you'd like to see.
@@ -590,9 +678,9 @@ With any PR - add your name to the <code>Contributors</code> section below.
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">1.7</span> Contributors</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-org4edbf2f" class="outline-3">
+<h3 id="org4edbf2f"><span class="section-number-3">1.8</span> Contributors</h3>
+<div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li>Cody Reichert (codyreichert@gmail.com)</li>
 <li>Nicolas Lamirault (@nlamirault)</li>
@@ -601,27 +689,9 @@ With any PR - add your name to the <code>Contributors</code> section below.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">1.8</span> Dependencies</h3>
-<div class="outline-text-3" id="text-1-8">
-<p>
-Qi has a few dependencies, but they are all bundled with the
-repository to allow Qi to bootstrap itself.
-</p>
 
-<p>
-See qi/dependencies for a full list.
-</p>
-
-<p>
-Also see <a href="https://github.com/CodyReichert/qi/blob/master/docs/TODO.org">docs/TODO.org</a> for some work to be done in this area.
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">1.9</span> Copyright</h3>
+<div id="outline-container-org5a61497" class="outline-3">
+<h3 id="org5a61497"><span class="section-number-3">1.9</span> Copyright</h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
@@ -630,8 +700,8 @@ Copyright (c) 2015 Cody Reichert (codyreichert@gmail.com)
 </div>
 
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">1.10</span> License</h3>
+<div id="outline-container-org21704bb" class="outline-3">
+<h3 id="org21704bb"><span class="section-number-3">1.10</span> License</h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 BSD

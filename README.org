@@ -21,6 +21,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 ** Dependencies
 
 - [[http://pyyaml.org/wiki/LibYAML][libyaml]]
+- [[https://www.openssl.org][OpenSSL]]
 
 Qi has a few Common Lisp dependencies, but they are all bundled with
 the repository to allow Qi to bootstrap itself (see =qi/dependencies=

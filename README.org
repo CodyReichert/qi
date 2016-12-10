@@ -240,7 +240,15 @@ for a full list).
    that I'd like to see done. Make a PR or start a conversation if
    there's anything you'd like to see.
 
-   With any PR - add your name to the =Contributors= section below.
+   If you can, add new tests to cover the changes you make!  You can
+   run tests locally with Roswell (=run-prove=) or with =make t=:
+
+   #+BEGIN_SRC sh
+   bin/qi -i prove
+   make t
+   #+END_SRC
+
+   With any PR, add your name to the =Contributors= section below.
 
 
 ** Contributors

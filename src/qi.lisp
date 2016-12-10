@@ -60,11 +60,17 @@ be made available in the current lisp session. To make the system available from
 another lisp session, use (qi:up <system>)."
   (bootstrap :qi)
   (dispatch-dependency
-   (make-manifest-dependency
-    :name (qi.util:sym->str system)
-    :version version))
-  (asdf:load-system system)
-  (installed-dependency-report))
+   (let* ((name-string (qi.util:sym->str system))
+          (package (manifest-get-by-name name-string)))
+     (make-manifest-dependency :name name-string
+                               :url (manifest-package-url package)
+                               :download-strategy (download-strategy
+                                                   (manifest-package-url package))
+                               :version version)))
+  #+sbcl (sb-ext:without-package-locks (asdf:load-system system))
+  #-sbcl (asdf:load-system system)
+  (installed-dependency-report)
+  t)
 
 (defun up (system)
   "Load <system> and make it available in the current lisp session."
@@ -148,7 +154,8 @@ be in the CWD that specifies <project>'s dependencies."
                 (dispatch-dependency dep)
                 (error (format t "~%---X Cannot resolve dependency type")))))
     (asdf:oos 'asdf:load-op name :verbose nil))
-  (dependency-report))
+  (dependency-report)
+  t)
 
 
 (defun dependency-report ()

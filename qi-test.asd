@@ -20,6 +20,7 @@
                                      (:test-file "manifest_test")
                                      (:test-file "packages_test")
                                      (:test-file "util_test")
+                                     (:test-file "qi_test")
                                      )))
   :description "Test system for qi"
 

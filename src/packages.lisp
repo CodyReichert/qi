@@ -8,14 +8,20 @@
                 :manifest-package-url)
   (:import-from :qi.util
                 :download-strategy
+                :is-tar-url?
+                :is-git-url?
+                :is-hg-url?
+                :is-gh-url?
                 :run-git-command)
   (:export :*qi-dependencies*
            :*qi-trans-dependencies*
+           :*yaml-packages*
            :dependency
            :dependency-name
            :dependency-url
            :dependency-version
            :dependency-sys-path
+           :extract-dependency
            :make-dependency
            :make-manifest-dependency
            :make-http-dependency
@@ -55,6 +61,9 @@
 
 (defvar *qi-trans-dependencies* nil
   "A list of `trans-dependencies' required by any *qi-dependencies.")
+
+(defvar *yaml-packages* nil
+  "A list of `dependencies' from the `+project-names+' qi.yaml")
 
 ;; `dependency' data type and methods
 
@@ -180,6 +189,51 @@ of the information we need to get it."))
            (error (format t "~%---X Download strategy \"~S\" is not yet supported" strat))))))
 
 
+(defun extract-dependency (p)
+  "Generate a dependency from package P."
+  (cond ((eql nil (gethash "url" p))
+         (let ((man (manifest-get-by-name (gethash "name" p))))
+           (unless man
+             (error "---X Package \"~S\" is not in the manifest; please provide a URL"
+                    (gethash "name" p)))
+           (make-manifest-dependency :name (gethash "name" p)
+                                     :url (manifest-package-url man)
+                                     :download-strategy (download-strategy (manifest-package-url man))
+                                     :version (or (gethash "version" p)
+                                                  "latest"))))
+        ;; Dependency has a tarball URL
+        ((is-tar-url? (gethash "url" p))
+         (make-http-dependency :name (gethash "name" p)
+                               :download-strategy :tarball
+                               :version (or (gethash "version" p)
+                                            "latest")
+                               :url (gethash "url" p)))
+        ;; Dependency has a git URL
+        ((or (is-git-url? (gethash "url" p))
+             (is-gh-url? (gethash "url" p)))
+         (make-git-dependency :name (gethash "name" p)
+                              :download-strategy :git
+                              :version (or (gethash "version" p)
+                                           "latest")
+                              :url (gethash "url" p)))
+        ;; Dependency has a Mercurial URL
+        ((is-hg-url? (gethash "url" p))
+         (make-hg-dependency :name (gethash "name" p)
+                             :download-strategy :hg
+                             :version (or (gethash "version" p)
+                                          "latest")
+                             :url (car (cl-ppcre:split ".hg" (gethash "url" p)))))
+
+        ;; Dependency is local path
+        ((not (null (gethash "path" p)))
+         (make-local-dependency :name (gethash "name" p)
+                                :download-strategy :local
+                                :version (or (gethash "version" p)
+                                             "latest")
+                                :url (or (gethash "url" p) nil)))
+        (t nil)))
+
+
 (defun download-tarball (url dep)
   "Downloads tarball from <url>, and updates <dep> with the local src-path
 and sys-path."
@@ -291,24 +345,29 @@ local src-path and sys-path."
                    (set-trans-dep d (dependency-name dep)))
                (progn
                  (format t "~%.... Checking manifest for transitive dependency: ~S" d)
-                 (let ((manifest-package (manifest-get-by-name d)))
-                   (cond ((not manifest-package)
+                 (let ((trans-dependency
+                        (if (manifest-get-by-name d)
+                            (make-trans-dep-from-manifest (manifest-get-by-name d)
+                                                          (dependency-name dep))
+                          (car (member-if
+                                (lambda (x) (string= d (dependency-name x)))
+                                *yaml-packages*)))))
+                   (cond ((not trans-dependency)
                           (if (not (system-is-available? d))
-                              (error (format t "~%~%---X Without ~A, we cannot install ~A~%"
-                                             (dependency-name d)
-                                             (dependency-name dep)))
+                              (error
+                               (format t "~%~%---X Without ~A, we cannot install ~A~%"
+                                       d (dependency-name dep)))
                             (set-trans-dep d (dependency-name dep))))
                          (t
-                          (make-trans-dep-from-manifest manifest-package (dependency-name dep)))))))))))
+                          (dispatch-dependency trans-dependency))))))))))
 
 
 (defun make-trans-dep-from-manifest (package caller)
-  (dispatch-dependency
-   (make-transitive-dependency
-    :name (manifest-package-name package)
-    :url (manifest-package-url package)
-    :download-strategy (download-strategy (manifest-package-url package))
-    :caller caller)))
+  (make-transitive-dependency
+   :name (manifest-package-name package)
+   :url (manifest-package-url package)
+   :download-strategy (download-strategy (manifest-package-url package))
+   :caller caller))
 
 
 (defun set-trans-dep (name caller)

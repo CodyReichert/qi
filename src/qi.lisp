@@ -4,22 +4,20 @@
   (:import-from :qi.util
                 :asdf-system-path
                 :download-strategy
-                :load-asdf-system
-                :is-tar-url?
-                :is-git-url?
-                :is-hg-url?
-                :is-gh-url?)
+                :load-asdf-system)
   (:import-from :qi.paths
                 :+project-name+)
   (:import-from :qi.packages
                 :*qi-dependencies*
                 :*qi-trans-dependencies*
+                :*yaml-packages*
                 :dependency
                 :dependency-name
                 :dependency-url
                 :dependency-version
                 :dependency-sys-path
                 :dispatch-dependency
+                :extract-dependency
                 :transitive-dependency
                 :transitive-dependency-name
                 :transitive-dependency-caller
@@ -99,61 +97,20 @@ be in the CWD that specifies <project>'s dependencies."
   (qi.manifest::manifest-load))
 
 
-(defun extract-dependency (p)
-  "Generate a dependency from package P."
-  (cond ((eql nil (gethash "url" p))
-         (let ((man (manifest-get-by-name (gethash "name" p))))
-           (unless man
-             (error "---X Package \"~S\" is not in the manifest; please provide a URL"
-                    (gethash "name" p)))
-           (make-manifest-dependency :name (gethash "name" p)
-                                     :url (manifest-package-url man)
-                                     :download-strategy (download-strategy (manifest-package-url man))
-                                     :version (or (gethash "version" p)
-                                                  "latest"))))
-        ;; Dependency is a tarball url
-        ((is-tar-url? (gethash "url" p))
-         (make-http-dependency :name (gethash "name" p)
-                               :download-strategy :tarball
-                               :version (or (gethash "version" p)
-                                            "latest")
-                               :url (gethash "url" p)))
-        ;; Dependency is git url
-        ((or (is-git-url? (gethash "url" p))
-             (is-gh-url? (gethash "url" p)))
-         (make-git-dependency :name (gethash "name" p)
-                              :download-strategy :git
-                              :version (or (gethash "version" p)
-                                           "latest")
-                              :url (gethash "url" p)))
-        ;; Dependency is mercurial url
-        ((is-hg-url? (gethash "url" p))
-         (make-hg-dependency :name (gethash "name" p)
-                             :download-strategy :hg
-                             :version (or (gethash "version" p)
-                                          "latest")
-                             :url (car (cl-ppcre:split ".hg" (gethash "url" p)))))
-
-        ;; Dependency is local path
-        ((not (null (gethash "path" p)))
-         (make-local-dependency :name (gethash "name" p)
-                                :download-strategy :local
-                                :version (or (gethash "version" p)
-                                             "latest")
-                                :url (or (gethash "url" p) nil)))
-        (t nil)))
-
-
 (defun install-from-qi-file (qi-file)
   (format t "~%Reading dependencies...")
   (let* ((config (yaml:parse qi-file))
          (name (gethash "name" config))
          (package-list (gethash "packages" config)))
+    ;; First loop through the package list and construct dependencies
     (loop for p in package-list
        do (let ((dep (extract-dependency p)))
             (if dep
-                (dispatch-dependency dep)
-                (error (format t "~%---X Cannot resolve dependency type")))))
+                (setf *yaml-packages* (append *yaml-packages* (list dep)))
+              (error (format t "~%---X Cannot resolve dependency type")))))
+    ;; Then loop through again and install them
+    (loop for package in *yaml-packages*
+       do (dispatch-dependency package))
     (asdf:oos 'asdf:load-op name :verbose nil))
   (dependency-report)
   t)

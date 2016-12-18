@@ -1089,6 +1089,9 @@
     :NAME "osc"
     :URL "https://github.com/zzkt/osc.git")
  #S(QI.MANIFEST::MANIFEST-PACKAGE
+    :NAME "org-sampler"
+    :URL "https://github.com/jphmrst/cl-org-sampler.git")
+ #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "org-davep-dictrepl"
     :URL "https://github.com/davep/org-davep-dictrepl.git")
  #S(QI.MANIFEST::MANIFEST-PACKAGE

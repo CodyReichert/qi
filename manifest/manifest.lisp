@@ -1595,7 +1595,7 @@
     :URL "https://github.com/scymtym/jenkins.git")
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "iterate"
-    :URL "iterate")
+    :URL "http://common-lisp.net/project/iterate/releases/iterate-current.tar.gz")
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "iterate-clsql"
     :URL "http://common-lisp.net/project/iterate-clsql/releases/iterate-clsql-0.2.tar.gz")

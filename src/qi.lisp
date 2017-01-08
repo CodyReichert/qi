@@ -121,6 +121,8 @@ be in the CWD that specifies <project>'s dependencies."
        (format t "~%~%No dependencies installed!")
      (let ((installed (remove-if-not #'dependency-sys-path *qi-dependencies*)))
        (format t "~%~%~S dependencies installed:" (length installed))
-       (loop for d in *qi-dependencies*
-          when (qi.packages::dependency-sys-path d) do
-            (format t "~%   * ~A" (dependency-name d))))))
+       (format t "~%~{   * ~A~%~}" (mapcar
+                                    #'dependency-name
+                                    (sort installed (lambda (x y)
+                                                      (string-lessp (dependency-name x)
+                                                                    (dependency-name y)))))))))

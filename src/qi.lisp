@@ -9,7 +9,6 @@
                 :+project-name+)
   (:import-from :qi.packages
                 :*qi-dependencies*
-                :*qi-trans-dependencies*
                 :*yaml-packages*
                 :dependency
                 :dependency-name
@@ -18,9 +17,6 @@
                 :dependency-sys-path
                 :dispatch-dependency
                 :extract-dependency
-                :transitive-dependency
-                :transitive-dependency-name
-                :transitive-dependency-caller
                 :make-dependency
                 :make-manifest-dependency
                 :make-http-dependency
@@ -93,7 +89,6 @@ be in the CWD that specifies <project>'s dependencies."
   "Sets up Qi variables and loads the manifest."
   (setf +project-name+ proj)
   (setf *qi-dependencies* nil)
-  (setf *qi-trans-dependencies* nil)
   (qi.manifest::manifest-load))
 
 
@@ -122,13 +117,10 @@ be in the CWD that specifies <project>'s dependencies."
 
 (defun installed-dependency-report ()
   "Print information about the *qi-dependencies* list."
-  (cond ((= 0 (length *qi-dependencies*))
-         (format t "~%~%No dependencies installed!"))
-        (t (let ((installed (remove-if-not #'dependency-sys-path *qi-dependencies*))
-                 (trans-amt (length *qi-trans-dependencies*)))
-             (format t "~%~%~S dependencies installed:" (length installed))
-             (loop for d in *qi-dependencies*
-                when (qi.packages::dependency-sys-path d) do
-                  (format t "~%   * ~A" (dependency-name d)))
-             (unless (= 0 trans-amt)
-               (format t "~%~A transitive dependencies installed~%" trans-amt))))))
+   (if (= 0 (length *qi-dependencies*))
+       (format t "~%~%No dependencies installed!")
+     (let ((installed (remove-if-not #'dependency-sys-path *qi-dependencies*)))
+       (format t "~%~%~S dependencies installed:" (length installed))
+       (loop for d in *qi-dependencies*
+          when (qi.packages::dependency-sys-path d) do
+            (format t "~%   * ~A" (dependency-name d))))))

@@ -14,7 +14,6 @@
                 :is-gh-url?
                 :run-git-command)
   (:export :*qi-dependencies*
-           :*qi-trans-dependencies*
            :*yaml-packages*
            :dependency
            :dependency-name
@@ -28,9 +27,6 @@
            :make-local-dependency
            :make-git-dependency
            :make-hg-dependency
-           :transitive-dependency
-           :transitive-dependency-name
-           :transitive-dependency-caller
            :dispatch-dependency
            :location
            :local
@@ -58,9 +54,6 @@
 
 (defvar *qi-dependencies* nil
   "A list of `dependencies' as required by the qi.yaml.")
-
-(defvar *qi-trans-dependencies* nil
-  "A list of `trans-dependencies' required by any *qi-dependencies.")
 
 (defvar *yaml-packages* nil
   "A list of `dependencies' from the `+project-names+' qi.yaml")
@@ -91,10 +84,6 @@
 
 (defstruct (hg-dependency (:include dependency))
   "Mercurial dependency data structure.")
-
-(defstruct (transitive-dependency (:include manifest-dependency))
-  "Transitive dependency data structure."
-  (caller nil))
 
 
 ;;
@@ -334,49 +323,28 @@ local src-path and sys-path."
 
 (defun install-transitive-dependencies (dep)
   (if (system-is-available? (dependency-name dep))
-      (let ((trans-deps
-             (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
+      (let ((trans-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
         (loop for d in trans-deps do
              (if (dependency-installed? d)
-                 (let ((tdep (make-transitive-dependency
-                              :name d
-                              :caller (dependency-name dep))))
-                   (install-transitive-dependencies tdep)
-                   (set-trans-dep d (dependency-name dep)))
+                 (install-transitive-dependencies (make-dependency :name d))
                (progn
-                 (format t "~%.... Checking manifest for transitive dependency: ~S" d)
-                 (let ((trans-dependency
+                 (format t "~%.... Checking manifest for transitive dependency: ~A" d)
+                 (let ((tdep
                         (if (manifest-get-by-name d)
-                            (make-trans-dep-from-manifest (manifest-get-by-name d)
-                                                          (dependency-name dep))
+                            (make-manifest-dependency :name d
+                                                      :url (manifest-package-url (manifest-get-by-name d))
+                                                      :download-strategy (download-strategy (manifest-package-url (manifest-get-by-name d)))
+                                                      :version "latest")
                           (car (member-if
                                 (lambda (x) (string= d (dependency-name x)))
                                 *yaml-packages*)))))
-                   (cond ((not trans-dependency)
+                   (cond ((not tdep)
                           (if (not (system-is-available? d))
                               (error
                                (format t "~%~%---X Without ~A, we cannot install ~A~%"
-                                       d (dependency-name dep)))
-                            (set-trans-dep d (dependency-name dep))))
+                                       d (dependency-name dep)))))
                          (t
-                          (dispatch-dependency trans-dependency))))))))))
-
-
-(defun make-trans-dep-from-manifest (package caller)
-  (make-transitive-dependency
-   :name (manifest-package-name package)
-   :url (manifest-package-url package)
-   :download-strategy (download-strategy (manifest-package-url package))
-   :caller caller))
-
-
-(defun set-trans-dep (name caller)
-  "Creates and adds an available transitive dependecy to the
-*qi-trans-dependencies* list."
-  (setf *qi-trans-dependencies*
-        (pushnew
-         (make-transitive-dependency :name name :caller caller)
-         *qi-trans-dependencies*)))
+                          (dispatch-dependency tdep))))))))))
 
 
 (defun system-is-available? (sys)

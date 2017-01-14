@@ -489,7 +489,7 @@
     :URL "http://common-lisp.net/project/stefil/darcs/stefil")
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "static-vectors"
-    :URL "https://github.com/sionescu/static-vectors/archive/v1.6.tar.gz")
+    :URL "https://github.com/sionescu/static-vectors/archive/v1.8.2.tar.gz")
  #S(QI.MANIFEST::MANIFEST-PACKAGE
     :NAME "staple"
     :URL "https://github.com/Shinmera/staple.git")

@@ -54,6 +54,12 @@ a specific version of <system>. <version> defaults to latest. The system will
 be made available in the current lisp session. To make the system available from
 another lisp session, use (qi:up <system>)."
   (bootstrap :qi)
+  #+sbcl (sb-ext:without-package-locks (dispatch-globally system version))
+  #-sbcl (dispatch-globally system version)
+  (installed-dependency-report)
+  t)
+
+(defun dispatch-globally (system version)
   (dispatch-dependency
    (let* ((name-string (qi.util:sym->str system))
           (package (manifest-get-by-name name-string)))
@@ -62,10 +68,7 @@ another lisp session, use (qi:up <system>)."
                                :download-strategy (download-strategy
                                                    (manifest-package-url package))
                                :version version)))
-  #+sbcl (sb-ext:without-package-locks (asdf:load-system system))
-  #-sbcl (asdf:load-system system)
-  (installed-dependency-report)
-  t)
+  (up system))
 
 (defun up (system)
   "Load <system> and make it available in the current lisp session."

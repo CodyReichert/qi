@@ -93,6 +93,9 @@ be in the CWD that specifies <project>'s dependencies."
 
 
 (defun install-from-qi-file (qi-file)
+  (unless (probe-file qi-file)
+    (error (format t "~%No file exists at ~s" qi-file)))
+
   (format t "~%Reading dependencies...")
   (let* ((config (yaml:parse qi-file))
          (name (gethash "name" config))

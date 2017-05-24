@@ -5,7 +5,7 @@
         :prove))
 (in-package :qi-test-packages)
 
-(plan 3)
+(plan 4)
 
 (ok (qi:hello))
 
@@ -13,5 +13,7 @@
 (ok (qi:install :test-project))
 
 (ok (qi:install-global :yason))
+
+(is-error (qi:install-from-qi-file "/path/to/nonexistent/qi.yaml") 'error)
 
 (finalize)

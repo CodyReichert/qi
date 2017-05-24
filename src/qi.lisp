@@ -101,12 +101,9 @@ be in the CWD that specifies <project>'s dependencies."
   (let* ((config (yaml:parse qi-file))
          (name (gethash "name" config))
          (package-list (gethash "packages" config)))
-    ;; First loop through the package list and construct dependencies
-    (loop for p in package-list
-       do (let ((dep (extract-dependency p)))
-            (if dep
-                (setf *yaml-packages* (append *yaml-packages* (list dep)))
-              (error (format t "~%---X Cannot resolve dependency type")))))
+
+    (setf *yaml-packages* (mapcar #'extract-dependency package-list))
+
     ;; Then loop through again and install them
     (loop for package in *yaml-packages*
        do (dispatch-dependency package))

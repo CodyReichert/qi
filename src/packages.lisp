@@ -220,7 +220,7 @@ of the information we need to get it."))
                                 :version (or (gethash "version" p)
                                              "latest")
                                 :url (or (gethash "url" p) nil)))
-        (t nil)))
+        (t (error (format t "~%---X Cannot resolve dependency type")))))
 
 
 (defun download-tarball (url dep)

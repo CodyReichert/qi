@@ -31,17 +31,17 @@
      :short #\m
      :long "update-manifest")
     (:name :install
-     :description "Install a package from Qi (global by default)"
+     :description "Install packages, named on the command-line or specified in qi.yaml
+                   If named on the command-line, packages will be
+                   installed globally into the Qi shared packages
+                   directory.
+
+                   If specified in a qi.yaml file, packages will be
+                   installed into the local project's .dependencies
+                   directory."
      :short #\i
      :long "install"
-     :arg-parser #'identity
-     :meta-var "PACKAGE")
-    (:name :install-deps
-     :description "Install local dependencies for the specified system"
-     :short #\d
-     :long "install-deps"
-     :arg-parser #'identity
-     :meta-var "ASD-FILE"))
+     :meta-var "PACKAGES"))
 
 
 (defun unknown-option (cond)
@@ -55,32 +55,11 @@
        ,@body)))
 
 
-;;; Qi install-deps ($ qi --install-deps project.asd)
-(defun opt-install-deps (input)
-  "Install the dependencies locally for the system definition file provided as INPUT."
-  (load input)
-  (qi:install (pathname-name input)))
-
-;;; Qi Install ($ qi --install [package] / $ qi -i [package]) internals
-(defun opt-install (opt)
-  "Install a package to Qi global package directory. The package will be available
-in all future lisp sessions."
-  (format t "~%---> Installing ~s" opt)
-  (handler-bind ((error #'(lambda (x)
-                           (format t "~%~3t× An error occured: ~A~%" x)
-                           (return-from opt-install nil))))
-    (qi:install-global opt)
-    (format t "~%~3t✓ Successfully installed ~S" opt)))
-
-;;;
 ;; Options parsing
-
-(multiple-value-bind (options); free-args)
+(multiple-value-bind (options free-args)
     (handler-case
         (handler-bind ((opts:unknown-option #'unknown-option))
           (opts:get-opts))
-      (opts:missing-arg (condition)
-        (format t "[fatal] ~s requires an argument~%" (opts:option condition)))
       (opts:arg-parser-failed (condition)
         (format t "[fatal] ~s not an argument of ~s~%"
                 (opts:raw-arg condition)
@@ -100,6 +79,15 @@ in all future lisp sessions."
                                   :directory +manifest-directory+
                                   :upstream +manifest-upstream+))
   (when-option (options :install)
-               (opt-install (getf options :install)))
-  (when-option (options :install-deps)
-               (opt-install-deps (getf options :install-deps))))
+               (if free-args
+                   (loop for arg in free-args
+                      ;; hacky test returns true if the arg ends in "qi.yaml"
+                      do (if (eql 7 (string>= (reverse arg) (reverse "qi.yaml")))
+                             (qi:install-from-qi-file arg)
+                           (progn (format t "~%---> Installing ~s" arg)
+                                  (qi:install-global arg)
+                                  (format t "~%~3t✓ Successfully installed ~S" arg))))
+                 ;; When run as `qi --install` without extra arguments,
+                 ;; look for a qi.yaml in the current directory
+                 (let ((qi-file (fad:merge-pathnames-as-file (uiop:getcwd) "qi.yaml")))
+                   (qi:install-from-qi-file qi-file)))))

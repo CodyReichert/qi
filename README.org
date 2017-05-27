@@ -94,7 +94,7 @@ around this part.
    You can also install project dependencies from the command-line:
 
    #+BEGIN_SRC sh
-     qi --install-deps path/to/myproject.asd
+     qi --install path/to/qi.yaml # unnecessary if qi.yaml is in the working directory
    #+END_SRC
 
    Qi takes care of any transitive dependencies and will let you know
@@ -217,15 +217,20 @@ around this part.
    λ qi -h
    Qi - A simple, open, free package manager for Common Lisp.
 
-   Usage: qi [-h|--help] [-u|--upgrade] [-m|--update-manifest]
-             [-i|--install PACKAGE] [-d|--install-deps ASD-FILE] [Free-Args]
+   Usage: qi [-h|--help] [-u|--upgrade] [-m|--update-manifest] [-i|--install] [Free-Args]
 
    Available options:
-     -h, --help                   Print this help menu.
-     -u, --upgrade                Upgrade Qi (pull the latest from git)
-     -m, --update-manifest        Update the Qi manifest
-     -i, --install PACKAGE        Install a package from Qi (global by default)
-     -d, --install-deps ASD-FILE  Install dependencies locally for the specified system
+     -h, --help               Print this help menu.
+     -u, --upgrade            Upgrade Qi (pull the latest from git)
+     -m, --update-manifest    Update the Qi manifest
+     -i, --install            Install packages, named on the command-line or specified in qi.yaml
+                                If named on the command-line, packages will be
+                                installed globally into the Qi shared packages
+                                directory.
+
+                                If specified in a qi.yaml file, packages will be
+                                installed into the local project's .dependencies
+                                directory.
 
    Issues https://github.com/CodyReichert/qi
    #+END_SRC

@@ -77,13 +77,13 @@ another lisp session, use (qi:up <system>)."
   "Install <project> and all of its dependencies, and make the
 system available in the current lisp session. A qi.yaml file should
 be in the CWD that specifies <project>'s dependencies."
-  (bootstrap project)
   (let* ((base-dir (qi.paths:project-dir project))
          (qi-file (merge-pathnames #p"qi.yaml" base-dir)))
-    (if (probe-file qi-file)
-        #+sbcl (sb-ext:without-package-locks (install-from-qi-file qi-file))
-        #-sbcl (install-from-qi-file qi-file)
-      (error "No qi.yaml!"))))
+
+    (install-from-qi-file qi-file)
+
+    #+sbcl (sb-ext:without-package-locks (asdf:oos 'asdf:load-op project :verbose nil))
+    #-sbcl (asdf:oos 'asdf:load-op project :verbose nil)))
 
 
 (defun bootstrap (proj)
@@ -94,22 +94,32 @@ be in the CWD that specifies <project>'s dependencies."
 
 
 (defun install-from-qi-file (qi-file)
-  (unless (probe-file qi-file)
-    (error (format t "~%No file exists at ~s" qi-file)))
+  (let ((fullpath (or (uiop/pathname:absolute-pathname-p qi-file)
+                      (fad:merge-pathnames-as-file (uiop:getcwd) qi-file))))
 
-  (format t "~%Reading dependencies...")
-  (let* ((config (yaml:parse qi-file))
-         (name (gethash "name" config))
-         (package-list (gethash "packages" config)))
+    (unless (probe-file fullpath)
+      (error (format t "~%No file exists at ~s" fullpath)))
 
-    (setf *yaml-packages* (mapcar #'extract-dependency package-list))
+    (format t "~%Reading dependencies...")
+    (let* ((config (yaml:parse fullpath))
+           (name (gethash "name" config))
+           (package-list (gethash "packages" config)))
 
-    ;; Then loop through again and install them
-    (loop for package in *yaml-packages*
-       do (dispatch-dependency package))
-    (asdf:oos 'asdf:load-op name :verbose nil))
-  (dependency-report)
-  t)
+      (load (fad:merge-pathnames-as-file
+             (directory-namestring fullpath)
+             (concatenate 'string name ".asd")))
+      (bootstrap name)
+
+      (setf *yaml-packages* (mapcar #'extract-dependency package-list))
+
+      (loop for package in *yaml-packages*
+         do
+           #+sbcl (sb-ext:without-package-locks (dispatch-dependency package))
+           #-sbcl (dispatch-dependency package)
+           )
+
+      (dependency-report)
+      t)))
 
 
 (defun dependency-report ()

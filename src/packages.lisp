@@ -231,13 +231,16 @@ and sys-path."
     (with-open-file (f (ensure-directories-exist out-path)
                        :direction :output
                        :if-does-not-exist :create
-                       :if-exists :supersede
+                       :if-exists nil
                        :element-type '(unsigned-byte 8))
-      (let ((tar (drakma:http-request url :want-stream t)))
-        (arnesi:awhile (read-byte tar nil nil)
-          (write-byte arnesi:it f))
-        (close tar)
-        (set-dependency-paths out-path dep)))
+      ;; f is `nil' when the `out-path' already exists
+      (if f
+          (let ((tar (drakma:http-request url :want-stream t)))
+            (arnesi:awhile (read-byte tar nil nil)
+              (write-byte arnesi:it f))
+            (close tar))
+        (format t "~%.... ~A already exists, skipping" out-path)))
+    (set-dependency-paths out-path dep)
     (unpack-tar dep)))
 
 

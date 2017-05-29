@@ -12,7 +12,8 @@
                 :is-git-url?
                 :is-hg-url?
                 :is-gh-url?
-                :run-git-command)
+                :run-git-command
+                :update-repository)
   (:export :*qi-dependencies*
            :*yaml-packages*
            :dependency
@@ -252,13 +253,18 @@ src-path and sys-path."
                      (concatenate 'string
                                   (dependency-name dep) "-"
                                   (dependency-version dep) "/"))))
-    (format t "~%---> Cloning repo from ~S" url)
-    (format t "~%---> Cloning repo to ~S" (namestring clone-path))
+    (format t "~%---> Fetching from ~S" url)
 
     (if (probe-file clone-path)
-        (run-git-command "pull" clone-path)
-      (run-git-command
-       (concatenate 'string "clone " url " " (namestring clone-path))))
+        (progn
+          (format t "~%.... ~A exists, fetching latest changes" (namestring clone-path))
+          (update-repository :name (dependency-name dep)
+                             :directory (namestring clone-path)
+                             :upstream url))
+      (progn
+        (format t "~%.... Cloning to ~S" (namestring clone-path))
+        (run-git-command
+         (concatenate 'string "clone " url " " (namestring clone-path)))))
 
     (set-dependency-paths clone-path dep)))
 

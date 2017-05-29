@@ -85,6 +85,8 @@
   (ensure-directories-exist directory)
   (if (probe-file (fad:merge-pathnames-as-directory directory ".git/"))
       (let (stash
+            ;; https://stackoverflow.com/a/15284176
+            (upstream-ref (first (run-git-command "rev-parse --symbolic-full-name @{u}" directory)))
             (pre-revision (first (run-git-command "rev-parse HEAD" directory))))
         (format t "~%---> Upgrading ~A" name)
         (run-git-command "fetch origin" directory)
@@ -92,7 +94,7 @@
         (setq stash (first (run-git-command "status --untracked-files=all --porcelain" directory)))
         (if stash (run-git-command "stash" directory))
 
-        (run-git-command "rebase origin/master" directory)
+        (run-git-command (concatenate 'string "rebase " upstream-ref) directory)
 
         (if stash (run-git-command "stash pop" directory))
 
@@ -111,5 +113,9 @@
       (run-git-command "config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\"" directory)
       (run-git-command "fetch origin" directory)
       (run-git-command "reset --hard origin/master" directory)
+
+      ;; setting `upstream-ref' above requires this
+      (run-git-command "branch --set-upstream-to=origin/master master" directory)
+
       (let ((post-revision (first (run-git-command "rev-parse HEAD" directory))))
         (format t "~%~3t✓ Updated ~A to ~A~%" name post-revision)))))

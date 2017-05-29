@@ -5,7 +5,7 @@
         :prove))
 (in-package :qi-test-packages)
 
-(plan 6)
+(plan 9)
 
 (defvar git-dir (merge-pathnames "t/resources/git/" qi.paths:+qi-directory+)
   "Directory of resources for testing git functionality.")
@@ -32,5 +32,15 @@
     (is (qi.packages::dependency-download-strategy dep) :hg)
     (is (qi.packages::dependency-url dep)
         "https://bitbucket.org/tarballs_are_good/map-set")))
+
+(let* ((test-yaml (yaml:parse (merge-pathnames "t/resources/project/qi.yaml" qi.paths:+qi-directory+)))
+       (test-package-hash (first (member-if
+                                  (lambda (x) (string= "cl-test-1" (gethash "name" x)))
+                                  (gethash "packages" test-yaml))))
+       (dep (qi::extract-dependency test-package-hash)))
+  (is (qi.packages::dependency-url dep)
+      "https://gitlab.com/welp/cl-test-1/repository/archive.tar.gz?ref=0.0.1")
+  (is (qi.packages::dependency-download-strategy dep) :tarball)
+  (is (qi.packages::dependency-version dep) "0.0.1"))
 
 (finalize)

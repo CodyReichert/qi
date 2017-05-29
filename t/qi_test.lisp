@@ -27,7 +27,7 @@ run from the command-line."
 (reset-metadata)
 
 ;; For some reason `sed -i` isn't working
-(uiop:run-program "sed 's/0\.0\.1/0.0.2/' qi.yaml >> qwop.yaml"
+(uiop:run-program "sed 's/0\.0\.1/0.0.2/g' qi.yaml >> qwop.yaml"
                   :directory #P"t/resources/project/"
                   :wait t)
 (uiop:run-program "mv qwop.yaml qi.yaml"
@@ -39,7 +39,7 @@ run from the command-line."
 (reset-metadata)
 
 ;; Revert
-(uiop:run-program "sed 's/0\.0\.2/0.0.1/' qi.yaml >> qwop.yaml"
+(uiop:run-program "sed 's/0\.0\.2/0.0.1/g' qi.yaml >> qwop.yaml"
                   :directory #P"t/resources/project/"
                   :wait t)
 (uiop:run-program "mv qwop.yaml qi.yaml"

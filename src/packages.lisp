@@ -154,6 +154,10 @@ of the information we need to get it."))
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-url dep)))
     (download-tarball loc dep)
+    ;; This needs to be run after `download-tarball', since that's
+    ;; where `dependency-sys-path' is set
+    (remove-old-versions dep)
+
     (make-dependency-available dep)
     (install-transitive-dependencies dep)))
 
@@ -162,6 +166,10 @@ of the information we need to get it."))
         (url (dependency-url dep)))
     (cond ((eq :tarball strat)
            (download-tarball url dep)
+           ;; This needs to be run after `download-tarball', since
+           ;; that's where `dependency-sys-path' is set
+           (remove-old-versions dep)
+
            ;; The dependency must be made available before it is
            ;; installed so ASDF can determine its dependencies in turn
            (make-dependency-available dep)
@@ -219,6 +227,33 @@ of the information we need to get it."))
                                              "latest")
                                 :url (or (gethash "url" p) nil)))
         (t (error (format t "~%---X Cannot resolve dependency type")))))
+
+
+(defun remove-old-versions (dep)
+  "Walk the dependencies directory and remove versions of DEP that aren't current."
+  (let* ((dependency-prefix (concatenate 'string (dependency-name dep) "-"))
+         (old-versions
+          (remove-if
+           ;; don't delete the latest version, or tarballs for other dependencies
+           (lambda (x) (or
+                        (and (pathname-match-p (dependency-sys-path dep) x)
+                             ;; if the version is "latest", delete it
+                             ;; since that means we weren't able to
+                             ;; determine the real version; otherwise
+                             ;; keep it
+                             (not (string= "latest" (dependency-version dep))))
+                        ;; keep it if it doesn't start with `dependency-prefix'
+                        (not (eql (length dependency-prefix)
+                                  (string> (first (last (pathname-directory x)))
+                                           dependency-prefix)))))
+           (uiop/filesystem:subdirectories (qi.paths:package-dir)))))
+
+    (loop for dir in old-versions
+       do (progn
+            (format t "~%.... Deleting outdated ~A" dir)
+            (uiop:run-program (concatenate 'string "rm -r " (namestring dir))
+                              :wait t
+                              :output :lines)))))
 
 
 (defun download-tarball (url dep)

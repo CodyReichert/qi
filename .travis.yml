@@ -1,24 +1,19 @@
 language: common-lisp
 sudo: false
 
-env:
-  global:
-    - PATH=$HOME/.roswell/bin:$PATH
-    - ROSWELL_INSTALL_DIR=$HOME/.roswell
-  matrix:
-    - LISP=sbcl-bin
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb http://http.us.debian.org/debian testing main'
+    packages:
+      - sbcl
 
 cache:
   directories:
-    - $HOME/.roswell
     - $HOME/.config/common-lisp
 
 install:
-  - curl -L https://raw.githubusercontent.com/roswell/roswell/release/scripts/install-for-ci.sh | sh
-  - ros install prove
-
-before_script:
-  - ros config
+  - bin/qi -i prove
 
 script:
-  - run-prove qi-test.asd
+  - make t

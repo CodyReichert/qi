@@ -330,11 +330,27 @@ local sys-path."
 
 (defun set-sys-path (dep)
   "Update an a dependency's src-path and sys-path."
-  (let ((sys-path (fad:merge-pathnames-as-directory
-                   (qi.paths:package-dir)
-                   (concatenate 'string
-                                (dependency-name dep) "-"
-                                (dependency-version dep) "/"))))
+  (let* ((strat (dependency-download-strategy dep))
+         (sys-path (fad:merge-pathnames-as-directory
+                    (qi.paths:package-dir)
+                    (concatenate 'string
+                                 (dependency-name dep)
+                                 ;; If it's a (versioned) tarball, add
+                                 ;; the version to the sys-path.  If
+                                 ;; it's a VCS source, then instead of
+                                 ;; the version use the download
+                                 ;; strategy as a suffix (since we'll
+                                 ;; want to update the existing
+                                 ;; repository when the version is
+                                 ;; changed, rather than fetching the
+                                 ;; entire repo to a new directory)
+                                 (if (eql strat :tarball)
+                                     (concatenate 'string "-" (dependency-version dep))
+                                     (concatenate 'string "--" (string-downcase (symbol-name strat))))
+                                 ;; Trailing slash to keep fad from
+                                 ;; thinking the last part is a
+                                 ;; filename and stripping it
+                                 "/"))))
     (setf (dependency-sys-path dep) sys-path)))
 
 

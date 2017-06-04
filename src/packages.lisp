@@ -135,17 +135,19 @@ of the information we need to get it."))
 
 
 (defgeneric install-dependency (dependency)
-  (:documentation "Install a dependency to ./.qi/packages"))
+  (:documentation "Install a dependency to share/qi/packages"))
 
 ;; (defmethod install-dependency ((dep local-dependency))
 ;;   (format t "~%---X Installing local dependencies is not yet supported."))
 
 (defmethod install-dependency ((dep git-dependency))
+  (set-sys-path dep)
   (clone-git-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep hg-dependency))
+  (set-sys-path dep)
   (clone-hg-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
@@ -162,8 +164,8 @@ of the information we need to get it."))
 (defmethod install-dependency ((dep manifest-dependency))
   (let ((strat (dependency-download-strategy dep))
         (url (dependency-url dep)))
+    (set-sys-path dep)
     (cond ((eq :tarball strat)
-           (set-sys-path dep)
            (remove-old-versions dep)
            (download-tarball url dep)
 
@@ -272,11 +274,7 @@ of the information we need to get it."))
 (defun clone-git-repo (url dep)
   "Clones Git repository from URL, and updates DEP with the local
 sys-path."
-  (let ((clone-path (fad:merge-pathnames-as-directory
-                     (qi.paths:package-dir)
-                     (concatenate 'string
-                                  (dependency-name dep) "-"
-                                  (dependency-version dep) "/"))))
+  (let ((clone-path (dependency-sys-path dep)))
     (format t "~%---> Fetching from ~S" url)
 
     (if (probe-file clone-path)
@@ -288,19 +286,13 @@ sys-path."
       (progn
         (format t "~%.... Cloning to ~S" (namestring clone-path))
         (run-git-command
-         (concatenate 'string "clone " url " " (namestring clone-path)))))
-
-    (set-sys-path dep)))
+         (concatenate 'string "clone " url " " (namestring clone-path)))))))
 
 
 (defun clone-hg-repo (url dep)
   "Clones Mercurial repository from URL, and updates DEP with the
 local sys-path."
-  (let ((clone-path (fad:merge-pathnames-as-directory
-                     (qi.paths:package-dir)
-                     (concatenate 'string
-                                  (dependency-name dep) "-"
-                                  (dependency-version dep) "/"))))
+  (let ((clone-path (dependency-sys-path dep)))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
     (run-hg-command
@@ -308,7 +300,6 @@ local sys-path."
     (if (probe-file (fad:merge-pathnames-as-file
                      clone-path
                      (concatenate 'string (dependency-name dep) ".asd")))
-        (set-sys-path dep)
       (error (format t "~%~%---X Failed to clone repository for ~A~%" url)))))
 
 

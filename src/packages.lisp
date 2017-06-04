@@ -65,7 +65,6 @@
   "The base data structure for a dependency."
   name
   (download-strategy nil)
-  (src-path nil)
   (sys-path nil)
   (url nil)
   (version "latest"))
@@ -153,7 +152,7 @@ of the information we need to get it."))
 
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-url dep)))
-    (set-dependency-paths (tarball-path dep) dep)
+    (set-sys-path dep)
     (remove-old-versions dep)
     (download-tarball loc dep)
 
@@ -164,7 +163,7 @@ of the information we need to get it."))
   (let ((strat (dependency-download-strategy dep))
         (url (dependency-url dep)))
     (cond ((eq :tarball strat)
-           (set-dependency-paths (tarball-path dep) dep)
+           (set-sys-path dep)
            (remove-old-versions dep)
            (download-tarball url dep)
 
@@ -255,8 +254,7 @@ of the information we need to get it."))
 
 
 (defun download-tarball (url dep)
-  "Downloads tarball from <url>, and updates <dep> with the local src-path
-and sys-path."
+  "Downloads and unpacks tarball from URL for DEP."
   (let ((out-path (tarball-path dep)))
     (format t "~%---> Downloading tarball from ~S" url)
     (with-open-file (f (ensure-directories-exist out-path)
@@ -272,8 +270,8 @@ and sys-path."
 
 
 (defun clone-git-repo (url dep)
-  "Clones Git repository from <url>, and updates <dep> with the local
-src-path and sys-path."
+  "Clones Git repository from URL, and updates DEP with the local
+sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
                      (qi.paths:package-dir)
                      (concatenate 'string
@@ -292,12 +290,12 @@ src-path and sys-path."
         (run-git-command
          (concatenate 'string "clone " url " " (namestring clone-path)))))
 
-    (set-dependency-paths clone-path dep)))
+    (set-sys-path dep)))
 
 
 (defun clone-hg-repo (url dep)
-  "Clones Mercurial repository from <url>, and updates <dep> with the
-local src-path and sys-path."
+  "Clones Mercurial repository from URL, and updates DEP with the
+local sys-path."
   (let ((clone-path (fad:merge-pathnames-as-directory
                      (qi.paths:package-dir)
                      (concatenate 'string
@@ -310,7 +308,7 @@ local src-path and sys-path."
     (if (probe-file (fad:merge-pathnames-as-file
                      clone-path
                      (concatenate 'string (dependency-name dep) ".asd")))
-        (set-dependency-paths clone-path dep)
+        (set-sys-path dep)
       (error (format t "~%~%---X Failed to clone repository for ~A~%" url)))))
 
 
@@ -339,14 +337,13 @@ local src-path and sys-path."
           (archive::extract-files-from-archive archive))))))
 
 
-(defun set-dependency-paths (out-path dep)
+(defun set-sys-path (dep)
   "Update an a dependency's src-path and sys-path."
   (let ((sys-path (fad:merge-pathnames-as-directory
                    (qi.paths:package-dir)
                    (concatenate 'string
                                 (dependency-name dep) "-"
                                 (dependency-version dep) "/"))))
-    (setf (dependency-src-path dep) out-path)
     (setf (dependency-sys-path dep) sys-path)))
 
 

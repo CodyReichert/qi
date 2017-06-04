@@ -153,10 +153,9 @@ of the information we need to get it."))
 
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-url dep)))
-    (download-tarball loc dep)
-    ;; This needs to be run after `download-tarball', since that's
-    ;; where `dependency-sys-path' is set
+    (set-dependency-paths (tarball-path dep) dep)
     (remove-old-versions dep)
+    (download-tarball loc dep)
 
     (make-dependency-available dep)
     (install-transitive-dependencies dep)))
@@ -165,10 +164,9 @@ of the information we need to get it."))
   (let ((strat (dependency-download-strategy dep))
         (url (dependency-url dep)))
     (cond ((eq :tarball strat)
-           (download-tarball url dep)
-           ;; This needs to be run after `download-tarball', since
-           ;; that's where `dependency-sys-path' is set
+           (set-dependency-paths (tarball-path dep) dep)
            (remove-old-versions dep)
+           (download-tarball url dep)
 
            ;; The dependency must be made available before it is
            ;; installed so ASDF can determine its dependencies in turn
@@ -269,8 +267,7 @@ and sys-path."
       (let ((tar (drakma:http-request url :want-stream t)))
         (arnesi:awhile (read-byte tar nil nil)
           (write-byte arnesi:it f))
-        (close tar)
-        (set-dependency-paths out-path dep)))
+        (close tar)))
     (unpack-tar dep)))
 
 

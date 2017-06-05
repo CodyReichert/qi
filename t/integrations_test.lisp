@@ -13,7 +13,6 @@
 ;; sucessfully unpack it and load it.
 (let ((dep (qi::make-dependency :name "anaphora"
                                 :url "https://github.com/tokenrove/anaphora/tarball/master"
-                                :src-path (merge-pathnames tar-dir "anaphora-master.tar.gz")
                                 :sys-path (merge-pathnames tar-dir "anaphora-latest")))
       (tmpfile (merge-pathnames "anaphora-latest.tar.gz" (qi.paths:+dep-cache+))))
   (qi::bootstrap (qi.packages::dependency-name dep))

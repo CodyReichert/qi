@@ -329,7 +329,7 @@ local sys-path."
 
 
 (defun set-sys-path (dep)
-  "Update an a dependency's src-path and sys-path."
+  "Update an a dependency's sys-path."
   (let* ((strat (dependency-download-strategy dep))
          (sys-path (fad:merge-pathnames-as-directory
                     (qi.paths:package-dir)

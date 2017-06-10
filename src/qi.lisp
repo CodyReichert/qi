@@ -14,9 +14,9 @@
                 :dependency-name
                 :dependency-url
                 :dependency-version
-                :dependency-sys-path
                 :dispatch-dependency
                 :extract-dependency
+                :get-sys-path
                 :make-dependency
                 :make-manifest-dependency
                 :make-http-dependency
@@ -130,10 +130,11 @@ be in the CWD that specifies <project>'s dependencies."
   "Print information about the *qi-dependencies* list."
    (if (= 0 (length *qi-dependencies*))
        (format t "~%~%No dependencies installed!")
-     (let ((installed (remove-if-not #'dependency-sys-path *qi-dependencies*)))
-       (format t "~%~%~S dependencies installed:" (length installed))
+     (progn
+       (format t "~%~%~S dependencies installed:" (length *qi-dependencies*))
        (format t "~%~{   * ~A~%~}" (mapcar
                                     #'dependency-name
-                                    (sort installed (lambda (x y)
-                                                      (string-lessp (dependency-name x)
-                                                                    (dependency-name y)))))))))
+                                    (sort *qi-dependencies*
+                                          (lambda (x y)
+                                            (string-lessp (dependency-name x)
+                                                          (dependency-name y)))))))))

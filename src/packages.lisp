@@ -20,8 +20,8 @@
            :dependency-name
            :dependency-url
            :dependency-version
-           :dependency-sys-path
            :extract-dependency
+           :get-sys-path
            :make-dependency
            :make-manifest-dependency
            :make-http-dependency
@@ -65,7 +65,6 @@
   "The base data structure for a dependency."
   name
   (download-strategy nil)
-  (sys-path nil)
   (url nil)
   (version "latest"))
 
@@ -95,8 +94,7 @@
 of its location."))
 
 (defmethod dispatch-dependency :after ((dependency dependency))
-  (when (dependency-sys-path dependency)
-    (setf *qi-dependencies* (pushnew dependency *qi-dependencies*))))
+  (setf *qi-dependencies* (pushnew dependency *qi-dependencies*)))
 
 (defmethod dispatch-dependency ((dep local-dependency))
   (format t "~%-> Preparing to copy local dependency.")
@@ -141,20 +139,17 @@ of the information we need to get it."))
 ;;   (format t "~%---X Installing local dependencies is not yet supported."))
 
 (defmethod install-dependency ((dep git-dependency))
-  (set-sys-path dep)
   (clone-git-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep hg-dependency))
-  (set-sys-path dep)
   (clone-hg-repo (dependency-url dep) dep)
   (make-dependency-available dep)
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep http-dependency))
   (let ((loc (dependency-url dep)))
-    (set-sys-path dep)
     (remove-old-versions dep)
     (download-tarball loc dep)
 
@@ -164,7 +159,6 @@ of the information we need to get it."))
 (defmethod install-dependency ((dep manifest-dependency))
   (let ((strat (dependency-download-strategy dep))
         (url (dependency-url dep)))
-    (set-sys-path dep)
     (cond ((eq :tarball strat)
            (remove-old-versions dep)
            (download-tarball url dep)
@@ -235,7 +229,7 @@ of the information we need to get it."))
           (remove-if
            ;; don't delete the latest version, or tarballs for other dependencies
            (lambda (x) (or
-                        (and (pathname-match-p (dependency-sys-path dep) x)
+                        (and (pathname-match-p (get-sys-path dep) x)
                              ;; if the version is "latest", delete it
                              ;; since that means we weren't able to
                              ;; determine the real version; otherwise
@@ -272,9 +266,8 @@ of the information we need to get it."))
 
 
 (defun clone-git-repo (url dep)
-  "Clones Git repository from URL, and updates DEP with the local
-sys-path."
-  (let ((clone-path (dependency-sys-path dep)))
+  "Clones Git repository from URL."
+  (let ((clone-path (get-sys-path dep)))
     (format t "~%---> Fetching from ~S" url)
 
     (if (probe-file clone-path)
@@ -290,9 +283,8 @@ sys-path."
 
 
 (defun clone-hg-repo (url dep)
-  "Clones Mercurial repository from URL, and updates DEP with the
-local sys-path."
-  (let ((clone-path (dependency-sys-path dep)))
+  "Clones Mercurial repository from URL."
+  (let ((clone-path (get-sys-path dep)))
     (format t "~%---> Cloning repo from ~S" url)
     (format t "~%---> Cloning repo to ~S" (namestring clone-path))
     (run-hg-command
@@ -312,7 +304,7 @@ local sys-path."
 (defun unpack-tar (dep)
   (let* ((tar-path (tarball-path dep))
          (unzipped-actual (extract-tarball* tar-path (qi.paths:package-dir)))
-         (unzipped-expected (dependency-sys-path dep)))
+         (unzipped-expected (get-sys-path dep)))
     (unless (or (eql unzipped-actual unzipped-expected)
                 (probe-file unzipped-expected))
       (rename-file unzipped-actual unzipped-expected))))
@@ -328,36 +320,30 @@ local sys-path."
           (archive::extract-files-from-archive archive))))))
 
 
-(defun set-sys-path (dep)
-  "Update an a dependency's sys-path."
-  (let* ((strat (dependency-download-strategy dep))
-         (sys-path (fad:merge-pathnames-as-directory
-                    (qi.paths:package-dir)
-                    (concatenate 'string
-                                 (dependency-name dep)
-                                 ;; If it's a (versioned) tarball, add
-                                 ;; the version to the sys-path.  If
-                                 ;; it's a VCS source, then instead of
-                                 ;; the version use the download
-                                 ;; strategy as a suffix (since we'll
-                                 ;; want to update the existing
-                                 ;; repository when the version is
-                                 ;; changed, rather than fetching the
-                                 ;; entire repo to a new directory)
-                                 (if (eql strat :tarball)
-                                     (concatenate 'string "-" (dependency-version dep))
-                                     (concatenate 'string "--" (string-downcase (symbol-name strat))))
-                                 ;; Trailing slash to keep fad from
-                                 ;; thinking the last part is a
-                                 ;; filename and stripping it
-                                 "/"))))
-    (setf (dependency-sys-path dep) sys-path)))
+(defun get-sys-path (dependency)
+  "Construct the sys-path for a DEPENDENCY."
+  (fad:merge-pathnames-as-directory
+   (qi.paths:package-dir)
+   (concatenate 'string
+                (dependency-name dependency)
+                ;; If it's a (versioned) tarball, add the version to
+                ;; the sys-path.  If it's a VCS source, then instead
+                ;; of the version use the download strategy as a
+                ;; suffix (since we'll want to update the existing
+                ;; repository when the version is changed, rather than
+                ;; fetching the entire repo to a new directory)
+                (if (eql (dependency-download-strategy dependency) :tarball)
+                    (concatenate 'string "-" (dependency-version dependency))
+                  (concatenate 'string "--" (string-downcase (symbol-name (dependency-download-strategy dependency)))))
+                ;; Trailing slash to keep fad from thinking the last
+                ;; part is a filename and stripping it
+                "/")))
 
 
 (defun make-dependency-available (dep)
   (setf asdf:*central-registry*
-        (list* (dependency-sys-path dep)  ;; add this dependencies path to the
-               asdf:*central-registry*))) ;; ASDF registry.
+        ;; add this path to the ASDF registry.
+        (list* (get-sys-path dep) asdf:*central-registry*)))
 
 
 (defun install-transitive-dependencies (dep)

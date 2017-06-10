@@ -12,8 +12,9 @@
 ;; Tests that even if the tarball doesn't have the same name as what we expect, we still
 ;; sucessfully unpack it and load it.
 (let ((dep (qi::make-dependency :name "anaphora"
-                                :url "https://github.com/tokenrove/anaphora/tarball/master"
-                                :sys-path (merge-pathnames tar-dir "anaphora-latest")))
+                                :version "latest"
+                                :download-strategy :tarball
+                                :url "https://github.com/tokenrove/anaphora/tarball/master"))
       (tmpfile (merge-pathnames "anaphora-latest.tar.gz" (qi.paths:+dep-cache+))))
   (qi::bootstrap (qi.packages::dependency-name dep))
   (ensure-directories-exist (qi.paths:+dep-cache+))
@@ -26,8 +27,7 @@
       (with-open-file (target tmpfile :direction :output :element-type '(unsigned-byte 8))
         (uiop:copy-stream-to-stream source target :element-type '(unsigned-byte 8)))))
 
-  (let ((out (qi.packages::unpack-tar dep)))
-    (ok (not (eql out (qi.packages:dependency-sys-path dep))) "Extracts tarball with different name.")
-    (ok (probe-file (qi.packages:dependency-sys-path dep)) "Extracts tarball and exists")))
+  (ok (qi.packages::unpack-tar dep))
+  (ok (probe-file (qi.packages:get-sys-path dep)) "Extracts tarball and exists"))
 
 (finalize)

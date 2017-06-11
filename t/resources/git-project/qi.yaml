@@ -1,0 +1,6 @@
+name: test-git
+packages:
+  - name: yason
+  - name: cl-test-1
+    url: 'https://gitlab.com/welp/cl-test-1.git'
+    tag: 0.0.1

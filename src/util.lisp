@@ -80,13 +80,19 @@
   "Run the Mercurial COMMAND."
   (uiop:run-program (concatenate 'string "hg " command) :wait t :output :lines))
 
-(defun update-repository (&key name directory upstream)
-  "Update the NAMEd repository, located in DIRECTORY, to its latest version from UPSTREAM.  If DIRECTORY exists but isn't a repository, make it one."
+(defun update-repository (&key name directory upstream branch revision)
+  "Update the NAMEd repository, located in DIRECTORY, using UPSTREAM.
+Unless BRANCH or REVISION is specified, update to the latest revision.
+If DIRECTORY exists but isn't a repository, make it one."
   (ensure-directories-exist directory)
+
+  ;; If `directory' is already a git repo, update it
   (if (probe-file (fad:merge-pathnames-as-directory directory ".git/"))
       (let (stash
-            ;; https://stackoverflow.com/a/15284176
-            (upstream-ref (first (run-git-command "rev-parse --symbolic-full-name @{u}" directory)))
+            (upstream-ref (if branch
+                              (concatenate 'string "origin/" branch)
+                            ;; https://stackoverflow.com/a/15284176
+                            (first (run-git-command "rev-parse --symbolic-full-name @{u}" directory))))
             (pre-revision (first (run-git-command "rev-parse HEAD" directory))))
         (format t "~%---> Upgrading ~A" name)
         (run-git-command "fetch origin" directory)
@@ -94,7 +100,10 @@
         (setq stash (first (run-git-command "status --untracked-files=all --porcelain" directory)))
         (if stash (run-git-command "stash" directory))
 
-        (run-git-command (concatenate 'string "rebase " upstream-ref) directory)
+        (run-git-command (if revision
+                             (concatenate 'string "reset --hard " revision)
+                           (concatenate 'string "rebase " upstream-ref))
+                         directory)
 
         (if stash (run-git-command "stash pop" directory))
 
@@ -102,7 +111,8 @@
           (if (string= pre-revision post-revision)
               (format t "~%~3t✓ ~A is already up to date.~%" name)
             (format t "~%~3t✓ Updated ~A to ~A~%" name post-revision))))
-    ;; If it wasn't installed using `git clone`
+
+    ;; If `directory' is not a git repo, make it one
     (progn
       ;; Adapted from
       ;; https://github.com/Homebrew/brew/blob/bff8e84/Library/Homebrew/cmd/update.sh#L37-L50;
@@ -112,7 +122,14 @@
        (concatenate 'string "config remote.origin.url " upstream) directory)
       (run-git-command "config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\"" directory)
       (run-git-command "fetch origin" directory)
-      (run-git-command "reset --hard origin/master" directory)
+
+      (run-git-command (concatenate
+                        'string
+                        "reset --hard "
+                        (if (or branch revision)
+                            (or revision (concatenate 'string "origin/" branch))
+                          "origin/master"))
+                       directory)
 
       ;; setting `upstream-ref' above requires this
       (run-git-command "branch --set-upstream-to=origin/master master" directory)

@@ -5,6 +5,18 @@
         :prove))
 (in-package :qi-test-integrations)
 
+(defun gsub (file regexp)
+  "In FILE, do a global search/replace for REGEXP"
+  (uiop:run-program (concatenate
+                     'string
+                     "sed '" regexp "' " (namestring file) " >> tmp.sed")
+                    :wait t)
+  ;; For some reason `sed -i` isn't working
+  (uiop:run-program (concatenate
+                     'string
+                     "mv tmp.sed " (namestring file))
+                    :wait t))
+
 (defun reset-metadata ()
   "Unset the variables from `qi:bootstrap'.  We run this between
 install tests to ensure a clean environment, simulating how they're
@@ -14,30 +26,37 @@ run from the command-line."
 
 (plan 6)
 
-(load "t/resources/project/test-project.asd")
-(ok (qi:install :test-project) "test-project is installed")
-(is (test-project:main) "0.0.1")
+;;
+;; Test that the VERSION key works for tarball dependencies
+;;
+(load "t/resources/tarball-project/test-tarball.asd")
+(ok (qi:install :test-tarball) "test-tarball is installed")
+(is (test-tarball:main) "0.0.1")
 (reset-metadata)
 
-;; For some reason `sed -i` isn't working
-(uiop:run-program "sed 's/0\.0\.1/0.0.2/g' qi.yaml >> qwop.yaml"
-                  :directory #P"t/resources/project/"
-                  :wait t)
-(uiop:run-program "mv qwop.yaml qi.yaml"
-                  :directory #P"t/resources/project/"
-                  :wait t)
-
-(ok (qi:install :test-project) "test-project is re-installed")
-(is (test-project:main) "0.0.2" "qi should load the newer version of cl-test-1")
+(gsub "t/resources/tarball-project/qi.yaml" "s/0\.0\.1/0.0.2/g")
+(ok (qi:install :test-tarball) "test-tarball is re-installed")
+(is (test-tarball:main) "0.0.2" "qi should load the newer version of cl-test-1")
 (reset-metadata)
 
 ;; Revert
-(uiop:run-program "sed 's/0\.0\.2/0.0.1/g' qi.yaml >> qwop.yaml"
-                  :directory #P"t/resources/project/"
-                  :wait t)
-(uiop:run-program "mv qwop.yaml qi.yaml"
-                  :directory #P"t/resources/project/"
-                  :wait t)
+(gsub "t/resources/tarball-project/qi.yaml" "s/0\.0\.2/0.0.1/g")
+
+;;
+;; Test that the TAG key works for git dependencies
+;;
+(load "t/resources/git-project/test-git.asd")
+(ok (qi:install :test-git) "test-git is installed")
+(is (test-git:main) "0.0.1")
+(reset-metadata)
+
+(gsub "t/resources/git-project/qi.yaml" "s/0\.0\.1/0.0.2/g")
+(ok (qi:install :test-git) "test-git is re-installed")
+(is (test-git:main) "0.0.2" "qi should load the newer version of cl-test-1")
+(reset-metadata)
+
+;; Revert
+(gsub "t/resources/git-project/qi.yaml" "s/0\.0\.2/0.0.1/g")
 
 ;; Tests that even if the tarball doesn't have the same name as what we expect, we still
 ;; sucessfully unpack it and load it.

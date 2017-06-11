@@ -48,7 +48,7 @@
   t)
 
 
-(defun install-global (system &optional (version "latest"))
+(defun install-global (system &optional version)
   "Install <system> into the user global packages directory. system should be
 from the Qi Manifest. Optionally specify <version> to specifically install
 a specific version of <system>. <version> defaults to latest. The system will

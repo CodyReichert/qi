@@ -64,9 +64,11 @@
 (defstruct dependency
   "The base data structure for a dependency."
   name
+  ;; Don't use "master" as default; instead let upstream dictate
+  (branch nil)
   (download-strategy nil)
   (url nil)
-  (version "latest"))
+  (version nil))
 
 
 (defstruct (manifest-dependency (:include dependency))
@@ -186,38 +188,35 @@ of the information we need to get it."))
                     (gethash "name" p)))
            (make-manifest-dependency :name (gethash "name" p)
                                      :url (manifest-package-url man)
-                                     :download-strategy (download-strategy (manifest-package-url man))
-                                     :version (or (gethash "version" p)
-                                                  "latest"))))
+                                     :download-strategy (download-strategy (manifest-package-url man)))))
         ;; Dependency has a tarball URL
         ((is-tar-url? (gethash "url" p))
          (make-http-dependency :name (gethash "name" p)
                                :download-strategy :tarball
-                               :version (or (gethash "version" p)
-                                            "latest")
+                               :version (gethash "version" p)
                                :url (gethash "url" p)))
         ;; Dependency has a git URL
         ((or (is-git-url? (gethash "url" p))
              (is-gh-url? (gethash "url" p)))
          (make-git-dependency :name (gethash "name" p)
+                              :branch (gethash "branch" p)
                               :download-strategy :git
-                              :version (or (gethash "version" p)
-                                           "latest")
+                              :version (or (gethash "tag" p)
+                                           (gethash "revision" p)
+                                           (gethash "version" p))
                               :url (gethash "url" p)))
         ;; Dependency has a Mercurial URL
         ((is-hg-url? (gethash "url" p))
          (make-hg-dependency :name (gethash "name" p)
                              :download-strategy :hg
-                             :version (or (gethash "version" p)
-                                          "latest")
+                             :version (gethash "version" p)
                              :url (car (cl-ppcre:split ".hg" (gethash "url" p)))))
 
         ;; Dependency is local path
         ((not (null (gethash "path" p)))
          (make-local-dependency :name (gethash "name" p)
                                 :download-strategy :local
-                                :version (or (gethash "version" p)
-                                             "latest")
+                                :version (gethash "version" p)
                                 :url (or (gethash "url" p) nil)))
         (t (error (format t "~%---X Cannot resolve dependency type")))))
 
@@ -230,11 +229,11 @@ of the information we need to get it."))
            ;; don't delete the latest version, or tarballs for other dependencies
            (lambda (x) (or
                         (and (pathname-match-p (get-sys-path dep) x)
-                             ;; if the version is "latest", delete it
+                             ;; if the version is unsset, delete it
                              ;; since that means we weren't able to
                              ;; determine the real version; otherwise
                              ;; keep it
-                             (not (string= "latest" (dependency-version dep))))
+                             (not (dependency-version dep)))
                         ;; keep it if it doesn't start with `dependency-prefix'
                         (not (eql (length dependency-prefix)
                                   (string> (first (last (pathname-directory x)))
@@ -274,7 +273,9 @@ of the information we need to get it."))
         (progn
           (format t "~%.... ~A exists, fetching latest changes" (namestring clone-path))
           (update-repository :name (dependency-name dep)
+                             :branch (dependency-branch dep)
                              :directory (namestring clone-path)
+                             :revision (dependency-version dep)
                              :upstream url))
       (progn
         (format t "~%.... Cloning to ~S" (namestring clone-path))
@@ -335,7 +336,7 @@ of the information we need to get it."))
                 ;; repository when the version is changed, rather than
                 ;; fetching the entire repo to a new directory)
                 (if (eql (dependency-download-strategy dependency) :tarball)
-                    (concatenate 'string "-" (dependency-version dependency))
+                    (concatenate 'string "-" (or (dependency-version dependency) "latest"))
                   (concatenate 'string "--" (string-downcase (symbol-name (dependency-download-strategy dependency)))))
                 ;; Trailing slash to keep fad from thinking the last
                 ;; part is a filename and stripping it
@@ -358,10 +359,10 @@ of the information we need to get it."))
                  (format t "~%.... Checking manifest for transitive dependency: ~A" d)
                  (let ((tdep
                         (if (manifest-get-by-name d)
-                            (make-manifest-dependency :name d
-                                                      :url (manifest-package-url (manifest-get-by-name d))
-                                                      :download-strategy (download-strategy (manifest-package-url (manifest-get-by-name d)))
-                                                      :version "latest")
+                            (make-manifest-dependency
+                             :name d
+                             :url (manifest-package-url (manifest-get-by-name d))
+                             :download-strategy (download-strategy (manifest-package-url (manifest-get-by-name d))))
                           (car (member-if
                                 (lambda (x) (string= d (dependency-name x)))
                                 *yaml-packages*)))))

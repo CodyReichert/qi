@@ -1,4 +1,0 @@
-name: qi-git-test
-packages:
-    - name: split-sequence
-      url: https://github.com/sharplispers/split-sequence.git

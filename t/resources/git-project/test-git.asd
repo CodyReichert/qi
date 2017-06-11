@@ -1,10 +1,10 @@
 (require 'asdf)
 
-(defpackage #:test-project
+(defpackage #:test-git
   (:use #:cl)
   (:export #:main))
 
-(asdf:defsystem #:test-project
+(asdf:defsystem #:test-git
   :description "Test"
   :depends-on (#:yason
                #:cl-test-1)

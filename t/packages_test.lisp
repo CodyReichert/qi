@@ -7,10 +7,10 @@
 
 (plan 9)
 
-(defvar git-dir (merge-pathnames "t/resources/git/" qi.paths:+qi-directory+)
+(defvar git-dir (merge-pathnames "t/resources/git-project/" qi.paths:+qi-directory+)
   "Directory of resources for testing git functionality.")
 
-(defvar hg-dir (merge-pathnames "t/resources/hg/" qi.paths:+qi-directory+)
+(defvar hg-dir (merge-pathnames "t/resources/hg-project/" qi.paths:+qi-directory+)
   "Directory of resources for testing mercurial functionality.")
 
 (let ((config
@@ -21,7 +21,7 @@
          (dep (qi::extract-dependency p)))
     (is (qi.packages::dependency-download-strategy dep) :git)
     (is (qi.packages::dependency-url dep)
-        "https://github.com/sharplispers/split-sequence.git")))
+        "https://github.com/hanshuebner/yason.git")))
 
 (let ((config
         (yaml:parse
@@ -33,7 +33,7 @@
     (is (qi.packages::dependency-url dep)
         "https://bitbucket.org/tarballs_are_good/map-set")))
 
-(let* ((test-yaml (yaml:parse (merge-pathnames "t/resources/project/qi.yaml" qi.paths:+qi-directory+)))
+(let* ((test-yaml (yaml:parse (merge-pathnames "t/resources/tarball-project/qi.yaml" qi.paths:+qi-directory+)))
        (test-package-hash (first (member-if
                                   (lambda (x) (string= "cl-test-1" (gethash "name" x)))
                                   (gethash "packages" test-yaml))))

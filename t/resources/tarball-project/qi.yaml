@@ -1,4 +1,4 @@
-name: test-project
+name: test-tarball
 packages:
   - name: yason
   - name: cl-test-1

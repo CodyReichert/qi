@@ -5,9 +5,39 @@
         :prove))
 (in-package :qi-test-integrations)
 
-(plan 2)
+(defun reset-metadata ()
+  "Unset the variables from `qi:bootstrap'.  We run this between
+install tests to ensure a clean environment, simulating how they're
+run from the command-line."
+  (setf qi::+project-name+ nil)
+  (setf qi.manifest::+manifest-packages+ nil))
 
-(defvar tar-dir (merge-pathnames "t/resources/tar/" qi.paths:+qi-directory+))
+(plan 6)
+
+(load "t/resources/project/test-project.asd")
+(ok (qi:install :test-project) "test-project is installed")
+(is (test-project:main) "0.0.1")
+(reset-metadata)
+
+;; For some reason `sed -i` isn't working
+(uiop:run-program "sed 's/0\.0\.1/0.0.2/g' qi.yaml >> qwop.yaml"
+                  :directory #P"t/resources/project/"
+                  :wait t)
+(uiop:run-program "mv qwop.yaml qi.yaml"
+                  :directory #P"t/resources/project/"
+                  :wait t)
+
+(ok (qi:install :test-project) "test-project is re-installed")
+(is (test-project:main) "0.0.2" "qi should load the newer version of cl-test-1")
+(reset-metadata)
+
+;; Revert
+(uiop:run-program "sed 's/0\.0\.2/0.0.1/g' qi.yaml >> qwop.yaml"
+                  :directory #P"t/resources/project/"
+                  :wait t)
+(uiop:run-program "mv qwop.yaml qi.yaml"
+                  :directory #P"t/resources/project/"
+                  :wait t)
 
 ;; Tests that even if the tarball doesn't have the same name as what we expect, we still
 ;; sucessfully unpack it and load it.
@@ -21,7 +51,7 @@
 
   ;; Copy the fixture to TMPDIR
   (unless (probe-file tmpfile)
-    (with-open-file (source (merge-pathnames "anaphora-master.tar.gz" tar-dir)
+    (with-open-file (source (merge-pathnames "t/resources/tar/anaphora-master.tar.gz" qi.paths:+qi-directory+)
                             :direction :input
                             :element-type '(unsigned-byte 8))
       (with-open-file (target tmpfile :direction :output :element-type '(unsigned-byte 8))

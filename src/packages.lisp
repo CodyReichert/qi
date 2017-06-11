@@ -104,8 +104,7 @@ of its location."))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep http-dependency))
-  (format t "~%-> Preparing to download tarball dependency: ~S"
-          (dependency-name dep))
+  (format t "~%-> Preparing to download tarball dependency: ~S" (dependency-name dep))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep git-dependency))
@@ -117,21 +116,8 @@ of its location."))
   (install-dependency dep))
 
 (defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%-> Preparing to install manifest dependency: ~S"
-          (dependency-name dep))
-  (if (not (ensure-dependency dep))
-      (format t "~%---X ~A not found in manifest" (dependency-name dep))
-    (install-dependency dep)))
-
-
-(defgeneric ensure-dependency (dependency)
-  (:documentation "Ensure that a dependency exists. That we have all
-of the information we need to get it."))
-
-(defmethod ensure-dependency ((dep manifest-dependency))
-  "Check the manifest to ensure a dependency exists."
-  (let ((manifest-package (manifest-get-by-name (dependency-name dep))))
-    (when manifest-package dep)))
+  (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
+  (install-dependency dep))
 
 
 (defgeneric install-dependency (dependency)

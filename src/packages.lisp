@@ -252,7 +252,7 @@ of the information we need to get it."))
 (defun download-tarball (url dep)
   "Downloads and unpacks tarball from URL for DEP."
   (let ((out-path (tarball-path dep)))
-    (format t "~%---> Downloading tarball from ~S" url)
+    (format t "~%---> Downloading tarball from ~A" url)
     (with-open-file (f (ensure-directories-exist out-path)
                        :direction :output
                        :if-does-not-exist :create

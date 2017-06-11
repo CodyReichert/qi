@@ -22,13 +22,14 @@
            :dependency-version
            :extract-dependency
            :get-sys-path
+           :install-dependency
+           :installed?
            :make-dependency
            :make-manifest-dependency
            :make-http-dependency
            :make-local-dependency
            :make-git-dependency
            :make-hg-dependency
-           :dispatch-dependency
            :location
            :local
            :http
@@ -91,40 +92,11 @@
 ;; Generic functions on a `dependency'
 ;;
 
-(defgeneric dispatch-dependency (dependency)
-  (:documentation "Process (download/cp/install/) dependency based off
-of its location."))
-
-(defmethod dispatch-dependency :after ((dependency dependency))
-  (setf *qi-dependencies* (pushnew dependency *qi-dependencies*)))
-
-(defmethod dispatch-dependency ((dep local-dependency))
-  (format t "~%-> Preparing to copy local dependency.")
-  (format t "~%---> ~A" (dependency-url dep))
-  (install-dependency dep))
-
-(defmethod dispatch-dependency ((dep http-dependency))
-  (format t "~%-> Preparing to download tarball dependency: ~S" (dependency-name dep))
-  (install-dependency dep))
-
-(defmethod dispatch-dependency ((dep git-dependency))
-  (format t "~%-> Preparing to clone Git dependency: ~S" (dependency-name dep))
-  (install-dependency dep))
-
-(defmethod dispatch-dependency ((dep hg-dependency))
-  (format t "~%-> Preparing to clone Mercurial dependency: ~S" (dependency-name dep))
-  (install-dependency dep))
-
-(defmethod dispatch-dependency ((dep manifest-dependency))
-  (format t "~%-> Preparing to install manifest dependency: ~S" (dependency-name dep))
-  (install-dependency dep))
-
-
 (defgeneric install-dependency (dependency)
   (:documentation "Install a dependency to share/qi/packages"))
 
-;; (defmethod install-dependency ((dep local-dependency))
-;;   (format t "~%---X Installing local dependencies is not yet supported."))
+(defmethod install-dependency :before ((dependency dependency))
+  (setf *qi-dependencies* (cons dependency *qi-dependencies*)))
 
 (defmethod install-dependency ((dep git-dependency))
   (clone-git-repo (dependency-url dep) dep)
@@ -137,12 +109,11 @@ of its location."))
   (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep http-dependency))
-  (let ((loc (dependency-url dep)))
-    (remove-old-versions dep)
-    (download-tarball loc dep)
+  (remove-old-versions dep)
+  (download-tarball (dependency-url dep) dep)
 
-    (make-dependency-available dep)
-    (install-transitive-dependencies dep)))
+  (make-dependency-available dep)
+  (install-transitive-dependencies dep))
 
 (defmethod install-dependency ((dep manifest-dependency))
   (let ((strat (dependency-download-strategy dep))
@@ -163,7 +134,6 @@ of its location."))
 
           (t ; unsupported strategy
            (error (format t "~%---X Download strategy \"~S\" is not yet supported" strat))))))
-
 
 (defun extract-dependency (p)
   "Generate a dependency from package P."
@@ -253,18 +223,17 @@ of its location."))
 (defun clone-git-repo (url dep)
   "Clones Git repository from URL."
   (let ((clone-path (get-sys-path dep)))
-    (format t "~%---> Fetching from ~S" url)
+    (format t "~%---> Cloning ~A" url)
 
     (if (probe-file clone-path)
         (progn
-          (format t "~%.... ~A exists, fetching latest changes" (namestring clone-path))
           (update-repository :name (dependency-name dep)
                              :branch (dependency-branch dep)
                              :directory (namestring clone-path)
                              :revision (dependency-version dep)
                              :upstream url))
       (progn
-        (format t "~%.... Cloning to ~S" (namestring clone-path))
+        (format t "~%....      to ~A~%" (namestring clone-path))
         (run-git-command
          (concatenate 'string "clone " url " " (namestring clone-path)))))))
 
@@ -272,8 +241,8 @@ of its location."))
 (defun clone-hg-repo (url dep)
   "Clones Mercurial repository from URL."
   (let ((clone-path (get-sys-path dep)))
-    (format t "~%---> Cloning repo from ~S" url)
-    (format t "~%---> Cloning repo to ~S" (namestring clone-path))
+    (format t "~%---> Cloning ~A" url)
+    (format t "~%--->      to ~A" (namestring clone-path))
     (run-hg-command
      (concatenate 'string "clone " url " " (namestring clone-path)))
     (if (probe-file (fad:merge-pathnames-as-file
@@ -336,29 +305,31 @@ of its location."))
 
 
 (defun install-transitive-dependencies (dep)
-  (if (system-is-available? (dependency-name dep))
-      (let ((trans-deps (asdf:system-depends-on (asdf:find-system (dependency-name dep)))))
-        (loop for d in trans-deps do
-             (if (dependency-installed? d)
-                 (install-transitive-dependencies (make-dependency :name d))
-               (progn
-                 (format t "~%.... Checking manifest for transitive dependency: ~A" d)
-                 (let ((tdep
-                        (if (manifest-get-by-name d)
-                            (make-manifest-dependency
-                             :name d
-                             :url (manifest-package-url (manifest-get-by-name d))
-                             :download-strategy (download-strategy (manifest-package-url (manifest-get-by-name d))))
-                          (car (member-if
-                                (lambda (x) (string= d (dependency-name x)))
-                                *yaml-packages*)))))
-                   (cond ((not tdep)
-                          (if (not (system-is-available? d))
-                              (error
-                               (format t "~%~%---X Without ~A, we cannot install ~A~%"
-                                       d (dependency-name dep)))))
-                         (t
-                          (dispatch-dependency tdep))))))))))
+  (when (system-is-available? (dependency-name dep))
+    ;; Skip transitive dependencies that are already installed, as
+    ;; well as those explicitly specified in qi.yaml
+    (let ((uninstalled (remove-if
+                        (lambda (x) (or
+                                     (installed? x)
+                                     (member x *yaml-packages* :test #'(lambda (y z) (string= y (dependency-name z))))))
+                        (asdf:system-depends-on (asdf:find-system (dependency-name dep))))))
+      (loop for d in uninstalled do
+           (let* ((from-manifest (manifest-get-by-name d))
+                  (tdep (or
+                         (car (member-if (lambda (x) (string= d (dependency-name x)))
+                                         *yaml-packages*))
+                         ;; If it's not defined in qi.yaml, check the manifest
+                         (and from-manifest
+                              (make-manifest-dependency
+                               :name d
+                               :url (manifest-package-url from-manifest)
+                               :download-strategy (download-strategy (manifest-package-url from-manifest)))))))
+
+             (unless (or tdep (system-is-available? d))
+               (error (format t "~%~%---X Without ~A, we cannot install ~A~%" d (dependency-name dep))))
+
+             (when (and tdep (not (installed? d)))
+               (install-dependency tdep)))))))
 
 
 (defun system-is-available? (sys)
@@ -366,8 +337,8 @@ of its location."))
       (asdf:find-system sys)
     (error () () nil)))
 
-
-(defun dependency-installed? (name)
-  (remove-if-not #'(lambda (x)
-                     (string= (dependency-name x) name))
-                 *qi-dependencies*))
+(defun installed? (name)
+  "Checks if NAME is in the `*qi-dependencies*'."
+  (member name
+          *qi-dependencies*
+          :test #'(lambda (y z) (string= y (dependency-name z)))))

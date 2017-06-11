@@ -94,7 +94,7 @@ If DIRECTORY exists but isn't a repository, make it one."
                             ;; https://stackoverflow.com/a/15284176
                             (first (run-git-command "rev-parse --symbolic-full-name @{u}" directory))))
             (pre-revision (first (run-git-command "rev-parse HEAD" directory))))
-        (format t "~%---> Upgrading ~A" name)
+        (format t "~%---> Upgrading ~A" directory)
         (run-git-command "fetch origin" directory)
 
         (setq stash (first (run-git-command "status --untracked-files=all --porcelain" directory)))

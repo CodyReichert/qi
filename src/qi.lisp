@@ -14,9 +14,10 @@
                 :dependency-name
                 :dependency-url
                 :dependency-version
-                :dispatch-dependency
                 :extract-dependency
                 :get-sys-path
+                :install-dependency
+                :installed?
                 :make-dependency
                 :make-manifest-dependency
                 :make-http-dependency
@@ -55,7 +56,7 @@ a specific version of <system>. <version> defaults to latest. The system will
 be made available in the current lisp session. To make the system available from
 another lisp session, use (qi:up <system>)."
   (bootstrap :qi)
-  (dispatch-dependency
+  (install-dependency
    (let* ((name-string (qi.util:sym->str system))
           (package (manifest-get-by-name name-string)))
      (make-manifest-dependency :name name-string
@@ -63,6 +64,7 @@ another lisp session, use (qi:up <system>)."
                                :download-strategy (download-strategy
                                                    (manifest-package-url package))
                                :version version)))
+
   #+sbcl (sb-ext:without-package-locks (asdf:load-system system))
   #-sbcl (asdf:load-system system)
   (installed-dependency-report)
@@ -83,8 +85,8 @@ be in the CWD that specifies <project>'s dependencies."
     (install-from-qi-file qi-file)
 
     #+sbcl (sb-ext:without-package-locks (asdf:oos 'asdf:load-op project :verbose nil))
-    #-sbcl (asdf:oos 'asdf:load-op project :verbose nil)))
-
+    #-sbcl (asdf:oos 'asdf:load-op project :verbose nil)
+    ))
 
 (defun bootstrap (proj)
   "Sets up Qi variables and loads the manifest."
@@ -114,16 +116,12 @@ be in the CWD that specifies <project>'s dependencies."
 
       (loop for package in *yaml-packages*
          do
-           #+sbcl (sb-ext:without-package-locks (dispatch-dependency package))
-           #-sbcl (dispatch-dependency package)
-           )
+           #+sbcl (sb-ext:without-package-locks (install-dependency package))
+           #-sbcl (install-dependency package)
+           ))
 
-      (dependency-report)
-      t)))
-
-
-(defun dependency-report ()
-  (installed-dependency-report))
+    (installed-dependency-report)
+    t))
 
 
 (defun installed-dependency-report ()

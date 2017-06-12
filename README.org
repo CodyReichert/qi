@@ -69,19 +69,21 @@ around this part.
       name: my-project
       packages:
         - name: alexandria
+
         - name: clack
           url: https://github.com/fukamachi/clack/archive/master.tar.gz
-        - name: cl-pass
-          url: https://github.com/eudoxia0/cl-pass.git
+
+        - name: postmodern
+          url: https://github.com/marijnh/Postmodern.git
+          tag: v1.19
     #+END_SRC
 
    Above there are three types of packages: Manifest, tarball, and git.
 
    - *Manifest*: "Known" packages from the [[https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp][Qi manifest]].
    - *Tarball*: An HTTP URL to tarball.
-   - *Git*: A git repository. You can also specify a tag or hash.
+   - *Git*: A git repository. You can also specify a tag or revision.
    - *Mercurial*: A link to a mercurial repository.
-   - *Local*: TODO, but you will be able to put a local path.
 
    With the above qi.yaml in your project, you can run the following
    to install and load the systems:
@@ -94,7 +96,7 @@ around this part.
    You can also install project dependencies from the command-line:
 
    #+BEGIN_SRC sh
-     qi --install path/to/qi.yaml # unnecessary if qi.yaml is in the working directory
+     qi --install path/to/qi.yaml # the path is unnecessary if qi.yaml is in the working directory
    #+END_SRC
 
    Qi takes care of any transitive dependencies and will let you know

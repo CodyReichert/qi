@@ -24,7 +24,7 @@ run from the command-line."
   (setf qi::+project-name+ nil)
   (setf qi.manifest::+manifest-packages+ nil))
 
-(plan 6)
+(plan 11)
 
 ;;
 ;; Test that the VERSION key works for tarball dependencies
@@ -53,6 +53,9 @@ run from the command-line."
 (gsub "t/resources/git-project/qi.yaml" "s/0\.0\.1/0.0.2/g")
 (ok (qi:install :test-git) "test-git is re-installed")
 (is (test-git:main) "0.0.2" "qi should load the newer version of cl-test-1")
+(is "85f82ed88d5fa6e63026038dbb1dad0d6cd5dafe"
+    (first (qi.util:run-git-command "rev-parse HEAD" #P"t/resources/git-project/.dependencies/packages/alexandria--git"))
+    "The correct revision for alexandria is checked out")
 (reset-metadata)
 
 ;; Revert

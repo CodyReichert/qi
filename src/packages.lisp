@@ -143,8 +143,11 @@
              (error "---X Package \"~S\" is not in the manifest; please provide a URL"
                     (gethash "name" p)))
            (make-manifest-dependency :name (gethash "name" p)
+                                     :download-strategy (download-strategy (manifest-package-url man))
                                      :url (manifest-package-url man)
-                                     :download-strategy (download-strategy (manifest-package-url man)))))
+                                     :version (or (gethash "tag" p)
+                                                  (gethash "revision" p)
+                                                  (gethash "version" p)))))
         ;; Dependency has a tarball URL
         ((is-tar-url? (gethash "url" p))
          (make-http-dependency :name (gethash "name" p)

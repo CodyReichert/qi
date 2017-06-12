@@ -1,6 +1,11 @@
 name: test-git
 packages:
+  # This is to test Git dependencies without a master branch
   - name: yason
+
+  - name: alexandria
+    revision: 85f82ed88d5fa6e63026038dbb1dad0d6cd5dafe
+
   - name: cl-test-1
     url: 'https://gitlab.com/welp/cl-test-1.git'
     tag: 0.0.1

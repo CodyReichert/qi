@@ -302,11 +302,13 @@ of the information we need to get it."))
     (fad:merge-pathnames-as-file (qi.paths:+dep-cache+) (pathname out-file))))
 
 (defun unpack-tar (dep)
+  "Unarchive the downloaded DEP into its sys-path."
   (let* ((tar-path (tarball-path dep))
-         (unzipped-actual (extract-tarball* tar-path (qi.paths:package-dir)))
+         (unzipped-actual (extract-tarball* tar-path (qi.paths:+dep-cache+)))
          (unzipped-expected (get-sys-path dep)))
-    (unless (or (eql unzipped-actual unzipped-expected)
-                (probe-file unzipped-expected))
+    (if (probe-file unzipped-expected)
+        ;; Make sure it always returns non-nil on success, for testing
+        unzipped-expected
       (rename-file unzipped-actual unzipped-expected))))
 
 (defun extract-tarball* (tarball &optional (destination *default-pathname-defaults*))

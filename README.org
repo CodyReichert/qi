@@ -68,7 +68,8 @@ around this part.
     #+BEGIN_SRC yaml
       name: my-project
       packages:
-        - name: alexandria
+        - name: zlib
+          branch: import-1.1.1
 
         - name: clack
           url: https://github.com/fukamachi/clack/archive/master.tar.gz
@@ -82,8 +83,11 @@ around this part.
 
    - *Manifest*: "Known" packages from the [[https://github.com/CodyReichert/qi-manifest/blob/master/manifest.lisp][Qi manifest]].
    - *Tarball*: An HTTP URL to tarball.
-   - *Git*: A git repository. You can also specify a tag or revision.
+   - *Git*: A git repository.
    - *Mercurial*: A link to a mercurial repository.
+
+   For *manifest* and *git* packages, you can optionally specify a
+   tag, revision, or branch.
 
    With the above qi.yaml in your project, you can run the following
    to install and load the systems:

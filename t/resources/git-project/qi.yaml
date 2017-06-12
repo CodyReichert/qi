@@ -9,3 +9,6 @@ packages:
   - name: cl-test-1
     url: 'https://gitlab.com/welp/cl-test-1.git'
     tag: 0.0.1
+
+  - name: zlib
+    branch: import-1.1.1

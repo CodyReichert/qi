@@ -100,8 +100,10 @@ If DIRECTORY exists but isn't a repository, make it one."
         (setq stash (first (run-git-command "status --untracked-files=all --porcelain" directory)))
         (if stash (run-git-command "stash" directory))
 
-        (run-git-command (if revision
-                             (concatenate 'string "reset --hard " revision)
+        ;; If a revision or branch is specified, do a hard reset;
+        ;; otherwise, rebase against upstream
+        (run-git-command (if (or revision branch)
+                             (concatenate 'string "reset --hard " (or revision upstream-ref))
                            (concatenate 'string "rebase " upstream-ref))
                          directory)
 

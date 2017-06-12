@@ -138,11 +138,12 @@
 (defun extract-dependency (p)
   "Generate a dependency from package P."
   (cond ((eql nil (gethash "url" p))
-         (let ((man (manifest-get-by-name (gethash "name" p))))
+         (let* ((name (gethash "name" p))
+                (man (manifest-get-by-name name)))
            (unless man
-             (error "---X Package \"~S\" is not in the manifest; please provide a URL"
-                    (gethash "name" p)))
-           (make-manifest-dependency :name (gethash "name" p)
+             (error "---X Package \"~S\" is not in the manifest; please provide a URL" name))
+           (make-manifest-dependency :name name
+                                     :branch (gethash "branch" p)
                                      :download-strategy (download-strategy (manifest-package-url man))
                                      :url (manifest-package-url man)
                                      :version (or (gethash "tag" p)
@@ -188,7 +189,7 @@
            ;; don't delete the latest version, or tarballs for other dependencies
            (lambda (x) (or
                         (and (pathname-match-p (get-sys-path dep) x)
-                             ;; if the version is unsset, delete it
+                             ;; if the version is unset, delete it
                              ;; since that means we weren't able to
                              ;; determine the real version; otherwise
                              ;; keep it

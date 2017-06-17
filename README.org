@@ -1,11 +1,6 @@
 * Qi - Package Manager for Common Lisp
 
-Qi is a package manager for Common Lisp. There are several goals, at
-the top of which are: pinned dependency versions, project local
-dependencies, a place where anyone can upload their library for others
-to use. A CLI, project scaffolding, and bringing the wonderful world
-of Common Lisp libraries to anyone with one command are the more
-long-term goals.
+Qi is a package manager for Common Lisp.
 
 ** The State of Qi
 

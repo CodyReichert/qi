@@ -97,7 +97,20 @@ around this part.
      * (qi:install :myproject)
    #+END_SRC
 
-   You can also install project dependencies from the command-line:
+   =qi:install= will also load the dependencies into the system for
+   you, using ASDF.  If you don't want Qi as a runtime dependency of
+   your application, you can alternatively add something like this to
+   your =.asd= file:
+
+   #+BEGIN_SRC lisp
+     (asdf:initialize-source-registry
+      `(:source-registry
+        :ignore-inherited-configuration
+        (:tree (:here ".dependencies/packages/"))))
+   #+END_SRC
+
+   In addition to =qi:install=, you can also install project
+   dependencies from the command-line:
 
    #+BEGIN_SRC sh
      qi --install path/to/qi.yaml # the path is unnecessary if qi.yaml is in the working directory

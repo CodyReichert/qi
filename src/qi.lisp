@@ -39,11 +39,14 @@
 
 ;; code:
 
+(defvar qi-version
+  "0.2.0"
+  "The latest version of Qi.")
 
 (defun hello ()
   "Qi status message."
   (format t "~%Qi - A Common Lisp Package Manager")
-  (format t "~%Version 0.1")
+  (format t (concatenate 'string "~%Version " qi-version))
   (format t "~%Source: https://github.com/CodyReichert/qi")
   (format t "~%Issues: https://github.com/CodyReichert/qi/issues")
   t)

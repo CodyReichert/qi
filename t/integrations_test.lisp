@@ -24,7 +24,7 @@ run from the command-line."
   (setf qi::+project-name+ nil)
   (setf qi.manifest::+manifest-packages+ nil))
 
-(plan 11)
+(plan 12)
 
 ;;
 ;; Test that the VERSION key works for tarball dependencies

@@ -132,7 +132,7 @@ be in the CWD that specifies <project>'s dependencies."
    (if (= 0 (length *qi-dependencies*))
        (format t "~%~%No dependencies installed!")
      (progn
-       (format t "~%~%~S dependencies installed:" (length *qi-dependencies*))
+       (format t "~%~%~S dependenc~:@p installed:" (length *qi-dependencies*))
        (format t "~%~{   * ~A~%~}" (mapcar
                                     #'dependency-name
                                     (sort *qi-dependencies*

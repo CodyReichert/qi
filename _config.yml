@@ -1,0 +1,8 @@
+title: (Qi)
+description: A simple, open, free Package Manager for Common Lisp
+google_analytics: UA-68611557-1
+show_downloads: true
+theme: jekyll-theme-architect
+
+gems:
+  - jekyll-mentions

@@ -17,7 +17,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 |---|---|---|---|---|
 | [[https://qi-cl.com/][qi]] | BSD 2-Clause "Simplified" License | none | yes | 1.020+- |
 | [[https://gitlab.common-lisp.net/clpm][clpm]] | Copyright license | none | yes | 1.000+- |
-| [[https://en.wikipedia.org/wiki/Common_Lisp_Interface_Manager][clim]] | none | none | no | 300+- |
+| [[https://en.wikipedia.org/wiki/Common_Lisp_Interface_Manager][clim]] | LGPL | none | no | 300+- |
 | [[https://www.quicklisp.org/beta/][quicklisp]] | MIT License | none | yes | 900+- |
 
 ** Dependencies

@@ -13,7 +13,7 @@ View the HTML version of this documentation [[http://codyreichert.github.io/qi/]
 
 **** Comparison of different common-lisp [[https://ashok-khanna.medium.com/package-management-in-common-lisp-the-clim-way-d3a334bc73ef][package managers]] for qi
 
-| name | license | version | Is maintained, updated? | number of packages available |
+| name | license | version | maintained, updated? | packages available |
 |---|---|---|---|---|
 | [[https://qi-cl.com/][qi]] | BSD 2-Clause "Simplified" License | none | yes | 1.020+- |
 | [[https://gitlab.common-lisp.net/clpm][clpm]] | Copyright license | none | yes | 1.000+- |
